@@ -9,9 +9,9 @@ jobs:
       - name: Install TeX Live
         uses: zauguin/install-texlive@v3
         with:
-          packages: scheme-basic
+          packages: scheme-full
       - name: Compile LaTeX document
-        run: which pdflatex
+        run: which latexmk
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with: 
