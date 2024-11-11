@@ -1,0 +1,19 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v3
+        with:
+          packages: scheme-basic
+      - name: Compile LaTeX document
+        run: latexmk -pdflatex='pdflatex -file-line-error -synctex=1 -interaction=nonstopmode' -bibtex -pdf waves.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with: 
+          name: waves
+          path: waves.pdf
