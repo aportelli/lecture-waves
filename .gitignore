@@ -7,6 +7,9 @@
 *.synctex*
 *.toc
 
+# figure temporaries
+/figures/src/*.pdf
+
 # main document
 /waves.pdf
 
