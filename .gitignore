@@ -1,0 +1,14 @@
+# LaTeX temporaries
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex*
+*.toc
+
+# main document
+/waves.pdf
+
+# VSCode
+/.vscode

@@ -1,0 +1,137 @@
+% !TEX root = waves.tex
+\documentclass[a4paper,12pt]{report}
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% language, encoding & layout
+\usepackage[british]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{CrimsonPro}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{microtype}
+%% math symbols
+\usepackage{amsmath,amssymb,braket,slashed,mathrsfs}
+\usepackage[only,llbracket,rrbracket]{stmaryrd}
+%% theorems
+\usepackage{amsthm}
+%% TikZ
+\usepackage{tikz}
+%% units
+\usepackage[squaren,Gray,cdot,binary]{SIunits}
+%% figures
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+%% bibliography
+\usepackage[square,authoryear]{natbib}
+%% hyperlinks
+\usepackage{hyperref}
+\definecolor{linkcolor}{rgb}{.17578125,.1875,.5703125}
+\hypersetup{
+  pdfstartview={FitH},
+  pdftitle={TITLE},
+  pdfauthor={AUTHOR},
+  pdfsubject={},
+  pdfcreator={pdflatex},
+  pdfkeywords={},
+  colorlinks=true,
+  linkcolor=linkcolor,
+  citecolor=linkcolor,
+  filecolor=black,
+  urlcolor=linkcolor
+}
+%% compressed references
+\usepackage{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+%%% section
+\crefformat{section}{Sec.~#2#1#3}
+\crefmultiformat{section}{Sec.~#2#1#3}
+{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangeformat{section}{Sec.~#3#1#4\,--\,#5#2#6}
+%%% subsection
+\crefformat{subsection}{Sec.~#2#1#3}
+\crefmultiformat{subsection}{Sec.~#2#1#3}
+{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangeformat{subsection}{Sec.~#3#1#4\,--\,#5#2#6}
+%%% figure
+\crefformat{figure}{Fig.~#2#1#3}
+\crefmultiformat{figure}{Figs.~#2#1#3}
+{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangeformat{figure}{Figs.~#3#1#4\,--\,#5#2#6}
+%%% table
+\crefformat{table}{Tab.~#2#1#3}
+\crefmultiformat{table}{Tabs.~#2#1#3}
+{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangeformat{table}{Tabs.~#3#1#4\,--\,#5#2#6}
+%%% equation
+\crefformat{equation}{Eq.~(#2#1#3)}
+\crefmultiformat{equation}{Eqs.~(#2#1#3)}{ and~(#2#1#3)}{, (#2#1#3)}{ and~(#2#1#3)}
+\crefrangeformat{equation}{Eqs.~(#3#1#4)--(#5#2#6)}
+\graphicspath{{./figures/}}
+
+% Header & footer
+\usepackage[twoside]{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{6mm}
+\setlength{\headsep}{3mm}
+\setlength{\footskip}{8mm}
+
+% Page geometry
+\usepackage[a4paper,left=25mm,right=25mm,top=20mm,bottom=20mm]{geometry}
+\fancyhfoffset[E,O]{0pt} % recalculate the headers
+
+% Theorem environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+%%% cref labels
+\crefformat{theorem}{Theorem~#2#1#3}
+\crefformat{definition}{Definition~#2#1#3}
+\crefformat{example}{Example~#2#1#3}
+
+% New commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% abbreviations
+\newcommand{\cf}{{cf.}~}
+\newcommand{\eg}{{e.g.}~}
+\newcommand{\ie}{{i.e.}~}
+%% math
+\newcommand{\sq}{\mathrm{sq}}
+\newcommand{\sw}{\mathrm{s}}
+\newcommand{\cw}{\mathrm{c}}
+\newcommand{\ew}{\mathrm{e}}
+\newcommand{\diff}{\mathrm{d}}
+
+% Title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Waves and Fourier analysis}
+\author{Antonin Portelli}
+
+% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\chapter{Elementary waves}
+\input{chapters/motivations}
+\chapter{Fourier series}
+\input{chapters/series}
+\chapter{Fourier transform}
+\input{chapters/transform}
+\chapter{Applications}
+\input{chapters/applications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{apsrev4-2}
+% \bibliography{BIB}
+\end{document}
