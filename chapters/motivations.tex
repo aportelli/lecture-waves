@@ -1,6 +1,133 @@
 % !TEX root = ../waves.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction: plucked strings}
+As an introduction, we study a physical system which had a significant importance in the
+historical development of Fourier analysis: the \emph{plucked string}. We consider in a
+two-dimensional space a uniform string with linear mass density $\mu$ (in
+$\kilogram\per\meter$), stretched between two points with coordinates $(0,0)$ and $(L,0)$.
+We assume the string tension to be given by $T$ (in $\newton$). The action of plucking the
+string consists in pulling it in a given position at time $t=0$, and releasing it. The
+whole system is illustrated in~\cref{fig:string}. In the most general case, such system
+can have a very complex behaviour, however we can introduce extra assumptions to simplify
+it. We assume we want to describe string vibrations for a musical instrument, \eg an
+acoustic guitar. In this context, we clearly expect the string oscillation to have an
+amplitude much smaller than the string length $L$.
+\begin{figure}[t]
+  \centering
+  \includegraphics{tikz_string.pdf}
+  \caption{Representation of the stretched string system. The arrows represent the transverse motion of the string.}
+  \label{fig:string}
+\end{figure}
+%-----------------------------------------------------------------------------------------
+\subsection{Derivation of the wave equation}
+Let us now apply the laws of mechanics to derive an equation describing the dynamics of
+this system. We first start by approximating the string by a large number $N$ of elastic
+line segments of equal mass $\epsilon\mu$, with $\epsilon=\frac{L}{N}$. The $n$-th segment
+on the string has endpoints $P_n=(x_n,y_n)$ and $P_{n+1}=(x_{n+1},y_{n+1})$, starting from
+$P_0=(0,0)$ up to $P_N=(L,0)$. The continuous string dynamics will then be obtained
+through the $N\to+\infty$ limit, or equivalently $\epsilon\to 0$. We additionally assume
+that each segment respond to the same tension $T$ at its end points. A view of the
+vicinity of $n$-th segment is represented in~\cref{fig:string-inf}. We additionally define
+the angle $\theta_n$ between the $n$-th segment and the $x$-axis. At the point $P_n$, the
+total force $\mathbf{F}_n$ is given by the tension forces from the previous and next
+segments on the string, explicitly
+\begin{equation}
+  \mathbf{F}_n=\mathbf{T}_n^-+\mathbf{T}_n^+\,,\label{eq:string-force}
+\end{equation}
+where the vectors $\mathbf{T}_n^\pm$ both have magnitude $T$ and are represented by the
+blue arrows in~\cref{fig:string-inf}, and their coordinates are given by
+\begin{align}
+  \mathbf{T}_n^-&=-T(\cos(\theta_{n-1}),\sin(\theta_{n-1}))\,,\\
+  \mathbf{T}_n^+&=T(\cos(\theta_{n}),\sin(\theta_{n}))\,.
+\end{align}
+Using Pythagoras' theorem and elementary trigonometry, one can write
+\begin{align}
+  \cos(\theta_n)&=\frac{x_{n+1}-x_n}{\sqrt{(x_{n+1}-x_n)^2+(y_{n+1}-y_n)^2}}\,,\\
+  \sin(\theta_n)&=\frac{y_{n+1}-y_n}{\sqrt{(x_{n+1}-x_n)^2+(y_{n+1}-y_n)^2}}\,.
+\end{align}
+Defining the ratio $d_n=\smash{\frac{y_{n+1}-y_n}{x_{n+1}-x_n}}$, the expressions above
+can be further simplified to
+\begin{equation}
+  \cos(\theta_n)=\frac{1}{\sqrt{1+d_n^2}}\qquad\text{and}\qquad
+  \sin(\theta_n)=\frac{d_n}{\sqrt{1+d_n^2}}\,.
+\end{equation}
+Now, using Newton's Second Law with the total force~\cref{eq:string-force}, one obtains
+the following system of differential of equations for the motion of $P_n$:
+\begin{align}
+  \epsilon\mu \frac{\diff^2 x_n}{\diff t^2}&=
+  T\left(\frac{1}{\sqrt{1+d_{\smash{n+1}}^2}}-\frac{1}{\sqrt{1+d_{n}^2}}\right)\,,
+  \label{eq:string-fullxeq}\\
+  \epsilon\mu \frac{\diff^2 y_n}{\diff t^2}&=
+  T\left(\frac{d_{n+1}}{\sqrt{1+d_{\smash{n+1}}^2}}-\frac{d_n}{\sqrt{1+d_{n}^2}}\right)\,.
+  \label{eq:string-fullyeq}
+\end{align}
+This is a rather non-trivial system of coupled non-linear differential equations, and we
+will now use our small amplitude assumption to simplify it. This approximation means that
+the vertical distances $y_{n+1}-y_n$ are expected to be much smaller than the horizontal
+ones $x_{n+1}-x_n$, or in other words, $d_n$ is close to zero. Let us then
+expand~\cref{eq:string-fullxeq,eq:string-fullyeq} for $d_n\to 0$. We first remind the
+Taylor expansion
+\begin{equation}
+  \frac{1}{\sqrt{1+x^2}}=1-\frac{x^2}{2}+\mathcal{O}(x^4)\,,
+\end{equation}
+leading to the leading-order approximation
+\begin{align}
+  \frac{\diff^2 x_n}{\diff t^2}&=0\,,\label{eq:string-loxeq}\\
+  \frac{\diff^2 y_n}{\diff t^2}&=\frac{T}{\epsilon\mu}(d_{n+1}-d_n)\,,\label{eq:string-loyeq}
+\end{align}
+which is valid up to $\mathcal{O}(d_n^2)$ corrections. One remarkable feature of this
+system is the fact that there is no force applying in the $x$ direction at leading order.
+Since we assumed the string to be attached at its end points, this implies that there is
+no motion in the $x$ direction. Oscillations in the $x$ and $y$ directions are called
+\emph{longitudinal} and \emph{transverse} oscillations, respectively. We just obtained a
+well-known result for string oscillations: in the limit of small oscillations, only
+transverse oscillations are present.
+\begin{figure}[t]
+  \centering
+  \includegraphics{tikz_string-inf.pdf}
+  \caption{Discrete view of the string geometry and forces. The blue arrows represent the
+  individual tension forces at point $P_n$.}
+  \label{fig:string-inf}
+\end{figure}
+
+With the observation above, we can now exclusively focus on solving the transverse
+equation of motion~\cref{eq:string-loyeq}. We assumed the string to have a uniform mass
+distribution, and since the $x_n$ coordinates are constant and divide the string in
+segments of equal mass, for all $n$ one has
+\begin{equation}
+  x_{n+1}-x_n=\epsilon\,.
+\end{equation}
+We additionally define the coordinates $y_n$ to be represented by a smooth function $u$ of
+$x_n$ and the time $t$:
+\begin{equation}
+  y_n=u(t,x_n)\,.
+\end{equation}
+Substituting the equations above in~\cref{eq:string-loyeq}, one obtains
+\begin{equation}
+  \frac{\partial^2 u}{\partial t^2}(t,x_n)=\frac{T}{\epsilon^2\mu}
+  [u(t,x_{n}+\epsilon)-2u(t,x_{n})+u(t,x_{n}-\epsilon)]\,.\label{eq:wave-eq-discrete}
+\end{equation}
+We are now ready to obtain the continuous string equation by taking the $\epsilon\to 0$
+limit. One starts by writing the Taylor expansion
+\begin{equation}
+  u(t,x+\epsilon)=u(t,x)+\epsilon\,\frac{\partial u}{\partial x}(t,x)
+  +\frac{\epsilon^2}{2}\frac{\partial^2 u}{\partial x^2}(t,x)+\mathcal{O}(\epsilon^3)\,,
+\end{equation}
+which implies that
+\begin{equation}
+  \lim_{\epsilon\to 0}=\frac{1}{\epsilon^2}
+  [u(t,x+\epsilon)-2u(t,x)+u(t,x-\epsilon)]=\frac{\partial^2 u}{\partial x^2}(t,x)\,.
+\end{equation}
+Using this last step with~\cref{eq:wave-eq-discrete} leads us to the main result of this
+section, the \emph{wave equation}
+\begin{equation}
+  \frac{\partial^2 u}{\partial t^2}=c^2\,\frac{\partial^2 u}{\partial x^2}
+  \qquad\text{with}\qquad
+  c=\sqrt{\frac{T}{\mu}}\,.
+\end{equation}
+The parameter $c$ is usually called the \emph{wave speed} for reasons that will be clear
+later. The wave equation is a homogeneous second-order partial differential equation, and
+will now discuss how to solve it for the plucked string problem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical parametrisation of waves}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
