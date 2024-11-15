@@ -3,39 +3,41 @@
 \section{Introduction: plucked strings}
 As an introduction, we study a physical system which had a significant importance in the
 historical development of Fourier analysis: the \emph{plucked string}. We consider in a
-two-dimensional space a uniform string with linear mass density $\mu$ (in
+two-dimensional space a uniform string of length $L$ with linear mass density $\mu$ (in
 $\kilogram\per\meter$), stretched between two points with coordinates $(0,0)$ and $(L,0)$.
 We assume the string tension to be given by $T$ (in $\newton$). The action of plucking the
 string consists in pulling it in a given position at time $t=0$, and releasing it. The
 whole system is illustrated in~\cref{fig:string}. In the most general case, such system
 can have a very complex behaviour, however we can introduce extra assumptions to simplify
-it. We assume we want to describe string vibrations for a musical instrument, \eg an
-acoustic guitar. In this context, we clearly expect the string oscillation to have an
-amplitude much smaller than the string length $L$.
+it. We will assume in this section that we want to describe string vibrations for a
+musical instrument, \eg an acoustic guitar. In this context, we clearly expect the string
+oscillation to have an amplitude much smaller than the string length $L$.
 \begin{figure}[t]
   \centering
   \includegraphics{tikz_string.pdf}
-  \caption{Representation of the stretched string system. The arrows represent the transverse motion of the string.}
+  \caption{Representation of the stretched string system. The arrows represent the
+  transverse motion of the string.}
   \label{fig:string}
 \end{figure}
 %-----------------------------------------------------------------------------------------
 \subsection{Derivation of the wave equation}
-Let us now apply the laws of mechanics to derive an equation describing the dynamics of
-this system. We first start by approximating the string by a large number $N$ of elastic
-line segments of equal mass $\epsilon\mu$, with $\epsilon=\frac{L}{N}$. The $n$-th segment
-on the string has endpoints $P_n=(x_n,y_n)$ and $P_{n+1}=(x_{n+1},y_{n+1})$, starting from
-$P_0=(0,0)$ up to $P_N=(L,0)$. The continuous string dynamics will then be obtained
-through the $N\to+\infty$ limit, or equivalently $\epsilon\to 0$. We additionally assume
-that each segment respond to the same tension $T$ at its end points. A view of the
-vicinity of $n$-th segment is represented in~\cref{fig:string-inf}. We additionally define
-the angle $\theta_n$ between the $n$-th segment and the $x$-axis. At the point $P_n$, the
-total force $\mathbf{F}_n$ is given by the tension forces from the previous and next
-segments on the string, explicitly
+Let us apply the laws of mechanics to derive an equation describing the dynamics of this
+system. We first start by approximating the string by a large number $N$ of elastic line
+segments of equal mass $\epsilon\mu$, with $\epsilon=\frac{L}{N}$. The $n$-th segment on
+the string has the end points $P_n=(x_n,y_n)$ and $P_{n+1}=(x_{n+1},y_{n+1})$, starting
+from $P_0=(0,0)$ up to $P_N=(L,0)$. The continuous string dynamics will then be later
+obtained through the $N\to+\infty$ limit, or equivalently $\epsilon\to 0$. We additionally
+assume that each segment respond to the same tension $T$ at its end points. A view of the
+vicinity of $n$-th segment is represented in~\cref{fig:string-inf}. We define the angle
+$\theta_n$ between the $n$-th segment and the $x$-axis. At the point $P_n$, the total
+force $\mathbf{F}_n$ is given by the tension forces from the neighbouring segments on the
+string, explicitly
 \begin{equation}
   \mathbf{F}_n=\mathbf{T}_n^-+\mathbf{T}_n^+\,,\label{eq:string-force}
 \end{equation}
 where the vectors $\mathbf{T}_n^\pm$ both have magnitude $T$ and are represented by the
-blue arrows in~\cref{fig:string-inf}, and their coordinates are given by
+blue arrows in~\cref{fig:string-inf}. Using the angles $\theta_n$ previously defined, the
+coordinates of the tension forces are given by
 \begin{align}
   \mathbf{T}_n^-&=-T(\cos(\theta_{n-1}),\sin(\theta_{n-1}))\,,\\
   \mathbf{T}_n^+&=T(\cos(\theta_{n}),\sin(\theta_{n}))\,.
@@ -104,30 +106,143 @@ $x_n$ and the time $t$:
 \end{equation}
 Substituting the equations above in~\cref{eq:string-loyeq}, one obtains
 \begin{equation}
-  \frac{\partial^2 u}{\partial t^2}(t,x_n)=\frac{T}{\epsilon^2\mu}
+  \pdn{u}{t}{2}(t,x_n)=\frac{T}{\epsilon^2\mu}
   [u(t,x_{n}+\epsilon)-2u(t,x_{n})+u(t,x_{n}-\epsilon)]\,.\label{eq:wave-eq-discrete}
 \end{equation}
 We are now ready to obtain the continuous string equation by taking the $\epsilon\to 0$
 limit. One starts by writing the Taylor expansion
 \begin{equation}
-  u(t,x+\epsilon)=u(t,x)+\epsilon\,\frac{\partial u}{\partial x}(t,x)
-  +\frac{\epsilon^2}{2}\frac{\partial^2 u}{\partial x^2}(t,x)+\mathcal{O}(\epsilon^3)\,,
+  u(t,x+\epsilon)=u(t,x)+\epsilon\,\pd{u}{x}(t,x)
+  +\frac{\epsilon^2}{2}\pdn{u}{x}{2}(t,x)+\mathcal{O}(\epsilon^3)\,,
 \end{equation}
 which implies that
 \begin{equation}
   \lim_{\epsilon\to 0}=\frac{1}{\epsilon^2}
-  [u(t,x+\epsilon)-2u(t,x)+u(t,x-\epsilon)]=\frac{\partial^2 u}{\partial x^2}(t,x)\,.
+  [u(t,x+\epsilon)-2u(t,x)+u(t,x-\epsilon)]=\pdn{u}{x}{2}(t,x)\,.
 \end{equation}
 Using this last step with~\cref{eq:wave-eq-discrete} leads us to the main result of this
 section, the \emph{wave equation}
 \begin{equation}
-  \frac{\partial^2 u}{\partial t^2}=c^2\,\frac{\partial^2 u}{\partial x^2}
-  \qquad\text{with}\qquad
-  c=\sqrt{\frac{T}{\mu}}\,.
+  \boxed{
+    \pdn{u}{t}{2}=c^2\,\pdn{u}{x}{2}
+    \qquad\text{with}\qquad
+  c=\sqrt{\frac{T}{\mu}}\,.}
+  \label{eq:wave-eq}
 \end{equation}
-The parameter $c$ is usually called the \emph{wave speed} for reasons that will be clear
-later. The wave equation is a homogeneous second-order partial differential equation, and
-will now discuss how to solve it for the plucked string problem.
+The parameter $c$, which has dimensions $\mathrm{L}\mathrm{T}^{-1}$, is usually called the
+\emph{wave speed} for reasons that will be clear later in this section. The wave equation
+is a homogeneous second-order partial differential equation, and will now discuss how to
+solve it for the plucked string problem.
+%-----------------------------------------------------------------------------------------
+\subsection{General solutions of the wave equation}
+We will first derive the general form of the solutions of the wave
+equation~\cref{eq:wave-eq}. This derivation was first written by Jean le Rond d'Alembert
+in 1747. \cref{eq:wave-eq} can be rewritten as follows
+\begin{equation}
+  \left(\pdn{}{t}{2}-c^2\,\pdn{}{x}{2}\right)u=
+  \left(\pd{}{t}-c\,\pd{}{x}\right)
+  \left(\pd{}{t}+c\,\pd{}{t}\right)u=0\,,
+  \label{eq:wave-eq-factor}
+\end{equation}
+which is the composition of two first order derivatives. From this form, we would like to
+define new length variables $\eta$ and $\xi$ such that
+\begin{align}
+  c\pd{}{\eta}&=\pd{}{t}+c\,\pd{}{x}\,,\\
+  c\pd{}{\xi}&=\pd{}{t}-c\,\pd{}{x}\,.
+\end{align}
+Using the chain rules, we know that
+\begin{align}
+  \pd{}{\eta}&=\pd{t}{\eta}\pd{}{t}+\pd{x}{\eta}\pd{}{x}\,,\\
+  \pd{}{\xi}&=\pd{t}{\xi}\pd{}{t}+\pd{x}{\xi}\pd{}{x}\,\,,
+\end{align}
+which implies that
+\begin{equation}
+  \pd{t}{\eta}=\frac{1}{c},\qquad\pd{x}{\eta}=1,\qquad
+  \pd{t}{\xi}=\frac{1}{c},\qquad\text{and}\qquad\pd{x}{\xi}=-1\,.
+\end{equation}
+It is now clear that
+\begin{align}
+  t&=\frac{1}{c}(\eta+\xi)\,,\\
+  x&=\eta-\xi\,,
+\end{align}
+is a possible solution, which can be inverted to
+\begin{align}
+  \eta&=x+ct\,,\\
+  \xi&=x-ct\,.
+\end{align}
+In these new variables, the wave equation~\cref{eq:wave-eq-factor} becomes
+\begin{equation}
+  \frac{\partial^2 u}{\partial\eta\partial\xi}=0\,.
+\end{equation}
+In this simpler form, we can integrate the two derivatives sequentially. Starting with the
+derivative in $\eta$, the right-hand side of the equation being zero means that
+$\smash{\pd{u}{\xi}}$ is a constant in $\eta$. However, this constant can vary for any
+value of $\xi$. In other words, there exists a function of one variable $\phi$ such that
+\begin{equation}
+  \pd{}{\xi}u(\eta,\xi)=\phi(\xi)\,.
+\end{equation}
+Following the same logic, as a function of $\xi$, $u$ is therefore an antiderivative of
+$\phi$ up to a constant, which can vary with $\eta$. Therefore, there exists two functions
+of a single variable $f$ and $g$ such that
+\begin{equation}
+  u(\eta,\xi)=f(\xi)+g(\eta)\,,
+\end{equation}
+where here $f$ is such that $f'=\phi$. In conclusion, switching back to the original
+variables $x$ and $t$, the general solutions of the wave equation have the form
+\begin{equation}
+  \boxed{u(t,x)=f(x-ct)+g(x+ct)\,,}\label{eq:wave-eq-sol}
+\end{equation}
+where $f$ and $g$ can be any twice-differentiable functions. $f$ and $g$ are called the
+\emph{forward-travelling} and \emph{backward-travelling} components, respectively. These
+functions are named in this way for the following reason. At $t=0$, if one pick a point on
+the curve of $f$ with $x$-coordinate $x_0$, then at an arbitrary time $t$ the same point
+will have the $x$-coordinate
+\begin{equation}
+  x(t)=x_0+ct\,,
+\end{equation}
+\ie it is moving forward on the $x$ axis. Also, one notices that $\td{x}{t}=c$, meaning
+the point is moving with speed $c$, justifying the name \emph{wave speed} introduced
+earlier. The same observation can be made for $g$, moving backward on the $x$ axis.
+
+As we can see, the space of solutions of the wave equation is very large as both forward
+and backward contribution are arbitrary functions. However, it is known, and will be
+admitted here, that the wave equation has a unique solution if one impose the two initial
+conditions
+\begin{equation}
+  u_0(x)=u(0,x)\qquad\text{and}\qquad u_1(x)=\pd{u}{t}(0,x)\,,\label{eq:wave-eq-ic}
+\end{equation}
+which physically represent the initial position of the string and its initial velocity,
+respectively. With this in mind, we will now discuss the solution of the wave equations
+specifically for the plucked string problem.
+%-----------------------------------------------------------------------------------------
+\subsection{Particular solutions of the plucked string problem}
+We remind here the considered physical problem: the string will be pulled in a given
+position, and then released. This means the initial velocity $u_1$ in~\cref{eq:wave-eq-ic}
+is zero. Without specifying, for the moment, the initial position, let us discuss what
+this first initial condition implies. Coming back to the general
+solution~\cref{eq:wave-eq-sol}, $u_1=0$ implies that for all $x$,
+\begin{equation}
+  u_1(x)=c[g'(x)-f'(x)]=0\,,
+\end{equation}
+which means that $f'=g'$. Two functions with equal derivatives differ by a unique
+constant, so there is a unique real number $K$ such that $g(x)=f(x)+K$ for all $x$. So the
+general solution of the wave equation becomes
+\begin{equation}
+  u(t,x)=f(x-ct)+f(x+ct)+K\,,
+\end{equation}
+and in particular the initial position is
+\begin{equation}
+  u_0(x)=2f(x)+K\,.\label{eq:u0K}
+\end{equation}
+Now, we can use the fact that the string is attached at the two points $(0,0)$ and
+$(L,0)$, this implies that for all $t$
+\begin{equation}
+  u(t,0)=0\qquad\text{and}\qquad u(t,L)=0\,.
+\end{equation}
+These constraints are called the \emph{boundary conditions} of the wave equation, and they
+generally have a strong influence on the set of solutions. Applying the boundary
+conditions to~\cref{eq:u0K} directly implies that $K=0$. Let us now choose the initial
+position of the string
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical parametrisation of waves}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,8 +280,8 @@ for a constant function. Another fundamental quantity is the \emph{amplitude} of
 periodic function, measuring the size of the oscillations within a fundamental period:
 \begin{definition}
   \label{def:amplitude}
-  Let $f(t)$ be a real periodic function with fundamental period $T_0$. We additionally assume
-  that $f(t)$ is bounded with infimum and supremum
+  Let $f(t)$ be a real periodic function with fundamental period $T_0$. We additionally
+  assume that $f(t)$ is bounded with infimum and supremum
   \begin{equation}
     m=\inf_{0\leq t\leq T_0}f(t)\qquad\text{and}\qquad M=\sup_{0\leq t\leq T_0}f(t)\,.
   \end{equation}
@@ -218,7 +333,6 @@ $n\in\mathbb{Z}$. The curve of $\sq(t)$ is represented in~\cref{fig:sq-wave}.
   \caption{Curve of the square wave defined in~\cref{def:sq-wave}.}
   \label{fig:sq-wave}
 \end{figure}
-
 As mentioned above, the sine function provides a way to construct explicit examples of
 periodic functions. We will see that it is, in fact, a fundamental building block of
 periodic functions, which is the essence of Fourier analysis. It is therefore useful to
@@ -258,7 +372,9 @@ The frequency and phase are represented graphically in~\cref{fig:sine-wave}.
 \begin{figure}[t]
   \centering
   \includegraphics{gp_sine-wave.pdf}
-  \caption{Example curve of the sine wave defined in~\cref{eq:sine-wave}, with frequency $\omega=2$ and phase $\phi=0.2\times 2\pi$. The arrows represent the period $T=\frac{1}{\omega}$ and the phase delay from~\cref{eq:phase-delay}.}
+  \caption{Example curve of the sine wave defined in~\cref{eq:sine-wave}, with frequency
+    $\omega=2$ and phase $\phi=0.2\times 2\pi$. The arrows represent the period
+  $T=\frac{1}{\omega}$ and the phase delay from~\cref{eq:phase-delay}.}
   \label{fig:sine-wave}
 \end{figure}
 
@@ -335,17 +451,20 @@ motivating the definition below.
     \ew(t;\omega,\phi)=e^{i\phi}\ew(t;\omega)\,\quad\text{and}\quad
     \ew(t;\omega,\phi)^*=\ew(-t;\omega,-\phi)=\ew(t;-\omega,-\phi)\,,\label{eq:cw-conj}
   \end{equation}
-  where $z^*$ is the conjugate of the complex number $z$. Using these formulas, the relationship to sine and cosine waves can be rewritten as
+  where $z^*$ is the conjugate of the complex number $z$. Using these formulas, the
+  relationship to sine and cosine waves can be rewritten as
   \begin{align}
-    \cw(t;\omega,\phi)&=\frac{1}{2}[\ew(t;\omega,\phi)+\ew(t;-\omega,-\phi)]\,,\label{eq:cwtoew}\\
-    \sw(t;\omega,\phi)&=-\frac{i}{2}[\ew(t;\omega,\phi)-\ew(t;-\omega,-\phi)]\,.\label{eq:swtoew}
+    \cw(t;\omega,\phi)&=\frac{1}{2}[\ew(t;\omega,\phi)+\ew(t;-\omega,-\phi)]\,,
+    \label{eq:cwtoew}\\
+    \sw(t;\omega,\phi)&=-\frac{i}{2}[\ew(t;\omega,\phi)-\ew(t;-\omega,-\phi)]\,.
+    \label{eq:swtoew}
   \end{align}
 \end{definition}
 
 A considerable simplification with complex waves comes from the fact that the phase is
 just a multiplicative factor, equivalent to giving a \emph{complex amplitude} to the wave.
-Similarly, phased sine and cosine waves can be expressed as a sum of zero-phase ones
-using the angle addition theorem:
+Similarly, phased sine and cosine waves can be expressed as a sum of zero-phase ones using
+the angle addition theorem:
 \begin{align}
   \sw(t;\omega,\phi)&=\cos(\phi)\sw(t;\omega)+\sin(\phi)\cw(t;\omega)\,,\\
   \cw(t;\omega,\phi)&=\cos(\phi)\cw(t;\omega)-\sin(\phi)\sw(t;\omega)\,.
@@ -358,15 +477,16 @@ legitimate question is whether the sum of two periodic functions is till periodi
 not always true, and can be characterised by the following result:
 \begin{theorem}
   \label{thm:period-sum}
-  Let $f_1(t)$ and $f_2(t)$ be two periodic functions of fundamental periods $T_1\neq 0$ and
-  $T_2\neq 0$, respectively. Then, for any pair of non-zero complex numbers $\alpha_1$ and $\alpha_2$, the linear combination
+  Let $f_1(t)$ and $f_2(t)$ be two periodic functions of fundamental periods $T_1\neq 0$
+  and $T_2\neq 0$, respectively. Then, for any pair of non-zero complex numbers $\alpha_1$
+  and $\alpha_2$, the linear combination
   \begin{equation}
     f(t)=\alpha_1 f_1(t)+\alpha_2 f_2(t)
   \end{equation}
-  is periodic if and only if the period ratio  $\frac{T_1}{T_2}$ is
-  a rational number. If this condition is true, this ratio can be written
-  $\frac{T_1}{T_2}=\frac{p}{q}$ where $p$ and $q$ are two coprime integers (\ie their GCD
-  is $1$), and the fundamental frequency $T$ of $f(t)$ is given by
+  is periodic if and only if the period ratio  $\frac{T_1}{T_2}$ is a rational number. If
+  this condition is true, this ratio can be written $\frac{T_1}{T_2}=\frac{p}{q}$ where
+  $p$ and $q$ are two coprime integers (\ie their GCD is $1$), and the fundamental
+  frequency $T$ of $f(t)$ is given by
   \begin{equation}
     T=qT_1=pT_2\,.
   \end{equation}
@@ -405,7 +525,8 @@ combination of elementary waves:
   formula above is called the \emph{sine-cosine form} of $P(t)$ with \emph{sine-cosine
   coefficients} or \emph{modes} $a_n$ and $b_n$.
 \end{definition}
-It is clear that such function is periodic, and a consequence of~\cref{thm:period-sum} is then
+It is clear that such function is periodic, and a consequence of~\cref{thm:period-sum} is
+then
 \begin{proposition}
   Let $P$ be a trigonometric polynomial of degree $N\geq 1$ and frequency $\omega$ with
   sine-cosine coefficients $a_n$ and $b_n$. $P$ is a periodic function with period
@@ -414,7 +535,9 @@ It is clear that such function is periodic, and a consequence of~\cref{thm:perio
 \end{proposition}
 \begin{proof}
   Each term in~\cref{eq:trigp-sc} is trivially $T$-periodic, so $P$ is also $T$-periodic.
-  Now, the $n$-th mode of $P$ has a fundamental period of $T_n=\frac{T}{n}$. Assuming that $a_1\neq0$ or $b_1\neq0$, then the period ratio of this first mode to an arbitrary non-vanishing higher mode $n$ is given by
+  Now, the $n$-th mode of $P$ has a fundamental period of $T_n=\frac{T}{n}$. Assuming that
+  $a_1\neq0$ or $b_1\neq0$, then the period ratio of this first mode to an arbitrary
+  non-vanishing higher mode $n$ is given by
   \begin{equation}
     \frac{T_1}{T_n}=n\,.
   \end{equation}
@@ -422,8 +545,8 @@ It is clear that such function is periodic, and a consequence of~\cref{thm:perio
   period $T$. The remaining modes can then be added one after another, and repeated use
   of~\cref{thm:period-sum} demonstrate the proposition.
 \end{proof}
-As we previously did for the elementary waves, trigonometric polynomials can be put in a more
-convenient complex form
+As we previously did for the elementary waves, trigonometric polynomials can be put in a
+more convenient complex form
 \begin{definition}
   \label{def:trigp-complex}
   Let $P$ be a trigonometric polynomial of degree $N$ and frequency $\omega$ with
@@ -441,32 +564,44 @@ convenient complex form
     \end{cases}
     \,,\label{eq:ab-to-c}
   \end{equation}
-  which have the property $c_n^*=c_{-n}$. The relation above can be inverted
-  to
+  which have the property $c_n^*=c_{-n}$. The relation above can be inverted to
   \begin{equation}
     a_n=c_n+c_{-n}\qquad\text{and}\qquad
     b_n=i(c_n-c_{-n})\,.
   \end{equation}
 \end{definition}
-The formulas in the definition above can be obtained using~\cref{eq:cwtoew,eq:swtoew} with the definition~\cref{eq:trigp-sc}, which is left as an exercise to the reader. A key property of trigonometric polynomials, that will be crucial later, is the unicity of their coefficients, formulated in the theorem below
+The formulas in the definition above can be obtained using~\cref{eq:cwtoew,eq:swtoew} with
+the definition~\cref{eq:trigp-sc}, which is left as an exercise to the reader. A key
+property of trigonometric polynomials, that will be crucial later, is the unicity of their
+coefficients, formulated in the theorem below
 \begin{theorem}
   \label{thm:trigp-unicity}
-  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$, degrees $N$ and $N'$, and sine-cosine coefficients $a_n$,$b_n$ and $a'_n$,$b'_n$, respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all $t$, if and only if their degrees and coefficients are equal, \ie $N=N'$ and for all $n$
+  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
+  degrees $N$ and $N'$, and sine-cosine coefficients $a_n$,$b_n$ and $a'_n$,$b'_n$,
+  respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all $t$, if and
+  only if their degrees and coefficients are equal, \ie $N=N'$ and for all $n$
   \begin{equation}
     a_n=a'_n\quad\text{and}\quad b_n=b'_n\,.
   \end{equation}
 \end{theorem}
-Although we could attempt to prove that directly, this theorem is a consequence of a fundamental
-orthogonality property of elementary waves which is crucial in Fourier analysis. This will be the topic of
-the next section, where we will prove the theorem above. Using the relationships in~\cref{def:trigp-complex}, \cref{thm:trigp-unicity} directly implies that the complex coefficients are also unique.
+Although we could attempt to prove that directly, this theorem is a consequence of a
+fundamental orthogonality property of elementary waves which is crucial in Fourier
+analysis. This will be the topic of the next section, where we will prove the theorem
+above. Using the relationships in~\cref{def:trigp-complex}, \cref{thm:trigp-unicity}
+directly implies that the complex coefficients are also unique.
 
-We, so far, only considered linear combinations of elementary waves. We conclude this section by looking at products of elementary waves, which thanks to the angle addition theorem can be reduced to linear combinations:
+We, so far, only considered linear combinations of elementary waves. We conclude this
+section by looking at products of elementary waves, which thanks to the angle addition
+theorem can be reduced to linear combinations:
 \begin{proposition}
   The following identities hold for multiplying elementary waves:
   \begin{align}
-    \cw(\omega_1)\cw(\omega_2)&=\frac{1}{2}[\cw(\omega_1-\omega_2)+\cw(\omega_1+\omega_2)]\label{eq:cprod}\\
-    \sw(\omega_1)\sw(\omega_2)&=\frac{1}{2}[\cw(\omega_1-\omega_2)-\cw(\omega_1+\omega_2)]\label{eq:sprod}\\
-    \sw(\omega_1)\cw(\omega_2)&=\frac{1}{2}[\sw(\omega_1-\omega_2)+\sw(\omega_1+\omega_2)]\label{eq:scprod}\\
+    \cw(\omega_1)\cw(\omega_2)&=\frac{1}{2}[\cw(\omega_1-\omega_2)+\cw(\omega_1+\omega_2)]
+    \label{eq:cprod}\\
+    \sw(\omega_1)\sw(\omega_2)&=\frac{1}{2}[\cw(\omega_1-\omega_2)-\cw(\omega_1+\omega_2)]
+    \label{eq:sprod}\\
+    \sw(\omega_1)\cw(\omega_2)&=\frac{1}{2}[\sw(\omega_1-\omega_2)+\sw(\omega_1+\omega_2)]
+    \label{eq:scprod}\\
     \ew(\omega_1)\ew(\omega_2)&=\ew(\omega_1+\omega_2)\label{eq:eprod}
   \end{align}
 \end{proposition}
@@ -475,17 +610,22 @@ We, so far, only considered linear combinations of elementary waves. We conclude
 \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Orthogonality of elementary waves}
-In vector calculus, given an $n$-dimensional real vector $v$ and a unit vector $u$, the \emph{orthogonal projection} $v_u$ of $v$ on the axis defined by $u$ is given by
+In vector calculus, given an $n$-dimensional real vector $v$ and a unit vector $u$, the
+\emph{orthogonal projection} $v_u$ of $v$ on the axis defined by $u$ is given by
 \begin{equation}
   \label{eq:orth-proj}
   v_u=\cos(\theta)|v|\,u\,,
 \end{equation}
-where $\theta$ is the angle between $u$ and $v$, and $|v|$ is the norm of $v$. The projection coefficient $\cos(\theta)|v|$ is known to be
-given by the \emph{dot product}
+where $\theta$ is the angle between $u$ and $v$, and $|v|$ is the norm of $v$. The
+projection coefficient $\cos(\theta)|v|$ is known to be given by the \emph{dot product}
 \begin{equation}
   v\cdot u=\sum_{j=1}^n v_j u_j=\cos(\theta)|v|\,.\label{eq:vec-dot}
 \end{equation}
-Additionally, the dot product $v\cdot u$ vanishes when $v$ and $u$ are \emph{orthogonal} (\ie they form an angle of $\pi$ radians). This makes the dot product an essential tool of vector calculus to compute the coordinate of vectors in an orthonormal basis. Explicitly, let $e_j$ be an orthonormal basis of $\mathbb{R}^n$, and let $v^{e}_j$ be the coefficients of $v$ in that basis, \ie
+Additionally, the dot product $v\cdot u$ vanishes when $v$ and $u$ are \emph{orthogonal}
+(\ie they form an angle of $\pi$ radians). This makes the dot product an essential tool of
+vector calculus to compute the coordinate of vectors in an orthonormal basis. Explicitly,
+let $e_j$ be an orthonormal basis of $\mathbb{R}^n$, and let $v^{e}_j$ be the coefficients
+of $v$ in that basis, \ie
 \begin{equation}
   v=\sum_{j=1}^{n}v^{e}_j\,e_j\,,
 \end{equation}
@@ -494,17 +634,24 @@ then the $v^{e}_j$ can be computed using the dot product using
   v^{e}_j=v\cdot e_j\,.\label{eq:basis-proj}
 \end{equation}
 \begin{figure}[t]
-  \caption{Visual representation of the orthogonal projection of a vector on a unit vector given in~\cref{eq:orth-proj}}
+  \caption{Visual representation of the orthogonal projection of a vector on a unit vector
+  given in~\cref{eq:orth-proj}}
   \label{fig:orth-proj}
 \end{figure}
 
-The concept of orthogonality and orthogonal projection can be generalised to more complex mathematical objects like functions. As demonstrated below, elementary waves can be interpreted as an orthogonal basis for trigonometric polynomial, which is the reason why~\cref{thm:trigp-unicity} holds, and a key structure at the heart of Fourier analysis.
-Although the general description of orthogonality between functions is out of the scope of this lecture and will not be treated here, this introduction to Fourier analysis can be seen as a good introduction to this type of concept.
+The concept of orthogonality and orthogonal projection can be generalised to more complex
+mathematical objects like functions. As demonstrated below, elementary waves can be
+interpreted as an orthogonal basis for trigonometric polynomial, which is the reason
+why~\cref{thm:trigp-unicity} holds, and a key structure at the heart of Fourier analysis.
+Although the general description of orthogonality between functions is out of the scope of
+this lecture and will not be treated here, this introduction to Fourier analysis can be
+seen as a good introduction to this type of concept.
 
 We start by defining the dot product between two periodic functions
 \begin{definition}
-  Let $f$ and $g$ two real $T$-periodic functions. We assume that $f$ and $g$ are integrable on the
-  interval $[0,T]$. The \emph{dot product} $\braket{f,g}$ between $f$ and $g$ is the real number defined by
+  Let $f$ and $g$ two real $T$-periodic functions. We assume that $f$ and $g$ are
+  integrable on the interval $[0,T]$. The \emph{dot product} $\braket{f,g}$ between $f$
+  and $g$ is the real number defined by
   \begin{equation}
     \braket{f,g}=\int_{0}^{T}\diff t\, f(t)g(t)\,.\label{eq:func-dot}
   \end{equation}
@@ -513,9 +660,16 @@ We start by defining the dot product between two periodic functions
     \|f\|^2=\braket{f,f}=\int_{0}^{T}\diff t\, f(t)^2\,.
   \end{equation}
 \end{definition}
-The definition~\cref{eq:func-dot} can be interpreted as a continuous version of~\cref{eq:vec-dot}, where the values $f(t)$ and $g(t)$ are the ``continuous coordinates'' of the functions $f$ and $g$, and the integral is a ``continuous sum'' over these coordinates\footnote{Expressions within quotes are meant to be understood intuitively, their precise mathematical definition is more challenging and out of scope here.}. The functional dot product has the same linearity and commutativity properties than the vector dot product:
+The definition~\cref{eq:func-dot} can be interpreted as a continuous version
+of~\cref{eq:vec-dot}, where the values $f(t)$ and $g(t)$ are the ``continuous
+coordinates'' of the functions $f$ and $g$, and the integral is a ``continuous sum'' over
+these coordinates\footnote{Expressions within quotes are meant to be understood
+  intuitively, their precise mathematical definition is more challenging and out of scope
+here.}. The functional dot product has the same linearity and commutativity properties
+than the vector dot product:
 \begin{proposition}
-  Let $f$, $g$, and $h$ be three real $T$-periodic functions. The following identities hold for any pair of real number $\alpha$ and $\beta$
+  Let $f$, $g$, and $h$ be three real $T$-periodic functions. The following identities
+  hold for any pair of real number $\alpha$ and $\beta$
   \begin{align}
     \braket{\alpha f+\beta g,h}&=\alpha\braket{f,h}+\beta\braket{g,h}\,,\\
     \braket{f,\alpha g+\beta h}&=\alpha\braket{f,g}+\beta\braket{f,h}\,,\\
@@ -523,12 +677,14 @@ The definition~\cref{eq:func-dot} can be interpreted as a continuous version of~
   \end{align}
 \end{proposition}
 \begin{proof}
-  This is a trivial consequence of the definition~\cref{eq:func-dot} and the linearity of the integral.
+  This is a trivial consequence of the definition~\cref{eq:func-dot} and the linearity of
+  the integral.
 \end{proof}
 The definition of orthogonality follows naturally:
 \begin{definition}
   \label{def:dot-rfunc}
-  Let $f$ and $g$ be two $T$-periodic functions. $f$ and $g$ are said to be \emph{orthogonal} if their dot product vanishes, \ie
+  Let $f$ and $g$ be two $T$-periodic functions. $f$ and $g$ are said to be
+  \emph{orthogonal} if their dot product vanishes, \ie
   \begin{equation}
     \braket{f,g}=0\,.
   \end{equation}
@@ -536,8 +692,8 @@ The definition of orthogonality follows naturally:
 We now give the main result of this section, \ie the orthogonality of elementary waves
 \begin{theorem}
   \label{thm:sc-orth}
-  Let $\omega>0$ be an arbitrary frequency corresponding to the period $T$.
-  For any pair of integers $n$ and $m$, the following identities hold
+  Let $\omega>0$ be an arbitrary frequency corresponding to the period $T$. For any pair
+  of integers $n$ and $m$, the following identities hold
   \begin{align}
     \braket{\sw(n\omega),\sw(m\omega)}&=\frac{T}{2}\delta_{nm}\,,\label{eq:sw-orth}\\
     \braket{\cw(n\omega),\cw(m\omega)}&=\frac{T}{2}\delta_{nm}\,,\label{eq:cw-orth}\\
@@ -551,12 +707,17 @@ We now give the main result of this section, \ie the orthogonality of elementary
       0&~\mathrm{else}
     \end{cases}\,.
   \end{equation}
-  In other words, for any pair of integers $n$ and $m$, sine waves of the form $\sw(n\omega)$ and $\sw(m\omega)$ have norm squared $\frac{T}{2}$ and are orthogonal if and only if $n\neq m$, the same applies to cosine waves, and a sine and a cosine wave of the form $\sw(n\omega)$ and $\cw(m\omega)$ are always orthogonal.
+  In other words, for any pair of integers $n$ and $m$, sine waves of the form
+  $\sw(n\omega)$ and $\sw(m\omega)$ have norm squared $\frac{T}{2}$ and are orthogonal if
+  and only if $n\neq m$, the same applies to cosine waves, and a sine and a cosine wave of
+  the form $\sw(n\omega)$ and $\cw(m\omega)$ are always orthogonal.
 \end{theorem}
 \begin{proof}
-  Let us demonstrate~\cref{eq:sw-orth,eq:cw-orth,eq:scw-orth} using the definition~\cref{eq:func-dot}. We start with~\cref{eq:sw-orth}
+  Let us demonstrate~\cref{eq:sw-orth,eq:cw-orth,eq:scw-orth} using the
+  definition~\cref{eq:func-dot}. We start with~\cref{eq:sw-orth}
   \begin{equation}
-    \braket{\sw(n\omega),\sw(m\omega)}=\int_{0}^{T}\diff t\,\sin(2\pi n\omega t)\sin(2\pi m\omega t)\,.
+    \braket{\sw(n\omega),\sw(m\omega)}=\int_{0}^{T}\diff t\,
+    \sin(2\pi n\omega t)\sin(2\pi m\omega t)\,.
   \end{equation}
   Using~\cref{eq:sprod}, one has
   \begin{equation}
@@ -569,39 +730,49 @@ We now give the main result of this section, \ie the orthogonality of elementary
   \end{equation}
   which integrates to
   \begin{equation}
-    \frac{1}{2}\int_{0}^{T}\diff t\,[1-\cos(4\pi n\omega t)]=\frac{T}{2}-\left[\frac{1}{8\pi n\omega}\sin(4\pi n\omega t)\right]_0^T
+    \frac{1}{2}\int_{0}^{T}\diff t\,[1-\cos(4\pi n\omega t)]=\frac{T}{2}-
+    \left[\frac{1}{8\pi n\omega}\sin(4\pi n\omega t)\right]_0^T
     =\frac{T}{2}\,.
   \end{equation}
   If $n\neq m$, \cref{eq:sw-prod} integrates to
   \begin{align}
     &\frac{1}{2}\int_{0}^{T}\diff t\,\{\cos[2\pi(n-m)\omega t]-\cos[2\pi(n+m)\omega t]\}\notag\\
-    &\qquad\qquad=\left[\frac{1}{2\pi(n-m)\omega}\sin[2\pi(n-m)\omega t]-\frac{1}{2\pi(n+m)\omega}\sin[2\pi(n+m)\omega t]\right]_0^T\notag\\
+    &\qquad\qquad=\left[\frac{1}{2\pi(n-m)\omega}\sin[2\pi(n-m)\omega t]
+    -\frac{1}{2\pi(n+m)\omega}\sin[2\pi(n+m)\omega t]\right]_0^T\notag\\
     &\qquad\qquad=0
   \end{align}
-  Both equations above demonstrate~\cref{eq:sw-orth}. We now turn to~\cref{eq:cw-orth}, we start by using the product identity~\cref{eq:cprod}
+  Both equations above demonstrate~\cref{eq:sw-orth}. We now turn to~\cref{eq:cw-orth}, we
+  start by using the product identity~\cref{eq:cprod}
   \begin{equation}
     \cw(n\omega)\cw(m\omega)=\frac{1}{2}\{\cw[(n-m)\omega]+\cw[(n+m)\omega]\}\,,
   \end{equation}
-  which is identical to~\cref{eq:sw-prod} up to a sign. Retracing the steps above, the result for sine waves was independent of this sign, which implies that~\cref{eq:cw-orth} holds. Finally, using~\cref{eq:scprod}, we can write
+  which is identical to~\cref{eq:sw-prod} up to a sign. Retracing the steps above, the
+  result for sine waves was independent of this sign, which implies that~\cref{eq:cw-orth}
+  holds. Finally, using~\cref{eq:scprod}, we can write
   \begin{equation}
     \sw(n\omega)\cw(m\omega)=\frac{1}{2}\{\sw[(n-m)\omega]+\sw[(n+m)\omega]\}\,,
   \end{equation}
   which, if $n=m$, integrates to
   \begin{equation}
-    \frac{1}{2}\int_{0}^{T}\diff t\,\sin(4\pi n\omega t)=\left[-\frac{1}{8\pi n\omega}\cos(4\pi n\omega t)\right]_0^T=0\,.
+    \frac{1}{2}\int_{0}^{T}\diff t\,\sin(4\pi n\omega t)=
+    \left[-\frac{1}{8\pi n\omega}\cos(4\pi n\omega t)\right]_0^T=0\,.
   \end{equation}
   In the case $n\neq m$, one obtains
   \begin{align}
     &\frac{1}{2}\int_{0}^{T}\diff t\,\{\sin[2\pi(n-m)\omega t]+\sin[2\pi(n+m)\omega t]\}\notag\\
-    &\qquad\qquad=-\left[\frac{1}{2\pi(n-m)\omega}\cos[2\pi(n-m)\omega t]+\frac{1}{2\pi(n+m)\omega}\cos[2\pi(n+m)\omega t]\right]_0^T\notag\\
+    &\qquad\qquad=-\left[\frac{1}{2\pi(n-m)\omega}\cos[2\pi(n-m)\omega t]
+    +\frac{1}{2\pi(n+m)\omega}\cos[2\pi(n+m)\omega t]\right]_0^T\notag\\
     &\qquad\qquad=0\,,
   \end{align}
   which demonstrates~\cref{eq:scw-orth}.
 \end{proof}
-One can also wonder about orthogonality properties of complex elementary waves. One issue here is that the dot product from~\cref{def:dot-rfunc} was specifically defined for real functions. It can be generalised to complex functions as follows
+One can also wonder about orthogonality properties of complex elementary waves. One issue
+here is that the dot product from~\cref{def:dot-rfunc} was specifically defined for real
+functions. It can be generalised to complex functions as follows
 \begin{definition}
-  Let $f$ and $g$ two complex $T$-periodic functions. We assume that $f$ and $g$ are integrable on the
-  interval $[0,T]$. The \emph{dot product} $\braket{f,g}$ between $f$ and $g$ is the complex number defined by
+  Let $f$ and $g$ two complex $T$-periodic functions. We assume that $f$ and $g$ are
+  integrable on the interval $[0,T]$. The \emph{dot product} $\braket{f,g}$ between $f$
+  and $g$ is the complex number defined by
   \begin{equation}
     \braket{f,g}=\int_{0}^{T}\diff t\, f(t)g(t)^*\,.\label{eq:cfunc-dot}
   \end{equation}
@@ -610,9 +781,14 @@ One can also wonder about orthogonality properties of complex elementary waves. 
     \|f\|^2=\braket{f,f}=\int_{0}^{T}\diff t\, |f(t)|^2\,.
   \end{equation}
 \end{definition}
-The generalisation is done by using a complex conjugation for the second argument of the product, allowing the norm to remain a real positive number. Since any real number is its own complex conjugate, this definition is clearly identical to~\cref{def:dot-rfunc} for real functions. This generalisation has the consequence of slightly breaking the symmetry of the dot product:
+The generalisation is done by using a complex conjugation for the second argument of the
+product, allowing the norm to remain a real positive number. Since any real number is its
+own complex conjugate, this definition is clearly identical to~\cref{def:dot-rfunc} for
+real functions. This generalisation has the consequence of slightly breaking the symmetry
+of the dot product:
 \begin{proposition}
-  Let $f$, $g$, and $h$ be three complex $T$-periodic functions. The following identities hold for any pair of complex numbers $\alpha$ and $\beta$
+  Let $f$, $g$, and $h$ be three complex $T$-periodic functions. The following identities
+  hold for any pair of complex numbers $\alpha$ and $\beta$
   \begin{align}
     \braket{\alpha f+\beta g,h}&=\alpha\braket{f,h}+\beta\braket{g,h}\,,\\
     \braket{f,\alpha g+\beta h}&=\alpha^*\braket{f,g}+\beta^*\braket{f,h}\,,\\
@@ -620,16 +796,20 @@ The generalisation is done by using a complex conjugation for the second argumen
   \end{align}
 \end{proposition}
 \begin{proof}
-  This is a trivial consequence of the definition~\cref{eq:cfunc-dot} and the linearity of the integral and complex conjugation.
+  This is a trivial consequence of the definition~\cref{eq:cfunc-dot} and the linearity of
+  the integral and complex conjugation.
 \end{proof}
-With this generalised dot product, we can formulate the orthogonality of complex elementary waves
+With this generalised dot product, we can formulate the orthogonality of complex
+elementary waves
 \begin{theorem}
-  Let $\omega>0$ be an arbitrary frequency corresponding to the period $T$.
-  For any pair of integers $n$ and $m$, the following identity holds
+  Let $\omega>0$ be an arbitrary frequency corresponding to the period $T$. For any pair
+  of integers $n$ and $m$, the following identity holds
   \begin{equation}
     \braket{\ew(n\omega),\ew(m\omega)}=T\delta_{nm}\,,
   \end{equation}
-  \ie for any pair of integers $n$ and $m$, complex elementary waves of the form $\ew(n\omega)$ and $\ew(m\omega)$ have norm squared $T$ and are orthogonal if and only if $n\neq m$.
+  \ie for any pair of integers $n$ and $m$, complex elementary waves of the form
+  $\ew(n\omega)$ and $\ew(m\omega)$ have norm squared $T$ and are orthogonal if and only
+  if $n\neq m$.
 \end{theorem}
 \begin{proof}
   Using~\cref{eq:eprod,eq:cw-conj}, one has
@@ -644,11 +824,13 @@ With this generalised dot product, we can formulate the orthogonality of complex
   \end{equation}
   and if $n\neq m$
   \begin{equation}
-    \braket{\ew(n\omega),\ew(m\omega)}=\left[\frac{1}{2\pi i (n-m)}e^{2\pi i (n-m)\omega t}\right]_0^T=0\,,
+    \braket{\ew(n\omega),\ew(m\omega)}=
+    \left[\frac{1}{2\pi i (n-m)}e^{2\pi i (n-m)\omega t}\right]_0^T=0\,,
   \end{equation}
   which proves the theorem.
 \end{proof}
-One can notice, once again, that algebra is considerably simpler when using complex elementary waves. We are now ready to prove~\cref{thm:trigp-unicity}:
+One can notice, once again, that algebra is considerably simpler when using complex
+elementary waves. We are now ready to prove~\cref{thm:trigp-unicity}:
 \begin{proof}[Proof of~\cref{thm:trigp-unicity}]
   Let $P(t)$ and $P'(t)$ be two trigonometric polynomial of the general form
   \begin{align}
@@ -663,7 +845,8 @@ One can notice, once again, that algebra is considerably simpler when using comp
   \begin{equation}
     \braket{P,\cw(m\omega)}=\braket{P',\cw(m\omega)}\,.
   \end{equation}
-  Using the orthogonality relations from~\cref{thm:sc-orth}, these dot products can be simplified to
+  Using the orthogonality relations from~\cref{thm:sc-orth}, these dot products can be
+  simplified to
   \begin{equation}
     \braket{P,\cw(m\omega)}=
     \begin{cases}
@@ -695,17 +878,30 @@ One can notice, once again, that algebra is considerably simpler when using comp
       0&~\text{else}
     \end{cases}\,.
   \end{equation}
-  Combining the equalities above implies directly that $a_n=a'_n$ and $b_n=b'_n$ for all $n$.
+  Combining the equalities above implies directly that $a_n=a'_n$ and $b_n=b'_n$ for all
+  $n$.
 \end{proof}
-We can notice that~\cref{thm:trigp-unicity} is somewhat trivial when one knows the orthogonality relationships between sine and cosine waves. This also generalises a well-known property from vector calculus: a set of orthogonal vectors defines a unique coordinate system, and these coordinates can be obtained using orthogonal projection on the basis vectors as in~\cref{eq:basis-proj}. Finally, \cref{thm:trigp-unicity} generalises naturally to the complex form of trigonometric polynomials:
+We can notice that~\cref{thm:trigp-unicity} is somewhat trivial when one knows the
+orthogonality relationships between sine and cosine waves. This also generalises a
+well-known property from vector calculus: a set of orthogonal vectors defines a unique
+coordinate system, and these coordinates can be obtained using orthogonal projection on
+the basis vectors as in~\cref{eq:basis-proj}. Finally, \cref{thm:trigp-unicity}
+generalises naturally to the complex form of trigonometric polynomials:
 \begin{corollary}
-  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$, degrees $N$ and $N'$, and complex coefficients $c_n$ and $c'_n$, respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all $t$, if and only if their degrees and coefficients are equal, \ie $N=N'$ and for all $n$
+  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
+  degrees $N$ and $N'$, and complex coefficients $c_n$ and $c'_n$, respectively. $P$ and
+  $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all $t$, if and only if their degrees and
+  coefficients are equal, \ie $N=N'$ and for all $n$
   \begin{equation}
     c_n=c'_n\,.
   \end{equation}
 \end{corollary}
 \begin{proof}
-  Using~\cref{thm:trigp-unicity}, we know that the sine-cosine coefficients of the polynomials are unique. We also saw in~\cref{eq:ab-to-c} that complex coefficients are uniquely defined from the sine-cosine ones, which proves the coronary. Another way to prove this result is, similarly to the proof of~\cref{thm:trigp-unicity}, to project $P$ in the form~\cref{eq:trigp-complex} on complex waves:
+  Using~\cref{thm:trigp-unicity}, we know that the sine-cosine coefficients of the
+  polynomials are unique. We also saw in~\cref{eq:ab-to-c} that complex coefficients are
+  uniquely defined from the sine-cosine ones, which proves the coronary. Another way to
+  prove this result is, similarly to the proof of~\cref{thm:trigp-unicity}, to project $P$
+  in the form~\cref{eq:trigp-complex} on complex waves:
   \begin{equation}
     \braket{P,\ew(m\omega)}=
     \begin{cases}
@@ -713,8 +909,11 @@ We can notice that~\cref{thm:trigp-unicity} is somewhat trivial when one knows t
       0&~\text{else}
     \end{cases}\,,
   \end{equation}
-  which, as previously, provides a unique determination of the $c_m$ coefficients given $P$.
+  which, as previously, provides a unique determination of the $c_m$ coefficients given
+  $P$.
 \end{proof}
-This concludes this section on the orthogonality of elementary waves. We will now discuss how to generalise elementary waves and trigonometric polynomials to multiple real variables.
+This concludes this section on the orthogonality of elementary waves. We will now discuss
+how to generalise elementary waves and trigonometric polynomials to multiple real
+variables.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multiple dimensions and travelling waves}
