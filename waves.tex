@@ -10,6 +10,13 @@
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
 \usepackage{microtype}
+%% arrays
+\usepackage{booktabs}
+\usepackage{array} % Required for manipulating table columns
+\renewcommand{\arraystretch}{1.25} % Increase the height of table rows
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 %% math symbols
 \usepackage{amsmath,amssymb,braket,slashed,mathrsfs}
 \usepackage[only,llbracket,rrbracket]{stmaryrd}
@@ -111,17 +118,68 @@
 \newcommand{\cw}{\mathrm{c}}
 \newcommand{\ew}{\mathrm{e}}
 \newcommand{\diff}{\mathrm{d}}
+\newcommand{\td}[2]{\frac{\diff #1}{\diff #2}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
 \renewcommand{\epsilon}{\varepsilon}
 
 % Title
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Waves and Fourier analysis}
-\author{Antonin Portelli}
+% \title{
+% \includegraphics[width=\linewidth]{gw.pdf}\\~\\~\\Waves and Fourier analysis}
+% \author{Antonin Portelli}
 
 % Document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\maketitle
+\thispagestyle{empty}
+\vspace*{-0.065\textheight}
+\hfill\includegraphics[width=10cm]{UoE_Stacked Logo_Black_v1_160215.pdf}
+\vfill
+\vspace{0.15\textheight}
+\parbox{0.9\linewidth}{\fontsize{32pt}{36pt}\selectfont\raggedright\textbf{Waves and Fourier Analysis}\par}
+
+\vspace{0.03\textheight}
+{\Large\textit{\textbf{PHYS08053 -- Introductory Fields and Waves}}\par}
+\vfill
+{\Large Antonin Portelli\par}
+\vfill\vfill\vfill
+{\large\today\par}
+\thispagestyle{empty}
+\newpage
+
+% Info page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{ \footnotesize % Reduce font size
+  \subsection*{Copyright}
+  \textcopyright~Antonin Portelli, 2024.
+  \vspace*{10pt}\\
+  \noindent\includegraphics[width=2cm]{by-nc.pdf}\\
+  This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International
+  License. To view a copy of this licence, visit
+  \url{http://creativecommons.org/licenses/by-nc/4.0/} or send a letter to Creative Commons, PO
+  Box 1866, Mountain View, CA 94042, USA.
+
+  \subsection*{Source code and supplemental material}
+  Data and code associated with lecture notes are available at
+  \url{https://github.com/aportelli/lecture-waves}.
+
+  \subsection*{Contact}
+  James Clerk Maxwell Building,\\
+  Peter Guthrie Tait Road,\\
+  Edinburgh EH9 3FD, UK\\
+  Email: \href{mailto:antonin.portelli@ed.ac.uk}{antonin.portelli@ed.ac.uk}
+
+  \vfill
+  \subsubsection*{Changelog}
+  \scriptsize
+  \begin{tabular}{@{} L{0.05\linewidth} L{0.15\linewidth} L{0.6\linewidth} @{}}
+    \toprule
+    v1.0 & xxxx & xxxx\\
+    \bottomrule
+  \end{tabular}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
 \chapter{Elementary waves}
