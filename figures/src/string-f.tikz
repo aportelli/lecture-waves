@@ -1,0 +1,29 @@
+% tex-fmt: off
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}
+  \tikzset{
+    u0/.pic={
+      \draw (0,0) .. controls (0.3,4) and (1.8,4) .. (3.3,0);
+    }
+  }
+  \draw[-{Latex[scale=2]}] (-3.8,0) -- (11,0);
+  \draw[-{Latex[scale=2]}] (0,-4) -- (0,4);
+  \pic[rotate=180,line width=0.5mm,blue] at (0.0,0) {u0};
+  \pic[line width=0.8mm,red] at (0,0) {u0};
+  \pic[rotate=180,line width=0.5mm,blue] at (6.6,0) {u0};
+  \pic[line width=0.5mm,blue] at (6.6,0) {u0};
+  \draw (-0.4,-0.4) node {$0$};
+  \draw (10.5,-0.4) node {$x$};
+  \filldraw [black] (0,0) circle [radius=3pt]
+                    (3.3,0) circle [radius=3pt]
+                    (6.6,0) circle [radius=3pt]
+                    (9.9,0) circle [radius=3pt]
+                    (-3.3,0) circle [radius=3pt];
+  \draw (-3.3,0.4) node {$-L$};
+  \draw (3.2,-0.4) node {$L$};
+  \draw (6.2,-0.4) node {$2L$};
+  \draw (9.9,-0.4) node {$3L$};
+  \draw (-0.4,3.5) node {$y$};
+  \draw[red] (2.6,2.8) node {$u_0(x)$};
+  \draw[blue] (3.6,-2.1) node {$f(x)$};
+\end{tikzpicture}

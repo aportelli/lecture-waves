@@ -17,6 +17,10 @@
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+%% glossaries
+\usepackage[toc,nonumberlist,nopostdot,sort=use]{glossaries}
+\setglossarystyle{alttree}
+\glssetwidest{xxxxxxxxxxxxxxx}
 %% math symbols
 \usepackage{amsmath,amssymb,braket,slashed,mathrsfs}
 \usepackage[only,llbracket,rrbracket]{stmaryrd}
@@ -122,12 +126,16 @@
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
 \renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\sumn}[1]{\sum_{#1=0}^{+\infty}}
+\newcommand{\sumnp}[1]{\sum_{#1=1}^{+\infty}}
+\newcommand{\sumz}[1]{\sum_{#1=-\infty}^{+\infty}}
 
 % Title
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \title{
-% \includegraphics[width=\linewidth]{gw.pdf}\\~\\~\\Waves and Fourier analysis}
-% \author{Antonin Portelli}
+% Glossaries
+\input{notations}
 
 % Document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,8 +190,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
+
+\glsaddallunused
+\printglossary[title=Symbols and Notation]
+\chapter{Introduction to the wave equation}
+\input{chapters/wave-eq}
 \chapter{Elementary waves}
-\input{chapters/motivations}
+\input{chapters/elementary-waves}
 \chapter{Fourier series}
 \input{chapters/series}
 \chapter{Fourier transform}

@@ -6,6 +6,10 @@
 *.out
 *.synctex*
 *.toc
+*.glg
+*.glo
+*.gls
+*.ist
 
 # figure temporaries
 /figures/src/*.pdf
