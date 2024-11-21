@@ -318,7 +318,7 @@ Let us now look at an explicit solution. We assume that initially the string mid
   \label{eq:string-pluck-ic}
 \end{equation}
 represented in the upper pane of~\cref{fig:string-pulled}. Let us give explicit values for the
-all the parameters of the problem. We assume the string length $L$ is $\unit{30}{\centi\metre}$, its linear mass density $\mu$ is $\unit{0.91}{\gram\per\metre}$, and it is stretched to a tension $T$ of $\unit{63.4}{\newton}$. We additionally assume the pulling distance $A$ to be $\unit{1}{\centi\metre}$. We can start by using~\cref{eq:wave-eq} to compute the wave speed $c$
+all the parameters of the problem. We assume the string length $L$ is $\unit{30}{\centi\metre}$, its linear mass density $\mu$ is $\unit{0.91}{\gram\per\metre}$, and it is stretched to a tension $T$ of $\unit{63.4}{\newton}$. We additionally assume the pulling distance $A$ to be $\unit{1}{\centi\metre}$. Let us start by using~\cref{eq:wave-eq} to compute the wave speed $c$
 \begin{equation}
   c=\sqrt{\frac{T}{\mu}}=\sqrt{\frac{\unit{63.4}{\newton}}{\unit{0.91\times 10^{-3}}{\kilo\gram\per\metre}}}
   =\unit{263.95}{\metre\per\second}\,.
@@ -408,7 +408,7 @@ To discriminate between all these cases, let us consider the boundary conditions
 \begin{equation}
   G(0)=0\qquad\text{and}\qquad G(L)=0\,.
 \end{equation}
-Clearly, in cases 1.~and 3.~above, the only possible solutions satisfying these conditions would be with $a=b=0$ and therefore $G(x)=0$ and $u(t,x)=0$. This is the trivial solution of an immobile string at equilibrium. In case 2.~, we write $a=\smash{C_1+iC_2}$ where $\smash{C_1}=\Re(a)$ and $\smash{C_2}=\Im(a)$ are the real and imaginary parts of $a$, respectively, and then the general solution for $G(x)$ can be written
+Clearly, in cases 1.~and 3.~above, the only possible solutions satisfying these conditions would be with $a=b=0$ and therefore $G(x)=0$ and $u(t,x)=0$. This is the trivial solution of an immobile string at equilibrium. In case 2., we write $a=\smash{C_1+iC_2}$ where $\smash{C_1}=\Re(a)$ and $\smash{C_2}=\Im(a)$ are the real and imaginary parts of $a$, respectively, and then the general solution for $G(x)$ can be written
 \begin{equation}
   G(x)=ae^{i\beta x}+(ae^{i\beta x})^*=2\Re(ae^{i\beta x})=C_1\cos(\beta x)-C_2\sin(\beta x)\,.
 \end{equation}
