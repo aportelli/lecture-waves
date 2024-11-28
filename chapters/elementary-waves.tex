@@ -186,8 +186,41 @@ theorem:
   using the parity properties of the sine and cosine functions, namely $\sin(-x)=-\sin(x)$
   and $\cos(-x)=\cos(x)$.
 \end{proof}
-The angle addition theorem can be proven solely using triangle geometry, which is
-significantly less trivial than the simple proof above. Elementary waves can generally be easier to manipulate using complex exponentials, motivating the definition below.
+These identities
+\begin{corollary}
+  \label{cor:sumproduct}
+  For all pairs of real numbers $a$ and $b$, the following identities hold
+  \begin{align}
+    \sin(a)\sin(b)&=\frac{1}{2}\left[\cos(a-b)-\cos(a+b)\right]\,,
+    \label{eq:sinatsinb}\\
+    \sin(a)\cos(b)&=\frac{1}{2}\left[\sin(a-b)+\sin(a+b)\right]\,,
+    \label{eq:sinatcosb}\\
+    \cos(a)\cos(b)&=\frac{1}{2}\left[\cos(a-b)+\cos(a+b)\right]\,,
+    \label{eq:cosatcosb}\\
+    \sin(a)+\sin(b)&=2\sin\left(\frac{a+b}{2}\right)\cos\left(\frac{a-b}{2}\right)\,,
+    \label{eq:sinapsinb}\\
+    \cos(a)+\cos(b)&=2\cos\left(\frac{a+b}{2}\right)\cos\left(\frac{a-b}{2}\right)\,.
+    \label{eq:cosapcosb}
+  \end{align}
+\end{corollary}
+\begin{proof}
+  \cref{eq:sinatsinb,eq:cosatcosb} are obtained by considering the sum and difference of~\cref{eq:cosapb,eq:cosamb}, and~\cref{eq:sinatcosb} by taking the sum of~\cref{eq:sinapb,eq:sinamb}.
+  Then, we define
+  \begin{equation}
+    c=\frac{a+b}{2}\qquad\text{and}\qquad d=\frac{a-b}{2}\,,
+  \end{equation}
+  which implies that $a=c+d$ and $b=c-d$. Now, using~\cref{eq:sinatcosb} leads to
+  \begin{align}
+    \sin(a)+\sin(b)&=\sin(c+d)+\sin(c-d)=2\sin(c)\cos(d)\notag\\
+    &=2\sin\left(\frac{a+b}{2}\right)\cos\left(\frac{a-b}{2}\right)\,,
+  \end{align}
+  which proves~\cref{eq:sinapsinb}. \cref{eq:cosapcosb} can be derived in the same way using~\cref{eq:cosatcosb}.
+\end{proof}
+These additional formulas allow to systematically convert a product of sine/cosine
+functions into a sum, and vice-versa. The angle addition theorem can be proven solely
+using triangle geometry, which is significantly less trivial than the simple proof above,
+based on complex numbers. Elementary waves can generally be easier to manipulate using
+complex exponentials, motivating the definition below.
 \begin{definition}
   \label{def:complex-wave}
   We call \emph{elementary complex wave} the function
@@ -231,18 +264,15 @@ not always true, and can be characterised by the following result:
 \begin{theorem}
   \label{thm:period-sum}
   Let $f_1(t)$ and $f_2(t)$ be two periodic functions of fundamental periods $\tau_1\neq 0$
-  and $\tau_2\neq 0$, respectively. Then, for any pair of non-zero complex numbers $\alpha_1$
-  and $\alpha_2$, the linear combination
-  \begin{equation}
-    f(t)=\alpha_1 f_1(t)+\alpha_2 f_2(t)
-  \end{equation}
-  is periodic if and only if the period ratio  $\frac{\tau_1}{\tau_2}$ is a rational number. If
-  this condition is true, this ratio can be written $\frac{\tau_1}{\tau_2}=\frac{p}{q}$ where
-  $p$ and $q$ are two coprime integers (\ie their GCD is $1$), and the fundamental
-  frequency $\tau$ of $f(t)$ is given by
-  \begin{equation}
-    \tau=q\tau_1=p\tau_2\,.
-  \end{equation}
+  and $\tau_2\neq 0$, respectively. Then the sum $f_1+f_2$ as well as the product $f_1f_2$
+  are periodic if and only if the period ratio  $\smash{\frac{\tau_1}{\tau_2}}$ is a rational number.
+  % If
+  % this condition is true, this ratio can be written $\smash{\frac{\tau_1}{\tau_2}}=\smash{\frac{p}{q}}$ where
+  % $p$ and $q$ are two coprime integers (\ie their GCD is $1$), and the fundamental
+  % frequency $\tau$ of $f(t)$ is given by
+  % \begin{equation}
+  %   \tau=q\tau_1=p\tau_2\,.
+  % \end{equation}
 \end{theorem}
 \begin{proof}
   % TODO
@@ -257,7 +287,7 @@ not always true, and can be characterised by the following result:
 \end{example}
 \noindent Both examples above are illustrated in~\cref{fig:sine-sum}. Mathematically
 speaking,~\cref{thm:period-sum} means that generally periodic functions sums are not
-periodic. However, we remind that any real number is arbitrarily close to a rational
+periodic. However, we remind the reader that any real number is arbitrarily close to a rational
 number, so non-periodic sums like in~\cref{ex:nperiod-sum} can always be approximated
 arbitrarily well by a periodic function. This is relevant for physics and engineering
 applications where quantities are often known up to some limited precision.
@@ -267,10 +297,9 @@ applications where quantities are often known up to some limited precision.
   \caption{Curves of the sine wave sums in~\cref{ex:period-sum,ex:nperiod-sum}}
   \label{fig:sine-sum}
 \end{figure}
-% TODO interference
-We, so far, only considered linear combinations of elementary waves. We conclude this
-section by looking at products of elementary waves, which thanks to the angle addition
-theorem can be reduced to linear combinations:
+
+Regarding elementary waves, one can demonstrate easily using the angle addition theorem
+that products can always be reduced to sums:
 \begin{proposition}
   The following identities hold for multiplying elementary waves:
   \begin{align}
@@ -284,8 +313,74 @@ theorem can be reduced to linear combinations:
   \end{align}
 \end{proposition}
 \begin{proof}
-  These identities are a trivial re-interpretation of~\cref{thm:angle-add}.
+  These identities are a trivial re-interpretation of~\cref{cor:sumproduct}.
 \end{proof}
+
+An important concept when adding waves is the notion of \emph{interference}. Waves oscillate between negative and positive values (or around the unit circle for complex waves), and can add up or cancel when summed. This can be formalised in the following way
+\begin{definition}
+  Let $f$ and $g$ be two complex-valued periodic functions, not necessarily with the same period. We consider the sum $h=f+g$, which modulus squared is given by
+  \begin{equation}
+    |h|^2=|f|^2+|g|^2+2\Re(f^*g)\,.
+  \end{equation}
+  The last term $2\Re(f^*g)$ in the equation is called the \emph{interference term}. At a given point $t\in\mathbb{R}$:
+  \begin{enumerate}
+    \item if $\Re[f^*(t)g(t)]>0$, $f$ and $g$ are said to \emph{interfere constructively} at $t$;
+    \item if $\Re[f^*(t)g(t)]<0$, $f$ and $g$ are said to \emph{interfere destructively} at $t$.
+  \end{enumerate}
+  If $f$ and $g$ are real-valued functions, the interference term is simply given by $2fg$.
+\end{definition}
+We now discuss below key examples of interference between elementary waves.
+\begin{example}
+  We consider the sum of two sine waves with equal frequencies, but different phases:
+  \begin{equation}
+    f(t)=\sw(t;\omega)+\sw(t;\omega,\phi)\,.
+  \end{equation}
+  Using~\cref{eq:sinapsinb}, $f(t)$ can be re-written as
+  \begin{equation}
+    f(t)=2\cos\left(\frac{\phi}{2}\right)\sw\left(t;\omega,\frac{\phi}{2}\right)\,.
+  \end{equation}
+  So $f$ is still an elementary sine wave with frequency $\omega$, phase $\frac{\phi}{2}$, and amplitude $2\cos(\frac{\phi}{2})$. The interesting element here is the change of amplitude: at $\phi=0$, the amplitude of $f$ is $2$, and the two waves interfere in a maximally constructive way, they are said to be \emph{in phase}. At $\phi=\pi$, $f$ is identically zero and the two waves interfere in a maximally destructive way, they are said to be \emph{out of phase}.
+  Using the definition above, and~\cref{eq:sinatsinb}, the related interference term is given by
+  \begin{equation}
+    2\sw(t;\omega,\phi)\sw(t;\omega)=\cos(\phi)-\cw(t;2\omega,\phi)\,.
+  \end{equation}
+  Because the cosine function oscillate between $-1$ and $1$, the expression above takes values between $-2$ and $2$. If $\phi=0$, the two waves interfere constructively for all $t$, which is the maximally constructive case above. Similarly, the waves interfere destructively for all $t$ with $\phi=\pi$. This example is illustrated in~\cref{fig:interference}
+\end{example}
+\begin{figure}[ph!]
+  \centering
+  \includegraphics{gp_sine-interference.pdf}
+  \\\hspace{0.7cm}(a)\\~\\
+  \includegraphics{gp_sine-interference-des.pdf}
+  \\\hspace{0.7cm}(b)\\
+  \caption{For each figure above, the lowermost curve represent the sum of the two curves above. Pane (a) represents a case of maximally constructive interference between two in-phase sine waves with frequency $1$. Pane (b) represents a case of maximally destructive interference between two out-of-phase sine waves with frequency $1$.}
+  \label{fig:interference}
+\end{figure}
+\begin{example}
+  Another important example of interference is the \emph{beating effect}, which occurs when summing two elementary waves with slightly different frequencies:
+  \begin{equation}
+    f(t)=\sw(t;\omega)+\sw(t;\omega+\delta\omega)\,,
+  \end{equation}
+  where $\delta\omega$ is assumed to be small compared to $\omega$.
+  In this case, the interference term can be written
+  \begin{equation}
+    2\sw(t;\omega)\sw(t;\omega+\delta\omega)=\cw(t;\delta\omega)-\cw(t;2\omega+\delta\omega)
+    \simeq \cw(t;\delta\omega)-\cw(t;2\omega)\,,
+  \end{equation}
+  where in the last term we used the assumption on the smallness of $\delta\omega$. The first cosine in this expression oscillates much slower than the second one, and is equal to $1$ for $t=\smash{\frac{n}{\delta\omega}}$, and $-1$ for $t=\smash{\frac{n}{\delta\omega}+\frac{1}{2\delta\omega}}$. Following the same argument as in the previous example, this means that $f(t)$ oscillates in time between maximally constructive and destructive interference, at the frequency $\delta\omega$. This is generally called a \emph{beating effect}, particularly in an acoustic context, where the intensity of the sound associated to $f(t)$ very distinctly goes to zero periodically $\delta\omega$ times per second.
+
+  Another way to present this phenomenon is to write the identity
+  \begin{equation}
+    f(t)=2\cw\left(t;\frac{\delta\omega}{2}\right)\sw\left(t;\omega+\frac{\delta\omega}{2}\right)
+    \simeq 2\cw\left(t;\frac{\delta\omega}{2}\right)\sw(t;\omega)\,.
+  \end{equation}
+  In that form, $f(t)$ appears as a sine wave with frequency $\omega$ modulated by a cosine with half this frequency. Since the cosine function goes to zero twice per period, we find again that $f(t)$ goes to zero with frequency $\delta\omega$. The beating effect is illustrated in~\cref{fig:beating}.
+\end{example}
+\begin{figure}
+  \centering
+  \includegraphics{gp_sine-beating.pdf}
+  \caption{The upper plot represents two sine waves with slightly different frequencies $\omega=1$ and $\omega+\delta\omega=1.1$. The lower plot represents the sum of these two waves, with a visible beating effect with frequency $\delta\omega=0.1$. The beats can be correlated with the two sine waves going in and out of phase.}
+  \label{fig:beating}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Trigonometric polynomials}
 We can make the following definition for an arbitrary linear
@@ -380,7 +475,7 @@ projection coefficient $\cos(\theta)|\vv{v}|$ is known to be given by the \emph{
 Additionally, the dot product $\vv{v}\cdot \vv{u}$ vanishes when $\vv{v}$ and $\vv{u}$ are \emph{orthogonal}
 (\ie they form an angle of $\pi$ radians). This makes the dot product an essential tool of
 vector calculus to compute the coordinate of vectors in an orthonormal basis. Explicitly,
-let $\vv{e}_j$ be an orthonormal basis of $\mathbb{R}^n$, and let $v^{\vv{e}}_j$ be the coefficients
+let $\vv{e}_j$ be an orthonormal basis of $\mathbb{R}^n$, and let $\vv{v}^{\vv{e}}_j$ be the coefficients
 of $\vv{v}$ in that basis, \ie
 \begin{equation}
   \vv{v}=\sum_{j=1}^{n}\vv{v}^{\vv{e}}_j\,\vv{e}_j\,,

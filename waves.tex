@@ -107,6 +107,8 @@
 \newtheorem{example}{Example}[section]
 %%% cref labels
 \crefformat{theorem}{Theorem~#2#1#3}
+\crefformat{corollary}{Corollary~#2#1#3}
+\crefformat{proposition}{Proposition~#2#1#3}
 \crefformat{definition}{Definition~#2#1#3}
 \crefformat{example}{Example~#2#1#3}
 
@@ -117,21 +119,25 @@
 \newcommand{\eg}{{e.g.}~}
 \newcommand{\ie}{{i.e.}~}
 %% math
-\newcommand{\sq}{\mathrm{sq}}
-\newcommand{\sw}{\mathrm{s}}
-\newcommand{\cw}{\mathrm{c}}
-\newcommand{\ew}{\mathrm{e}}
+\DeclareMathOperator{\sq}{sq}
+\DeclareMathOperator{\sw}{s}
+\DeclareMathOperator{\cw}{c}
+\DeclareMathOperator{\ew}{e}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\td}[2]{\frac{\diff #1}{\diff #2}}
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\pdn}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
 \renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\Re}{\mathrm{Re}}
-\renewcommand{\Im}{\mathrm{Im}}
+% \renewcommand{\Re}{\mathrm{Re}}
+% \renewcommand{\Im}{\mathrm{Im}}
 \newcommand{\sumn}[1]{\sum_{#1=0}^{+\infty}}
 \newcommand{\sumnp}[1]{\sum_{#1=1}^{+\infty}}
 \newcommand{\sumz}[1]{\sum_{#1=-\infty}^{+\infty}}
 \newcommand{\vv}[1]{\mathbf{#1}}
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
 
 % Title
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
