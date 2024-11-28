@@ -194,10 +194,10 @@ variables $x$ and $t$, the general solutions of the wave equation have the form
   \boxed{u(t,x)=f(x-ct)+g(x+ct)\,,}\label{eq:wave-eq-sol}
 \end{equation}
 where $f$ and $g$ can be any twice-differentiable functions. $f$ and $g$ are called the
-\emph{forward-travelling} and \emph{backward-travelling} wave functions, respectively. These
-functions are named in this way for the following reason. At $t=0$, if one pick a point on
-the curve of $f$ with $x$-coordinate $x_0$, then at an arbitrary time $t$ the same point
-will have the $x$-coordinate
+\emph{forward-travelling} and \emph{backward-travelling} wave functions, respectively.
+These functions are named in this way for the following reason. At $t=0$, if one pick a
+point on the curve of $f$ with $x$-coordinate $x_0$, then at an arbitrary time $t$ the
+same point will have the $x$-coordinate
 \begin{equation}
   x(t)=x_0+ct\,,
 \end{equation}
@@ -242,17 +242,20 @@ $(L,0)$, this implies that for all $t$
 \end{equation}
 These constraints are called the \emph{boundary conditions} of the wave equation, and they
 generally have a strong influence on the set of solutions. Applying the boundary
-conditions at $t=0$ to~\cref{eq:u0K} directly implies that $K=0$, and also determines $f(x)$ on the interval $[0,L]$:
+conditions at $t=0$ to~\cref{eq:u0K} directly implies that $K=0$, and also determines
+$f(x)$ on the interval $[0,L]$:
 \begin{equation}
   \forall x\in[0,L],\quad f(x)=\frac{1}{2}u_0(x)\,.
 \end{equation}
-However, the solution~\cref{eq:uff} requires us to know $f$ outside the interval $[0,L]$, specifically for times
-$t>\frac{L}{c}$. At an arbitrary time $t$, the first boundary condition in~\cref{eq:string-bc}
-becomes
+However, the solution~\cref{eq:uff} requires us to know $f$ outside the interval $[0,L]$,
+specifically for times $t>\frac{L}{c}$. At an arbitrary time $t$, the first boundary
+condition in~\cref{eq:string-bc} becomes
 \begin{equation}
   f(-ct)=-f(ct)\,,
 \end{equation}
-which means that the function $f$ is odd. In particular this tells us that for any $x\in[-L,0]$, $f(x)=-f(-x)=-u_0(x)$. We now know the solution on the interval $[-L,L]$. Repeating this exercise with the second condition in~\cref{eq:string-bc}, we get
+which means that the function $f$ is odd. In particular this tells us that for any
+$x\in[-L,0]$, $f(x)=-f(-x)=-u_0(x)$. We now know the solution on the interval $[-L,L]$.
+Repeating this exercise with the second condition in~\cref{eq:string-bc}, we get
 \begin{equation}
   f(ct+L)=-f(L-ct)=f(ct-L)\,.
 \end{equation}
@@ -260,12 +263,15 @@ Now, for any $x\in [-L,L]$, the previous equation evaluated at $t=\frac{1}{c}(x+
 \begin{equation}
   f(x+2L)=f(x)\,,
 \end{equation}
-meaning that $f$ in the interval $[L,3L]$ is just a translation of its restriction to $[-L,L]$.
-The argument above can be repeated multiple times to obtain
+meaning that $f$ in the interval $[L,3L]$ is just a translation of its restriction to
+$[-L,L]$. The argument above can be repeated multiple times to obtain
 \begin{equation}
   f(x+2nL)=f(x)
 \end{equation}
-for any real number $x$ and integer $n$. This last equation means that $f$ is periodic with period $\lambda=2L$, called the \emph{wavelength} of the vibration. We have now completely and uniquely solved the wave equation for the plucked string problem, and we summarise the solution below
+for any real number $x$ and integer $n$. This last equation means that $f$ is periodic
+with period $\lambda=2L$, called the \emph{wavelength} of the vibration. We have now
+completely and uniquely solved the wave equation for the plucked string problem, and we
+summarise the solution below
 \begin{equation}
   u(t,x)=f(x-ct)+f(x+ct)\,,\label{eq:string-sol}
 \end{equation}
@@ -278,37 +284,49 @@ with
   \end{cases}
   \,,\label{eq:f-copies}
 \end{equation}
-where $n$ is any integer, and $u_0(x)$ is the initial string position. One important observation can be made: since $f$ is periodic with period $\lambda$, it implies using~\cref{eq:string-sol} that $u(t,x)$ is also periodic in time with period
+where $n$ is any integer, and $u_0(x)$ is the initial string position. One important
+observation can be made: since $f$ is periodic with period $\lambda$, it implies
+using~\cref{eq:string-sol} that $u(t,x)$ is also periodic in time with period
 \begin{equation}
   \tau=\frac{\lambda}{c}\,.
 \end{equation}
-Now, defining the \emph{frequency} $\smash{\omega=\frac{1}{\tau}}$, and reminding the definition of $c$ from~\cref{eq:wave-eq}, we obtain
+Now, defining the \emph{frequency} $\smash{\omega=\frac{1}{\tau}}$, and reminding the
+definition of $c$ from~\cref{eq:wave-eq}, we obtain
 \begin{equation}
   \boxed{\omega=\frac{c}{\lambda}=\frac{1}{2L}\sqrt{\frac{T}{\mu}}}\,.
   \label{eq:mersenne-law}
 \end{equation}
-This result is called \emph{Mersenne's law}, and predicts the vibration frequency of a string as a function of its length, tension, and linear mass density.
+This result is called \emph{Mersenne's law}, and predicts the vibration frequency of a
+string as a function of its length, tension, and linear mass density.
 
 \begin{figure}[t]
   \centering
   \includegraphics{tikz_string-f.pdf}
-  \caption{Graphical representation of~\cref{eq:f-copies}. The bold red line represents the initial string position $u_0(x)$. The blue line is the forward component $f(x)$, obtained as the periodic extension of $u_0(x)$ defined in~\cref{eq:f-copies}.}
+  \caption{Graphical representation of~\cref{eq:f-copies}. The bold red line represents
+    the initial string position $u_0(x)$. The blue line is the forward component $f(x)$,
+  obtained as the periodic extension of $u_0(x)$ defined in~\cref{eq:f-copies}.}
   \label{fig:string-f}
 \end{figure}
 \begin{figure}[t]
   \centering
   \includegraphics{gp_string-pulled.pdf}\\
   \includegraphics{gp_string-pulled-time.pdf}
-  \caption{Initial condition~\cref{eq:string-pluck-ic} (upper pane) and resulting oscillations in time at various positions on the string (lower pane) with $A=\unit{1}{\centi\metre}$, $L=\unit{30}{\centi\metre}$, $T=\unit{63.4}{\newton}$, and $\mu=\unit{0.91}{\gram\per\metre}$.}
+  \caption{Initial condition~\cref{eq:string-pluck-ic} (upper pane) and resulting
+    oscillations in time at various positions on the string (lower pane) with
+    $A=\unit{1}{\centi\metre}$, $L=\unit{30}{\centi\metre}$, $T=\unit{63.4}{\newton}$, and
+  $\mu=\unit{0.91}{\gram\per\metre}$.}
   \label{fig:string-pulled}
 \end{figure}
-We conclude this section by a slightly more practical discussion of the structure of the solution.
-\cref{eq:f-copies} is somewhat abstract, but all it means is that the curve of $f$ is constructed
-by sequentially repeating the curve of $u_0(x)$, rotating it by $180^{\circ}$ at each iteration. This construction
-is illustrated in~\cref{fig:string-f}.
+We conclude this section by a slightly more practical discussion of the structure of the
+solution. \cref{eq:f-copies} is somewhat abstract, but all it means is that the curve of
+$f$ is constructed by sequentially repeating the curve of $u_0(x)$, rotating it by
+$180^{\circ}$ at each iteration. This construction is illustrated in~\cref{fig:string-f}.
 %
 \subsection{Explicit example}
-Let us now look at an explicit solution. We assume that initially the string middle point is pulled to a distance $A$ from the $x$-axis, and that it is perfectly straight between this point and its extremities. Explicitly, this can be parameterised by the following initial condition
+Let us now look at an explicit solution. We assume that initially the string middle point
+is pulled to a distance $A$ from the $x$-axis, and that it is perfectly straight between
+this point and its extremities. Explicitly, this can be parameterised by the following
+initial condition
 \begin{equation}
   u_0(x)=
   \begin{cases}
@@ -317,37 +335,56 @@ Let us now look at an explicit solution. We assume that initially the string mid
   \end{cases}\,,
   \label{eq:string-pluck-ic}
 \end{equation}
-represented in the upper pane of~\cref{fig:string-pulled}. Let us give explicit values for the
-all the parameters of the problem. We assume the string length $L$ is $\unit{30}{\centi\metre}$, its linear mass density $\mu$ is $\unit{0.91}{\gram\per\metre}$, and it is stretched to a tension $T$ of $\unit{63.4}{\newton}$. We additionally assume the pulling distance $A$ to be $\unit{1}{\centi\metre}$. Let us start by using~\cref{eq:wave-eq} to compute the wave speed $c$
+represented in the upper pane of~\cref{fig:string-pulled}. Let us give explicit values for
+the all the parameters of the problem. We assume the string length $L$ is
+$\unit{30}{\centi\metre}$, its linear mass density $\mu$ is
+$\unit{0.91}{\gram\per\metre}$, and it is stretched to a tension $T$ of
+$\unit{63.4}{\newton}$. We additionally assume the pulling distance $A$ to be
+$\unit{1}{\centi\metre}$. Let us start by using~\cref{eq:wave-eq} to compute the wave
+speed $c$
 \begin{equation}
-  c=\sqrt{\frac{T}{\mu}}=\sqrt{\frac{\unit{63.4}{\newton}}{\unit{0.91\times 10^{-3}}{\kilo\gram\per\metre}}}
+  c=\sqrt{\frac{T}{\mu}}
+  =\sqrt{\frac{\unit{63.4}{\newton}}{\unit{0.91\times 10^{-3}}{\kilo\gram\per\metre}}}
   =\unit{263.95}{\metre\per\second}\,.
 \end{equation}
-Then, using Mersenne's law~\cref{eq:mersenne-law} with the wavelength $\lambda=2L=\unit{60}{\centi\metre}$, we can compute the frequency of the string vibration:
+Then, using Mersenne's law~\cref{eq:mersenne-law} with the wavelength
+$\lambda=2L=\unit{60}{\centi\metre}$, we can compute the frequency of the string
+vibration:
 \begin{equation}
-  \omega=\frac{c}{\lambda}=\frac{\unit{263.95}{\metre\per\second}}{\unit{0.6}{\metre}}=\unit{439.92}{\hertz}.
+  \omega=\frac{c}{\lambda}=\frac{\unit{263.95}{\metre\per\second}}{\unit{0.6}{\metre}}
+  =\unit{439.92}{\hertz}.
 \end{equation}
-So this string is approximately tuned to give the standard musical pitch $\mathrm{A}_4$ at the $\unit{440}{\hertz}$ frequency. Explicit plots of the string vibrations at different positions on the string are given in the lower pane of~\cref{fig:string-pulled}.
+So this string is approximately tuned to give the standard musical pitch $\mathrm{A}_4$ at
+the $\unit{440}{\hertz}$ frequency. Explicit plots of the string vibrations at different
+positions on the string are given in the lower pane of~\cref{fig:string-pulled}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Standing wave solutions}
 The previous steps entirely solved the wave equation for the problem we are interested in.
-However, there is another way to solve this equation which is going to be very relevant for
-what follows. Let us come back to~\cref{fig:string-f} and how the wave equation forward wave function $f$ is built as a periodic extension of the initial condition. One can notice how the symmetries of $f$, \ie it is periodic and odd, are identical to those of the sine function. In fact, the structure of $f$ implies that if we would initially pull the string into a position which is exactly half a period of the sine function, \ie
+However, there is another way to solve this equation which is going to be very relevant
+for what follows. Let us come back to~\cref{fig:string-f} and how the wave equation
+forward wave function $f$ is built as a periodic extension of the initial condition. One
+can notice how the symmetries of $f$, \ie it is periodic and odd, are identical to those
+of the sine function. In fact, the structure of $f$ implies that if we would initially
+pull the string into a position which is exactly half a period of the sine function, \ie
 \begin{equation}
   \forall x\in[0,L],\quad u_0(x)=A\sin\left(\frac{\pi}{L}x\right)\,,\label{eq:string-sine-ic}
 \end{equation}
-then the extension~\cref{eq:f-copies} of $u_0$ to $f$ is defined by the same formula, \ie $f(x)=\smash{A\sin\left(\frac{\pi}{L}x\right)}$ for any real number $x$, and the solution to the wave equation is
-simply
+then the extension~\cref{eq:f-copies} of $u_0$ to $f$ is defined by the same formula, \ie
+$f(x)=\smash{A\sin\left(\frac{\pi}{L}x\right)}$ for any real number $x$, and the solution
+to the wave equation is simply
 \begin{equation}
-  u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}(x+ct)\right]+\sin\left[\frac{\pi}{L}(x-ct)\right]\right\}\,.
+  u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}(x+ct)\right]
+  +\sin\left[\frac{\pi}{L}(x-ct)\right]\right\}\,.
 \end{equation}
-The choice~\cref{eq:string-sine-ic} is not unique, all is needed for the sine function is to take the value zero at $x=0$ and $x=L$, which can generally be obtained with
+The choice~\cref{eq:string-sine-ic} is not unique, all is needed for the sine function is
+to take the value zero at $x=0$ and $x=L$, which can generally be obtained with
 \begin{equation}
   u_0(x)=A\sin\left(\frac{\pi}{L}nx\right)\,,
 \end{equation}
 where $n$ is an arbitrary integer, and the associated solution is
 \begin{equation}
-  u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}n(x+ct)\right]+\sin\left[\frac{\pi}{L}n(x-ct)\right]\right\}\,.
+  u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}n(x+ct)\right]
+  +\sin\left[\frac{\pi}{L}n(x-ct)\right]\right\}\,.
 \end{equation}
 Now, using the trigonometric identities
 \begin{align}
@@ -360,9 +397,16 @@ $u(t,x)$ can be simplified to
   =\cos\left(\frac{\pi}{L}nct\right)f(x)\,.
   \label{eq:stand-wave-example}
 \end{equation}
-In this particular solution, time and space oscillations factorise and the wave function $f$ does not ``travel'' any more. Such solution is called a \emph{standing wave solution} of the wave equation. At this stage, this might just look like a special set of particular solutions built on the symmetries of $f$. However, as we will see in this course, those are of extreme importance for describing oscillatory phenomena, and were historically a crucial part of the work of Jean-Baptiste Joseph Fourier (early 19\textsuperscript{th} century), which led to the so-called Fourier analysis theory.
+In this particular solution, time and space oscillations factorise and the wave function
+$f$ does not ``travel'' any more. Such solution is called a \emph{standing wave solution}
+of the wave equation. At this stage, this might just look like a special set of particular
+solutions built on the symmetries of $f$. However, as we will see in this course, those
+are of extreme importance for describing oscillatory phenomena, and were historically a
+crucial part of the work of Jean-Baptiste Joseph Fourier (early 19\textsuperscript{th}
+century), which led to the so-called Fourier analysis theory.
 
-For now, let us question the generality of the standing wave solution above. To do that, we start by considering a general standing wave solution of the wave equation:
+For now, let us question the generality of the standing wave solution above. To do that,
+we start by considering a general standing wave solution of the wave equation:
 \begin{equation}
   u(t,x)=F(t)G(x)\,.
 \end{equation}
@@ -374,16 +418,24 @@ which implies that
 \begin{equation}
   \frac{F''(t)}{F(t)}=c^2\frac{G''(x)}{G(x)}\,.\label{eq:sep-var}
 \end{equation}
-The left-hand side of this equation only depends on $t$, and the right-hand side only depends on $x$. This is typical of standing wave solution, and looking for such simplification is sometime referred as the \emph{separation of variables} method, which in this context is equivalent to looking for standing wave solutions. A key observation is that~\cref{eq:sep-var} implies that there exists a constant $\alpha$ such that
+The left-hand side of this equation only depends on $t$, and the right-hand side only
+depends on $x$. This is typical of standing wave solution, and looking for such
+simplification is sometime referred as the \emph{separation of variables} method, which in
+this context is equivalent to looking for standing wave solutions. A key observation is
+that~\cref{eq:sep-var} implies that there exists a constant $\alpha$ such that
 \begin{equation}
   \frac{1}{c^2}\frac{F''(t)}{F(t)}=\frac{G''(x)}{G(x)}=\alpha\,.
 \end{equation}
-Indeed, since this expression can be written solely as a function of $x$ or $t$, it means that both its partial derivatives in $x$ and $t$ vanish, implying that it is a constant function of $x$ and $t$. With that established, the equation above can be rewritten as the following system of ordinary differential equations
+Indeed, since this expression can be written solely as a function of $x$ or $t$, it means
+that both its partial derivatives in $x$ and $t$ vanish, implying that it is a constant
+function of $x$ and $t$. With that established, the equation above can be rewritten as the
+following system of ordinary differential equations
 \begin{align}
   F''(t)&=c^2\alpha F(t)\,,\label{eq:sep-var-F}\\
   G''(x)&=\alpha G(x)\,.
 \end{align}
-We can solve these equations using the \emph{characteristic equation method}. Let us start with the equation for $G$. We try to look for particular solutions of the form
+We can solve these equations using the \emph{characteristic equation method}. Let us start
+with the equation for $G$. We try to look for particular solutions of the form
 \begin{equation}
   G(x)=e^{rt}\,,
 \end{equation}
@@ -391,24 +443,40 @@ which would imply that
 \begin{equation}
   G''(x)=r^2e^{rx}=\alpha e^{rx}\,,
 \end{equation}
-and therefore for such solution to exists $A$ must be a solution of the characteristic equation
+and therefore for such solution to exists $A$ must be a solution of the characteristic
+equation
 \begin{equation}
   r^2-\alpha=0\,.
 \end{equation}
 At this stage $\alpha$ is an arbitrary real number, and depending on its sign the equation
-above can have the different solutions. For convenience let us define $\beta=\smash{\sqrt{|\alpha|}}$, we have the following cases
+above can have the different solutions. For convenience let us define
+$\beta=\smash{\sqrt{|\alpha|}}$, we have the following cases
 \begin{enumerate}
-  \item $\alpha>0$: then $r$ is a real number equal to $\pm \beta$, the particular solutions for $G(x)$
-    are $\smash{e^{\beta x}}$ and $\smash{e^{-\beta x}}$, and the general solutions are the linear combinations $G(x)=a\smash{e^{\beta x}}+b\smash{e^{-\beta x}}$ for any real numbers $a$ and $b$.
-  \item $\alpha<0$: then $r$ is a purely imaginary complex number equal to $\pm i\beta$, the particular solutions for $G(x)$ are $\smash{e^{i\beta x}}$ and $\smash{e^{-i\beta x}}$, and the general solutions are the linear combinations $G(x)=a\smash{e^{i\beta x}}+b\smash{e^{-i\beta x}}$ for any complex numbers $a$ and $b$. Since $G$ is a real function, it has to verify the identity $G^*=G$, where $G^*$ is the complex conjugate of $G$. This implies that $a^*=b$.
+  \item $\alpha>0$: then $r$ is a real number equal to $\pm \beta$, the particular
+    solutions for $G(x)$ are $\smash{e^{\beta x}}$ and $\smash{e^{-\beta x}}$, and the
+    general solutions are the linear combinations $G(x)=a\smash{e^{\beta
+    x}}+b\smash{e^{-\beta x}}$ for any real numbers $a$ and $b$.
+  \item $\alpha<0$: then $r$ is a purely imaginary complex number equal to $\pm i\beta$,
+    the particular solutions for $G(x)$ are $\smash{e^{i\beta x}}$ and $\smash{e^{-i\beta
+    x}}$, and the general solutions are the linear combinations $G(x)=a\smash{e^{i\beta
+    x}}+b\smash{e^{-i\beta x}}$ for any complex numbers $a$ and $b$. Since $G$ is a real
+    function, it has to verify the identity $G^*=G$, where $G^*$ is the complex conjugate of
+    $G$. This implies that $a^*=b$.
 
-  \item $\alpha=0$: then $A=0$ and $G(x)=1$. Additionally, in that case the equation for $G$ becomes $G''(x)=0$, which simply means that $G$ is a linear function of the form $G(x)=ax+b$.
+  \item $\alpha=0$: then $A=0$ and $G(x)=1$. Additionally, in that case the equation for
+    $G$ becomes $G''(x)=0$, which simply means that $G$ is a linear function of the form
+    $G(x)=ax+b$.
 \end{enumerate}
-To discriminate between all these cases, let us consider the boundary conditions~\cref{eq:string-bc}, which immediately implies that
+To discriminate between all these cases, let us consider the boundary
+conditions~\cref{eq:string-bc}, which immediately implies that
 \begin{equation}
   G(0)=0\qquad\text{and}\qquad G(L)=0\,.
 \end{equation}
-Clearly, in cases 1.~and 3.~above, the only possible solutions satisfying these conditions would be with $a=b=0$ and therefore $G(x)=0$ and $u(t,x)=0$. This is the trivial solution of an immobile string at equilibrium. In case 2., we write $a=\smash{C_1+iC_2}$ where $\smash{C_1}=\Re(a)$ and $\smash{C_2}=\Im(a)$ are the real and imaginary parts of $a$, respectively, and then the general solution for $G(x)$ can be written
+Clearly, in cases 1.~and 3.~above, the only possible solutions satisfying these conditions
+would be with $a=b=0$ and therefore $G(x)=0$ and $u(t,x)=0$. This is the trivial solution
+of an immobile string at equilibrium. In case 2., we write $a=\smash{C_1+iC_2}$ where
+$\smash{C_1}=\Re(a)$ and $\smash{C_2}=\Im(a)$ are the real and imaginary parts of $a$,
+respectively, and then the general solution for $G(x)$ can be written
 \begin{equation}
   G(x)=ae^{i\beta x}+(ae^{i\beta x})^*=2\Re(ae^{i\beta x})=C_1\cos(\beta x)-C_2\sin(\beta x)\,.
 \end{equation}
@@ -424,39 +492,61 @@ and finally
 \begin{equation}
   G(x)=-C_2\sin\left(\frac{\pi}{L}nx\right)\,.
 \end{equation}
-We know turn to the time component $F$ determined by the equation~\cref{eq:sep-var-F}. The constant $\alpha$ in this equation is identical and was already strongly constrained while solving for $G$. Following the same steps as above, up to an additional factor of $c^2$, we find that
+We know turn to the time component $F$ determined by the equation~\cref{eq:sep-var-F}. The
+constant $\alpha$ in this equation is identical and was already strongly constrained while
+solving for $G$. Following the same steps as above, up to an additional factor of $c^2$,
+we find that
 \begin{equation}
   F(t)=D_1\cos\left(\frac{\pi}{L}nc t\right)-D_2\sin\left(\frac{\pi}{L}nc t\right)\,,
 \end{equation}
-with two unknown real constants $D_1$ and $D_2$. We know use the second initial condition in~\cref{eq:wave-eq-ic} which implies that $F'(0)=0$. The derivative of $F$ is given by
+with two unknown real constants $D_1$ and $D_2$. We know use the second initial condition
+in~\cref{eq:wave-eq-ic} which implies that $F'(0)=0$. The derivative of $F$ is given by
 \begin{equation}
-  F'(t)=-\frac{\pi}{L}ncD_1\sin\left(\frac{\pi}{L}nc t\right)-\frac{\pi}{L}ncD_2\cos\left(\frac{\pi}{L}nc t\right)\,,
+  F'(t)=-\frac{\pi}{L}ncD_1\sin\left(\frac{\pi}{L}nc t\right)-\frac{\pi}{L}ncD_2
+  \cos\left(\frac{\pi}{L}nc t\right)\,,
 \end{equation}
 and $F'(0)=0$ implies that $D_2=0$. Putting everything together, we get the solution
 \begin{equation}
   u(t,x)=A\sin\left(\frac{\pi}{L}nx\right)\cos\left(\frac{\pi}{L}nct\right)\,,
 \end{equation}
-with $A=-C_2D_1$. We can observe this is the same result as~\cref{eq:stand-wave-example}. This is a non-trivial and very important result: although we originally found the standing wave solutions above as a simple example, we just proved that \emph{all} standing wave solutions can be written in that way. However, the standing wave solutions have fairly unrealistic initial conditions where the string needs starts exactly shaped as a portion of the sine function curve. One legitimate question is whether these solutions are just exceptional solutions, or can they be related to the general solutions discussed in~\cref{sec:wave-eq-travelling}? One could argue that answering this question is the core topic of this course. We will now conclude this chapter by inferring a possible answer to that question.
+with $A=-C_2D_1$. We can observe this is the same result as~\cref{eq:stand-wave-example}.
+This is a non-trivial and very important result: although we originally found the standing
+wave solutions above as a simple example, we just proved that \emph{all} standing wave
+solutions can be written in that way. However, the standing wave solutions have fairly
+unrealistic initial conditions where the string needs starts exactly shaped as a portion
+of the sine function curve. One legitimate question is whether these solutions are just
+exceptional solutions, or can they be related to the general solutions discussed
+in~\cref{sec:wave-eq-travelling}? One could argue that answering this question is the core
+topic of this course. We will now conclude this chapter by inferring a possible answer to
+that question.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Towards Fourier series}
-A key property of the wave equation~\cref{eq:wave-eq} is that it is linear. It means that if
-$u(t,x)$ and $v(t,x)$ are two solutions of the equation, then clearly for any real numbers $\alpha$ and $\beta$, the linear combination
+A key property of the wave equation~\cref{eq:wave-eq} is that it is linear. It means that
+if $u(t,x)$ and $v(t,x)$ are two solutions of the equation, then clearly for any real
+numbers $\alpha$ and $\beta$, the linear combination
 \begin{equation}
   w(t,x)=\alpha u(t,x)+\beta v(t,x)\,,
 \end{equation}
-is also clearly a solution of the equation. Let us consider the set of all possible standing wave solutions
+is also clearly a solution of the equation. Let us consider the set of all possible
+standing wave solutions
 \begin{equation}
   s_n(t,x)=A_n\sin\left(\frac{\pi}{L}nx\right)\cos\left(\frac{\pi}{L}nct\right)\,,
 \end{equation}
-where $n$ is any integer and $A_n$ is a real number depending on $n$. First, we can observe that
+where $n$ is any integer and $A_n$ is a real number depending on $n$. First, we can
+observe that
 \begin{equation}
   s_{-n}(t,x)=-s_n(t,x)\,,
 \end{equation}
-and in particular $s_0=0$. So in the rest of this section we will assume, without loss of generality, that $n>0$. Then by linearity the series
+and in particular $s_0=0$. So in the rest of this section we will assume, without loss of
+generality, that $n>0$. Then by linearity the series
 \begin{equation}
   u(t,x)=\sumnp{n}s_n(t,x)\,,
 \end{equation}
-which, for the moment, we assume to be convergent, is a solution of the wave equation. The question raised at the end of the previous question can then be reformulated as: for a given initial string position $u_0(x)$, is there a sequence of real numbers $A_n$ such that the solution of the wave equation can be expressed as the superposition of standing waves above? Explicitly, this would imply that
+which, for the moment, we assume to be convergent, is a solution of the wave equation. The
+question raised at the end of the previous question can then be reformulated as: for a
+given initial string position $u_0(x)$, is there a sequence of real numbers $A_n$ such
+that the solution of the wave equation can be expressed as the superposition of standing
+waves above? Explicitly, this would imply that
 \begin{equation}
   u_0(x)=u(0,x)=\sumz{n}s_n(0,x)=\sumz{n}A_n\sin\left(\frac{\pi}{L}nx\right)\,.
 \end{equation}
@@ -470,12 +560,16 @@ To try determining $A_n$, a key identity is
   \end{cases}
   \,,
 \end{equation}
-for all pairs of positive integers $n$ and $m$.
-We will admit this identity for now, it will be proven in the next chapter. This formula implies that
+for all pairs of positive integers $n$ and $m$. We will admit this identity for now, it
+will be proven in the next chapter. This formula implies that
 \begin{equation}
   \frac{2}{L}\int_{0}^{L}\diff x\, u_0(x)\sin\left(\frac{\pi}{L}nx\right)=A_n\,,
 \end{equation}
-providing a direct way to compute the coefficients $A_n$, and once again we assumed that the series convergence is well-behaved enough to allow commuting the sum and the integral. We can try to use this formula with the plucked string initial condition in~\cref{eq:string-pluck-ic} and~\cref{fig:string-pulled}. We start by considering the first half of the string
+providing a direct way to compute the coefficients $A_n$, and once again we assumed that
+the series convergence is well-behaved enough to allow commuting the sum and the integral.
+We can try to use this formula with the plucked string initial condition
+in~\cref{eq:string-pluck-ic} and~\cref{fig:string-pulled}. We start by considering the
+first half of the string
 \begin{align}
   \frac{2}{L}\int_{0}^{\frac{L}{2}}\diff x\, u_0(x)\sin\left(\frac{\pi}{L}nx\right)&
   =\frac{4A}{L^2}\int_{0}^{\frac{L}{2}}\diff x\, x\sin\left(\frac{\pi}{L}nx\right)\\
@@ -483,15 +577,18 @@ providing a direct way to compute the coefficients $A_n$, and once again we assu
   &=-\frac{4A}{\pi n L}\left[x\cos\left(\frac{\pi}{L}nx\right)\right]_0^{\frac{L}{2}}
   +\frac{4A}{\pi n L}\int_{0}^{\frac{L}{2}}\diff x\,\cos\left(\frac{\pi}{L}nx\right)\\
   \label{eq:string-pluck-fourier2}
-  &=-\frac{2A}{\pi n}\cos\left(\frac{\pi}{2}n\right)+\frac{4A}{\pi^2 n^2}\left[\sin\left(\frac{\pi}{L}nx\right)\right]_0^{\frac{L}{2}}\\
-  &=-\frac{2A}{\pi n}\cos\left(\frac{\pi}{2}n\right)+\frac{4A}{\pi^2 n^2}\sin\left(\frac{\pi}{2}n\right)\,,
+  &=-\frac{2A}{\pi n}\cos\left(\frac{\pi}{2}n\right)+\frac{4A}{\pi^2 n^2}
+  \left[\sin\left(\frac{\pi}{L}nx\right)\right]_0^{\frac{L}{2}}\\
+  &=-\frac{2A}{\pi n}\cos\left(\frac{\pi}{2}n\right)+\frac{4A}{\pi^2 n^2}
+  \sin\left(\frac{\pi}{2}n\right)\,,
 \end{align}
-where integration by parts was used to go from~\cref{eq:string-pluck-fourier1} to~\cref{eq:string-pluck-fourier2}.
-Using the same procedure,
+where integration by parts was used to go from~\cref{eq:string-pluck-fourier1}
+to~\cref{eq:string-pluck-fourier2}. Using the same procedure,
 \begin{align}
   \frac{2}{L}\int_{\frac{L}{2}}^{L}\diff x\, u_0(x)\sin\left(\frac{\pi}{L}nx\right)
   &=\frac{4A}{L^2}\int_{\frac{L}{2}}^{L}\diff x\, (L-x)\sin\left(\frac{\pi}{L}nx\right)\\
-  &=\frac{2A}{\pi n}\cos\left(\frac{\pi}{2}n\right)+\frac{4A}{\pi^2 n^2}\sin\left(\frac{\pi}{2}n\right)\,.
+  &=\frac{2A}{\pi n}\cos\left(\frac{\pi}{2}n\right)+\frac{4A}{\pi^2 n^2}
+  \sin\left(\frac{\pi}{2}n\right)\,.
 \end{align}
 Altogether, we obtain
 \begin{equation}
@@ -505,22 +602,34 @@ Since $n$ is an integer, we know that
     (-1)^{\frac{n-1}{2}}&\text{if}~n~\text{is odd}
   \end{cases}\,,\label{eq:sinpn2}
 \end{equation}
-and therefore $A_n=0$ if $n$ is even.
-In conclusion, only considering the odd coefficients, the solution of the wave equation is
+and therefore $A_n=0$ if $n$ is even. In conclusion, only considering the odd
+coefficients, the solution of the wave equation is
 \begin{equation}
-  u(t,x)=\frac{8A}{\pi^2}\sumnp{n}\frac{(-1)^n}{(2n+1)^2}\sin\left[\frac{\pi}{L}(2n+1)x\right]\cos\left[\frac{\pi}{L}(2n+1)ct\right]\,.
+  u(t,x)=\frac{8A}{\pi^2}\sumnp{n}\frac{(-1)^n}{(2n+1)^2}
+  \sin\left[\frac{\pi}{L}(2n+1)x\right]\cos\left[\frac{\pi}{L}(2n+1)ct\right]\,.
   \label{eq:string-fourier}
 \end{equation}
 This last equation is the same solution as~\cref{eq:string-sol}, but expressed purely in
-terms of standing waves. This expression is called the \emph{Fourier series expansion} of $u(t,x)$.
-In all this section, we made some rather strong assumptions on the convergence of such series, and the generality of the procedure above is not clear at this stage. The next two chapters will be dedicated to build a well-defined mathematical framework for Fourier series.
+terms of standing waves. This expression is called the \emph{Fourier series expansion} of
+$u(t,x)$. In all this section, we made some rather strong assumptions on the convergence
+of such series, and the generality of the procedure above is not clear at this stage. The
+next two chapters will be dedicated to build a well-defined mathematical framework for
+Fourier series.
 
-We conclude this chapter with a couple of observations on the series above. Firstly, the convergence of~\cref{eq:string-fourier} was assumed a priori, but it can be checked a posteriori. Indeed, for all $n>0$ we have
+We conclude this chapter with a couple of observations on the series above. Firstly, the
+convergence of~\cref{eq:string-fourier} was assumed a priori, but it can be checked a
+posteriori. Indeed, for all $n>0$ we have
 \begin{equation}
-  \left|\frac{(-1)^n}{(2n+1)^2}\sin\left[\frac{\pi}{L}(2n+1)x\right]\cos\left[\frac{\pi}{L}(2n+1)ct\right]\right|
+  \left|\frac{(-1)^n}{(2n+1)^2}\sin\left[\frac{\pi}{L}(2n+1)x\right]
+  \cos\left[\frac{\pi}{L}(2n+1)ct\right]\right|
   \leq\frac{1}{(2n+1)^2}\,.
 \end{equation}
-The right-hand side of this inequality is independent of $t$ and $x$, and the summand of a convergent series, so~\cref{eq:string-sol} is an absolutely and uniformly convergent series\footnote{More explicitly, this is a consequence of the Weierstrass $M$-test theorem}. Secondly, Fourier series generally allow obtaining interesting series related to the number $\pi$. For example, here we know using the initial condition~\cref{eq:string-pluck-ic} and the identity~\cref{eq:sinpn2} that
+The right-hand side of this inequality is independent of $t$ and $x$, and the summand of a
+convergent series, so~\cref{eq:string-sol} is an absolutely and uniformly convergent
+series\footnote{More explicitly, this is a consequence of the Weierstrass $M$-test
+theorem}. Secondly, Fourier series generally allow obtaining interesting series related to
+the number $\pi$. For example, here we know using the initial
+condition~\cref{eq:string-pluck-ic} and the identity~\cref{eq:sinpn2} that
 \begin{equation}
   u\left(0,\frac{L}{2}\right)=A=\frac{8A}{\pi^2}\sumnp{n}\frac{1}{(2n+1)^2}\,,
 \end{equation}
@@ -530,19 +639,23 @@ giving us the remarkable identity
   \label{eq:series-pi28}
 \end{equation}
 which elegantly connects $\pi$ and the sum of the inverse squares of all odd integers.
-Interestingly, this somewhat accidental identity can be used to solve the Basel problem! The Basel
-problem, originally solved by Leonhard Euler in 1734, consists in proving that
+Interestingly, this somewhat accidental identity can be used to solve the Basel problem!
+The Basel problem, originally solved by Leonhard Euler in 1734, consists in proving that
 \begin{equation}
   \sumnp{n}\frac{1}{n^2}=\frac{\pi^2}{6}\,,
 \end{equation}
-which is a fundamental identity in number theory, as well as the $s=2$ value of the Riemann zeta function.
-We note the series on the left-hand side as $\zeta$, and observe that it is the sum of the inverse squares of all positive integers. Therefore, the previously demonstrated identity~\cref{eq:series-pi28}, is a partial sum of $\zeta$ restricted to the odd integers. The missing contribution from even integers can be written
+which is a fundamental identity in number theory, as well as the $s=2$ value of the
+Riemann zeta function. We note the series on the left-hand side as $\zeta$, and observe
+that it is the sum of the inverse squares of all positive integers. Therefore, the
+previously demonstrated identity~\cref{eq:series-pi28}, is a partial sum of $\zeta$
+restricted to the odd integers. The missing contribution from even integers can be written
 \begin{equation}
   \sumnp{n}\frac{1}{(2n)^2}=\frac{\zeta}{4}\,,
 \end{equation}
 and therefore
 \begin{equation}
-  \zeta=\sumnp{n}\frac{1}{(2n)^2}+\sumnp{n}\frac{1}{(2n+1)^2}=\frac{\zeta}{4}+\frac{\pi^2}{8}\,.
+  \zeta=\sumnp{n}\frac{1}{(2n)^2}+\sumnp{n}\frac{1}{(2n+1)^2}
+  =\frac{\zeta}{4}+\frac{\pi^2}{8}\,.
 \end{equation}
 Solving for $\zeta$ in the equation above, we obtain
 \begin{equation}
