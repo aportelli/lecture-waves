@@ -5,14 +5,15 @@ A physical quantity $f(t)$ depending on a variable $t$ is said to be \emph{oscil
 \emph{periodic} if it repeats itself identically after a certain duration. In mathematical
 terms:
 \begin{definition}
-  A function $f$ of a single real variable is said to be~\emph{periodic} or specifically \emph{$\tau$-periodic} if there exists a positive real number $\tau$ such that
+  A function $f$ of a single real variable is said to be~\emph{periodic} or specifically
+  \emph{$\tau$-periodic} if there exists a positive real number $\tau$ such that
   \begin{equation}
     \forall t,\quad f(t+\tau)=f(t)\,.
   \end{equation}
   $\tau$ is called a \emph{period} of $f$.
 \end{definition}
-\noindent For example, $\sin(t)$ is $2\pi$-periodic, and a constant function
-admits any number has a period. Another fundamental quantity is the \emph{frequency}:
+\noindent For example, $\sin(t)$ is $2\pi$-periodic, and a constant function admits any
+number has a period. Another fundamental quantity is the \emph{frequency}:
 \begin{definition}
   If $\tau$ is a period of a given function $f$, its inverse
   \begin{equation}
@@ -20,10 +21,10 @@ admits any number has a period. Another fundamental quantity is the \emph{freque
   \end{equation}
   is called a \emph{frequency} of $f$.
 \end{definition}
-\noindent In physical terms, if $t$ is a time variable, $\tau$ is also a time, and $\omega$
-is the number of oscillations per unit of time. One can notice that a periodic function
-never has a unique period, \eg clearly if $\tau$ is a period, $2\tau$ is also a period. Because
-of this it is useful to write the following definition
+\noindent In physical terms, if $t$ is a time variable, $\tau$ is also a time, and
+$\omega$ is the number of oscillations per unit of time. One can notice that a periodic
+function never has a unique period, \eg clearly if $\tau$ is a period, $2\tau$ is also a
+period. Because of this it is useful to write the following definition
 \begin{definition}
   The infimum $\tau_0$ of the set of all possible periods of a given periodic function $f$
   is called the \emph{fundamental period} of $f$. The associated frequency
@@ -45,18 +46,18 @@ periodic function, measuring the size of the oscillations within a fundamental p
   \end{equation}
 \end{definition}
 \noindent For example, the amplitude of $\sin(t)$ is equal to $1$, and it is zero for
-constant functions. \cref{def:amplitude} assumes that $f$ is bounded, and one can
-question whether this hypothesis is true in general. It is not, but continuity is a
-sufficient condition:
+constant functions. \cref{def:amplitude} assumes that $f$ is bounded, and one can question
+whether this hypothesis is true in general. It is not, but continuity is a sufficient
+condition:
 \begin{proposition}
   If a real periodic function is continuous, then it is bounded (and therefore it has a
   well-defined amplitude).
 \end{proposition}
 \begin{proof}
-  Let $f$ be a continuous $\tau$-periodic function. Since $f$
-  is continuous on the compact interval $[0,\tau]$, it follows from the boundedness theorem
-  that it is also bounded on this interval. Finally, using the periodicity, any value
-  $f(t)$ is equal to a value $f(t_0)$ with $0\leq t_0\leq \tau_0$, therefore $f$ is bounded.
+  Let $f$ be a continuous $\tau$-periodic function. Since $f$ is continuous on the compact
+  interval $[0,\tau]$, it follows from the boundedness theorem that it is also bounded on
+  this interval. Finally, using the periodicity, any value $f(t)$ is equal to a value
+  $f(t_0)$ with $0\leq t_0\leq \tau_0$, therefore $f$ is bounded.
 \end{proof}
 \noindent One can show that this condition is not necessary, \ie discontinuous periodic
 functions can be bounded as well. One example of such function is the \emph{square wave},
@@ -130,8 +131,8 @@ The frequency and phase are represented graphically in~\cref{fig:sine-wave}.
   \centering
   \includegraphics{gp_sine-wave.pdf}
   \caption{Example curve of the sine wave defined in~\cref{eq:sine-wave}, with frequency
-    $\omega=2$ and phase $\phi=0.2\times 2\pi$. The arrows represent the period
-  $\tau$ and the phase delay from~\cref{eq:phase-delay}.}
+    $\omega=2$ and phase $\phi=0.2\times 2\pi$. The arrows represent the period $\tau$ and
+  the phase delay from~\cref{eq:phase-delay}.}
   \label{fig:sine-wave}
 \end{figure}
 For the special phase $\frac{\pi}{2}$, a sine wave can be written using the cosine
@@ -154,8 +155,7 @@ motivating the following definition
     \cw(t;\omega,\phi)=\sw\left(t;\omega,\phi+\frac{\pi}{2}\right)\,.
   \end{equation}
 \end{definition}
-A crucial set of formula to manipulate waves is given by the angle addition
-theorem:
+A crucial set of formula to manipulate waves is given by the angle addition theorem:
 \begin{theorem}[Angle addition]
   \label{thm:angle-add}
   For all pairs of real numbers $a$ and $b$, the following identities hold
@@ -174,7 +174,8 @@ theorem:
   \end{equation}
   Therefore,
   \begin{equation}
-    e^{i a}e^{i b}=\cos(a)\cos(b)-\sin(a)\sin(b)+i[\cos(a)\sin(b)+\sin(a)\cos(b)]\,,\label{eq:eaeb}
+    e^{i a}e^{i b}=\cos(a)\cos(b)-\sin(a)\sin(b)+i[\cos(a)\sin(b)+\sin(a)\cos(b)]\,,
+    \label{eq:eaeb}
   \end{equation}
   and by definition
   \begin{equation}
@@ -204,8 +205,9 @@ These identities
   \end{align}
 \end{corollary}
 \begin{proof}
-  \cref{eq:sinatsinb,eq:cosatcosb} are obtained by considering the sum and difference of~\cref{eq:cosapb,eq:cosamb}, and~\cref{eq:sinatcosb} by taking the sum of~\cref{eq:sinapb,eq:sinamb}.
-  Then, we define
+  \cref{eq:sinatsinb,eq:cosatcosb} are obtained by considering the sum and difference
+  of~\cref{eq:cosapb,eq:cosamb}, and~\cref{eq:sinatcosb} by taking the sum
+  of~\cref{eq:sinapb,eq:sinamb}. Then, we define
   \begin{equation}
     c=\frac{a+b}{2}\qquad\text{and}\qquad d=\frac{a-b}{2}\,,
   \end{equation}
@@ -214,7 +216,8 @@ These identities
     \sin(a)+\sin(b)&=\sin(c+d)+\sin(c-d)=2\sin(c)\cos(d)\notag\\
     &=2\sin\left(\frac{a+b}{2}\right)\cos\left(\frac{a-b}{2}\right)\,,
   \end{align}
-  which proves~\cref{eq:sinapsinb}. \cref{eq:cosapcosb} can be derived in the same way using~\cref{eq:cosatcosb}.
+  which proves~\cref{eq:sinapsinb}. \cref{eq:cosapcosb} can be derived in the same way
+  using~\cref{eq:cosatcosb}.
 \end{proof}
 These additional formulas allow to systematically convert a product of sine/cosine
 functions into a sum, and vice-versa. The angle addition theorem can be proven solely
@@ -239,8 +242,7 @@ complex exponentials, motivating the definition below.
     \ew(t;\omega,\phi)=e^{i\phi}\ew(t;\omega)\,\quad\text{and}\quad
     \ew(t;\omega,\phi)^*=\ew(-t;\omega,-\phi)=\ew(t;-\omega,-\phi)\,,\label{eq:cw-conj}
   \end{equation}
-  Using these formulas, the
-  relationship to sine and cosine waves can be rewritten as
+  Using these formulas, the relationship to sine and cosine waves can be rewritten as
   \begin{align}
     \cw(t;\omega,\phi)&=\frac{1}{2}[\ew(t;\omega,\phi)+\ew(t;-\omega,-\phi)]\,,
     \label{eq:cwtoew}\\
@@ -248,10 +250,10 @@ complex exponentials, motivating the definition below.
     \label{eq:swtoew}
   \end{align}
 \end{definition}
-A considerable simplification with complex waves comes from the fact that the phase
-just leads to a multiplicative factor, equivalent to giving a \emph{complex amplitude} to the wave.
-Similarly, phased sine and cosine waves can be expressed as a sum of zero-phase ones using
-the angle addition theorem:
+A considerable simplification with complex waves comes from the fact that the phase just
+leads to a multiplicative factor, equivalent to giving a \emph{complex amplitude} to the
+wave. Similarly, phased sine and cosine waves can be expressed as a sum of zero-phase ones
+using the angle addition theorem:
 \begin{align}
   \sw(t;\omega,\phi)&=\cos(\phi)\sw(t;\omega)+\sin(\phi)\cw(t;\omega)\,,\\
   \cw(t;\omega,\phi)&=\cos(\phi)\cw(t;\omega)-\sin(\phi)\sw(t;\omega)\,.
@@ -263,16 +265,14 @@ legitimate question is whether the sum of two periodic functions is till periodi
 not always true, and can be characterised by the following result:
 \begin{theorem}
   \label{thm:period-sum}
-  Let $f_1(t)$ and $f_2(t)$ be two periodic functions of fundamental periods $\tau_1\neq 0$
-  and $\tau_2\neq 0$, respectively. Then the sum $f_1+f_2$ as well as the product $f_1f_2$
-  are periodic if and only if the period ratio  $\smash{\frac{\tau_1}{\tau_2}}$ is a rational number.
-  % If
-  % this condition is true, this ratio can be written $\smash{\frac{\tau_1}{\tau_2}}=\smash{\frac{p}{q}}$ where
-  % $p$ and $q$ are two coprime integers (\ie their GCD is $1$), and the fundamental
-  % frequency $\tau$ of $f(t)$ is given by
-  % \begin{equation}
-  %   \tau=q\tau_1=p\tau_2\,.
-  % \end{equation}
+  Let $f_1(t)$ and $f_2(t)$ be two periodic functions of fundamental periods $\tau_1\neq
+  0$ and $\tau_2\neq 0$, respectively. Then the sum $f_1+f_2$ as well as the product
+  $f_1f_2$ are periodic if and only if the period ratio  $\smash{\frac{\tau_1}{\tau_2}}$
+  is a rational number.
+  % If this condition is true, this ratio can be written
+  % $\smash{\frac{\tau_1}{\tau_2}}=\smash{\frac{p}{q}}$ where $p$ and $q$ are two coprime
+  % integers (\ie their GCD is $1$), and the fundamental frequency $\tau$ of $f(t)$ is
+  % given by \begin{equation} \tau=q\tau_1=p\tau_2\,. \end{equation}
 \end{theorem}
 \begin{proof}
   % TODO
@@ -287,10 +287,10 @@ not always true, and can be characterised by the following result:
 \end{example}
 \noindent Both examples above are illustrated in~\cref{fig:sine-sum}. Mathematically
 speaking,~\cref{thm:period-sum} means that generally periodic functions sums are not
-periodic. However, we remind the reader that any real number is arbitrarily close to a rational
-number, so non-periodic sums like in~\cref{ex:nperiod-sum} can always be approximated
-arbitrarily well by a periodic function. This is relevant for physics and engineering
-applications where quantities are often known up to some limited precision.
+periodic. However, we remind the reader that any real number is arbitrarily close to a
+rational number, so non-periodic sums like in~\cref{ex:nperiod-sum} can always be
+approximated arbitrarily well by a periodic function. This is relevant for physics and
+engineering applications where quantities are often known up to some limited precision.
 \begin{figure}[t]
   \centering
   \includegraphics{gp_sine-sum.pdf}
@@ -316,18 +316,25 @@ that products can always be reduced to sums:
   These identities are a trivial re-interpretation of~\cref{cor:sumproduct}.
 \end{proof}
 
-An important concept when adding waves is the notion of \emph{interference}. Waves oscillate between negative and positive values (or around the unit circle for complex waves), and can add up or cancel when summed. This can be formalised in the following way
+An important concept when adding waves is the notion of \emph{interference}. Waves
+oscillate between negative and positive values (or around the unit circle for complex
+waves), and can add up or cancel when summed. This can be formalised in the following way
 \begin{definition}
-  Let $f$ and $g$ be two complex-valued periodic functions, not necessarily with the same period. We consider the sum $h=f+g$, which modulus squared is given by
+  Let $f$ and $g$ be two complex-valued periodic functions, not necessarily with the same
+  period. We consider the sum $h=f+g$, which modulus squared is given by
   \begin{equation}
     |h|^2=|f|^2+|g|^2+2\Re(f^*g)\,.
   \end{equation}
-  The last term $2\Re(f^*g)$ in the equation is called the \emph{interference term}. At a given point $t\in\mathbb{R}$:
+  The last term $2\Re(f^*g)$ in the equation is called the \emph{interference term}. At a
+  given point $t\in\mathbb{R}$:
   \begin{enumerate}
-    \item if $\Re[f^*(t)g(t)]>0$, $f$ and $g$ are said to \emph{interfere constructively} at $t$;
-    \item if $\Re[f^*(t)g(t)]<0$, $f$ and $g$ are said to \emph{interfere destructively} at $t$.
+    \item if $\Re[f^*(t)g(t)]>0$, $f$ and $g$ are said to \emph{interfere constructively}
+      at $t$;
+    \item if $\Re[f^*(t)g(t)]<0$, $f$ and $g$ are said to \emph{interfere destructively}
+      at $t$.
   \end{enumerate}
-  If $f$ and $g$ are real-valued functions, the interference term is simply given by $2fg$.
+  If $f$ and $g$ are real-valued functions, the interference term is simply given by
+  $2fg$.
 \end{definition}
 We now discuss below key examples of interference between elementary waves.
 \begin{example}
@@ -339,12 +346,21 @@ We now discuss below key examples of interference between elementary waves.
   \begin{equation}
     f(t)=2\cos\left(\frac{\phi}{2}\right)\sw\left(t;\omega,\frac{\phi}{2}\right)\,.
   \end{equation}
-  So $f$ is still an elementary sine wave with frequency $\omega$, phase $\frac{\phi}{2}$, and amplitude $2\cos(\frac{\phi}{2})$. The interesting element here is the change of amplitude: at $\phi=0$, the amplitude of $f$ is $2$, and the two waves interfere in a maximally constructive way, they are said to be \emph{in phase}. At $\phi=\pi$, $f$ is identically zero and the two waves interfere in a maximally destructive way, they are said to be \emph{out of phase}.
-  Using the definition above, and~\cref{eq:sinatsinb}, the related interference term is given by
+  So $f$ is still an elementary sine wave with frequency $\omega$, phase $\frac{\phi}{2}$,
+  and amplitude $2\cos(\frac{\phi}{2})$. The interesting element here is the change of
+  amplitude: at $\phi=0$, the amplitude of $f$ is $2$, and the two waves interfere in a
+  maximally constructive way, they are said to be \emph{in phase}. At $\phi=\pi$, $f$ is
+  identically zero and the two waves interfere in a maximally destructive way, they are
+  said to be \emph{out of phase}. Using the definition above, and~\cref{eq:sinatsinb}, the
+  related interference term is given by
   \begin{equation}
     2\sw(t;\omega,\phi)\sw(t;\omega)=\cos(\phi)-\cw(t;2\omega,\phi)\,.
   \end{equation}
-  Because the cosine function oscillate between $-1$ and $1$, the expression above takes values between $-2$ and $2$. If $\phi=0$, the two waves interfere constructively for all $t$, which is the maximally constructive case above. Similarly, the waves interfere destructively for all $t$ with $\phi=\pi$. This example is illustrated in~\cref{fig:interference}
+  Because the cosine function oscillate between $-1$ and $1$, the expression above takes
+  values between $-2$ and $2$. If $\phi=0$, the two waves interfere constructively for all
+  $t$, which is the maximally constructive case above. Similarly, the waves interfere
+  destructively for all $t$ with $\phi=\pi$. This example is illustrated
+  in~\cref{fig:interference}
 \end{example}
 \begin{figure}[ph!]
   \centering
@@ -352,39 +368,58 @@ We now discuss below key examples of interference between elementary waves.
   \\\hspace{0.7cm}(a)\\~\\
   \includegraphics{gp_sine-interference-des.pdf}
   \\\hspace{0.7cm}(b)\\
-  \caption{For each figure above, the lowermost curve represent the sum of the two curves above. Pane (a) represents a case of maximally constructive interference between two in-phase sine waves with frequency $1$. Pane (b) represents a case of maximally destructive interference between two out-of-phase sine waves with frequency $1$.}
+  \caption{For each figure above, the lowermost curve represent the sum of the two curves
+    above. Pane (a) represents a case of maximally constructive interference between two
+    in-phase sine waves with frequency $1$. Pane (b) represents a case of maximally
+  destructive interference between two out-of-phase sine waves with frequency $1$.}
   \label{fig:interference}
 \end{figure}
 \begin{example}
-  Another important example of interference is the \emph{beating effect}, which occurs when summing two elementary waves with slightly different frequencies:
+  Another important example of interference is the \emph{beating effect}, which occurs
+  when summing two elementary waves with slightly different frequencies:
   \begin{equation}
     f(t)=\sw(t;\omega)+\sw(t;\omega+\delta\omega)\,,
   \end{equation}
-  where $\delta\omega$ is assumed to be small compared to $\omega$.
-  In this case, the interference term can be written
+  where $\delta\omega$ is assumed to be small compared to $\omega$. In this case, the
+  interference term can be written
   \begin{equation}
     2\sw(t;\omega)\sw(t;\omega+\delta\omega)=\cw(t;\delta\omega)-\cw(t;2\omega+\delta\omega)
     \simeq \cw(t;\delta\omega)-\cw(t;2\omega)\,,
   \end{equation}
-  where in the last term we used the assumption on the smallness of $\delta\omega$. The first cosine in this expression oscillates much slower than the second one, and is equal to $1$ for $t=\smash{\frac{n}{\delta\omega}}$, and $-1$ for $t=\smash{\frac{n}{\delta\omega}+\frac{1}{2\delta\omega}}$. Following the same argument as in the previous example, this means that $f(t)$ oscillates in time between maximally constructive and destructive interference, at the frequency $\delta\omega$. This is generally called a \emph{beating effect}, particularly in an acoustic context, where the intensity of the sound associated to $f(t)$ very distinctly goes to zero periodically $\delta\omega$ times per second.
+  where in the last term we used the assumption on the smallness of $\delta\omega$. The
+  first cosine in this expression oscillates much slower than the second one, and is equal
+  to $1$ for $t=\smash{\frac{n}{\delta\omega}}$, and $-1$ for
+  $t=\smash{\frac{n}{\delta\omega}+\frac{1}{2\delta\omega}}$. Following the same argument
+  as in the previous example, this means that $f(t)$ oscillates in time between maximally
+  constructive and destructive interference, at the frequency $\delta\omega$. This is
+  generally called a \emph{beating effect}, particularly in an acoustic context, where the
+  intensity of the sound associated to $f(t)$ very distinctly goes to zero periodically
+  $\delta\omega$ times per second.
 
   Another way to present this phenomenon is to write the identity
   \begin{equation}
-    f(t)=2\cw\left(t;\frac{\delta\omega}{2}\right)\sw\left(t;\omega+\frac{\delta\omega}{2}\right)
+    f(t)=2\cw\left(t;\frac{\delta\omega}{2}\right)
+    \sw\left(t;\omega+\frac{\delta\omega}{2}\right)
     \simeq 2\cw\left(t;\frac{\delta\omega}{2}\right)\sw(t;\omega)\,.
   \end{equation}
-  In that form, $f(t)$ appears as a sine wave with frequency $\omega$ modulated by a cosine with half this frequency. Since the cosine function goes to zero twice per period, we find again that $f(t)$ goes to zero with frequency $\delta\omega$. The beating effect is illustrated in~\cref{fig:beating}.
+  In that form, $f(t)$ appears as a sine wave with frequency $\omega$ modulated by a
+  cosine with half this frequency. Since the cosine function goes to zero twice per
+  period, we find again that $f(t)$ goes to zero with frequency $\delta\omega$. The
+  beating effect is illustrated in~\cref{fig:beating}.
 \end{example}
 \begin{figure}
   \centering
   \includegraphics{gp_sine-beating.pdf}
-  \caption{The upper plot represents two sine waves with slightly different frequencies $\omega=1$ and $\omega+\delta\omega=1.1$. The lower plot represents the sum of these two waves, with a visible beating effect with frequency $\delta\omega=0.1$. The beats can be correlated with the two sine waves going in and out of phase.}
+  \caption{The upper plot represents two sine waves with slightly different frequencies
+    $\omega=1$ and $\omega+\delta\omega=1.1$. The lower plot represents the sum of these
+    two waves, with a visible beating effect with frequency $\delta\omega=0.1$. The beats
+  can be correlated with the two sine waves going in and out of phase.}
   \label{fig:beating}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Trigonometric polynomials}
-We can make the following definition for an arbitrary linear
-combination of elementary waves:
+We can make the following definition for an arbitrary linear combination of elementary
+waves:
 \begin{definition}
   We call \emph{trigonometric polynomial} of degree $N$ and frequency $\omega$ any
   function of the form
@@ -401,14 +436,14 @@ then
 \begin{proposition}
   Let $P$ be a trigonometric polynomial of degree $N\geq 1$ and frequency $\omega$ with
   sine-cosine coefficients $a_n$ and $b_n$. $P$ is a periodic function with period
-  $\tau=\frac{1}{\omega}$, and additionally if $a_1\neq0$ or $b_1\neq0$, then $\omega$ is the
-  fundamental frequency of $P(t)$.
+  $\tau=\frac{1}{\omega}$, and additionally if $a_1\neq0$ or $b_1\neq0$, then $\omega$ is
+  the fundamental frequency of $P(t)$.
 \end{proposition}
 \begin{proof}
-  Each term in~\cref{eq:trigp-sc} is trivially $T$-periodic, so $P$ is also $\tau$-periodic.
-  Now, the $n$-th mode of $P$ has a fundamental period of $\tau_n=\frac{\tau}{n}$. Assuming that
-  $a_1\neq0$ or $b_1\neq0$, then the period ratio of this first mode to an arbitrary
-  non-vanishing higher mode $n$ is given by
+  Each term in~\cref{eq:trigp-sc} is trivially $T$-periodic, so $P$ is also
+  $\tau$-periodic. Now, the $n$-th mode of $P$ has a fundamental period of
+  $\tau_n=\frac{\tau}{n}$. Assuming that $a_1\neq0$ or $b_1\neq0$, then the period ratio
+  of this first mode to an arbitrary non-vanishing higher mode $n$ is given by
   \begin{equation}
     \frac{\tau_1}{\tau_n}=n\,.
   \end{equation}
@@ -449,34 +484,41 @@ coefficients, formulated in the theorem below
   \label{thm:trigp-unicity}
   Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
   degrees $N$ and $N'$, and sine-cosine coefficients $a_n$,$b_n$ and $a'_n$,$b'_n$,
-  respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all $t\in\mathbb{R}$, if and
-  only if their degrees and coefficients are equal, \ie $N=N'$ and for all $n$
+  respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all
+  $t\in\mathbb{R}$, if and only if their degrees and coefficients are equal, \ie $N=N'$
+  and for all $n$
   \begin{equation}
     a_n=a'_n\quad\text{and}\quad b_n=b'_n\,.
   \end{equation}
 \end{theorem}
 Although we could attempt to prove that directly, this theorem is a consequence of
-fundamental orthogonality properties of elementary waves. Because these properties are crucial in Fourier analysis, we  study them in detail in the next section, where the theorem above will be proven.
+fundamental orthogonality properties of elementary waves. Because these properties are
+crucial in Fourier analysis, we  study them in detail in the next section, where the
+theorem above will be proven.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Orthogonality of elementary waves}
-The reader might be more familiar with the notion of orthogonality in vector spaces, which we summarise below as an introduction to the notion of orthogonality of periodic functions.
-In vector calculus, given an $n$-dimensional real vector $\vv{v}$ and a unit vector $\vv{u}$, the
-\emph{orthogonal projection} $\vv{v}_\vv{u}$ of $\vv{v}$ on the axis defined by $\vv{u}$ is given by
+The reader might be more familiar with the notion of orthogonality in vector spaces, which
+we summarise below as an introduction to the notion of orthogonality of periodic
+functions. In vector calculus, given an $n$-dimensional real vector $\vv{v}$ and a unit
+vector $\vv{u}$, the \emph{orthogonal projection} $\vv{v}_\vv{u}$ of $\vv{v}$ on the axis
+defined by $\vv{u}$ is given by
 \begin{equation}
   \label{eq:orth-proj}
   \vv{v}_{\vv{u}}=\cos(\theta)|\vv{v}|\,\vv{u}\,,
 \end{equation}
-where $\theta$ is the angle between $\vv{u}$ and $\vv{v}$, and $|\vv{v}|$ is the norm of $\vv{v}$. The
-projection coefficient $\cos(\theta)|\vv{v}|$ is known to be given by the \emph{dot product}
+where $\theta$ is the angle between $\vv{u}$ and $\vv{v}$, and $|\vv{v}|$ is the norm of
+$\vv{v}$. The projection coefficient $\cos(\theta)|\vv{v}|$ is known to be given by the
+\emph{dot product}
 \begin{equation}
-  \vv{v}\cdot \vv{u}=\sum_{j=1}^n \vv{v}_j \vv{u}_j=\cos(\theta)|\vv{v}|\,.\label{eq:vec-dot}
+  \vv{v}\cdot \vv{u}=\sum_{j=1}^n \vv{v}_j \vv{u}_j=\cos(\theta)|\vv{v}|\,.
+  \label{eq:vec-dot}
 \end{equation}
-Additionally, the dot product $\vv{v}\cdot \vv{u}$ vanishes when $\vv{v}$ and $\vv{u}$ are \emph{orthogonal}
-(\ie they form an angle of $\pi$ radians). This makes the dot product an essential tool of
-vector calculus to compute the coordinate of vectors in an orthonormal basis. Explicitly,
-let $\vv{e}_j$ be an orthonormal basis of $\mathbb{R}^n$, and let $\vv{v}^{\vv{e}}_j$ be the coefficients
-of $\vv{v}$ in that basis, \ie
+Additionally, the dot product $\vv{v}\cdot \vv{u}$ vanishes when $\vv{v}$ and $\vv{u}$ are
+\emph{orthogonal} (\ie they form an angle of $\pi$ radians). This makes the dot product an
+essential tool of vector calculus to compute the coordinate of vectors in an orthonormal
+basis. Explicitly, let $\vv{e}_j$ be an orthonormal basis of $\mathbb{R}^n$, and let
+$\vv{v}^{\vv{e}}_j$ be the coefficients of $\vv{v}$ in that basis, \ie
 \begin{equation}
   \vv{v}=\sum_{j=1}^{n}\vv{v}^{\vv{e}}_j\,\vv{e}_j\,,
 \end{equation}
@@ -513,8 +555,8 @@ We start by defining the dot product between two periodic functions
 The definition~\cref{eq:func-dot} can be interpreted as a continuous version
 of~\cref{eq:vec-dot}, where the values $f(t)$ and $g(t)$ are the ``continuous
 coordinates'' of the functions $f$ and $g$, and the integral is a ``continuous sum'' over
-these coordinates. The functional dot product has the same linearity and commutativity properties
-than the vector dot product:
+these coordinates. The functional dot product has the same linearity and commutativity
+properties than the vector dot product:
 \begin{proposition}
   Let $f$, $g$, and $h$ be three real $\tau$-periodic functions. The following identities
   hold for any pair of real number $\alpha$ and $\beta$
@@ -540,8 +582,8 @@ The definition of orthogonality follows naturally:
 We now give the main result of this section, \ie the orthogonality of elementary waves
 \begin{theorem}
   \label{thm:sc-orth}
-  Let $\omega>0$ be an arbitrary frequency corresponding to the period $\tau$. For any pair
-  of integers $n$ and $m$, the following identities hold
+  Let $\omega>0$ be an arbitrary frequency corresponding to the period $\tau$. For any
+  pair of integers $n$ and $m$, the following identities hold
   \begin{align}
     \braket{\sw(n\omega),\sw(m\omega)}&=\frac{\tau}{2}\delta_{nm}\,,\label{eq:sw-orth}\\
     \braket{\cw(n\omega),\cw(m\omega)}&=\frac{\tau}{2}\delta_{nm}\,,\label{eq:cw-orth}\\
@@ -556,9 +598,9 @@ We now give the main result of this section, \ie the orthogonality of elementary
     \end{cases}\,.
   \end{equation}
   In other words, for any pair of integers $n$ and $m$, sine waves of the form
-  $\sw(n\omega)$ and $\sw(m\omega)$ have norm squared $\frac{\tau}{2}$ and are orthogonal if
-  and only if $n\neq m$, the same applies to cosine waves, and a sine and a cosine wave of
-  the form $\sw(n\omega)$ and $\cw(m\omega)$ are always orthogonal.
+  $\sw(n\omega)$ and $\sw(m\omega)$ have norm squared $\frac{\tau}{2}$ and are orthogonal
+  if and only if $n\neq m$, the same applies to cosine waves, and a sine and a cosine wave
+  of the form $\sw(n\omega)$ and $\cw(m\omega)$ are always orthogonal.
 \end{theorem}
 \begin{proof}
   Let us demonstrate~\cref{eq:sw-orth,eq:cw-orth,eq:scw-orth} using the
@@ -584,7 +626,8 @@ We now give the main result of this section, \ie the orthogonality of elementary
   \end{equation}
   If $n\neq m$, \cref{eq:sw-prod} integrates to
   \begin{align}
-    &\frac{1}{2}\int_{0}^{\tau}\diff t\,\{\cos[2\pi(n-m)\omega t]-\cos[2\pi(n+m)\omega t]\}\notag\\
+    &\frac{1}{2}\int_{0}^{\tau}\diff t\,\{\cos[2\pi(n-m)\omega t]-\cos[2\pi(n+m)\omega t]\}
+    \notag\\
     &\qquad\qquad=\left[\frac{1}{2\pi(n-m)\omega}\sin[2\pi(n-m)\omega t]
     -\frac{1}{2\pi(n+m)\omega}\sin[2\pi(n+m)\omega t]\right]_0^\tau\notag\\
     &\qquad\qquad=0
@@ -607,7 +650,8 @@ We now give the main result of this section, \ie the orthogonality of elementary
   \end{equation}
   In the case $n\neq m$, one obtains
   \begin{align}
-    &\frac{1}{2}\int_{0}^{\tau}\diff t\,\{\sin[2\pi(n-m)\omega t]+\sin[2\pi(n+m)\omega t]\}\notag\\
+    &\frac{1}{2}\int_{0}^{\tau}\diff t\,\{\sin[2\pi(n-m)\omega t]+\sin[2\pi(n+m)\omega t]\}
+    \notag\\
     &\qquad\qquad=-\left[\frac{1}{2\pi(n-m)\omega}\cos[2\pi(n-m)\omega t]
     +\frac{1}{2\pi(n+m)\omega}\cos[2\pi(n+m)\omega t]\right]_0^\tau\notag\\
     &\qquad\qquad=0\,,
@@ -631,12 +675,12 @@ functions. It can be generalised to complex functions as follows
 \end{definition}
 The generalisation is done by using a complex conjugation for the second argument of the
 product, allowing the norm to remain a real positive number. Since any real number is its
-own complex conjugate, this definition is clearly identical to~\cref{def:dot-rfunc} when restricted to
-real functions. This generalisation has the consequence of slightly breaking the symmetry
-of the dot product:
+own complex conjugate, this definition is clearly identical to~\cref{def:dot-rfunc} when
+restricted to real functions. This generalisation has the consequence of slightly breaking
+the symmetry of the dot product:
 \begin{proposition}
-  Let $f$, $g$, and $h$ be three complex $\tau$-periodic functions. The following identities
-  hold for any pair of complex numbers $\alpha$ and $\beta$
+  Let $f$, $g$, and $h$ be three complex $\tau$-periodic functions. The following
+  identities hold for any pair of complex numbers $\alpha$ and $\beta$
   \begin{align}
     \braket{\alpha f+\beta g,h}&=\alpha\braket{f,h}+\beta\braket{g,h}\,,\\
     \braket{f,\alpha g+\beta h}&=\alpha^*\braket{f,g}+\beta^*\braket{f,h}\,,\\
@@ -650,14 +694,14 @@ of the dot product:
 With this generalised dot product, we can formulate the orthogonality of complex
 elementary waves
 \begin{theorem}
-  Let $\omega>0$ be an arbitrary frequency corresponding to the period $\tau$. For any pair
-  of integers $n$ and $m$, the following identity holds
+  Let $\omega>0$ be an arbitrary frequency corresponding to the period $\tau$. For any
+  pair of integers $n$ and $m$, the following identity holds
   \begin{equation}
     \braket{\ew(n\omega),\ew(m\omega)}=\tau\delta_{nm}\,,
   \end{equation}
   \ie for any pair of integers $n$ and $m$, complex elementary waves of the form
-  $\ew(n\omega)$ and $\ew(m\omega)$ have norm squared $\tau$ and are orthogonal if and only
-  if $n\neq m$.
+  $\ew(n\omega)$ and $\ew(m\omega)$ have norm squared $\tau$ and are orthogonal if and
+  only if $n\neq m$.
 \end{theorem}
 \begin{proof}
   Using~\cref{eq:eprod,eq:cw-conj}, one has
