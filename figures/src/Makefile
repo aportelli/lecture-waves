@@ -3,7 +3,7 @@ MKPLOT = mkplot/mkplot
 GPPREF = gp_
 TIKZPREF = tikz_
 
-DEPS     = Makefile $(MKPLOT) $(wildcard *.dat)
+DEPS     = Makefile mkplot_preamble.tex $(MKPLOT) $(wildcard *.dat)
 OUTDIR   = ..
 TIKZFIG  = $(patsubst %.tikz,$(TIKZPREF)%.pdf,$(wildcard *.tikz))
 GPFIG    = $(patsubst %.plt,$(GPPREF)%.pdf,$(wildcard *.plt))

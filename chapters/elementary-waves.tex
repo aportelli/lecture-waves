@@ -8,7 +8,7 @@ terms:
   A function $f$ of a single real variable is said to be~\emph{periodic} or specifically
   \emph{$\tau$-periodic} if there exists a positive real number $\tau$ such that
   \begin{equation}
-    \forall t,\quad f(t+\tau)=f(t)\,.
+    \forall t\in\mathbb{R},\quad f(t+\tau)=f(t)\,.
   \end{equation}
   $\tau$ is called a \emph{period} of $f$.
 \end{definition}
@@ -103,12 +103,12 @@ We start by defining elementary sine waves
   \begin{equation}
     \sw(t;\omega,\phi)=\sin(2\pi\omega t + \phi)\,.\label{eq:sine-wave}
   \end{equation}
-  where $\omega\geq 0$ and $0\leq\phi<2\pi$ are the \emph{frequency} and \emph{phase} of
+  where $\omega\neq 0$ and $0\leq\phi<2\pi$ are the \emph{frequency} and \emph{phase} of
   the wave, respectively. When the phase argument is omitted then it is assumed that
   $\phi=0$, \ie $\sw(t;\omega)=\sw(t;\omega,0)$.
 \end{definition}
 \noindent It is straightforward to show that, according to the definition in the previous
-section, $\sw(t;\omega,\phi)$ is a periodic function with fundamental frequency $\omega$
+section, $\sw(t;\omega,\phi)$ is a periodic function with fundamental frequency $|\omega|$
 and amplitude $1$. The phase measures the delay in the oscillation relatively to a wave
 with identical frequency equal to zero at $t=0$. More generally if two waves have
 identical frequencies and different phases $\phi_1$ and $\phi_2$, the time delay between
@@ -424,12 +424,13 @@ waves:
   We call \emph{trigonometric polynomial} of degree $N$ and frequency $\omega$ any
   function of the form
   \begin{equation}
-    P(t)=a_0+\sum_{n=1}^N[a_n\,\cw(t;n\omega)+b_n\,\sw(t;n\omega)]\,,
+    P(t)=\frac{a_0}{2}+\sum_{n=1}^N[a_n\,\cw(t;n\omega)+b_n\,\sw(t;n\omega)]\,,
     \label{eq:trigp-sc}
   \end{equation}
   where $a_n$ and $b_n$ are real coefficients such that $a_N\neq 0$ or $b_N \neq 0$. The
   formula above is called the \emph{sine-cosine form} of $P(t)$ with \emph{sine-cosine
-  coefficients} or \emph{modes} $a_n$ and $b_n$.
+  coefficients} or \emph{modes} $a_n$ and $b_n$. The $\frac{1}{2}$ normalisation of $a_0$
+  is arbitrary, and will be convenient later. It is also convenient to define $b_0=0$, to avoid constantly treating the $a_n$ coefficients separately for having an $n=0$ coefficient.
 \end{definition}
 It is clear that such function is periodic, and a consequence of~\cref{thm:period-sum} is
 then
@@ -464,9 +465,8 @@ convenient complex form
   \begin{equation}
     c_n =
     \begin{cases}
-      a_0 &\text{if~}n=0\\
-      \frac{1}{2}(a_n-ib_n)&\text{if~}n>0\\
-      \frac{1}{2}(a_n+ib_n)&\text{if~}n<0
+      \frac{1}{2}(a_n-ib_n)&\text{if~}n< 0\\
+      \frac{1}{2}(a_n+ib_n)&\text{if~}n\geq 0
     \end{cases}
     \,,\label{eq:ab-to-c}
   \end{equation}
@@ -501,7 +501,7 @@ theorem above will be proven.
 The reader might be more familiar with the notion of orthogonality in vector spaces, which
 we summarise below as an introduction to the notion of orthogonality of periodic
 functions. In vector calculus, given an $n$-dimensional real vector $\vv{v}$ and a unit
-vector $\vv{u}$, the \emph{orthogonal projection} $\vv{v}_\vv{u}$ of $\vv{v}$ on the axis
+vector $\vv{u}$, the \emph{orthogonal projection} $\vv{v}_{\vv{u}}$ of $\vv{v}$ on the axis
 defined by $\vv{u}$ is given by
 \begin{equation}
   \label{eq:orth-proj}
@@ -809,3 +809,76 @@ how to generalise elementary waves and trigonometric polynomials to multiple rea
 variables.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multiple dimensions and travelling waves}
+In all this chapter, we discussed elementary waves and their combinations as functions of a single real variable.
+However, oscillatory physical systems will often require multiple variables to be described. We already encountered that in~\cref{chap:wave-eq} when studying the wave equation. We found that the wave equation solution~\cref{eq:string-fourier} for the plucked string was a periodic function both in the time and space dimensions. Before starting to discuss how this result can help us to define trigonometric polynomials in multiple dimensions, we need to formulate a definition for multidimensional periodic functions. This can be done simply by considering functions that are periodic in each of their variables:
+\begin{definition}
+  A function $f$ on $\mathbb{R}^d$ is said to be \emph{periodic} or specifically \emph{$\vv{\tau}$-periodic} if there exists a vector $\vv{\tau}$ with positive components such that $f(\vv{x})=f(x_1,\dots,x_d)$ is $\tau_j$-periodic in the variable $x_j$, for all directions $j$. The vector $\vv{\tau}$ is called a \emph{period} of $f$, and the vector $\vv{\omega}$ defined by
+  \begin{equation}
+    \omega_j=\frac{1}{\tau_j}\,,
+  \end{equation}
+  is called a \emph{frequency} of $f$.
+\end{definition}
+\begin{example}
+  The function $f$ defined by $f(x,y)=\sin(x+2y)$ is $(2\pi,\pi)$-periodic.
+\end{example}
+
+We could inspire ourselves from the solution~\cref{eq:string-fourier} of the plucked string problem to define trigonometric polynomials in $d$ dimensions to be linear combinations of products of $d$ elementary sine or cosine waves. Although this would be a fine definition, it would need a tedious discussion of the combinatorics of all the possible independent cross-terms between sine and cosine waves. This is, once more, a situation where using complex exponentials brings considerable simplifications, since the product of complex waves is still a complex wave. Explicitly, assuming a vector of $d$ real variables $\vv{x}=(x_1,\dots,x_d)$, and a vector of $d$ frequencies $\vv{\omega}=(\omega_1,\dots,\omega_d)$, we can write
+\begin{align}
+  e^{2\pi i\omega_1x_1}\cdots e^{2\pi i\omega_dx_d}&=e^{2\pi i(\omega_1x_1+\cdots+\omega_dx_d)}=e^{2\pi i\vv{\omega}\cdotp\vv{x}}\notag\\
+  &=\cos(2\pi\vv{\omega}\cdot\vv{x})+i\sin(2\pi\vv{\omega}\cdot\vv{x})\,.
+\end{align}
+This motivates the following definitions for multidimensional elementary waves
+\begin{definition}
+  We call \emph{elementary sine wave}, \emph{elementary cosine wave}, and \emph{elementary complex wave} on $\mathbb{R}^d$ the functions defined by
+  \begin{align}
+    \sw(\vv{x};\vv{\omega},\phi)&=\sin(2\pi\vv{\omega}\cdot\vv{x}+\phi)\,,\\
+    \cw(\vv{x};\vv{\omega},\phi)&=\cos(2\pi\vv{\omega}\cdot\vv{x}+\phi)\,,\\
+    \ew(\vv{x};\vv{\omega},\phi)&=e^{2\pi i\vv{\omega}\cdotp\vv{x}+\phi}\,,
+  \end{align}
+  respectively, where the \emph{frequency} $\vv{\omega}\in\mathbb{R}^d$ has only non-zero components, and the \emph{phase} $\phi$ is a real number such that $0\leq \phi <2\pi$.
+\end{definition}
+Because multidimensional elementary waves are essentially defined as one-dimensional waves applied on a dot product, most identities from the previous section can be easily generalised. The previous statement can be investigated further in the following way: for a given frequency vector $\vv{\omega}$, any vector $\vv{x}$ can be uniquely written as
+\begin{equation}
+  \vv{x}=\vv{x}_{\parallel}+\vv{x}_{\perp}\,,
+\end{equation}
+where $\vv{x}_{\parallel}$ is the orthogonal projection of $\vv{x}$ on $\vv{\omega}$, and $\vv{x}_{\perp}$ is the perpendicular remainder. Explicitly
+\begin{equation}
+  \vv{x}_{\parallel}=(\vv{x}\cdot\hat{\vv{\omega}})\,\hat{\vv{\omega}}
+  \qquad\text{and}\qquad
+  \vv{x}_{\perp}=\vv{x}-\vv{x}_{\parallel}\,,
+\end{equation}
+where $\hat{\vv{\omega}}$ is the unit vector in the direction of $\vv{\omega}$, \ie
+\begin{equation}
+  \hat{\vv{\omega}}=\frac{\vv{\omega}}{|\vv{\omega}|}\,.
+\end{equation}
+One can check explicitly that $\vv{x}_{\perp}$ is indeed orthogonal to $\vv{\omega}$:
+\begin{equation}
+  \vv{x}_{\perp}\cdot\vv{\omega}
+  =\vv{x}\cdot\vv{\omega}-\vv{x}_{\parallel}\cdot\vv{\omega}
+  =|\vv{\omega}|(\vv{x}\cdot\hat{\vv{\omega}})-(\vv{x}\cdot\hat{\vv{\omega}})(\hat{\vv{\omega}}\cdot\vv{\omega})=0\,,
+\end{equation}
+and therefore, using sine waves as an example
+\begin{equation}
+  \sw(\vv{x};\vv{\omega},\phi)=\sin(2\pi\vv{\omega}\cdot\vv{x}_{\parallel}+\phi)\,.
+\end{equation}
+So the oscillations of a sine wave with frequency vector $\vv{\omega}$ only occur in the direction parallel to $\vv{\omega}$, and the wave is constant in the perpendicular direction. Assuming $\vv{x}$ is aligned with $\vv{\omega}$, \ie it can be written $\vv{x}=z\hat{\vv{\omega}}$ with $z\in\mathbb{R}$, then
+\begin{equation}
+  \sw(\vv{x};\vv{\omega},\phi)=\sin(2\pi|\vv{\omega}|z+\phi)=\sw(z;|\vv{\omega}|,\phi)\,.
+\end{equation}
+In summary, $\sw(\vv{x};\vv{\omega},\phi)$ is a one-dimensional sine-wave of frequency
+$|\vv{\omega}|$ on the axis defined by $\hat{\vv{\omega}}$, and is constant in all
+perpendicular directions. In three dimensions, the perpendicular space to the frequency
+vector is the plane with equation $\vv{\omega}\cdot\vv{x}=0$, and for that reason the
+waves defined above are generally called \emph{plane waves}. An example of two-dimensional plane wave is given in~\cref{fig:plane-wave}.
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_wave-plane.pdf}
+  \caption{The left pane represents the plane wave $\sw(\vv{x};\vv{\omega})$, with $\vv{x}=(x,y)$ and $\vv{\omega}=(1,2)$. The arrows represent the unit vectors $\hat{\bm{\omega}}=(1,2)/\sqrt{5}$, and $\hat{\bm{\omega}}_{\perp}=(2,-1)/\sqrt{5}$ in the perpendicular direction. The right pane shows the interference pattern emerging when adding two sine plane waves with frequency vectors $(1,2)$ and $(1,-1)$.}
+  \label{fig:plane-wave}
+\end{figure}
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_wave-sphere.pdf}
+  \caption{Representation of the apherical wave...}
+  \label{fig:sphere-wave}
+\end{figure}

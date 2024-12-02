@@ -22,8 +22,7 @@
 \setglossarystyle{alttree}
 \glssetwidest{xxxxxxxxxxxxxxx}
 %% math symbols
-\usepackage{amsmath,amssymb,braket,slashed,mathrsfs}
-\usepackage[only,llbracket,rrbracket]{stmaryrd}
+\usepackage{isomath,amsmath,amssymb,braket,slashed,mathrsfs,bm}
 %% theorems
 \usepackage{amsthm}
 %% TikZ
@@ -54,6 +53,11 @@
 %% compressed references
 \usepackage{cleveref}
 \newcommand{\crefrangeconjunction}{--}
+%%% chapter
+\crefformat{chapter}{Chapter~#2#1#3}
+\crefmultiformat{chapter}{Chapters~#2#1#3}
+{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+\crefrangeformat{chapter}{Chapters~#3#1#4\,--\,#5#2#6}
 %%% section
 \crefformat{section}{Sec.~#2#1#3}
 \crefmultiformat{section}{Sec.~#2#1#3}
@@ -133,7 +137,7 @@
 \newcommand{\sumn}[1]{\sum_{#1=0}^{+\infty}}
 \newcommand{\sumnp}[1]{\sum_{#1=1}^{+\infty}}
 \newcommand{\sumz}[1]{\sum_{#1=-\infty}^{+\infty}}
-\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\vv}[1]{\bm{#1}}
 \let\Re\relax
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
@@ -201,6 +205,7 @@
 \glsaddallunused
 \printglossary[title=Symbols and Notation]
 \chapter{Introduction to the wave equation}
+\label{chap:wave-eq}
 \input{chapters/wave-eq}
 \chapter{Elementary waves}
 \input{chapters/elementary-waves}
