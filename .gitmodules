@@ -1,0 +1,3 @@
+[submodule "figures/src/mkplot"]
+	path = figures/src/mkplot
+	url = https://github.com/aportelli/mkplot.git
