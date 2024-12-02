@@ -33,6 +33,6 @@
   \draw (p3) node[xshift=1.3cm,yshift=-0.3cm] {$\theta_{n}$};
   \draw (p3) node[above,xshift=1.05cm,yshift=0.15cm] {$P_n=(x_n,y_n)$};
   \draw (p3 |- 0,-0.4) node {$x_n$};
-  \draw (p3t1) node[above,blue,yshift=0.15cm] {$\mathbf{T}_n^-$}
-  \draw (p3t2) node[below,blue] {$\mathbf{T}_n^+$}
+  \draw (p3t1) node[above,blue,yshift=0.15cm] {$\mathbf{T}_n^-$};
+  \draw (p3t2) node[below,blue] {$\mathbf{T}_n^+$};
 \end{tikzpicture}

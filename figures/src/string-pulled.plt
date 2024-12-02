@@ -1,6 +1,6 @@
 #!/usr/bin/env gnuplot -p
 
-set term epslatex color size 12.9cm,5cm 
+set term cairolatex pdf size 12.9cm,5cm 
 
 A=1
 L=30
