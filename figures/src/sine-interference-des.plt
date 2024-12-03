@@ -9,8 +9,8 @@ set yrange [-2.5:2.5]
 set grid
 set key spacing 1.5
 
-top=0.9
-bottom=0.2
+top=0.95
+bottom=0.1
 s=(top-bottom)/3.
 
 set format x ''
