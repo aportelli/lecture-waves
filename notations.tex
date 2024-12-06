@@ -3,87 +3,107 @@
 \newglossaryentry{int}
 {
   name={$\mathbb{Z}$},
-  description={Set of integers (positive and negative)}
+  description={Set of integers (positive and negative).}
 }
 \newglossaryentry{real}
 {
   name={$\mathbb{R}$},
-  description={Set of real numbers}
+  description={Set of real numbers.}
 }
 \newglossaryentry{complex}
 {
   name={$\mathbb{C}$},
-  description={Set of complex numbers}
+  description={Set of complex numbers.}
 }
 \newglossaryentry{vec}
 {
   name={$\vec{v}$},
-  description={Vector, the number of dimension is context-dependent}
+  description={Vector, the number of dimensions is context-dependent.}
+}
+\newglossaryentry{dot}
+{
+  name={$\vec{v}\cdot\vec{w}$},
+  description={Dot product between two vectors, \cf~\cref{eq:vec-dot}.}
+}
+\newglossaryentry{norm}
+{
+  name={$|\vec{v}|$},
+  description={$2$-norm (magnitude) of vector $\vec{v}$, defined by $|\vec{v}|^2=\vec{v}\cdot\vec{v}$.}
 }
 \newglossaryentry{cconj}
 {
   name={$z^*$},
-  description={Complex conjugate of complex number $z$}
+  description={Complex conjugate of complex number $z$.}
 }
 \newglossaryentry{cabs}
 {
   name={$|z|$},
-  description={Modulus of complex number $z$}
+  description={Modulus of complex number $z$.}
 }
 \newglossaryentry{interval-closed}
 {
   name={$[a,b]$},
-  description={Closed interval, \ie set of real numbers $x$ such that $a\leq x \leq b$}
+  description={Closed interval, \ie set of real numbers $x$ such that $a\leq x \leq b$.}
 }
 \newglossaryentry{interval-open}
 {
   name={$(a,b)$},
-  description={Open interval, \ie set of real numbers $x$ such that $a< x <b$}
+  description={Open interval, \ie set of real numbers $x$ such that $a< x <b$.}
 }
 \newglossaryentry{interval-half1}
 {
   name={$[a,b)$},
-  description={Half-open interval, \ie set of real numbers $x$ such that $a\leq x <b$}
+  description={Half-open interval, \ie set of real numbers $x$ such that $a\leq x <b$.}
 }
 \newglossaryentry{interval-half2}
 {
   name={$(a,b]$},
-  description={Half-open interval, \ie set of real numbers $x$ such that $a< x\leq b$}
+  description={Half-open interval, \ie set of real numbers $x$ such that $a< x\leq b$.}
 }
 \newglossaryentry{derivative}
 {
   name={$f'$},
-  description={Derivative of the function of a single real variable $f$}
+  description={Derivative of the function of a single real variable $f$.}
 }
 \newglossaryentry{partintdiff}
 {
   name={$\left[f(x)\right]_a^b$},
-  description={Equal to $f(b)-f(a)$, mainly used when integrating by parts}
+  description={Equal to $f(b)-f(a)$, mainly used when integrating by parts.}
+}
+\newglossaryentry{fndot}
+{
+  name={$\braket{f,g}$},
+  description={Dot product of the functions $f$ and $g$. The definition depends on the domain of definition, \cf~\cref{def:func-dot}.}
+}
+\newglossaryentry{fnnorm}
+{
+  name={$\|f\|$},
+  description={$2$-norm or function $f$, defined by $\|f\|^2=\braket{f,f}$.}
 }
 \newglossaryentry{floor}
 {
   name={$\lfloor x\rfloor$},
-  description={Floor function, \ie the largest integer smaller or equal to $x$}
+  description={Floor function, \ie the largest integer smaller or equal to $x$.}
 }
 \newglossaryentry{wave-square}
 {
   name={$\sq(t)$},
-  description={Square wave, defined in~\cref{eq:wave-square}}
+  description={Square wave, defined in~\cref{eq:wave-square}.}
 }
 \newglossaryentry{wave-sine}
 {
   name={$\sw$},
-  description={Sine wave, cf.~\cref{def:sine-wave,def:multidim-waves}}
+  description={Sine wave, \cf~\cref{def:sine-wave,def:multidim-waves}.}
 }
 \newglossaryentry{wave-cosine}
 {
   name={$\cw$},
-  description={Cosine wave, cf.~\cref{def:cosine-wave,def:multidim-waves}}
+  description={Cosine wave, \cf~\cref{def:cosine-wave,def:multidim-waves}.}
 }
 \newglossaryentry{wave-complex}
 {
   name={$\ew$},
-  description={Complex elementary wave, cf.~\cref{def:complex-wave,def:multidim-waves}}
+  description={Complex elementary wave, \cf~\cref{def:complex-wave,def:multidim-waves}.}
 }
 \makeglossaries
 

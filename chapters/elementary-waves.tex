@@ -544,13 +544,14 @@ seen as a good introduction to this type of concept.
 
 We start by defining the dot product between two periodic functions
 \begin{definition}
+  \label{def:func-dot}
   Let $f$ and $g$ two real $\tau$-periodic functions. We assume that $f$ and $g$ are
   integrable on the interval $[0,\tau]$. The \emph{dot product} $\braket{f,g}$ between $f$
   and $g$ is the real number defined by
   \begin{equation}
     \braket{f,g}=\int_{0}^{\tau}\diff t\, f(t)g(t)\,.\label{eq:func-dot}
   \end{equation}
-  Additionally, the \emph{norm} $\|f\|$ of the function $f$ is defined by
+  Additionally, the \emph{$2$-norm} $\|f\|$ of the function $f$ is defined by
   \begin{equation}
     \|f\|^2=\braket{f,f}=\int_{0}^{\tau}\diff t\, f(t)^2\,.
   \end{equation}
@@ -836,6 +837,23 @@ that are periodic in each of their variables:
   The function $f$ defined by $f(x,y)=\sin(x+2y)$ is $(2\pi,\pi)$-periodic.
 \end{example}
 
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_wave-plane.pdf}
+  \caption{The left pane represents the plane wave $\sw(\vec{x};\vec{\omega})$, with
+    $\vec{x}=(x,y)$ and $\vec{\omega}=(1,2)$. The arrows represent the unit vectors
+    $\hat{\bm{\omega}}=(1,2)/\sqrt{5}$, and $\hat{\bm{\omega}}_{\perp}=(2,-1)/\sqrt{5}$ in
+    the perpendicular direction. The right pane shows the interference pattern emerging
+  when adding two plane sine waves with wave vectors $(1,2)$ and $(1,-1)$.}
+  \label{fig:plane-wave}
+\end{figure}
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_wave-sphere.pdf}
+  \caption{The left pane represents the spherical wave $\varphi(\vec{x};\vec{0})$, with
+  $\vec{x}=(x,y)$, defined in~\cref{eq:sphere-wave}. The right pane shows an example of interference patten between two spherical waves with source positions $\vec{x}_1=(-1,1.5)$ and $\vec{x}_2=(0,2)$. Although the maximum magnitude of $\varphi$ is $2\pi=6.28$, the colour scale was limited to the interval $[-1.5,1.5]$ for visibility.}
+  \label{fig:sphere-wave}
+\end{figure}
 We could inspire ourselves from the solution~\cref{eq:string-fourier} of the plucked
 string problem to define trigonometric polynomials in $d$ dimensions to be linear
 combinations of products of $d$ elementary sine or cosine waves. Although this would be a
@@ -904,19 +922,31 @@ perpendicular directions. In three dimensions, the perpendicular space to the wa
 is the plane with equation $\vec{\omega}\cdot\vec{x}=0$, and for that reason the waves
 defined above are generally called \emph{plane waves}. An example of two-dimensional plane
 wave is given in~\cref{fig:plane-wave}.
-\begin{figure}[t]
-  \centering
-  \includegraphics{gp_wave-plane.pdf}
-  \caption{The left pane represents the plane wave $\sw(\vec{x};\vec{\omega})$, with
-    $\vec{x}=(x,y)$ and $\vec{\omega}=(1,2)$. The arrows represent the unit vectors
-    $\hat{\bm{\omega}}=(1,2)/\sqrt{5}$, and $\hat{\bm{\omega}}_{\perp}=(2,-1)/\sqrt{5}$ in
-    the perpendicular direction. The right pane shows the interference pattern emerging
-  when adding two plane sine waves with wave vectors $(1,2)$ and $(1,-1)$.}
-  \label{fig:plane-wave}
-\end{figure}
-\begin{figure}[t]
-  \centering
-  \includegraphics{gp_wave-sphere.pdf}
-  \caption{Representation of the spherical wave...}
-  \label{fig:sphere-wave}
-\end{figure}
+
+Coming back to the wave equation, the standing wave solution~\cref{eq:stand-wave-example} is a plane wave in space-time when written in its travelling wave form~\cref{eq:stand-wave-travel}. Explicitly, the solution
+\begin{equation}
+  u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}n(x+ct)\right]
+  +\sin\left[\frac{\pi}{L}n(x-ct)\right]\right\}\,,
+\end{equation}
+can be written
+\begin{equation}
+  u(t,x)=\frac{A}{2}[\sw(\vec{x};\vec{\omega}_n)+\sw(\vec{x};\bar{\vec{\omega}}_n)]\,,
+\end{equation}
+where $\vec{x}$ is the space-time vector $(ct,x)$, and the wave vectors $\vec{\omega}_n$ and $\bar{\vec{\omega}}_n$ are given by
+\begin{equation}
+  \vec{\omega}_n=\frac{n}{\lambda}(1,1)\qquad\text{and}\qquad
+  \bar{\vec{\omega}}_n=\frac{n}{\lambda}(-1,1)\,,
+\end{equation}
+where $\lambda=2L$ is the wavelength. This type of reformulation using space-time positions is fundamental in the context of special relativity, where space and time dimensions cannot be considered independent through change of coordinates, but it is perhaps unusual in describing non-relativistic mechanics systems.
+
+Another class of multidimensional wave, crucial in physics, are \emph{spherical waves}. Spherical wave are oscillatory functions which are only functions of the distance between to points. One example that will be important later in this course is given by
+\begin{equation}
+  \label{eq:sphere-wave}
+  \varphi(\vec{x};\vec{x}_0)=\frac{\sin(2\pi|\vec{x}-\vec{x}_0|)}{|\vec{x}-\vec{x}_0|}\,,
+\end{equation}
+where $\vec{x}_0$ is called the \emph{source position} of the wave.
+In three dimensions, using the spherical coordinates $(r,\phi,\theta)$ centred on $\vec{x}_0$, $\varphi$ becomes
+\begin{equation}
+  \varphi(r,\phi,\theta)=\frac{\sin(2\pi r)}{r}\,,
+\end{equation}
+\ie it is a one-dimensional sine wave of frequency $1$ in any radial direction from $\vec{x_0}$, attenuated with $\frac{1}{r}$, and is constant on any sphere with centre $\vec{x_0}$. Such example of spherical wave is illustrated in~\cref{fig:sphere-wave}.
