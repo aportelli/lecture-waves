@@ -424,7 +424,7 @@ waves:
   We call \emph{trigonometric polynomial} of degree $N$ and frequency $\omega$ any
   function of the form
   \begin{equation}
-    P(t)=\frac{a_0}{2}+\sum_{n=1}^N[a_n\,\cw(t;n\omega)+b_n\,\sw(t;n\omega)]\,,
+    P(t)=\frac{a_0}{2}+\sum_{n=1}^N[a_n\cw(t;n\omega)+b_n\sw(t;n\omega)]\,,
     \label{eq:trigp-sc}
   \end{equation}
   where $a_n$ and $b_n$ are real coefficients such that $a_N\neq 0$ or $b_N \neq 0$. The
@@ -784,6 +784,7 @@ coordinate system, and these coordinates can be obtained using orthogonal projec
 the basis vectors as in~\cref{eq:basis-proj}. Finally, \cref{thm:trigp-unicity}
 generalises naturally to the complex form of trigonometric polynomials:
 \begin{corollary}
+  \label{corr:trigp-unicity-cplx}
   Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
   degrees $N$ and $N'$, and complex coefficients $c_n$ and $c'_n$, respectively. $P$ and
   $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all $t$, if and only if their degrees and
@@ -812,7 +813,7 @@ This concludes this section on the orthogonality of elementary waves. We will no
 how to generalise elementary waves and trigonometric polynomials to multiple real
 variables.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Multiple dimensions and travelling waves}
+\section{Elementary waves in multiple dimensions}
 In all this chapter, we discussed elementary waves and their combinations as functions of
 a single real variable. However, oscillatory physical systems will often require multiple
 variables to be described. We already encountered that in~\cref{chap:wave-eq} when
@@ -851,7 +852,11 @@ that are periodic in each of their variables:
   \centering
   \includegraphics{gp_wave-sphere.pdf}
   \caption{The left pane represents the spherical wave $\varphi(\vec{x};\vec{0})$, with
-  $\vec{x}=(x,y)$, defined in~\cref{eq:sphere-wave}. The right pane shows an example of interference patten between two spherical waves with source positions $\vec{x}_1=(-1,1.5)$ and $\vec{x}_2=(0,2)$. Although the maximum magnitude of $\varphi$ is $2\pi=6.28$, the colour scale was limited to the interval $[-1.5,1.5]$ for visibility.}
+    $\vec{x}=(x,y)$, defined in~\cref{eq:sphere-wave}. The right pane shows an example of
+    interference patten between two spherical waves with source positions
+    $\vec{x}_1=(-1,1.5)$ and $\vec{x}_2=(0,2)$. Although the maximum magnitude of $\varphi$
+    is $2\pi=6.28$, the colour scale was limited to the interval $[-1.5,1.5]$ for
+  visibility.}
   \label{fig:sphere-wave}
 \end{figure}
 We could inspire ourselves from the solution~\cref{eq:string-fourier} of the plucked
@@ -864,7 +869,8 @@ product of complex waves is still a complex wave. Explicitly, assuming a vector 
 real variables $\vec{x}=(x_1,\dots,x_d)$, and a vector of $d$ frequencies
 $\vec{\omega}=(\omega_1,\dots,\omega_d)$, we can write
 \begin{align}
-  e^{2\pi i\omega_1x_1}\cdots e^{2\pi i\omega_dx_d}&=e^{2\pi i(\omega_1x_1+\cdots+\omega_dx_d)}=e^{2\pi i\vec{\omega}\cdotp\vec{x}}\notag\\
+  e^{2\pi i\omega_1x_1}\cdots e^{2\pi i\omega_dx_d}
+  &=e^{2\pi i(\omega_1x_1+\cdots+\omega_dx_d)}=e^{2\pi i\vec{\omega}\cdotp\vec{x}}\notag\\
   &=\cos(2\pi\vec{\omega}\cdot\vec{x})+i\sin(2\pi\vec{\omega}\cdot\vec{x})\,.
 \end{align}
 This motivates the following definitions for multidimensional elementary waves
@@ -903,7 +909,8 @@ One can check explicitly that $\vec{x}_{\perp}$ is indeed orthogonal to $\vec{\o
 \begin{equation}
   \vec{x}_{\perp}\cdot\vec{\omega}
   =\vec{x}\cdot\vec{\omega}-\vec{x}_{\parallel}\cdot\vec{\omega}
-  =|\vec{\omega}|(\vec{x}\cdot\hat{\vec{\omega}})-(\vec{x}\cdot\hat{\vec{\omega}})(\hat{\vec{\omega}}\cdot\vec{\omega})=0\,,
+  =|\vec{\omega}|(\vec{x}\cdot\hat{\vec{\omega}})
+  -(\vec{x}\cdot\hat{\vec{\omega}})(\hat{\vec{\omega}}\cdot\vec{\omega})=0\,,
 \end{equation}
 and therefore, using sine waves as an example
 \begin{equation}
@@ -923,7 +930,9 @@ is the plane with equation $\vec{\omega}\cdot\vec{x}=0$, and for that reason the
 defined above are generally called \emph{plane waves}. An example of two-dimensional plane
 wave is given in~\cref{fig:plane-wave}.
 
-Coming back to the wave equation, the standing wave solution~\cref{eq:stand-wave-example} is a plane wave in space-time when written in its travelling wave form~\cref{eq:stand-wave-travel}. Explicitly, the solution
+Coming back to the wave equation, the standing wave solution~\cref{eq:stand-wave-example}
+is a plane wave in space-time when written in its travelling wave
+form~\cref{eq:stand-wave-travel}. Explicitly, the solution
 \begin{equation}
   u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}n(x+ct)\right]
   +\sin\left[\frac{\pi}{L}n(x-ct)\right]\right\}\,,
@@ -932,21 +941,119 @@ can be written
 \begin{equation}
   u(t,x)=\frac{A}{2}[\sw(\vec{x};\vec{\omega}_n)+\sw(\vec{x};\bar{\vec{\omega}}_n)]\,,
 \end{equation}
-where $\vec{x}$ is the space-time vector $(ct,x)$, and the wave vectors $\vec{\omega}_n$ and $\bar{\vec{\omega}}_n$ are given by
+where $\vec{x}$ is the space-time vector $(ct,x)$, and the wave vectors $\vec{\omega}_n$
+and $\bar{\vec{\omega}}_n$ are given by
 \begin{equation}
   \vec{\omega}_n=\frac{n}{\lambda}(1,1)\qquad\text{and}\qquad
   \bar{\vec{\omega}}_n=\frac{n}{\lambda}(-1,1)\,,
 \end{equation}
-where $\lambda=2L$ is the wavelength. This type of reformulation using space-time positions is fundamental in the context of special relativity, where space and time dimensions cannot be considered independent through change of coordinates, but it is perhaps unusual in describing non-relativistic mechanics systems.
+where $\lambda=2L$ is the wavelength. This type of reformulation using space-time
+positions is fundamental in the context of special relativity, where space and time
+dimensions cannot be considered independent through change of coordinates, but it is
+perhaps unusual in describing non-relativistic mechanics systems.
 
-Another class of multidimensional wave, crucial in physics, are \emph{spherical waves}. Spherical wave are oscillatory functions which are only functions of the distance between to points. One example that will be important later in this course is given by
+Another class of multidimensional wave, crucial in physics, are \emph{spherical waves}.
+Spherical wave are oscillatory functions which are only functions of the distance between
+to points. One example that will be important later in this course is given by
 \begin{equation}
   \label{eq:sphere-wave}
   \varphi(\vec{x};\vec{x}_0)=\frac{\sin(2\pi|\vec{x}-\vec{x}_0|)}{|\vec{x}-\vec{x}_0|}\,,
 \end{equation}
-where $\vec{x}_0$ is called the \emph{source position} of the wave.
-In three dimensions, using the spherical coordinates $(r,\phi,\theta)$ centred on $\vec{x}_0$, $\varphi$ becomes
+where $\vec{x}_0$ is called the \emph{source position} of the wave. In three dimensions,
+using the spherical coordinates $(r,\phi,\theta)$ centred on $\vec{x}_0$, $\varphi$
+becomes
 \begin{equation}
   \varphi(r,\phi,\theta)=\frac{\sin(2\pi r)}{r}\,,
 \end{equation}
-\ie it is a one-dimensional sine wave of frequency $1$ in any radial direction from $\vec{x_0}$, attenuated with $\frac{1}{r}$, and is constant on any sphere with centre $\vec{x_0}$. Such example of spherical wave is illustrated in~\cref{fig:sphere-wave}.
+\ie it is a one-dimensional sine wave of frequency $1$ in any radial direction from
+$\vec{x_0}$, attenuated with $\frac{1}{r}$, and is constant on any sphere with centre
+$\vec{x_0}$. Such example of spherical wave is illustrated in~\cref{fig:sphere-wave}.
+Finally, both in~\cref{fig:plane-wave,fig:sphere-wave} are represented examples of
+interference between sums of plane waves and spherical waves, respectively. Those will be
+studied further in the exercises of this chapter.
+
+Similarly to one-dimensional elementary waves, multidimensional elementary waves are
+orthogonal for distinct wave vectors. In order to show that, we need to first define an
+appropriate dot product:
+\begin{definition}
+  Let $f$ and $g$ be two $\vec{\tau}$-periodic functions on $\mathbb{R}^d$. The \emph{dot
+  product} between $f$ and $g$ is defined by
+  \begin{equation}
+    \braket{f,g}=\int_0^{\tau_1}\diff x_1\cdots\int_0^{\tau_d}\diff x_d\,
+    f(\vec{x})g(\vec{x})^*\,.
+  \end{equation}
+\end{definition}
+Then, the following theorem holds
+\begin{theorem}
+  \label{thm:nd-orth}
+  Let $\vec{\omega}$ and arbitrary $d$-dimensional wave vector. For all integer vector
+  $\vec{n}$, we define the \emph{component-wise product}\footnote{Sometimes referred to as
+  \emph{Hadamard product}.}
+  \begin{equation}
+    \vec{\omega}\odot\vec{n}=(\omega_1n_1,\dots,\omega_dn_d)\,.
+  \end{equation}
+  The following \emph{orthogonality relation} holds for all integer vectors $\vec{n}$ and
+  $\vec{m}$
+  \begin{align}
+    \braket{\ew(\vec{\omega}\odot\vec{n}),\ew(\vec{\omega}\odot\vec{m})}=\prod_{j=1}^{d}\delta_{n_jm_j}\tau_j\,,
+  \end{align}
+  with $\tau_j=\frac{1}{\omega_j}$. Additionally, if $\vec{n}$ and $\vec{m}$ only have
+  components, one has
+  \begin{align}
+    \braket{\sw(\vec{\omega}\odot\vec{n}),\sw(\vec{\omega}\odot\vec{m})}
+    &=\frac{1}{2}\prod_{j=1}^{d}\delta_{n_jm_j}\tau_j\,,\\
+    \braket{\cw(\vec{\omega}\odot\vec{n}),\cw(\vec{\omega}\odot\vec{m})}
+    &=\frac{1}{2}\prod_{j=1}^{d}\delta_{n_jm_j}\tau_j\,,\\
+    \braket{\cw(\vec{\omega}\odot\vec{n}),\sw(\vec{\omega}\odot\vec{m})}&=0\,.
+  \end{align}
+\end{theorem}
+This theorem will be proven in the exercises of this chapter. It is worth noting that if
+the frequency is equal to $\omega>0$ in all directions, then the relationships above
+simplify to
+\begin{align}
+  \braket{\ew(\omega\vec{n}),\ew(\omega\vec{m})}&=\tau^d\delta_{\vec{n}\vec{m}}\,,\\
+  \braket{\sw(\omega\vec{n}),\sw(\omega\vec{m})}&=\frac{\tau^d}{2}\delta_{\vec{n}\vec{m}}\,,\\
+  \braket{\cw(\omega\vec{n}),\cw(\omega\vec{m})}&=\frac{\tau^d}{2}\delta_{\vec{n}\vec{m}}\,,\\
+  \braket{\cw(\omega\vec{n}),\sw(\omega\vec{m})}&=0\,,
+\end{align}
+where, as usual, $\tau=\frac{1}{\omega}$, and we generalised the \emph{Kronecker symbol}
+to vectors as follows
+\begin{equation}
+  \delta_{\vec{n}\vec{m}}=\prod_{j=1}^{d}\delta_{n_jm_j}=
+  \begin{cases}
+    1&~\mathrm{if}~~\vec{n}=\vec{m}\\
+    0&~\mathrm{else}
+  \end{cases}\,.
+\end{equation}
+We can now define trigonometric polynomial in multiple dimensions:
+\begin{definition}
+  We call \emph{trigonometric polynomial} and wave vector $\vec{\omega}$ any function on
+  $\mathbb{R}^d$ of the form
+  \begin{equation}
+    P(\vec{x})=\sum_{\vec{n}\in C}c_{\vec{n}}\ew(\vec{x};\vec{\omega}\odot\vec{n})
+    =\sum_{\vec{n}\in C}c_{\vec{n}}\,e^{2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,,
+  \end{equation}
+  where $C$ is a finite subset of $\mathbb{Z}^d$, and the coefficients $c_{\vec{n}}$ are
+  complex numbers. $P$ is real-valued if and only if for all $\vec{n}\in C$, $-\vec{n}$ is
+  also in $C$, and
+  \begin{equation}
+    \forall\vec{n}\in C,\quad c_{-\vec{n}}=c_{\vec{n}}^*\,,
+  \end{equation}
+  which is a generalisation of the condition already encountered
+  in~\cref{def:trigp-complex}.
+\end{definition}
+Finally, thanks to~\cref{thm:nd-orth}, the coefficients of a given trigonometric
+polynomial are unique and given by
+\begin{align}
+  c_{\vec{n}}&=\left(\prod_{j=1}^{d}\frac{1}{\tau_j}\right)
+  \braket{P,\ew(\vec{\omega}\odot\vec{n})}\notag\\
+  &=
+  \frac{1}{\tau_1}\int_0^{\tau_1}\diff x_1\cdots\frac{1}{\tau_d}\int_0^{\tau_d}\diff x_d\,
+  P(\vec{x})\,e^{-2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,.
+\end{align}
+It is possible to also define a sine-cosine version of multidimensional trigonometric
+polynomials, although once more it is more cumbersome than using complex exponentials, and
+therefore rarely used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Exercises}

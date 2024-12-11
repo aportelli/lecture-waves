@@ -34,8 +34,8 @@ string, explicitly
 \begin{equation}
   \vec{F}_n=\vec{T}_n^-+\vec{T}_n^+\,,\label{eq:string-force}
 \end{equation}
-where the vectors $\vec{T}_n^\pm$ both have magnitude $T$ and are represented by the
-blue arrows in~\cref{fig:string-inf}. Using the angles $\theta_n$ previously defined, the
+where the vectors $\vec{T}_n^\pm$ both have magnitude $T$ and are represented by the blue
+arrows in~\cref{fig:string-inf}. Using the angles $\theta_n$ previously defined, the
 coordinates of the tension forces are given by
 \begin{align}
   \vec{T}_n^-&=-T(\cos(\theta_{n-1}),\sin(\theta_{n-1}))\,,\\
@@ -461,8 +461,8 @@ $\beta=\smash{\sqrt{|\alpha|}}$, we have the following cases
     the particular solutions for $G(x)$ are $\smash{e^{i\beta x}}$ and $\smash{e^{-i\beta
     x}}$, and the general solutions are the linear combinations $G(x)=a\smash{e^{i\beta
     x}}+b\smash{e^{-i\beta x}}$ for any complex numbers $a$ and $b$. Since $G$ is a real
-    function, it has to verify the identity $G^*=G$, where $G^*$ is the complex conjugate of
-    $G$. This implies that $a^*=b$.
+    function, it has to verify the identity $G^*=G$, where $G^*$ is the complex conjugate
+    of $G$. This implies that $a^*=b$.
 
   \item $\alpha=0$: then $A=0$ and $G(x)=1$. Additionally, in that case the equation for
     $G$ becomes $G''(x)=0$, which simply means that $G$ is a linear function of the form
@@ -522,6 +522,7 @@ topic of this course. We will now conclude this chapter by inferring a possible 
 that question.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Towards Fourier series}
+\label{sec:toward-fourier}
 A key property of the wave equation~\cref{eq:wave-eq} is that it is linear. It means that
 if $u(t,x)$ and $v(t,x)$ are two solutions of the equation, then clearly for any real
 numbers $\alpha$ and $\beta$, the linear combination
@@ -549,7 +550,8 @@ given initial string position $u_0(x)$, is there a sequence of real numbers $A_n
 that the solution of the wave equation can be expressed as the superposition of standing
 waves above? Explicitly, this would imply that
 \begin{equation}
-  u_0(x)=u(0,x)=\sumz{n}s_n(0,x)=\sumz{n}A_n\sin\left(\frac{\pi}{L}nx\right)\,.
+  \label{eq:string-ic-fourier}
+  u_0(x)=u(0,x)=\sumnp{n}s_n(0,x)=\sumnp{n}A_n\sin\left(\frac{\pi}{L}nx\right)\,.
 \end{equation}
 To try determining $A_n$, a key identity is
 \begin{equation}
@@ -628,9 +630,11 @@ posteriori. Indeed, for all $n>0$ we have
 The right-hand side of this inequality is independent of $t$ and $x$, and the summand of a
 convergent series, so~\cref{eq:string-sol} is an absolutely and uniformly convergent
 series\footnote{More explicitly, this is a consequence of the Weierstrass $M$-test
-theorem}. Secondly, Fourier series generally allow obtaining interesting series related to
-the number $\pi$. For example, here we know using the initial
-condition~\cref{eq:string-pluck-ic} and the identity~\cref{eq:sinpn2} that
+theorem}. This does not prove that the series converges to $u(t,x)$, which we will not
+discuss at this stage. However, that convergence can be observed at least numerically, as
+illustrated in~\cref{fig:string-fourier}. Secondly, Fourier series generally allow
+obtaining interesting series related to the number $\pi$. For example, here we know using
+the initial condition~\cref{eq:string-pluck-ic} and the identity~\cref{eq:sinpn2} that
 \begin{equation}
   u\left(0,\frac{L}{2}\right)=A=\frac{8A}{\pi^2}\sumnp{n}\frac{1}{(2n+1)^2}\,,
 \end{equation}
@@ -663,3 +667,14 @@ Solving for $\zeta$ in the equation above, we obtain
   \zeta=\frac{\pi^2}{6}\,,
 \end{equation}
 which solves the Basel problem.
+\begin{figure}
+  \centering
+  \label{fig:string-fourier}
+  \includegraphics{gp_string-fourier.pdf}
+  \caption{Initial condition $u_0(x)$~\cref{eq:string-pluck-ic}, compared to the partial
+    sum $\sum_{n=1}^N A_n\sin(\frac{\pi}{L}nx)$ of the Fourier
+  expansion~\cref{eq:string-ic-fourier}.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Exercises}
