@@ -21,7 +21,7 @@ $(TIKZPREF)%.pdf: %.tikz $(DEPS)
 .PHONY: clean veryclean
 
 clean:
-	rm -f *.log *.aux *.1 *.t1 
+	$(MKPLOT) clean
 
 veryclean: clean
 	rm -f $(TIKZFIG) $(GPFIG)
