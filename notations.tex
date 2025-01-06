@@ -1,9 +1,14 @@
 % !TEX root = ../waves.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newglossaryentry{nint}
+{
+  name={$\mathbb{N}$},
+  description={Set of all non-negative integers.}
+}
 \newglossaryentry{int}
 {
   name={$\mathbb{Z}$},
-  description={Set of integers (positive and negative).}
+  description={Set of all integers.}
 }
 \newglossaryentry{real}
 {
@@ -14,6 +19,11 @@
 {
   name={$\mathbb{C}$},
   description={Set of complex numbers.}
+}
+\newglossaryentry{setminus}
+{
+  name={$A\setminus B$},
+  description={Set of all elements of $A$ that are not elements of $B$.}
 }
 \newglossaryentry{vec}
 {
@@ -67,13 +77,13 @@
 }
 \newglossaryentry{partintdiff}
 {
-  name={$\left[f(x)\right]_a^b$},
+  name={$\smash{\left[f(x)\right]_a^b}$},
   description={Equal to $f(b)-f(a)$, mainly used when integrating by parts.}
 }
 \newglossaryentry{fndot}
 {
   name={$\braket{f,g}$},
-  description={Dot product of the functions $f$ and $g$. The definition depends on the domain of definition, \cf~\cref{def:func-dot}.}
+  description={Dot product of the functions $f$ and $g$, \cf~\cref{def:func-dot}.}
 }
 \newglossaryentry{fnnorm}
 {
@@ -87,7 +97,7 @@
 }
 \newglossaryentry{wave-square}
 {
-  name={$\sq(t)$},
+  name={$\sq$},
   description={Square wave, defined in~\cref{eq:wave-square}.}
 }
 \newglossaryentry{wave-sine}
@@ -106,4 +116,3 @@
   description={Complex elementary wave, \cf~\cref{def:complex-wave,def:multidim-waves}.}
 }
 \makeglossaries
-

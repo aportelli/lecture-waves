@@ -1,5 +1,8 @@
 set samples 1000
 
+# helper for discrete plots
+npts(n) = sprintf('< for x in $(seq %d); do printf "0\n"; done', n)
+
 # category10 colors
 set linetype  1 lc rgb "#1f77b4" lw 5
 set linetype  2 lc rgb "#ff7f0e" lw 5
