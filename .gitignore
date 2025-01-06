@@ -22,3 +22,6 @@
 
 # macOS temporaries
 .DS_Store
+
+# no solution
+/solutions

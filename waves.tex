@@ -84,6 +84,8 @@
 and~(#2#1#3)}
 \crefrangeformat{equation}{Eqs.~(#3#1#4)--(#5#2#6)}
 \graphicspath{{./figures/}}
+%% exercises
+\usepackage[answerdelayed]{exercise}
 
 % Header & footer
 \usepackage[twoside]{fancyhdr}
@@ -215,8 +217,14 @@ and Fourier Analysis}\par}
 \chapter{Introduction to the wave equation}
 \label{chap:wave-eq}
 \input{chapters/wave-eq}
+\pagebreak
+\input{exercises/wave-eq}
+\shipoutAnswer
 \chapter{Elementary waves}
 \input{chapters/elementary-waves}
+\pagebreak
+\input{exercises/elementary-waves}
+\shipoutAnswer
 \chapter{Fourier series}
 \input{chapters/series}
 \chapter{Fourier transform}

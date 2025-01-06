@@ -1,0 +1,23 @@
+% !TEX root = ../waves.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises}
+\begin{ExerciseList}
+  \Exercise[label=odesincos] Let $f$ be a twice-differentiable function on $\mathbb{R}$ which is
+  a solution of the ordinary differential equation
+  \begin{equation}
+    f''(t) + A^2 f(t) = 0\,,
+  \end{equation}
+  where $A$ is a non-zero real number. We additionally define the functions $g$ and $h$
+  with
+  \begin{align}
+    g(t)&=f(t)\cos(At)-\frac{f'(t)}{A}\sin(At)\label{eq:csgdef}\,,\\
+    h(t)&=f(t)\sin(At)+\frac{f'(t)}{A}\cos(At)\label{eq:cshdef}\,.
+  \end{align}
+  \Question Show that $g$ and $h$ are constant functions.
+  \Question Deduce from the previous question that there exists two real numbers $a$ and $b$
+  such that
+  \begin{equation}
+    f(t)=a\cos(At)+b\sin(At)\,.\label{eq:csfsol}
+  \end{equation}
+  \InputIfFileExists{solutions/wave-eq}{}{}
+\end{ExerciseList}
