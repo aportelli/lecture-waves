@@ -1,5 +1,5 @@
 % !TEX root = waves.tex
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt]{book}
 % Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% language, encoding & layout
@@ -89,7 +89,6 @@ and~(#2#1#3)}
 
 % Header & footer
 \usepackage[twoside]{fancyhdr}
-\pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
 \fancyhead[LE,RO]{\textit{\nouppercase{\rightmark}}}
@@ -158,6 +157,8 @@ and~(#2#1#3)}
 % Document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\pagestyle{plain}
+\frontmatter
 \thispagestyle{empty}
 \vspace*{-0.065\textheight}
 \hfill\includegraphics[width=10cm]{UoE_Stacked Logo_Black_v1_160215.pdf}
@@ -211,9 +212,12 @@ and Fourier Analysis}\par}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
-
 \glsaddallunused
 \printglossary[title=Symbols and Notation]
+\chapter*{Preface}
+\input{chapters/preface.tex}
+\mainmatter
+\pagestyle{fancy}
 \chapter{Introduction to the wave equation}
 \label{chap:wave-eq}
 \input{chapters/wave-eq}
@@ -221,17 +225,23 @@ and Fourier Analysis}\par}
 \input{exercises/wave-eq}
 \shipoutAnswer
 \chapter{Elementary waves}
+\label{chap:elementary-waves}
 \input{chapters/elementary-waves}
 \pagebreak
 \input{exercises/elementary-waves}
 \shipoutAnswer
 \chapter{Fourier series}
+\label{chap:series}
 \input{chapters/series}
 \chapter{Fourier transform}
+\label{chap:transform}
 \input{chapters/transform}
-\chapter{Back to the wave equation}
-\chapter{The heat equation}
-\chapter{Digital signal processing}
+% \chapter{Back to the wave equation}
+% \label{chap:wave-eq-2}
+% \chapter{The heat equation}
+% \label{chap:heat-eq}
+% \chapter{Digital signal processing}
+% \label{chap:dsp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{apsrev4-2}
 % \bibliography{BIB}
