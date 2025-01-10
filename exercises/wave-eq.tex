@@ -2,6 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises}
 \begin{ExerciseList}
+  %---------------------------------------------------------------------------------------
   \Exercise[label=odesincos] Let $f$ be a twice-differentiable function on $\mathbb{R}$ which is
   a solution of the ordinary differential equation
   \begin{equation}
@@ -19,5 +20,37 @@
   \begin{equation}
     f(t)=a\cos(At)+b\sin(At)\,.\label{eq:csfsol}
   \end{equation}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=stringhooke] We start by recalling Hooke's law for the restoring force
+  of a stretched or compressed spring. We assume a spring is aligned with the $x$-axis and
+  has an equilibrium length of $\ell$. Hooke's law states that if the spring is stretched
+  or compressed to a length $\ell+\delta\ell$, the tension forces at the extremities of
+  the spring have a magnitude proportional to the displacement:
+  \begin{equation}
+    T=k|\delta\ell|\,,
+  \end{equation}
+  where $k$ is the \emph{spring constant} in $\newton\per\metre$. Additionally, if the
+  spring is compressed, the forces are always directed towards the equilibrium position,
+  \ie outward when the spring is compressed and inward when it is stretched. \Question
+  From the point of view of Hooke's law, argue that the tension forces on the discretised
+  string in~\cref{eq:stringtm,eq:stringtp} could be described in a more accurate way.
+  \Question Use Hooke's law to generalise the equations of
+  motion~\cref{eq:string-fullxeq,eq:string-fullyeq}. \Question Demonstrate that the
+  generalisations above do not change the wave equation~\cref{eq:wave-eq} in the limit of
+  small amplitudes.
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=guitar] We consider a guitar string with a vibrating length $L=\unit{63}{\centi\metre}$ and a linear mass density $\mu=\unit{1.2}{\gram\per\metre}$.
+  \Question What tension is required to apply to the string to tune it to the frequency $\unit{110}{\hertz}$?
+  \Question Assuming the same tension as in Question 1, what is the wave speed on the string?
+  \Question A finger is placed on the string at a distance $\ell$ from the nut (the extremity of the string farthest from the body), how is the string vibration frequency modified?
+  \Question Assuming the same tension as in Question 1, what finger position leads to a frequency of $\unit{164.81}{\hertz}$?
+  \Question Frets on the fingerboard are spaced such that the frequency of the string increases by one halftone between two frets. A frequency $\omega'$ is one halftone higher than $\omega$ if
+  \begin{equation}
+    \omega'=2^{\frac{1}{12}}\omega\,.
+  \end{equation}
+  Compute the distance from the nut of the first few frets.
+
+  %---------------------------------------------------------------------------------------
   \InputIfFileExists{solutions/wave-eq}{}{}
 \end{ExerciseList}
+% Generate the LaTeX code for the answer. Start by \Answer[ref= and use the exercise package. Use \Question for each question. Use the equation environment for displayed equations. Use $ for inline equations. Never use ^$. Insert ~ on the first line. Do not exceed 90 columns per line. Do not skip lines.

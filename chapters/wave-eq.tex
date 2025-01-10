@@ -38,8 +38,8 @@ where the vectors $\vec{T}_n^\pm$ both have magnitude $T$ and are represented by
 arrows in~\cref{fig:string-inf}. Using the angles $\theta_n$ previously defined, the
 coordinates of the tension forces are given by
 \begin{align}
-  \vec{T}_n^-&=-T(\cos(\theta_{n-1}),\sin(\theta_{n-1}))\,,\\
-  \vec{T}_n^+&=T(\cos(\theta_{n}),\sin(\theta_{n}))\,.
+  \vec{T}_n^-&=-T(\cos(\theta_{n-1}),\sin(\theta_{n-1}))\,,\label{eq:stringtm}\\
+  \vec{T}_n^+&=T(\cos(\theta_{n}),\sin(\theta_{n}))\,.\label{eq:stringtp}
 \end{align}
 Using Pythagoras' theorem and elementary trigonometry, one can write
 \begin{align}
@@ -50,16 +50,16 @@ Defining the ratio $d_n=\smash{\frac{y_{n+1}-y_n}{x_{n+1}-x_n}}$, the expression
 can be further simplified to
 \begin{equation}
   \cos(\theta_n)=\frac{1}{\sqrt{1+d_n^2}}\qquad\text{and}\qquad
-  \sin(\theta_n)=\frac{d_n}{\sqrt{1+d_n^2}}\,.
+  \sin(\theta_n)=\frac{d_n}{\sqrt{1+d_n^2}}\,.\label{eq:csthetan}
 \end{equation}
 Now, using Newton's Second Law with the total force~\cref{eq:string-force}, one obtains
 the following system of differential of equations for the motion of $P_n$:
 \begin{align}
   \epsilon\mu \frac{\diff^2 x_n}{\diff t^2}&=
-  T\left(\frac{1}{\sqrt{1+d_{\smash{n+1}}^2}}-\frac{1}{\sqrt{1+d_{n}^2}}\right)\,,
+  T\left(\frac{1}{\sqrt{1+d_{\smash{n}}^2}}-\frac{1}{\sqrt{1+d_{\smash{n-1}}^2}}\right)\,,
   \label{eq:string-fullxeq}\\
   \epsilon\mu \frac{\diff^2 y_n}{\diff t^2}&=
-  T\left(\frac{d_{n+1}}{\sqrt{1+d_{\smash{n+1}}^2}}-\frac{d_n}{\sqrt{1+d_{n}^2}}\right)\,.
+  T\left(\frac{d_n}{\sqrt{1+d_{\smash{n}}^2}}-\frac{d_{\smash{n-1}}}{\sqrt{1+d_{\smash{n-1}}^2}}\right)\,.
   \label{eq:string-fullyeq}
 \end{align}
 This is a rather non-trivial system of coupled non-linear differential equations, and we
@@ -227,13 +227,14 @@ solution~\cref{eq:wave-eq-sol}, $u_1=0$ implies that for all $x$,
 \end{equation}
 which means that $f'=g'$. Two functions with equal derivatives differ by a unique
 constant, so there is a unique real number $K$ such that $g(x)=f(x)+K$ for all $x$. So the
-general solution of the wave equation becomes
+general solution of the wave equation can be written
 \begin{equation}
-  u(t,x)=f(x-ct)+f(x+ct)+K\,,\label{eq:uff}
+  u(t,x)=f(x-ct)+f(x+ct)\,,\label{eq:uff}
 \end{equation}
-and in particular the initial position is
+where the constant $K$ has been absorbed in the definition of $f$.
+In particular the initial position of the string is
 \begin{equation}
-  u_0(x)=2f(x)+K\,.\label{eq:u0K}
+  u_0(x)=2f(x)\,.\label{eq:u0K}
 \end{equation}
 Now, we can use the fact that the string is attached at the two points $(0,0)$ and
 $(L,0)$, this implies that for all $t$
@@ -241,8 +242,7 @@ $(L,0)$, this implies that for all $t$
   u(t,0)=0\qquad\text{and}\qquad u(t,L)=0\,.\label{eq:string-bc}
 \end{equation}
 These constraints are called the \emph{boundary conditions} of the wave equation, and they
-generally have a strong influence on the set of solutions. Applying the boundary
-conditions at $t=0$ to~\cref{eq:u0K} directly implies that $K=0$, and also determines
+generally have a strong influence on the set of solutions. \cref{eq:u0K} determines
 $f(x)$ on the interval $[0,L]$:
 \begin{equation}
   \forall x\in[0,L],\quad f(x)=\frac{1}{2}u_0(x)\,.
