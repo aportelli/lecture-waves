@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Setup hooks
+        run: git config --local core.hooksPath .githooks
       - name: Install TeX Live
         uses: zauguin/install-texlive@v3
         with:
