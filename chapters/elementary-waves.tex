@@ -1,9 +1,9 @@
 % !TEX root = ../waves.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General properties of periodic functions}
-A physical quantity $f(t)$ depending on a variable $t$ is said to be \emph{oscillating} or
-\emph{periodic} if it repeats itself identically after a certain duration. In mathematical
-terms:
+A physical quantity $f(t)$ depending on a time variable $t$ is said to be
+\emph{oscillating} or \emph{periodic} if it repeats itself identically after a certain
+duration. In mathematical terms:
 \begin{definition}
   A function $f$ of a single real variable is said to be~\emph{periodic} or specifically
   \emph{$\tau$-periodic} if there exists a positive real number $\tau$ such that
@@ -22,12 +22,13 @@ number has a period. Another fundamental quantity is the \emph{frequency}:
   is called a \emph{frequency} of $f$.
 \end{definition}
 \noindent In physical terms, if $t$ is a time variable, $\tau$ is also a time, and
-$\omega$ is the number of oscillations per unit of time. One can notice that a periodic
-function never has a unique period, \eg clearly if $\tau$ is a period, $2\tau$ is also a
-period. Because of this it is useful to write the following definition
+$\omega$ is the number of oscillations per unit of time, generally given in Hertz
+($\hertz$). One can notice that a periodic function never has a unique period, \eg clearly
+if $\tau$ is a period, $2\tau$ is also a period. Because of this it is useful to write the
+following definition
 \begin{definition}
-  The infimum $\tau_0$ of the set of all possible periods of a given periodic function $f$
-  is called the \emph{fundamental period} of $f$. The associated frequency
+  The infimum $\tau_0$ of the set of all periods of a given periodic function $f$ is
+  called the \emph{fundamental period} of $f$. The associated frequency
   $\omega_0=\frac{1}{\tau_0}$ is called the \emph{fundamental frequency} of $f$.
 \end{definition}
 \noindent For example, the fundamental frequency of $\sin(t)$ is $2\pi$, and it is zero
@@ -86,8 +87,8 @@ $n\in\mathbb{Z}$. The curve of $\sq(t)$ is represented in~\cref{fig:sq-wave}.
 \begin{figure}[t]
   \centering
   \includegraphics{gp_sq-wave.pdf}
-  \caption{Curve of the square wave defined in~\cref{def:sq-wave}, the dots represent
-  the values of the function at discontinuity points.}
+  \caption{Curve of the square wave defined in~\cref{def:sq-wave}, the dots represent the
+  values of the function at discontinuity points.}
   \label{fig:sq-wave}
 \end{figure}
 
@@ -106,10 +107,12 @@ We start by defining elementary sine waves
   \end{equation}
   where $\omega\neq 0$ and $0\leq\phi<2\pi$ are the \emph{frequency} and \emph{phase} of
   the wave, respectively. When the phase argument is omitted then it is assumed that
-  $\phi=0$, \ie $\sw(t;\omega)=\sw(t;\omega,0)$.
+  $\phi=0$, \ie $\sw(t;\omega)=\sw(t;\omega,0)$. If the variable $t$ is omitted, the
+  notation $\sw(\omega,\phi)$ or $\sw(\omega)$ represents the function itself, \ie
+  $\sw(\omega,\phi)(t)=\sw(t;\omega,\phi)$.
 \end{definition}
 \noindent It is straightforward to show that, according to the definition in the previous
-section, $\sw(t;\omega,\phi)$ is a periodic function with fundamental frequency $|\omega|$
+section, $\sw(\omega,\phi)$ is a periodic function with fundamental frequency $|\omega|$
 and amplitude $1$. The phase measures the delay in the oscillation relatively to a wave
 with identical frequency equal to zero at $t=0$. More generally if two waves have
 identical frequencies and different phases $\phi_1$ and $\phi_2$, the time delay between
@@ -148,8 +151,9 @@ motivating the following definition
   \begin{equation}
     \cw(t;\omega,\phi)=\cos(2\pi\omega t + \phi)\,.\label{eq:cosine-wave}
   \end{equation}
-  Similarly to the case of sine waves we define $\cw(t;\omega)=\cw(t;\omega,0)$. Sine and
-  cosine waves are related by the following phase relationships
+  Similarly to the case of sine waves we define $\cw(t;\omega)=\cw(t;\omega,0)$, and
+  $\cw(\omega,\phi)$ or $\cw(\omega)$ represents the function itself. Sine and cosine
+  waves are related by the following phase relationships
   \begin{equation}
     \sw(t;\omega,\phi)=\cw\left(t;\omega,\phi-\frac{\pi}{2}\right),
     \quad\text{and}\quad
@@ -188,7 +192,8 @@ A crucial set of formula to manipulate waves is given by the angle addition theo
   using the parity properties of the sine and cosine functions, namely $\sin(-x)=-\sin(x)$
   and $\cos(-x)=\cos(x)$.
 \end{proof}
-These identities
+This theorem can be used to produce additional identities for the sums and products of
+sine and cosine functions:
 \begin{corollary}
   \label{cor:sumproduct}
   For all pairs of real numbers $a$ and $b$, the following identities hold
@@ -231,11 +236,11 @@ complex exponentials, motivating the definition below.
   \begin{equation}
     \ew(t;\omega,\phi)=e^{i(2\pi\omega t + \phi)}\,.
   \end{equation}
-  As previously we define $\ew(t;\omega)=\ew(t;\omega,0)$. By definition of the complex
-  exponential, elementary complex waves are related to sine and cosine elementary waves by
-  the relation
+  As previously we define $\ew(t;\omega)=\ew(t;\omega,0)$, and $\ew(\omega,\phi)$ or
+  $\ew(\omega)$ represents the function itself. By definition of the complex exponential,
+  elementary complex waves are related to sine and cosine elementary waves by the relation
   \begin{equation}
-    \ew(t;\omega,\phi)=\cw(t;\omega,\phi)+i\,\sw(t;\omega,\phi)\,,
+    \ew(t;\omega,\phi)=\cw(t;\omega,\phi)+i\sw(t;\omega,\phi)\,,
   \end{equation}
   Thanks to the properties of the exponential, we have the two following trivial
   relationships
@@ -263,20 +268,31 @@ using the angle addition theorem:
 \section{Combination of elementary waves}
 We will now discuss how to create more general waves by adding elementary waves. One first
 legitimate question is whether the sum of two periodic functions is till periodic. It is
-not always true, and can be characterised by the following result:
+not always true, and can be a non-trivial topic, characterised in part by the following
+result:
 \begin{theorem}
   \label{thm:period-sum}
   Let $f_1(t)$ and $f_2(t)$ be two periodic functions of fundamental periods $\tau_1\neq
-  0$ and $\tau_2\neq 0$, respectively. Then the sum $f_1+f_2$ as well as the product
-  $f_1f_2$ are periodic if and only if the period ratio  $\smash{\frac{\tau_1}{\tau_2}}$
-  is a rational number.
-  % If this condition is true, this ratio can be written
-  % $\smash{\frac{\tau_1}{\tau_2}}=\smash{\frac{p}{q}}$ where $p$ and $q$ are two coprime
-  % integers (\ie their GCD is $1$), and the fundamental frequency $\tau$ of $f(t)$ is
-  % given by \begin{equation} \tau=q\tau_1=p\tau_2\,. \end{equation}
+  0$ and $\tau_2\neq 0$, respectively. Then if the period ratio
+  $\smash{\frac{\tau_1}{\tau_2}}$ is a rational number, then the sum $f_1+f_2$, as well as
+  the product $f_1f_2$, are periodic. If $f_1$ and $f_2$ are continuous, the rationality
+  of $\smash{\frac{\tau_1}{\tau_2}}$ becomes a necessary condition.
 \end{theorem}
 \begin{proof}
-  % TODO
+  We start by assuming that $\frac{\tau_1}{\tau_2}$ is a rational number. Then there
+  exists two non-zero integers $p$ and $q$ such that $\frac{\tau_1}{\tau_2}=\frac{p}{q}$,
+  and therefore
+  \begin{equation}
+    q\tau_1=p\tau_2\,.
+  \end{equation}
+  Then
+  \begin{equation}
+    f_1(t+q\tau_1)f_2(t+q\tau_1)=f_1(t+q\tau_1)f_2(t+p\tau_2)=f_1(t)f_2(t)\,,
+  \end{equation}
+  so $q\tau_1=p\tau_2$ is a period of $f_1f_2$. The same argument applies identically to
+  the sum $f_1+f_2$. We will admit here the non-trivial fact that if $f_1+f_2$ is
+  continuous and $f_1$ and $f_2$ are continuous, $\frac{\tau_1}{\tau_2}$ is necessarily a
+  rational number.
 \end{proof}
 \begin{example}
   \label{ex:period-sum}
@@ -855,9 +871,9 @@ that are periodic in each of their variables:
   \caption{The left pane represents the spherical wave $\varphi(\vec{x};\vec{0})$, with
     $\vec{x}=(x,y)$, defined in~\cref{eq:sphere-wave}. The right pane shows an example of
     interference patten between two spherical waves with source positions
-    $\vec{x}_1=(-1,1.5)$ and $\vec{x}_2=(0,2)$. Although the maximum magnitude of $\varphi$
-    is $2\pi=6.28$, the colour scale was limited to the interval $[-1.5,1.5]$ for
-  visibility.}
+    $\vec{x}_1=(-1,1.5)$ and $\vec{x}_2=(0,2)$. Although the maximum magnitude of
+    $\varphi$ is $2\pi=6.28$, the colour scale was limited to the interval $[-1.5,1.5]$
+  for visibility.}
   \label{fig:sphere-wave}
 \end{figure}
 We could inspire ourselves from the solution~\cref{eq:string-fourier} of the plucked

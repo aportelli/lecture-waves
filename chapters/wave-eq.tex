@@ -74,7 +74,7 @@ Taylor expansion
 leading to the leading-order approximation
 \begin{align}
   \frac{\diff^2 x_n}{\diff t^2}&=0\,,\label{eq:string-loxeq}\\
-  \frac{\diff^2 y_n}{\diff t^2}&=\frac{T}{\epsilon\mu}(d_{n+1}-d_n)\,,\label{eq:string-loyeq}
+  \frac{\diff^2 y_n}{\diff t^2}&=\frac{T}{\epsilon\mu}(d_{n}-d_{n-1})\,,\label{eq:string-loyeq}
 \end{align}
 which is valid up to $\mathcal{O}(d_n^2)$ corrections. One remarkable feature of this
 system is the fact that there is no force applying in the $x$ direction at leading order.
@@ -421,9 +421,9 @@ which implies that
 \end{equation}
 The left-hand side of this equation only depends on $t$, and the right-hand side only
 depends on $x$. This is typical of standing wave solution, and looking for such
-simplification is sometime referred as the \emph{separation of variables} method, which in
-this context is equivalent to looking for standing wave solutions. A key observation is
-that~\cref{eq:sep-var} implies that there exists a constant $\alpha$ such that
+simplification is sometime referred as the \emph{separation of variables} method. A key
+observation is that~\cref{eq:sep-var} implies that there exists a constant $\alpha$ such
+that
 \begin{equation}
   \frac{1}{c^2}\frac{F''(t)}{F(t)}=\frac{G''(x)}{G(x)}=\alpha\,.
 \end{equation}
@@ -669,9 +669,9 @@ Solving for $\zeta$ in the equation above, we obtain
 which solves the Basel problem.
 \begin{figure}
   \centering
-  \label{fig:string-fourier}
   \includegraphics{gp_string-fourier.pdf}
   \caption{Initial condition $u_0(x)$~\cref{eq:string-pluck-ic}, compared to the partial
     sum $\sum_{n=1}^N A_n\sin(\frac{\pi}{L}nx)$ of the Fourier
   expansion~\cref{eq:string-ic-fourier}.}
+  \label{fig:string-fourier}
 \end{figure}
