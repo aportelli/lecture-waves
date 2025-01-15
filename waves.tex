@@ -86,8 +86,7 @@ and~(#2#1#3)}
 \graphicspath{{./figures/}}
 %% exercises
 \usepackage[answerdelayed]{exercise}
-
-% Header & footer
+%% Header & footer
 \usepackage[twoside]{fancyhdr}
 \fancyhead{}
 \fancyfoot{}
@@ -97,10 +96,11 @@ and~(#2#1#3)}
 \setlength{\headheight}{6mm}
 \setlength{\headsep}{3mm}
 \setlength{\footskip}{8mm}
-
-% Page geometry
+%% Page geometry
 \usepackage[a4paper,left=25mm,right=25mm,top=20mm,bottom=20mm]{geometry}
 \fancyhfoffset[E,O]{0pt} % recalculate the headers
+%% git info
+\usepackage{gitinfo2}
 
 % Theorem environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,8 +203,10 @@ and Fourier Analysis}\par}
   \vfill
   \subsubsection*{Changelog}
   \scriptsize
+  Git revision: \gitDescribe\vspace*{0.2cm}\\
   \begin{tabular}{@{} L{0.05\linewidth} L{0.15\linewidth} L{0.6\linewidth} @{}}
     \toprule
+    v0.2 & 15/01/2025 & various fixes for Chapters 1 and 2\\
     v0.1 & 10/01/2025 & first public version\\
     \bottomrule
   \end{tabular}
