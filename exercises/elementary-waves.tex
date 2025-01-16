@@ -1,3 +1,61 @@
 % !TEX root = ../waves.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises}
+\begin{ExerciseList}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=chebyshev]
+  For any real number $\theta$ and any integer $n\leq 0$, we consider the function $T_n$ defined by
+  \begin{equation}
+    T_n[\cos(\theta)]=\cos(n\theta)\,.
+  \end{equation}
+  $T_n$ is called the $n$-th \emph{Chebyshev polynomial}. It is not clear from the formula
+  above that $T_n$ is in fact a polynomial, and the aim of this exercise is to prove that fact.
+  \Question Show that $T_0(x)=1$, $T_1(x)=x$, and $T_2(x)=2x^2-1$.
+  \Question Show that for all $n\geq 1$
+  \begin{equation}
+    T_{n+1}(x)=2x T_n(x)-T_{n-1}(x)\,,
+  \end{equation}
+  and deduce that $T_n(x)$ is a polynomial in $x$.
+  \Question Compute explicitly $T_4(x)$.
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=viete]~
+  \Question Derive the double-angle formula
+  \begin{equation}
+    \sin(x)=2\sin\left(\frac{x}{2}\right)\cos\left(\frac{x}{2}\right)\,,
+  \end{equation}
+  where $x\in\mathbb{R}$.
+  \Question Show by induction that for all integers $n\geq 1$,
+  \begin{equation}
+    \sin(x)=2^n\sin\left(\frac{x}{2^n}\right)\left[\prod_{j=1}^n\cos\left(\frac{x}{2^j}\right)\right]\,.
+  \end{equation}
+  \Question Deduce, for $x\neq 0$, \emph{Viète's infinite product}
+  \begin{equation}
+    \frac{\sin(x)}{x}=\prod_{n=1}^{+\infty}\cos\left(\frac{x}{2^n}\right)\,,
+  \end{equation}
+  \Question Finally, derive \emph{Viète's formula}
+  \begin{equation}
+    \frac{2}{\pi}=\frac{\sqrt{2}}{2}\frac{\sqrt{2+\sqrt{2}}}{2}\frac{\sqrt{2+\sqrt{2+\sqrt{2}}
+    }}{2}\cdots\,.
+  \end{equation}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=ampphase]
+  In this chapter we defined the sine-cosine and complex coefficients of a trigonometric polynomial,
+  in~\cref{eq:trigp-sc,eq:trigp-complex}, respectively. In this exercise we derive an additional form, generally called the \emph{amplitude-phase} form.
+  \Question Let $a$, $b$, and $\omega$ be three real numbers such that $a^2+b^2\neq0$. Show that for all $t\in\mathbb{R}$
+  \begin{equation}
+    a\cw(t;\omega)+b\sw(t;\omega)=A\cw(t;\omega,-\phi)\,,
+  \end{equation}
+  where $A=\sqrt{a^2+b^2}$, and $\phi$ is such that
+  \begin{equation}
+    \cos(\phi)=\frac{a}{\sqrt{a^2+b^2}}\qquad\text{and}\qquad
+    \sin(\phi)=\frac{b}{\sqrt{a^2+b^2}}\,.
+  \end{equation}
+  \Question Let $P$ be a real trigonometric polynomial of degree $N$. Show that $P$ can be written
+  \begin{equation}
+    P(t)=\frac{A_0}{2}+\sum_{n=1}^NA_n\cw(t;n\omega,-\phi_n)\,,
+  \end{equation}
+  and express $A_n$ and $\phi_n$ in function of $a_n$, $b_n$, and $c_n$. $A_n$ and $\phi_n$ are called the \emph{amplitude-phase} coefficients of $P$.
+  \Question Discuss the unicity of the amplitude-phase coefficients.
+  %---------------------------------------------------------------------------------------
+  \InputIfFileExists{solutions/elementary-waves}{}{}
+\end{ExerciseList}
