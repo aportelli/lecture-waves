@@ -12,8 +12,7 @@ duration. In mathematical terms:
   \end{equation}
   $\tau$ is called a \emph{period} of $f$.
 \end{definition}
-\noindent For example, $\sin(t)$ is $2\pi$-periodic, and a constant function admits any
-number has a period. Another fundamental quantity is the \emph{frequency}:
+Another fundamental quantity is the \emph{frequency}:
 \begin{definition}
   If $\tau$ is a period of a given function $f$, its inverse
   \begin{equation}
@@ -21,18 +20,24 @@ number has a period. Another fundamental quantity is the \emph{frequency}:
   \end{equation}
   is called a \emph{frequency} of $f$.
 \end{definition}
-\noindent In physical terms, if $t$ is a time variable, $\tau$ is also a time, and
+In physical terms, if $t$ is a time variable, $\tau$ is also a time, and
 $\omega$ is the number of oscillations per unit of time, generally given in Hertz
 ($\hertz$). One can notice that a periodic function never has a unique period, \eg clearly
 if $\tau$ is a period, $2\tau$ is also a period. Because of this it is useful to write the
 following definition
 \begin{definition}
-  The infimum $\tau_0$ of the set of all periods of a given periodic function $f$ is
+  If the set of all periods of a given periodic function $f$ admits a minimum $\tau_0$, it is
   called the \emph{fundamental period} of $f$. The associated frequency
   $\omega_0=\frac{1}{\tau_0}$ is called the \emph{fundamental frequency} of $f$.
 \end{definition}
-\noindent For example, the fundamental frequency of $\sin(t)$ is $2\pi$, and it is zero
-for a constant function. Another fundamental quantity is the \emph{amplitude} of a
+\begin{example}
+  The fundamental frequency of $\sin(t)$ is $2\pi$.
+\end{example}
+\begin{example}
+  A constant function does not have a fundamental period. Indeed, any positive real number
+  is a period, and the set of all positive real numbers does not have a minimum (although its infimum is $0$).
+\end{example}
+Another fundamental quantity is the \emph{amplitude} of a
 periodic function, measuring the size of the oscillations within a fundamental period:
 \begin{definition}
   \label{def:amplitude}
@@ -46,7 +51,7 @@ periodic function, measuring the size of the oscillations within a fundamental p
     A=\frac{M-m}{2}\,.
   \end{equation}
 \end{definition}
-\noindent For example, the amplitude of $\sin(t)$ is equal to $1$, and it is zero for
+For example, the amplitude of $\sin(t)$ is equal to $1$, and it is zero for
 constant functions. \cref{def:amplitude} assumes that $f$ is bounded, and one can question
 whether this hypothesis is true in general. It is not, but continuity is a sufficient
 condition:
@@ -60,7 +65,7 @@ condition:
   this interval. Finally, using the periodicity, any value $f(t)$ is equal to a value
   $f(t_0)$ with $0\leq t_0\leq \tau_0$, therefore $f$ is bounded.
 \end{proof}
-\noindent One can show that this condition is not necessary, \ie discontinuous periodic
+One can show that this condition is not necessary, \ie discontinuous periodic
 functions can be bounded as well. One example of such function is the \emph{square wave},
 that will be useful later:
 \begin{definition}
@@ -77,7 +82,7 @@ that will be useful later:
   where $\lfloor t\rfloor$ is the floor function, \ie the largest integer smaller or equal
   to $t$.
 \end{definition}
-\noindent It is left as an exercise to the reader to show that $\sq(t)$ is periodic with
+It is left as an exercise to the reader to show that $\sq(t)$ is periodic with
 fundamental period $1$ and amplitude $1$, and can be rewritten as
 \begin{equation}
   \sq(t)=2(2\lfloor t\rfloor-\lfloor 2t\rfloor)+1\,.
@@ -111,7 +116,7 @@ We start by defining elementary sine waves
   notation $\sw(\omega,\phi)$ or $\sw(\omega)$ represents the function itself, \ie
   $\sw(\omega,\phi)(t)=\sw(t;\omega,\phi)$.
 \end{definition}
-\noindent It is straightforward to show that, according to the definition in the previous
+It is straightforward to show that, according to the definition in the previous
 section, $\sw(\omega,\phi)$ is a periodic function with fundamental frequency $|\omega|$
 and amplitude $1$. The phase measures the delay in the oscillation relatively to a wave
 with identical frequency equal to zero at $t=0$. More generally if two waves have
@@ -715,10 +720,11 @@ the symmetry of the dot product:
 With this generalised dot product, we can formulate the orthogonality of complex
 elementary waves
 \begin{theorem}
+  \label{thm:orth-complex}
   Let $\omega>0$ be an arbitrary frequency corresponding to the period $\tau$. For any
   pair of integers $n$ and $m$, the following identity holds
   \begin{equation}
-    \braket{\ew(n\omega),\ew(m\omega)}=\tau\delta_{nm}\,,
+    \braket{\ew(n\omega),\ew(m\omega)}=\tau\,\delta_{nm}\,,
   \end{equation}
   \ie for any pair of integers $n$ and $m$, complex elementary waves of the form
   $\ew(n\omega)$ and $\ew(m\omega)$ have norm squared $\tau$ and are orthogonal if and
