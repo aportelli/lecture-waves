@@ -219,59 +219,70 @@ specifically for the plucked string problem.
 \subsection{Particular solutions of the plucked string problem}
 We remind here the considered physical problem: the string will be pulled in a given
 position, and then released. This means the initial velocity $u_1$ in~\cref{eq:wave-eq-ic}
-is zero. Without specifying, for the moment, the initial position, let us discuss what
-this first initial condition implies. Coming back to the general
-solution~\cref{eq:wave-eq-sol}, $u_1=0$ implies that for all $x$,
-\begin{equation}
-  u_1(x)=c[g'(x)-f'(x)]=0\,,
-\end{equation}
-which means that $f'=g'$. Two functions with equal derivatives differ by a unique
-constant, so there is a unique real number $K$ such that $g(x)=f(x)+K$ for all $x$. So the
-general solution of the wave equation can be written
-\begin{equation}
-  u(t,x)=f(x-ct)+f(x+ct)\,,\label{eq:uff}
-\end{equation}
-where the constant $K$ has been absorbed in the definition of $f$.
-In particular the initial position of the string is
-\begin{equation}
-  u_0(x)=2f(x)\,.\label{eq:u0K}
-\end{equation}
-Now, we can use the fact that the string is attached at the two points $(0,0)$ and
-$(L,0)$, this implies that for all $t$
+is zero. Additionally, the string is attached at the two points $(0,0)$ and $(L,0)$, which
+implies that for all times $t\in\mathbb{R}$
 \begin{equation}
   u(t,0)=0\qquad\text{and}\qquad u(t,L)=0\,.\label{eq:string-bc}
 \end{equation}
 These constraints are called the \emph{boundary conditions} of the wave equation, and they
-generally have a strong influence on the set of solutions. \cref{eq:u0K} determines
-$f(x)$ on the interval $[0,L]$:
+generally have a strong influence on the set of solutions. We now show how initial
+conditions and boundary conditions determine a unique solution to the wave equation.
+
+Applying both initial conditions in~\cref{eq:wave-eq-ic} to the general wave equation
+solutions~\cref{eq:wave-eq-sol}, one obtains for all $x\in[0,L]$
+\begin{align}
+  f(x)+g(x)&=u_0(x)\label{eq:wave-eq-fpg}\,,\\
+  g'(x)-f'(x)&=0\,.
+\end{align}
+The second equation above implies that there exists a constant $K$ such that for all
+$x\in[0,L]$,
 \begin{equation}
-  \forall x\in[0,L],\quad f(x)=\frac{1}{2}u_0(x)\,.
+  f(x)=g(x)+\frac{K}{2}\,,\label{eq:wave-eq-fmg}
 \end{equation}
-However, the solution~\cref{eq:uff} requires us to know $f$ outside the interval $[0,L]$,
-specifically for times $t>\frac{L}{c}$. At an arbitrary time $t$, the first boundary
-condition in~\cref{eq:string-bc} becomes
+where the arbitrary factor $\frac12$ is introduced for later convenience.
+Solving~\cref{eq:wave-eq-fpg,eq:wave-eq-fmg} as a linear system, one obtains, for all
+$x\in[0,L]$,
+\begin{align}
+  f(x)&=\frac{1}{2}u_0(x)+K\,,\label{eq:wave-eq-f0L}\\
+  g(x)&=\frac{1}{2}u_0(x)-K\,.\label{eq:wave-eq-g0L}
+\end{align}
+In summary, we found that the initial conditions imply that, on the interval $[0,L]$, $f$
+and $g$ are both equal to half the initial position $u_0$, up to an integration constant.
+
+To obtain the full solution~\cref{eq:wave-eq-sol}, we now need to solve $f$ and $g$
+outside the interval $[0,L]$, which can be done using the boundary
+conditions~\cref{eq:string-bc}. The first boundary condition implies that for all
+$t\in\mathbb{R}$,
 \begin{equation}
-  f(-ct)=-f(ct)\,,
+  f(-ct)=-g(ct)\,.
 \end{equation}
-which means that the function $f$ is odd. In particular this tells us that for any
-$x\in[-L,0]$, $f(x)=-f(-x)=-u_0(x)$. We now know the solution on the interval $[-L,L]$.
-Repeating this exercise with the second condition in~\cref{eq:string-bc}, we get
+Using~\cref{eq:wave-eq-f0L,eq:wave-eq-g0L}, the equation above allows us to solve $f$ and
+$g$ on the interval $[-L,0]$, \ie for all $x\in[0,L]$
+\begin{align}
+  f(-x)&=-\frac{1}{2}u_0(x)+K\,,\label{eq:wave-eq-fmL0}\\
+  g(-x)&=-\frac{1}{2}u_0(x)-K\,.\label{eq:wave-eq-gmL0}
+\end{align}
+Now, the second boundary condition in~\cref{eq:string-bc} implies that for all
+$t\in\mathbb{R}$,
 \begin{equation}
-  f(ct+L)=-f(L-ct)=f(ct-L)\,.
+  f(L-ct)=-g(L+ct)=f(-L-ct)\,.
 \end{equation}
-Now, for any $x\in [-L,L]$, the previous equation evaluated at $t=\frac{1}{c}(x+L)$ gives
+For all $x\in\mathbb{R}$, the equation above for $t=-\frac{1}{c}(L+x)$ gives
 \begin{equation}
-  f(x+2L)=f(x)\,,
+  f(x+2L)=f(x)\,.
 \end{equation}
-meaning that $f$ in the interval $[L,3L]$ is just a translation of its restriction to
-$[-L,L]$. The argument above can be repeated multiple times to obtain
-\begin{equation}
-  f(x+2nL)=f(x)
-\end{equation}
-for any real number $x$ and integer $n$. This last equation means that $f$ is periodic
-with period $\lambda=2L$, called the \emph{wavelength} of the vibration. We have now
-completely and uniquely solved the wave equation for the plucked string problem, and we
-summarise the solution below
+This last equation means that $f$ is periodic with period $\lambda=2L$, called the
+\emph{wavelength} of the vibration. The same can be identically shown for $g$. This
+implies that for any integer $n$, $f$ and $g$ on the translated interval $[-L+2nL,L+2nL]$
+take the same values as on $[-L,L]$. Since~\cref{eq:wave-eq-f0L,eq:wave-eq-g0L},
+and~\cref{eq:wave-eq-fmL0,eq:wave-eq-gmL0} define $f$ and $g$ on $[-L,L]$, we have
+completely solved the wave equation.
+
+Let us summarise the solution derived above. First we can observe
+through~\cref{eq:wave-eq-f0L,eq:wave-eq-g0L}, and~\cref{eq:wave-eq-fmL0,eq:wave-eq-gmL0}
+that the constant $K$ will always cancel when summing $f$ and $g$ to obtain $u$.
+Therefore, we can assume without loss of generality that $K=0$, which implies that $f=g$.
+Finally, the solution of the wave equation for the plucked string problem if given by
 \begin{equation}
   u(t,x)=f(x-ct)+f(x+ct)\,,\label{eq:string-sol}
 \end{equation}
