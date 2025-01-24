@@ -230,10 +230,26 @@ sine and cosine functions:
   which proves~\cref{eq:sinapsinb}. \cref{eq:cosapcosb} can be derived in the same way
   using~\cref{eq:cosatcosb}.
 \end{proof}
-These additional formulas allow to systematically convert a product of sine/cosine
+Finally, another useful set of identities are the \emph{double-angle formulas}
+\begin{corollary}
+  For any real number $\theta$, the following identities hold
+  \begin{align}
+    \sin(2\theta)&=2\sin(\theta)\cos(\theta)\,,\label{eq:doublesin}\\
+    \cos(2\theta)&=2\cos(\theta)^2-1\,.,\label{eq:doublecos}
+  \end{align}
+\end{corollary}
+\begin{proof}
+  \cref{eq:doublesin} is a special case of~\cref{eq:sinapb} with $a=b=\theta$. Similarly,
+  using~\cref{eq:cosapb} on gets
+  \begin{equation}
+    \cos(2\theta)=\cos(\theta)^2-\sin(\theta)^2\,,
+  \end{equation}
+  which, using $\cos(\theta)^2+\sin(\theta)^2=1$, implies~\cref{eq:doublecos}.
+\end{proof}
+These formulas allow to systematically convert a product of sine/cosine
 functions into a sum, and vice-versa. The angle addition theorem can be proven solely
 using triangle geometry, which is significantly less trivial than the simple proof above,
-based on complex numbers. Elementary waves can generally be easier to manipulate using
+based on complex numbers. In general, elementary waves can be considerably easier to manipulate using
 complex exponentials, motivating the definition below.
 \begin{definition}
   \label{def:complex-wave}

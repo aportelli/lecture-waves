@@ -19,12 +19,13 @@
   \Question Does $\chi_{\mathbb{Q}}$ admit a fundamental period?
   %---------------------------------------------------------------------------------------
   \Exercise[label=chebyshev]
-  For any real number $\theta$ and any integer $n\leq 0$, we consider the function $T_n$ defined by
+  For any real number $\theta$ and any integer $n\geq 0$, we consider the function $T_n$ defined by
+  the functional equation
   \begin{equation}
     T_n[\cos(\theta)]=\cos(n\theta)\,.
   \end{equation}
   $T_n$ is called the $n$-th \emph{Chebyshev polynomial}. It is not clear from the formula
-  above that $T_n$ is in fact a polynomial, and the aim of this exercise is to prove that fact.
+  above that $T_n$ is in fact a polynomial, and the aim of this exercise is to prove that.
   \Question Show that $T_0(x)=1$, $T_1(x)=x$, and $T_2(x)=2x^2-1$.
   \Question Show that for all $n\geq 1$
   \begin{equation}
@@ -34,11 +35,6 @@
   \Question Compute explicitly $T_4(x)$.
   %---------------------------------------------------------------------------------------
   \Exercise[label=viete]~
-  \Question Derive the double-angle formula
-  \begin{equation}
-    \sin(x)=2\sin\left(\frac{x}{2}\right)\cos\left(\frac{x}{2}\right)\,,
-  \end{equation}
-  where $x\in\mathbb{R}$.
   \Question Show by induction that for all integers $n\geq 1$,
   \begin{equation}
     \sin(x)=2^n\sin\left(\frac{x}{2^n}\right)\left[\prod_{j=1}^n\cos\left(\frac{x}{2^j}\right)\right]\,.
@@ -55,7 +51,7 @@
   %---------------------------------------------------------------------------------------
   \Exercise[label=ampphase]
   In this chapter we defined the sine-cosine and complex coefficients of a trigonometric polynomial,
-  in~\cref{eq:trigp-sc,eq:trigp-complex}, respectively. In this exercise we derive an additional form, generally called the \emph{amplitude-phase} form.
+  in~\cref{eq:trigp-sc,eq:trigp-complex}, respectively. In this exercise we derive an additional form, called the \emph{amplitude-phase} form.
   \Question Let $a$, $b$, and $\omega$ be three real numbers such that $a^2+b^2\neq0$. Show that for all $t\in\mathbb{R}$
   \begin{equation}
     a\cw(t;\omega)+b\sw(t;\omega)=A\cw(t;\omega,-\phi)\,,
