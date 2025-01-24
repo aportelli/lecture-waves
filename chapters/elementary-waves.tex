@@ -20,14 +20,14 @@ Another fundamental quantity is the \emph{frequency}:
   \end{equation}
   is called a \emph{frequency} of $f$.
 \end{definition}
-In physical terms, if $t$ is a time variable, $\tau$ is also a time, and
-$\omega$ is the number of oscillations per unit of time, generally given in Hertz
-($\hertz$). One can notice that a periodic function never has a unique period, \eg clearly
-if $\tau$ is a period, $2\tau$ is also a period. Because of this it is useful to write the
-following definition
+In physical terms, if $t$ is a time variable, $\tau$ is also a time, and $\omega$ is the
+number of oscillations per unit of time, generally given in Hertz ($\hertz$). One can
+notice that a periodic function never has a unique period, \eg clearly if $\tau$ is a
+period, $2\tau$ is also a period. Because of this it is useful to write the following
+definition
 \begin{definition}
-  If the set of all periods of a given periodic function $f$ admits a minimum $\tau_0$, it is
-  called the \emph{fundamental period} of $f$. The associated frequency
+  If the set of all periods of a given periodic function $f$ admits a minimum $\tau_0$, it
+  is called the \emph{fundamental period} of $f$. The associated frequency
   $\omega_0=\frac{1}{\tau_0}$ is called the \emph{fundamental frequency} of $f$.
 \end{definition}
 \begin{example}
@@ -35,10 +35,11 @@ following definition
 \end{example}
 \begin{example}
   A constant function does not have a fundamental period. Indeed, any positive real number
-  is a period, and the set of all positive real numbers does not have a minimum (although its infimum is $0$).
+  is a period, and the set of all positive real numbers does not have a minimum (although
+  its infimum is $0$).
 \end{example}
-Another fundamental quantity is the \emph{amplitude} of a
-periodic function, measuring the size of the oscillations within a fundamental period:
+Another fundamental quantity is the \emph{amplitude} of a periodic function, measuring the
+size of the oscillations within a fundamental period:
 \begin{definition}
   \label{def:amplitude}
   Let $f$ be a real periodic function with fundamental period $\tau_0$. We additionally
@@ -51,10 +52,9 @@ periodic function, measuring the size of the oscillations within a fundamental p
     A=\frac{M-m}{2}\,.
   \end{equation}
 \end{definition}
-For example, the amplitude of $\sin(t)$ is equal to $1$, and it is zero for
-constant functions. \cref{def:amplitude} assumes that $f$ is bounded, and one can question
-whether this hypothesis is true in general. It is not, but continuity is a sufficient
-condition:
+For example, the amplitude of $\sin(t)$ is equal to $1$, and it is zero for constant
+functions. \cref{def:amplitude} assumes that $f$ is bounded, and one can question whether
+this hypothesis is true in general. It is not, but continuity is a sufficient condition:
 \begin{proposition}
   If a real periodic function is continuous, then it is bounded (and therefore it has a
   well-defined amplitude).
@@ -65,9 +65,9 @@ condition:
   this interval. Finally, using the periodicity, any value $f(t)$ is equal to a value
   $f(t_0)$ with $0\leq t_0\leq \tau_0$, therefore $f$ is bounded.
 \end{proof}
-One can show that this condition is not necessary, \ie discontinuous periodic
-functions can be bounded as well. One example of such function is the \emph{square wave},
-that will be useful later:
+One can show that this condition is not necessary, \ie discontinuous periodic functions
+can be bounded as well. One example of such function is the \emph{square wave}, that will
+be useful later:
 \begin{definition}
   \label{def:sq-wave}
   The square wave function $\sq(t)$ is defined by
@@ -82,8 +82,8 @@ that will be useful later:
   where $\lfloor t\rfloor$ is the floor function, \ie the largest integer smaller or equal
   to $t$.
 \end{definition}
-It is left as an exercise to the reader to show that $\sq(t)$ is periodic with
-fundamental period $1$ and amplitude $1$, and can be rewritten as
+It is left as an exercise to the reader to show that $\sq(t)$ is periodic with fundamental
+period $1$ and amplitude $1$, and can be rewritten as
 \begin{equation}
   \sq(t)=2(2\lfloor t\rfloor-\lfloor 2t\rfloor)+1\,.
 \end{equation}
@@ -116,12 +116,12 @@ We start by defining elementary sine waves
   notation $\sw(\omega,\phi)$ or $\sw(\omega)$ represents the function itself, \ie
   $\sw(\omega,\phi)(t)=\sw(t;\omega,\phi)$.
 \end{definition}
-It is straightforward to show that, according to the definition in the previous
-section, $\sw(\omega,\phi)$ is a periodic function with fundamental frequency $|\omega|$
-and amplitude $1$. The phase measures the delay in the oscillation relatively to a wave
-with identical frequency equal to zero at $t=0$. More generally if two waves have
-identical frequencies and different phases $\phi_1$ and $\phi_2$, the time delay between
-them is given by
+It is straightforward to show that, according to the definition in the previous section,
+$\sw(\omega,\phi)$ is a periodic function with fundamental frequency $|\omega|$ and
+amplitude $1$. The phase measures the delay in the oscillation relatively to a wave with
+identical frequency equal to zero at $t=0$. More generally if two waves have identical
+frequencies and different phases $\phi_1$ and $\phi_2$, the time delay between them is
+given by
 \begin{equation}
   \delta t =\frac{\tau}{2\pi}\delta\phi\qquad\text{with}\qquad\delta\phi=\phi_1-\phi_2\,,
 \end{equation}
@@ -246,11 +246,11 @@ Finally, another useful set of identities are the \emph{double-angle formulas}
   \end{equation}
   which, using $\cos(\theta)^2+\sin(\theta)^2=1$, implies~\cref{eq:doublecos}.
 \end{proof}
-These formulas allow to systematically convert a product of sine/cosine
-functions into a sum, and vice-versa. The angle addition theorem can be proven solely
-using triangle geometry, which is significantly less trivial than the simple proof above,
-based on complex numbers. In general, elementary waves can be considerably easier to manipulate using
-complex exponentials, motivating the definition below.
+These formulas allow to systematically convert a product of sine/cosine functions into a
+sum, and vice-versa. The angle addition theorem can be proven solely using triangle
+geometry, which is significantly less trivial than the simple proof above, based on
+complex numbers. In general, elementary waves can be considerably easier to manipulate
+using complex exponentials, motivating the definition below.
 \begin{definition}
   \label{def:complex-wave}
   We call \emph{elementary complex wave} the function
@@ -749,7 +749,8 @@ elementary waves
 \begin{proof}
   Using~\cref{eq:eprod,eq:cw-conj}, one has
   \begin{align}
-    \braket{\ew(n\omega),\ew(m\omega)}&=\int_{0}^{\tau}\diff t\,\ew(t;n\omega)\ew(t;m\omega)^*
+    \braket{\ew(n\omega),\ew(m\omega)}
+    &=\int_{0}^{\tau}\diff t\,\ew(t;n\omega)\ew(t;m\omega)^*
     =\int_{0}^{\tau}\diff t\,\ew(t;n\omega)\ew(t;-m\omega)\\
     &=\int_{0}^{\tau}\diff t\,e^{2\pi i (n-m)\omega t}\,.
   \end{align}
@@ -960,7 +961,8 @@ direction parallel to $\vec{\omega}$, and the wave is constant in the perpendicu
 direction. Assuming $\vec{x}$ is aligned with $\vec{\omega}$, \ie it can be written
 $\vec{x}=z\hat{\vec{\omega}}$ with $z\in\mathbb{R}$, then
 \begin{equation}
-  \sw(\vec{x};\vec{\omega},\phi)=\sin(2\pi|\vec{\omega}|z+\phi)=\sw(z;|\vec{\omega}|,\phi)\,.
+  \sw(\vec{x};\vec{\omega},\phi)=\sin(2\pi|\vec{\omega}|z+\phi)
+  =\sw(z;|\vec{\omega}|,\phi)\,.
 \end{equation}
 In summary, $\sw(\vec{x};\vec{\omega},\phi)$ is a one-dimensional sine-wave of frequency
 $|\vec{\omega}|$ on the axis defined by $\hat{\vec{\omega}}$, and is constant in all
@@ -1034,7 +1036,8 @@ Then, the following theorem holds
   The following \emph{orthogonality relation} holds for all integer vectors $\vec{n}$ and
   $\vec{m}$
   \begin{align}
-    \braket{\ew(\vec{\omega}\odot\vec{n}),\ew(\vec{\omega}\odot\vec{m})}=\prod_{j=1}^{d}\delta_{n_jm_j}\tau_j\,,
+    \braket{\ew(\vec{\omega}\odot\vec{n}),\ew(\vec{\omega}\odot\vec{m})}
+    =\prod_{j=1}^{d}\delta_{n_jm_j}\tau_j\,,
   \end{align}
   with $\tau_j=\frac{1}{\omega_j}$. Additionally, if $\vec{n}$ and $\vec{m}$ only have
   components, one has
@@ -1050,9 +1053,12 @@ This theorem will be proven in the exercises of this chapter. It is worth noting
 the frequency is equal to $\omega>0$ in all directions, then the relationships above
 simplify to
 \begin{align}
-  \braket{\ew(\omega\vec{n}),\ew(\omega\vec{m})}&=\tau^d\delta_{\vec{n}\vec{m}}\,,\\
-  \braket{\sw(\omega\vec{n}),\sw(\omega\vec{m})}&=\frac{\tau^d}{2}\delta_{\vec{n}\vec{m}}\,,\\
-  \braket{\cw(\omega\vec{n}),\cw(\omega\vec{m})}&=\frac{\tau^d}{2}\delta_{\vec{n}\vec{m}}\,,\\
+  \braket{\ew(\omega\vec{n}),\ew(\omega\vec{m})}
+  &=\tau^d\delta_{\vec{n}\vec{m}}\,,\\
+  \braket{\sw(\omega\vec{n}),\sw(\omega\vec{m})}
+  &=\frac{\tau^d}{2}\delta_{\vec{n}\vec{m}}\,,\\
+  \braket{\cw(\omega\vec{n}),\cw(\omega\vec{m})}
+  &=\frac{\tau^d}{2}\delta_{\vec{n}\vec{m}}\,,\\
   \braket{\cw(\omega\vec{n}),\sw(\omega\vec{m})}&=0\,,
 \end{align}
 where, as usual, $\tau=\frac{1}{\omega}$, and we generalised the \emph{Kronecker symbol}
