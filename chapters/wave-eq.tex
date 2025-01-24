@@ -290,8 +290,8 @@ with
 \begin{equation}
   f(x)=
   \begin{cases}
-    u_0(x-2nL)&~\text{if}\quad2nL\leq x\leq (2n+1) L\\
-    -u_0(2nL-x)&~\text{if}\quad(2n-1)L\leq x\leq 2nL
+    \frac12u_0(x-2nL)&~\text{if}\quad2nL\leq x\leq (2n+1) L\\
+    -\frac12u_0(2nL-x)&~\text{if}\quad(2n-1)L\leq x\leq 2nL
   \end{cases}
   \,,\label{eq:f-copies}
 \end{equation}
@@ -314,8 +314,8 @@ string as a function of its length, tension, and linear mass density.
   \centering
   \includegraphics{tikz_string-f.pdf}
   \caption{Graphical representation of~\cref{eq:f-copies}. The bold red line represents
-    the initial string position $u_0(x)$. The blue line is the forward component $f(x)$,
-  obtained as the periodic extension of $u_0(x)$ defined in~\cref{eq:f-copies}.}
+    half of the initial string position $u_0(x)$. The blue line is the forward component $f(x)$,
+  obtained as the periodic extension of $\frac12 u_0(x)$ defined in~\cref{eq:f-copies}.}
   \label{fig:string-f}
 \end{figure}
 \begin{figure}[t]
@@ -330,7 +330,7 @@ string as a function of its length, tension, and linear mass density.
 \end{figure}
 We conclude this section by a slightly more practical discussion of the structure of the
 solution. \cref{eq:f-copies} is somewhat abstract, but all it means is that the curve of
-$f$ is constructed by sequentially repeating the curve of $u_0(x)$, rotating it by
+$f$ is constructed by sequentially repeating the curve of $\frac12 u_0(x)$, rotating it by
 $180^{\circ}$ at each iteration. This construction is illustrated in~\cref{fig:string-f}.
 %
 \subsection{Explicit example}
@@ -380,8 +380,8 @@ pull the string into a position which is exactly half a period of the sine funct
 \begin{equation}
   \forall x\in[0,L],\quad u_0(x)=A\sin\left(\frac{\pi}{L}x\right)\,,\label{eq:string-sine-ic}
 \end{equation}
-then the extension~\cref{eq:f-copies} of $u_0$ to $f$ is defined by the same formula, \ie
-$f(x)=\smash{A\sin\left(\frac{\pi}{L}x\right)}$ for any real number $x$, and the solution
+then the extension~\cref{eq:f-copies} of $u_0$ to $f$ is defined, up to a factor $2$, by the same formula, \ie
+$f(x)=\smash{\frac{A}{2}\sin\left(\frac{\pi}{L}x\right)}$ for any real number $x$, and the solution
 to the wave equation is simply
 \begin{equation}
   u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}(x+ct)\right]

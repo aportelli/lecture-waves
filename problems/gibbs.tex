@@ -1,0 +1,58 @@
+% !TEX root = ../waves.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{Exercise}[title={Gibbs Phenomenon for the square wave},name={Problem},label=gibbs]
+  We remind that the \emph{square wave} function $\sq$ is the function of period $1$ defined
+  for $t\in[0,1)$ by
+  \begin{equation}
+    \sq(t)=
+    \begin{cases}
+      1&\text{if}~0\leq t <\frac{1}{2}\\
+      -1&\text{if}~\frac{1}{2}\leq t < 1
+    \end{cases}\,.
+  \end{equation}
+  This function was previously defined in~\cref{eq:wave-square} and illustrated
+  in~\cref{fig:sq-wave}.
+  \Question Show that the square wave Fourier coefficients are given by
+  \begin{align}
+    a_n(\sq)&=2\int_0^1\diff t\,\sq(t)\cos(2\pi nt)=0\,,\\
+    b_n(\sq)&=2\int_0^1\diff t\,\sq(t)\sin(2\pi nt)=
+    \begin{cases}
+      0&\text{if}~$n$~\text{is even}\\
+      \frac{4}{\pi n}&\text{if}~$n$~\text{is odd}
+    \end{cases}\,,
+  \end{align}
+  for all $n\in\mathbb{N}$.
+  \Question Show that, for all $M\in\mathbb{N}$ and $t\in\mathbb{R}$ such that $\sin(2\pi t)\neq 0$,
+  \begin{equation}
+    \sum_{n=0}^{M-1}\cos[2\pi(2n+1)t]=\frac{\sin(4\pi Mt)}{2\sin(2\pi t)}\,.
+  \end{equation}
+  \emph{Hint: review the proof of~\cref{prop:dirichlet-id}.}
+  \Question Extend the result of the previous question for the cases when $\sin(2\pi t)=0$.
+  \Question We consider the partial Fourier sum of the square wave
+  \begin{equation}
+    s_{N}(\sq)(t)=\sum_{n=1}^N b_n(\sq)\sin(2\pi n t)=\sum_{n=0}^{M-1}\frac{4}{\pi(2n+1)}\sin[2\pi(2n+1)t]\,,
+  \end{equation}
+  with $N$ is assumed to be even and $M=\frac{N}{2}$.
+  \subQuestion Show that the derivative in $t$ of $s_{N}(\sq)(t)$ is given by
+  \begin{equation}
+    s_{N}(\sq)'(t)=\frac{4\sin(4\pi Mt)}{\sin(2\pi t)}
+  \end{equation}
+  \subQuestion Show that $s_{N}(\sq)'(t)=0$ for $t=t_k$ with $t_k=\frac{k}{4M}$,
+  where $k$ is any integer which is not a multiple of $2M$.
+  \subQuestion Show that, for $1\leq k \leq 2M-1$, $t_k$ is a local maximum of $s_{N}(\sq)$ if $k$ is odd, and a local
+  minimum if $k$ is even.
+  \subQuestion We consider the local maximum at $t_{2M-1}=\smash{\frac{1}{2}-\frac{1}{4M}}=\smash{\frac{1}{2}-\frac{1}{2N}}$, the closest to the jump discontinuity of $\sq(t)$ at $t=\frac12$. Show that
+  \begin{equation}
+    s_{N}(\sq)(t_{2M-1})=\frac{2}{M}\sum_{n=0}^{M-1}\frac{2M}{\pi(2n+1)}\sin\left[\frac{\pi(2n+1)}{2M}\right]\,.
+  \end{equation}
+  \subQuestion Prove~\cref{eq:gibbs-sq-left} from~\cref{lem:gibbs-sq}, \ie
+  \begin{equation}
+    \lim_{N\to+\infty} s_{N}(\sq)\left(\frac{1}{2}-\frac{1}{2N}\right)=
+    \frac{2}{\pi}\int_0^{\pi}\diff x\,\frac{\sin(x)}{x}\simeq 1+0.18\,.
+  \end{equation}
+  \emph{Hint: Remember the mid-point rule}
+  \begin{equation}
+    \int_0^1\diff t\,f(t)=\lim_{M\to+\infty}\frac{1}{M}\sum_{n=0}^{M-1}f\left(\frac{2n+1}{2M}\right)\,.
+  \end{equation}
+\end{Exercise}
+\InputIfFileExists{solutions/gibbs}{\vfill\pagebreak}{}

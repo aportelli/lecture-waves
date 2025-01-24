@@ -24,6 +24,6 @@
   \draw (6.2,-0.4) node {$2L$};
   \draw (9.9,-0.4) node {$3L$};
   \draw (-0.4,3.5) node {$y$};
-  \draw[red] (2.6,2.8) node {$u_0(x)$};
+  \draw[red] (2.8,2.8) node {$\frac12u_0(x)$};
   \draw[blue] (3.6,-2.1) node {$f(x)$};
 \end{tikzpicture}
