@@ -472,8 +472,8 @@ waves:
   avoid constantly treating the $a_n$ coefficients separately for having an $n=0$
   coefficient.
 \end{definition}
-It is clear that such function is periodic, and a consequence of~\cref{thm:period-sum} is
-then
+It is clear that such function is $\tau$-periodic, and a consequence
+of~\cref{thm:period-sum} is then
 \begin{proposition}
   Let $P$ be a trigonometric polynomial of degree $N\geq 1$ and frequency $\omega$ with
   sine-cosine coefficients $a_n$ and $b_n$. $P$ is a periodic function with period
@@ -523,7 +523,7 @@ coefficients, formulated in the theorem below
 \begin{theorem}
   \label{thm:trigp-unicity}
   Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
-  degrees $N$ and $N'$, and sine-cosine coefficients $a_n$,$b_n$ and $a'_n$,$b'_n$,
+  degrees $N$ and $N'$, and sine-cosine coefficients $a_n$, $b_n$ and $a'_n$, $b'_n$,
   respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all
   $t\in\mathbb{R}$, if and only if their degrees and coefficients are equal, \ie $N=N'$
   and for all $n$
@@ -538,6 +538,7 @@ theorem above will be proven.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Orthogonality of elementary waves}
+\label{sec:ew-orth}
 The reader might be more familiar with the notion of orthogonality in vector spaces, which
 we summarise below as an introduction to the notion of orthogonality of periodic
 functions. In vector calculus, given an $n$-dimensional real vector $\vec{v}$ and a unit
@@ -553,17 +554,37 @@ the
 \emph{dot product}
 \begin{equation}
   \vec{v}\cdot \vec{u}=\sum_{j=1}^n \vec{v}_j \vec{u}_j=\cos(\theta)|\vec{v}|\,.
+\end{equation}
+If $\vec{u}$ is not unitary, the expression above generalises to
+\begin{equation}
+  \vec{v}\cdot \vec{u}=\sum_{j=1}^n \vec{v}_j \vec{u}_j=\cos(\theta)|\vec{v}||\vec{u}|\,.
   \label{eq:vec-dot}
 \end{equation}
-Additionally, the dot product $\vec{v}\cdot \vec{u}$ vanishes when $\vec{v}$ and $\vec{u}$
-are \emph{orthogonal} (\ie they form an angle of $\pi$ radians). This makes the dot
-product an essential tool of vector calculus to compute the coordinate of vectors in an
+In particular, the magnitude squared can be written as $|\vec{v}|^2=\vec{v}\cdot \vec{v}$,
+and the identity above implies the \emph{Cauchy-Schwarz inequality}
+\begin{equation}
+  |\vec{v}\cdot \vec{u}|\leq|\vec{v}||\vec{u}|\,,\label{eq:cs-vec}
+\end{equation}
+which becomes an equality if and only if $\vec{v}$ and $\vec{u}$ are \emph{collinear}. On
+the other hand, the dot product $\vec{v}\cdot \vec{u}$ clearly vanishes when $\vec{v}$ and
+$\vec{u}$ are \emph{orthogonal} (\ie they form an angle of $\pi$ radians). This makes it
+an essential tool of vector calculus to compute the coordinate of vectors in an
 orthonormal basis. Explicitly, let $\vec{e}_j$ be an orthonormal basis of $\mathbb{R}^n$,
 and let $v^{\vec{e}}_j$ be the coefficients of $\vec{v}$ in that basis, \ie
 \begin{equation}
-  \vec{v}=\sum_{j=1}^{n}v^{\vec{e}}_j\,\vec{e}_j\,,
+  \vec{v}=\sum_{j=1}^{n}v^{\vec{e}}_j\,\vec{e}_j\qquad\text{and}\qquad
+  \vec{e}_j\cdot\vec{e}_k=\delta_{jk}\,,
 \end{equation}
-then the $v^{\vec{e}}_j$ can be computed using the dot product using
+Where $\delta_{jk}$ is the \emph{Kronecker symbol}
+\begin{equation}
+  \label{eq:kronecker}
+  \delta_{jk}=
+  \begin{cases}
+    1&\text{if}~j=k\\
+    0&\text{else}
+  \end{cases}\,.
+\end{equation}
+The components $v^{\vec{e}}_j$ can then be simply computed using the dot product
 \begin{equation}
   v^{\vec{e}}_j=\vec{v}\cdot \vec{e}_j\,.\label{eq:basis-proj}
 \end{equation}
@@ -574,16 +595,14 @@ why~\cref{thm:trigp-unicity} holds, and a key structure at the heart of Fourier 
 Although the general description of orthogonality between functions is out of the scope of
 this course and will not be treated here, this introduction to Fourier analysis can be
 seen as a good introduction to this type of concept.
-\begin{figure}[t]
-  \caption{Visual representation of the orthogonal projection of a vector on a unit vector
-  given in~\cref{eq:orth-proj}}
-  \label{fig:orth-proj}
-\end{figure}
+% \begin{figure}[t] \caption{Visual representation of the orthogonal projection of a
+%   vector on a unit vector given in~\cref{eq:orth-proj}} \label{fig:orth-proj}
+%   \end{figure}
 
 We start by defining the dot product between two periodic functions
 \begin{definition}
   \label{def:func-dot}
-  Let $f$ and $g$ two real $\tau$-periodic functions. We assume that $f$ and $g$ are
+  Let $f$ and $g$ two real $\tau$-periodic functions. We assume the product $fg$ is
   integrable on the interval $[0,\tau]$. The \emph{dot product} $\braket{f,g}$ between $f$
   and $g$ is the real number defined by
   \begin{equation}
@@ -597,11 +616,15 @@ We start by defining the dot product between two periodic functions
 The definition~\cref{eq:func-dot} can be interpreted as a continuous version
 of~\cref{eq:vec-dot}, where the values $f(t)$ and $g(t)$ are the ``continuous
 coordinates'' of the functions $f$ and $g$, and the integral is a ``continuous sum'' over
-these coordinates. The functional dot product has the same linearity and commutativity
-properties than the vector dot product:
+these coordinates. One can show that the functional dot product is defined if $f$ and $g$
+are square-integrable on a period.
+
+The functional dot product has the same linearity and commutativity properties than the
+vector dot product:
 \begin{proposition}
-  Let $f$, $g$, and $h$ be three real $\tau$-periodic functions. The following identities
-  hold for any pair of real number $\alpha$ and $\beta$
+  Let $f$, $g$, and $h$ be three real $\tau$-periodic functions such that their respective
+  dot products is defined. The following identities hold for any pair of real number
+  $\alpha$ and $\beta$
   \begin{align}
     \braket{\alpha f+\beta g,h}&=\alpha\braket{f,h}+\beta\braket{g,h}\,,\\
     \braket{f,\alpha g+\beta h}&=\alpha\braket{f,g}+\beta\braket{f,h}\,,\\
@@ -615,8 +638,8 @@ properties than the vector dot product:
 The definition of orthogonality follows naturally:
 \begin{definition}
   \label{def:dot-rfunc}
-  Let $f$ and $g$ be two $\tau$-periodic functions. $f$ and $g$ are said to be
-  \emph{orthogonal} if their dot product vanishes, \ie
+  Let $f$ and $g$ be two $\tau$-periodic functions such that $\braket{f,g}$ is defined.
+  $f$ and $g$ are said to be \emph{orthogonal} if their dot product vanishes, \ie
   \begin{equation}
     \braket{f,g}=0\,.
   \end{equation}
@@ -631,14 +654,6 @@ We now give the main result of this section, \ie the orthogonality of elementary
     \braket{\cw(n\omega),\cw(m\omega)}&=\frac{\tau}{2}\delta_{nm}\,,\label{eq:cw-orth}\\
     \braket{\cw(n\omega),\sw(m\omega)}&=0\,.\label{eq:scw-orth}
   \end{align}
-  Where $\delta_{nm}$ is the \emph{Kronecker symbol}
-  \begin{equation}
-    \delta_{nm}=
-    \begin{cases}
-      1&~\mathrm{if}~~n=m\\
-      0&~\mathrm{else}
-    \end{cases}\,.
-  \end{equation}
   In other words, for any pair of integers $n$ and $m$, sine waves of the form
   $\sw(n\omega)$ and $\sw(m\omega)$ have norm squared $\frac{\tau}{2}$ and are orthogonal
   if and only if $n\neq m$, the same applies to cosine waves, and a sine and a cosine wave
@@ -704,7 +719,7 @@ One can also wonder about orthogonality properties of complex elementary waves. 
 here is that the dot product from~\cref{def:dot-rfunc} was specifically defined for real
 functions. It can be generalised to complex functions as follows
 \begin{definition}
-  Let $f$ and $g$ two complex $\tau$-periodic functions. We assume that $f$ and $g$ are
+  Let $f$ and $g$ two complex $\tau$-periodic functions such that the product $fg^*$ is
   integrable on the interval $[0,\tau]$. The \emph{dot product} $\braket{f,g}$ between $f$
   and $g$ is the complex number defined by
   \begin{equation}
@@ -721,8 +736,9 @@ own complex conjugate, this definition is clearly identical to~\cref{def:dot-rfu
 restricted to real functions. This generalisation has the consequence of slightly breaking
 the symmetry of the dot product:
 \begin{proposition}
-  Let $f$, $g$, and $h$ be three complex $\tau$-periodic functions. The following
-  identities hold for any pair of complex numbers $\alpha$ and $\beta$
+  Let $f$, $g$, and $h$ be three complex $\tau$-periodic functions such that their
+  respective dot products is defined. The following identities hold for any pair of
+  complex numbers $\alpha$ and $\beta$
   \begin{align}
     \braket{\alpha f+\beta g,h}&=\alpha\braket{f,h}+\beta\braket{g,h}\,,\\
     \braket{f,\alpha g+\beta h}&=\alpha^*\braket{f,g}+\beta^*\braket{f,h}\,,\\
@@ -766,63 +782,45 @@ elementary waves
   which proves the theorem.
 \end{proof}
 One can notice, once again, that algebra is considerably simpler when using complex
-elementary waves. We are now ready to prove~\cref{thm:trigp-unicity}:
-\begin{proof}[Proof of~\cref{thm:trigp-unicity}]
-  Let $P(t)$ and $P'(t)$ be two trigonometric polynomial of the general form
+elementary waves. A key consequence of these orthogonality relationships it that it allows
+us to invert the definition of trigonometric polynomials, \ie to obtain the coefficients
+as a function of the polynomial.
+\begin{theorem}
+  \label{thm:trigp-coeff}
+  Let $P$ be a trigonometric polynomial of degree $N$ and frequency $\omega$ with
+  sine-cosine coefficients $a_n$ and $b_n$, and complex coefficients $c_n$. The
+  coefficients of $P$ can be obtained using the following dot products
   \begin{align}
-    P(t)&=a_0+\sum_{n=1}^N[a_n\,\cw(t;n\omega)+b_n\,\sw(t;n\omega)]\,,\\
-    P'(t)&=a'_0+\sum_{n=1}^{N'}[a'_n\,\cw(t;n\omega)+b'_n\,\sw(t;n\omega)]\,.
+    a_n&=\frac{2}{\tau}\braket{P,\cw(n\omega)}\,,\\
+    b_n&=\frac{2}{\tau}\braket{P,\sw(n\omega)}\,,\\
+    c_n&=\frac{1}{\tau}\braket{P,\ew(n\omega)}\,.\label{eq:trigp-cn}
   \end{align}
-  We additionally assume that $P(t)$ and $P'(t)$ are identically equal, \ie
-  \begin{equation}
-    P(t)=P'(t)\,,
-  \end{equation}
-  for all real number $t$. This implies that for any integer $m$ one has
-  \begin{equation}
-    \braket{P,\cw(m\omega)}=\braket{P',\cw(m\omega)}\,.
-  \end{equation}
-  Using the orthogonality relations from~\cref{thm:sc-orth}, these dot products can be
-  simplified to
-  \begin{equation}
-    \braket{P,\cw(m\omega)}=
-    \begin{cases}
-      \frac{\tau}{2}a_m&~\text{if}~m\leq N\\
-      0&~\text{else}
-    \end{cases},
-    \quad\text{and}\quad
-    \braket{P',\cw(m\omega)}=
-    \begin{cases}
-      \frac{\tau}{2}a'_m&~\text{if}~m\leq N'\\
-      0&~\text{else}
-    \end{cases}\,.
-  \end{equation}
-  Similarly,
-  \begin{equation}
-    \braket{P,\sw(m\omega)}=\braket{P',\sw(m\omega)}\,,
-  \end{equation}
-  and
-  \begin{equation}
-    \braket{P,\sw(m\omega)}=
-    \begin{cases}
-      \frac{\tau}{2}b_m&~\text{if}~m\leq N\\
-      0&~\text{else}
-    \end{cases},
-    \quad\text{and}\quad
-    \braket{P',\sw(m\omega)}=
-    \begin{cases}
-      \frac{\tau}{2}b'_m&~\text{if}~m\leq N'\\
-      0&~\text{else}
-    \end{cases}\,.
-  \end{equation}
-  Combining the equalities above implies directly that $a_n=a'_n$ and $b_n=b'_n$ for all
-  $n$.
+\end{theorem}
+\begin{proof}
+  This is a clear consequence of~\cref{thm:sc-orth,thm:orth-complex} and the linear
+  properties of the dot product. For example
+  \begin{align}
+    \braket{P,\sw(n\omega)}&=\frac{a_0}{2}\braket{\cw(0),\sw(n\omega)}+
+    \sum_{m=1}^N[a_m\braket{\cw(m\omega),\sw(n\omega)}
+    +b_m\braket{\sw(m\omega),\sw(n\omega)}]\\
+    &=\frac{\tau}{2}\sum_{m=1}^Nb_m\delta_{mn}=\frac{\tau}{2}b_n\,.
+  \end{align}
 \end{proof}
-We can notice that~\cref{thm:trigp-unicity} is somewhat trivial when one knows the
-orthogonality relationships between sine and cosine waves. This also generalises a
-well-known property from vector calculus: a set of orthogonal vectors defines a unique
-coordinate system, and these coordinates can be obtained using orthogonal projection on
-the basis vectors as in~\cref{eq:basis-proj}. Finally, \cref{thm:trigp-unicity}
-generalises naturally to the complex form of trigonometric polynomials:
+The proof of~\cref{thm:trigp-unicity} is now clear:
+\begin{proof}[Proof of~\cref{thm:trigp-unicity}]
+  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
+  degrees $N$ and $N'$, and sine-cosine coefficients $a_n$, $b_n$ and $a'_n$, $b'_n$,
+  respectively. If $P$ and $Q$ are identically equal, then~\cref{thm:trigp-coeff} gives
+  \begin{align}
+    a_n&=\frac{2}{\tau}\braket{P,\cw(n\omega)}
+    =\frac{2}{\tau}\braket{Q,\cw(n\omega)}=a_n'\,,\\
+    b_n&=\frac{2}{\tau}\braket{P,\sw(n\omega)}
+    =\frac{2}{\tau}\braket{Q,\sw(n\omega)}=b_n'\,,
+  \end{align}
+  which proves the theorem.
+\end{proof}
+Finally, \cref{thm:trigp-unicity} can be as well formulated for the complex form of
+trigonometric polynomials:
 \begin{corollary}
   \label{corr:trigp-unicity-cplx}
   Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
@@ -836,19 +834,74 @@ generalises naturally to the complex form of trigonometric polynomials:
 \begin{proof}
   Using~\cref{thm:trigp-unicity}, we know that the sine-cosine coefficients of the
   polynomials are unique. We also saw in~\cref{eq:ab-to-c} that complex coefficients are
-  uniquely defined from the sine-cosine ones, which proves the coronary. Another way to
+  uniquely defined from the sine-cosine ones, which proves the corollary. Another way to
   prove this result is, similarly to the proof of~\cref{thm:trigp-unicity}, to project $P$
-  in the form~\cref{eq:trigp-complex} on complex waves:
-  \begin{equation}
-    \braket{P,\ew(m\omega)}=
-    \begin{cases}
-      \tau c_m&~\text{if}~m\leq N\\
-      0&~\text{else}
-    \end{cases}\,,
-  \end{equation}
-  which, as previously, provides a unique determination of the $c_m$ coefficients given
-  $P$.
+  on complex waves using~\cref{eq:trigp-cn}.
 \end{proof}
+In summary, the sine-cosine coefficients (resp.~the complex coefficients), are the
+``coordinates'' of a trigonometric polynomial in the orthogonal basis of the elementary
+sine and cosine waves (resp.~the elementary complex waves). This analogy extends to the
+dot product and norm of trigonometric polynomials, which have similar expressions than in
+the case of vectors.
+\begin{theorem}[Parseval]
+  \label{thm:trigp-parseval}
+  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
+  degrees $N$ and $N'$, sine-cosine coefficients $a_n$, $b_n$ and $a'_n$, $b'_n$, and
+  complex coefficients $c_n$, respectively. The following identities hold
+  \begin{align}
+    \braket{P,Q}&=\frac{\tau}{2}\sum_{n=1}^{M}(a_na'_n+b_nb'_n)=\tau\sum_{n=-M}^Mc_n(c'_n)^*\,,
+    \label{eq:trigp-dot}\\
+    \|P\|^2&=\frac{\tau}{2}\sum_{n=1}^{N}(a_n^2+b_n^2)=\tau\sum_{n=-N}^N|c_n|^2\,,
+    \label{eq:trigp-norm}
+  \end{align}
+  where $M=\min(N,N')$.
+\end{theorem}
+\begin{proof}
+  As in the case of~\cref{thm:trigp-coeff}, this is a fairly straightforward consequence
+  of the orthogonality of elementary waves. For example, in the complex form
+  \begin{align}
+    \braket{P,Q}&=\sum_{n=-N}^N\,\sum_{m=-N'}^{N'}\braket{c_n\ew(n\omega),c'_m\ew(m\omega)}
+    \notag\\
+    &=\sum_{n=-N}^N\,\sum_{m=-N'}^{N'}c_n(c'_m)^*\braket{\ew(n\omega),\ew(m\omega)}\,,
+  \end{align}
+  and~\cref{thm:orth-complex} directly implies~\cref{eq:trigp-dot}.
+  Finally,~\cref{eq:trigp-norm} if a direct consequence of~\cref{eq:trigp-dot} with $P=Q$.
+\end{proof}
+The result above is generally called~\emph{Parseval's theorem}. As we will see in later
+chapters, it can be considerably generalised for Fourier series and the Fourier transform,
+which are the contexts within which this theorem is usually formulated. The Cauchy-Schwarz
+inequality also generalises to trigonometric polynomials
+\begin{theorem}[Cauchy-Schwarz inequality]
+  Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$, the
+  following inequality holds
+  \begin{equation}
+    |\braket{P,Q}|\leq\|P\|\|Q\|\,.
+  \end{equation}
+  This inequality is an equality if and only if there exists a constant
+  $\alpha\in\mathbb{R}$ such that $P=\alpha Q$.
+\end{theorem}
+\begin{proof}
+  Let $a_n$, $b_n$ and $a'_n$, $b'_n$ be the sine-cosine coefficients of $P$ and $Q$,
+  respectively. We define the vectors
+  \begin{equation}
+    \vec{A}=(a_0,a_1,b_1,a_2,b_2,\dots,a_N,b_N)\quad\text{and}\quad
+    \vec{A}'=(a'_0,a'_1,b'_1,a'_2,b'_2,\dots,a'_N,b'_N)\,,
+  \end{equation}
+  where $N$ is the maximum of the degrees of $P$ and $Q$, and the coefficients of the
+  lowest-degree polynomial have been extended with zeros. Then
+  using~\cref{thm:trigp-parseval} we have
+  \begin{equation}
+    \braket{P,Q}=\frac{\tau}{2}(\vec{A}\cdot\vec{A}'),\quad\|P\|
+    =\sqrt{\frac{\tau}{2}}|\vec{A}|,
+    \quad\text{and}\quad\|Q\|=\sqrt{\frac{\tau}{2}}|\vec{A}'|\,.
+  \end{equation}
+  Using the Cauchy-Schwarz inequality for vectors~\cref{eq:cs-vec},
+  \begin{equation}
+    \frac{\tau}{2}|\vec{A}\cdot\vec{A}'|\leq\frac{\tau}{2}|\vec{A}||\vec{A}'|\,,
+  \end{equation}
+  which proves the theorem.
+\end{proof}
+
 This concludes this section on the orthogonality of elementary waves. We will now discuss
 how to generalise elementary waves and trigonometric polynomials to multiple real
 variables.
@@ -1064,10 +1117,11 @@ simplify to
 where, as usual, $\tau=\frac{1}{\omega}$, and we generalised the \emph{Kronecker symbol}
 to vectors as follows
 \begin{equation}
+  \label{eq:kronecker-vec}
   \delta_{\vec{n}\vec{m}}=\prod_{j=1}^{d}\delta_{n_jm_j}=
   \begin{cases}
-    1&~\mathrm{if}~~\vec{n}=\vec{m}\\
-    0&~\mathrm{else}
+    1&\text{if}~\vec{n}=\vec{m}\\
+    0&\text{else}
   \end{cases}\,.
 \end{equation}
 We can now define trigonometric polynomial in multiple dimensions:

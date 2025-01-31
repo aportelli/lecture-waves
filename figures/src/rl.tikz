@@ -1,0 +1,44 @@
+% tex-fmt: off
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        axis line style={-{Latex[scale=2]}},
+        xlabel = \empty,
+        ylabel = \empty,
+        xtick = {2,5}, % Remove all x-axis ticks
+        xticklabels = {$t_n=r_0$,$t_{n+1}=r_M$},
+        ytick = \empty,
+        ymin = -0.3, ymax = 3, % Adjust the y-axis limits to not draw below the x-axis
+        xmin = -0.3, xmax = 7,
+        clip = false,
+        every axis plot/.append style={thick},
+        width=15cm, % Set the width of the figure
+        height=8cm, % Set the height of the figure
+    ]
+
+    % Piecewise function definition
+    \addplot+[black, no marks, domain=-0.3:2, samples=100, line width=0.5mm] {0.5*(x+0.1)^2+0.1};
+    \addplot+[black, no marks, domain=2:5, samples=100, line width=0.5mm] {1.5*sin(deg(x-2)) + 0.5}; % Less curved function
+    \addplot+[black, no marks, domain=5:7, samples=100, line width=0.5mm] {0.5*sin(deg(x-5)) + 1.5};
+
+    % Piecewise constant approximation on [t_n, t_{n+1}]
+    \pgfmathsetmacro{\step}{(5-2)/8} % Calculate step size for 7 sub-intervals
+    \foreach \i in {0,...,7} {
+        \pgfmathsetmacro{\leftcoord}{2 + \i*\step}
+        \pgfmathsetmacro{\rightcoord}{2 + (\i+1)*\step}
+        \pgfmathsetmacro{\value}{1.5*sin(deg(\leftcoord-2)) + 0.5} % Value of the sine function at the left endpoint
+        \edef\temp{\noexpand\draw[blue, line width=0.5mm] (axis cs:\leftcoord,\value) -- (axis cs:\rightcoord,\value);}
+        \temp
+        % Add dashed vertical lines up to the y-value of the approximation, but not below the x-axis
+        \edef\temp{\noexpand\draw[dashed] (axis cs:\leftcoord,0) -- (axis cs:\leftcoord,\value);}
+        \temp
+    }
+    % Add the last vertical line for the rightmost coordinate, up to the y-value of the last approximation piece
+    \pgfmathsetmacro{\lastvalue}{1.5*sin(deg(5-2)) + 0.51}
+    \draw[dashed] (axis cs:5,0) -- (axis cs:5,\lastvalue);
+    \draw (1.5,2) node {$f(t)$};
+    \draw (6.7,-0.18) node {$t$};
+    \draw[blue] (4.3,2.2) node {$g(t)$};
+    \end{axis}
+    \end{tikzpicture}

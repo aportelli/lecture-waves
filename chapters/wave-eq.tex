@@ -291,7 +291,7 @@ with
   f(x)=
   \begin{cases}
     \frac12u_0(x-2nL)&~\text{if}\quad2nL\leq x\leq (2n+1) L\\
-    -\frac12u_0(2nL-x)&~\text{if}\quad(2n-1)L\leq x\leq 2nL
+    -\frac12u_0(2nL-x)&~\text{is}\quad(2n-1)L\leq x\leq 2nL
   \end{cases}
   \,,\label{eq:f-copies}
 \end{equation}
@@ -314,8 +314,9 @@ string as a function of its length, tension, and linear mass density.
   \centering
   \includegraphics{tikz_string-f.pdf}
   \caption{Graphical representation of~\cref{eq:f-copies}. The bold red line represents
-    half of the initial string position $u_0(x)$. The blue line is the forward component $f(x)$,
-  obtained as the periodic extension of $\frac12 u_0(x)$ defined in~\cref{eq:f-copies}.}
+    half of the initial string position $u_0(x)$. The blue line is the forward component
+    $f(x)$, obtained as the periodic extension of $\frac12 u_0(x)$ defined
+  in~\cref{eq:f-copies}.}
   \label{fig:string-f}
 \end{figure}
 \begin{figure}[t]
@@ -380,9 +381,9 @@ pull the string into a position which is exactly half a period of the sine funct
 \begin{equation}
   \forall x\in[0,L],\quad u_0(x)=A\sin\left(\frac{\pi}{L}x\right)\,,\label{eq:string-sine-ic}
 \end{equation}
-then the extension~\cref{eq:f-copies} of $u_0$ to $f$ is defined, up to a factor $2$, by the same formula, \ie
-$f(x)=\smash{\frac{A}{2}\sin\left(\frac{\pi}{L}x\right)}$ for any real number $x$, and the solution
-to the wave equation is simply
+then the extension~\cref{eq:f-copies} of $u_0$ to $f$ is defined, up to a factor $2$, by
+the same formula, \ie $f(x)=\smash{\frac{A}{2}\sin\left(\frac{\pi}{L}x\right)}$ for any
+real number $x$, and the solution to the wave equation is simply
 \begin{equation}
   u(t,x)=\frac{A}{2}\left\{\sin\left[\frac{\pi}{L}(x+ct)\right]
   +\sin\left[\frac{\pi}{L}(x-ct)\right]\right\}\,.
