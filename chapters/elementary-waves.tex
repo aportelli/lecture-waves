@@ -505,15 +505,15 @@ convenient complex form
   \begin{equation}
     c_n =
     \begin{cases}
-      \frac{1}{2}(a_n-ib_n)&\text{if~}n< 0\\
+      \frac{1}{2}(a_{-n}-ib_{-n})&\text{if~}n< 0\\
       \frac{1}{2}(a_n+ib_n)&\text{if~}n\geq 0
     \end{cases}
     \,,\label{eq:ab-to-c}
   \end{equation}
   which have the property $c_n^*=c_{-n}$. The relation above can be inverted to
   \begin{equation}
-    a_n=c_n+c_{-n}\qquad\text{and}\qquad
-    b_n=i(c_n-c_{-n})\,.
+    a_n=c_n+c_{-n}=2\Re(c_n)\qquad\text{and}\qquad
+    b_n=i(c_{-n}-c_{n})=2\Im(c_n)\,.
   \end{equation}
 \end{definition}
 The formulas in the definition above can be obtained using~\cref{eq:cwtoew,eq:swtoew} with
