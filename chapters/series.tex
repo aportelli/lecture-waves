@@ -44,7 +44,7 @@ functions are essentially continuous and differentiable functions, except perhap
 finite number of points, with finite limits around discontinuities. We start by defining
 this specific type of discontinuity.
 \begin{definition}
-  Let $f$ be a function of a single real variable. We consider a point $t_0\in\mathbb{R}$,
+  Let $f$ be a complex function of a single real variable. We consider a point $t_0\in\mathbb{R}$,
   and assume $f$, and let assume $f$ is defined in a neighbourhood of some point
   $t_0\in\mathbb{R}$. If $f(t)$ admits a finite limit for $t\to t_0$ with $t<t_0$, we call
   it the \emph{left limit} of $f(t)$ at $t_0$, noted $f(t_0^-)$. Similarly, if $f(t)$
@@ -53,7 +53,7 @@ this specific type of discontinuity.
   \emph{one-sided} limits of $f$ at $t_0$.
 \end{definition}
 \begin{definition}
-  Let $f$ be a function of a single real variable, which admits a left and right limits at
+  Let $f$ be a complex function of a single real variable, which admits a left and right limits at
   a given point $t_0$. If $f(t_0^-)\neq f(t_0^+)$, then $t_0$ is called a \emph{jump
   discontinuity} of $f$, and the difference $f(t_0^+)-f(t_0^-)$ is called the
   \emph{height} of the jump discontinuity.
@@ -66,7 +66,7 @@ We now define \emph{piecewise continuous functions}, which are continuous functi
 perhaps at the exception to a finite number of jump discontinuities.
 \begin{definition}
   \label{def:pw-cont}
-  Let $f$ be a function of a single real variable defined on a compact interval $[a,b]$.
+  Let $f$ be a complex function of a single real variable defined on a compact interval $[a,b]$.
   $f$ is said to be \emph{piecewise continuous} is said to be on $[a,b]$ if there exists a
   finite set of points of $t_0=a<t_1<\dots<t_{N-1}<t_N=b$ in $(a,b)$ satisfying all the
   following conditions:
@@ -83,7 +83,7 @@ perhaps at the exception to a finite number of jump discontinuities.
 derivative to be piecewise continuous.
 \begin{definition}
   \label{def:pw-smooth}
-  Let $f$ be a function of a single real variable defined on a compact interval $[a,b]$.
+  Let $f$ be a complex function of a single real variable defined on a compact interval $[a,b]$.
   $f$ is said to be \emph{piecewise smooth} on $[a,b]$ if it is piecewise continuous and
   admits a derivative which is piecewise continuous.
 \end{definition}
@@ -451,6 +451,7 @@ second half of the 19\textsuperscript{th}, who brought stronger mathematical fou
 to the pioneering work of Fourier. We will then discuss the much stronger case of uniform
 convergence, and conclude the section with the Gibbs phenomenon, which describes important
 practical consequences of Fourier series which fail to converge uniformly.
+%-----------------------------------------------------------------------------------------
 \subsection{Pointwise convergence}
 The theorem below can be considered as the main result of this chapter. It states that for
 piecewise smooth periodic functions, the Fourier series converges at every point to the
@@ -582,8 +583,65 @@ a finite number of points of jump discontinuity.
   identical to the square wave except at the points of discontinuity where it takes the
   value $\frac{1}{2}$.
 \end{example}
+%-----------------------------------------------------------------------------------------
 \subsection{Convergence in mean and Parseval's theorem}
-% In this section, we generalise some results of~\cref{sec:ew-orth}
+In this section, we generalise some results of~\cref{sec:ew-orth}. It is not too difficult to
+show that the norm of a partial Fourier sum is always smaller than the norm of the associated function,
+an important result known as \emph{Bessel's inequality}.
+\begin{theorem}[Bessel's inequality]
+  \label{thm:bessel}
+  Let $f$ be a piecewise smooth $\tau$-periodic function. The series over $n\in\mathbb{Z}$
+  with summand $|c_n(f)|^2$ converges, and one has the inequality
+  \begin{equation}
+    \tau\sumz{n}|c_n(f)|^2\leq\|f\|^2\,.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  We consider the norm of the difference between $f$ and its partial Fourier sum
+  \begin{equation}
+    \Delta_N=\|f-s_N(f)\|^2\,,
+  \end{equation}
+  where $N$ is some positive integer. By construction, $\Delta_N\geq 0$ for all $N>0$.
+  Additionally, $\Delta_N$ can be expanded as
+  \begin{align}
+    \Delta_N&=\braket{f-s_N(f),f-s_N(f)}\\
+    &=\|f\|^2+\|s_N(f)\|^2-2\Re[\braket{f,s_N(f)}]\,.\label{eq:bessel-l2err}
+  \end{align}
+  Furthermore,
+  \begin{align}
+    \braket{f,s_N(f)}&=\Braket{f,\sum_{n=-N}^{N}c_n(f)\ew(n\omega)}\\
+    &=\sum_{n=-N}^{N}c_n(f)^*\braket{f,\ew(n\omega)}\\
+    &=\tau\sum_{n=-N}^{N}|c_n(f)|^2\,.
+  \end{align}
+  Using Parseval's theorem for trigonometric polynomials (\cref{thm:trigp-parseval}), the result
+  above implies that $\braket{f,s_N(f)}=\|s_N(f)\|^2$. Substituting this expression back into
+  \cref{eq:bessel-l2err}, we get
+  \begin{equation}
+    \Delta_N=\|f\|^2-\|s_N(f)\|^2\,,
+  \end{equation}
+  and since $\Delta_N\geq 0$,
+  \begin{equation}
+    \forall N>0,\quad \|s_N(f)\|^2=\tau\sum_{n=-N}^{N}|c_n(f)|^2\leq \|f\|^2\,.
+  \end{equation}
+  $\|s_N(f)\|^2$ is a sum of positive numbers, and therefore a monotonous sequence in $N$. As per the inequality above, it is bounded by $\|f\|^2$ and therefore converges, which proves the theorem.
+\end{proof}
+In reality, this inequality is an equality, generalising~\cref{thm:trigp-parseval}. This is a much harder result to prove, and we will admit it here.
+\begin{theorem}[Parseval]
+  \label{thm:parseval}
+  Let $f$ and $g$ be two piecewise smooth $\tau$-periodic functions. The following identities hold
+  \begin{align}
+    \braket{f,g}&=\tau\sumz{n}c_n(f)c_n(g)^*\,,
+    \label{eq:fs-dot}\\
+    \|f\|^2&=\tau\sumz{n}|c_n(f)|^2\,.
+    \label{eq:fs-norm}
+  \end{align}
+\end{theorem}
+For completeness, we provide below the Parseval theorem identities for the sine-cosine form
+\begin{align}
+  \braket{f,g}&=\frac{\tau}{2}\left\{\frac{a_0(f)a_0(g)^*}{4}
+  +\sumnp{n}[a_n(f)a_n(g)^*+b_n(f)b_n(g)^*]\right\}\,,\\
+  \|f\|^2&=\frac{\tau}{2}\left\{\frac{|a_0(f)|^2}{4}+\sumnp{n}[|a_n(f)|^2+|b_n(f)|^2]\right\}\,.
+\end{align}
 \subsection{Uniform convergence}
 We start by reminding the definition of uniform convergence for a sequence of functions.
 Essentially, such sequence is uniformly convergent if the distance to the limit can be

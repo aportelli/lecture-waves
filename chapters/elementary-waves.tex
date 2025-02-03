@@ -465,7 +465,7 @@ waves:
     P(t)=\frac{a_0}{2}+\sum_{n=1}^N[a_n\cw(t;n\omega)+b_n\sw(t;n\omega)]\,,
     \label{eq:trigp-sc}
   \end{equation}
-  where $a_n$ and $b_n$ are real coefficients such that $a_N\neq 0$ or $b_N \neq 0$. The
+  where $a_n$ and $b_n$ are complex coefficients such that $a_N\neq 0$ or $b_N \neq 0$. The
   formula above is called the \emph{sine-cosine form} of $P(t)$ with \emph{sine-cosine
   coefficients} or \emph{modes} $a_n$ and $b_n$. The $\frac{1}{2}$ normalisation of $a_0$
   is arbitrary, and will be convenient later. It is also convenient to define $b_0=0$, to
@@ -494,8 +494,8 @@ of~\cref{thm:period-sum} is then
 \end{proof}
 As we previously did for the elementary waves, trigonometric polynomials can be put in a
 convenient complex form
-\begin{definition}
-  \label{def:trigp-complex}
+\begin{proposition}
+  \label{prop:trigp-complex}
   Let $P$ be a trigonometric polynomial of degree $N$ and frequency $\omega$ with
   sine-cosine coefficients $a_n$ and $b_n$. $P$ can be written in the \emph{complex form}
   \begin{equation}
@@ -505,21 +505,38 @@ convenient complex form
   \begin{equation}
     c_n =
     \begin{cases}
-      \frac{1}{2}(a_{-n}-ib_{-n})&\text{if~}n< 0\\
-      \frac{1}{2}(a_n+ib_n)&\text{if~}n\geq 0
+      \frac{1}{2}(a_{-n}+ib_{-n})&\text{if~}n< 0\\
+      \frac{1}{2}(a_n-ib_n)&\text{if~}n\geq 0
     \end{cases}
     \,,\label{eq:ab-to-c}
   \end{equation}
-  which have the property $c_n^*=c_{-n}$. The relation above can be inverted to
+  The relations above can be inverted to
   \begin{equation}
-    a_n=c_n+c_{-n}=2\Re(c_n)\qquad\text{and}\qquad
-    b_n=i(c_{-n}-c_{n})=2\Im(c_n)\,.
+    a_n=c_n+c_{-n}\qquad\text{and}\qquad
+    b_n=i(c_{n}+c_{-n})\,.
   \end{equation}
-\end{definition}
-The formulas in the definition above can be obtained using~\cref{eq:cwtoew,eq:swtoew} with
-the definition~\cref{eq:trigp-sc}, which is left as an exercise to the reader. A key
-property of trigonometric polynomials, that will be crucial later, is the unicity of their
-coefficients, formulated in the theorem below
+  Additionally, if $a_n$ and $b_n$ are real, one has the \emph{reality condition} $c_n^*=c_{-n}$.
+\end{proposition}
+\begin{proof}
+  We can rewrite~\cref{eq:trigp-complex} as
+  \begin{equation}
+    P(t)=\sum_{n=-N}^{N}c_n\ew(t;n\omega)=c_0+\sum_{n=1}^N[c_n\ew(n\omega)+c_{-n}\ew(-n\omega)]
+    \label{eq:trigp-complex-npos}
+  \end{equation}
+  For $n> 0$, substituting~\cref{eq:ab-to-c}, we obtain
+  \begin{align}
+    \frac{1}{2}(a_n-ib_n)\ew(n\omega)&=\frac{1}{2}(a_n-ib_n)[\cw(n\omega)+i\sw(n\omega)]\,,\\
+    \frac{1}{2}(a_n+ib_n)\ew(-n\omega)&=\frac{1}{2}(a_n+ib_n)[\cw(n\omega)-i\sw(n\omega)]\,,
+  \end{align}
+  therefore
+  \begin{equation}
+    \frac{1}{2}(a_n-ib_n)\ew(n\omega)+\frac{1}{2}(a_n+ib_n)\ew(-n\omega)=
+    a_n\cw(n\omega)+b_n\sw(n\omega)\,.
+  \end{equation}
+  Substituting this last expression back into~\cref{eq:trigp-complex-npos}, and taking $c_0=\frac{a_0}{2}$, we obtain the sine-cosine form~\cref{eq:trigp-sc}.
+\end{proof}
+A key property of trigonometric polynomials, that will be crucial later, is the unicity of
+their coefficients, formulated in the theorem below.
 \begin{theorem}
   \label{thm:trigp-unicity}
   Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
@@ -648,13 +665,13 @@ We now give the main result of this section, \ie the orthogonality of elementary
 \begin{theorem}
   \label{thm:sc-orth}
   Let $\omega>0$ be an arbitrary frequency corresponding to the period $\tau$. For any
-  pair of integers $n$ and $m$, the following identities hold
+  pair of non-zero integers $n$ and $m$, the following identities hold
   \begin{align}
     \braket{\sw(n\omega),\sw(m\omega)}&=\frac{\tau}{2}\delta_{nm}\,,\label{eq:sw-orth}\\
     \braket{\cw(n\omega),\cw(m\omega)}&=\frac{\tau}{2}\delta_{nm}\,,\label{eq:cw-orth}\\
     \braket{\cw(n\omega),\sw(m\omega)}&=0\,.\label{eq:scw-orth}
   \end{align}
-  In other words, for any pair of integers $n$ and $m$, sine waves of the form
+  In other words, for any pair of non-zero integers $n$ and $m$, sine waves of the form
   $\sw(n\omega)$ and $\sw(m\omega)$ have norm squared $\frac{\tau}{2}$ and are orthogonal
   if and only if $n\neq m$, the same applies to cosine waves, and a sine and a cosine wave
   of the form $\sw(n\omega)$ and $\cw(m\omega)$ are always orthogonal.
@@ -849,9 +866,11 @@ the case of vectors.
   degrees $N$ and $N'$, sine-cosine coefficients $a_n$, $b_n$ and $a'_n$, $b'_n$, and
   complex coefficients $c_n$, respectively. The following identities hold
   \begin{align}
-    \braket{P,Q}&=\frac{\tau}{2}\sum_{n=1}^{M}(a_na'_n+b_nb'_n)=\tau\sum_{n=-M}^Mc_n(c'_n)^*\,,
+    \braket{P,Q}&=\frac{\tau}{2}\left\{\frac{a_0(a_0')^*}{4}+
+    \sum_{n=1}^{M}[a_n(a'_n)^*+b_n(b'_n)^*]\right\}=\tau\sum_{n=-M}^Mc_n(c'_n)^*\,,
     \label{eq:trigp-dot}\\
-    \|P\|^2&=\frac{\tau}{2}\sum_{n=1}^{N}(a_n^2+b_n^2)=\tau\sum_{n=-N}^N|c_n|^2\,,
+    \|P\|^2&=\frac{\tau}{2}\left[\frac{|a_0|^2}{4}+\sum_{n=1}^{N}(|a_n|^2+|b_n|^2)\right]
+    =\tau\sum_{n=-N}^N|c_n|^2\,,
     \label{eq:trigp-norm}
   \end{align}
   where $M=\min(N,N')$.
@@ -899,7 +918,9 @@ inequality also generalises to trigonometric polynomials
   \begin{equation}
     \frac{\tau}{2}|\vec{A}\cdot\vec{A}'|\leq\frac{\tau}{2}|\vec{A}||\vec{A}'|\,,
   \end{equation}
-  which proves the theorem.
+  which proves the theorem. In principle, we reminded the Cauchy-Schwarz inequality
+  in~\cref{eq:cs-vec} for vectors with real coefficients, it is also correct with vector
+  with complex coefficients, which we admit here.
 \end{proof}
 
 This concludes this section on the orthogonality of elementary waves. We will now discuss
@@ -1139,7 +1160,7 @@ We can now define trigonometric polynomial in multiple dimensions:
     \forall\vec{n}\in C,\quad c_{-\vec{n}}=c_{\vec{n}}^*\,,
   \end{equation}
   which is a generalisation of the condition already encountered
-  in~\cref{def:trigp-complex}.
+  in~\cref{prop:trigp-complex}.
 \end{definition}
 Finally, thanks to~\cref{thm:nd-orth}, the coefficients of a given trigonometric
 polynomial are unique and given by
