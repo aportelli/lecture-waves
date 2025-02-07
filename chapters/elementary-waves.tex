@@ -513,7 +513,7 @@ convenient complex form
   The relations above can be inverted to
   \begin{equation}
     a_n=c_n+c_{-n}\qquad\text{and}\qquad
-    b_n=i(c_{n}+c_{-n})\,.
+    b_n=i(c_{n}-c_{-n})\,.
   \end{equation}
   Additionally, if $a_n$ and $b_n$ are real, one has the \emph{reality condition} $c_n^*=c_{-n}$.
 \end{proposition}
@@ -866,10 +866,10 @@ the case of vectors.
   degrees $N$ and $N'$, sine-cosine coefficients $a_n$, $b_n$ and $a'_n$, $b'_n$, and
   complex coefficients $c_n$, respectively. The following identities hold
   \begin{align}
-    \braket{P,Q}&=\frac{\tau}{2}\left\{\frac{a_0(a_0')^*}{4}+
-    \sum_{n=1}^{M}[a_n(a'_n)^*+b_n(b'_n)^*]\right\}=\tau\sum_{n=-M}^Mc_n(c'_n)^*\,,
+    \braket{P,Q}&=\tau\,\frac{a_0(a_0')^*}{4}+
+    \frac{\tau}{2}\left\{\sum_{n=1}^{M}[a_n(a'_n)^*+b_n(b'_n)^*]\right\}=\tau\sum_{n=-M}^Mc_n(c'_n)^*\,,
     \label{eq:trigp-dot}\\
-    \|P\|^2&=\frac{\tau}{2}\left[\frac{|a_0|^2}{4}+\sum_{n=1}^{N}(|a_n|^2+|b_n|^2)\right]
+    \|P\|^2&=\tau\,\frac{|a_0|^2}{4}+\frac{\tau}{2}\left[\sum_{n=1}^{N}(|a_n|^2+|b_n|^2)\right]
     =\tau\sum_{n=-N}^N|c_n|^2\,,
     \label{eq:trigp-norm}
   \end{align}

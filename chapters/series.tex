@@ -584,8 +584,18 @@ a finite number of points of jump discontinuity.
   value $\frac{1}{2}$.
 \end{example}
 %-----------------------------------------------------------------------------------------
-\subsection{Convergence in mean and Parseval's theorem}
-In this section, we generalise some results of~\cref{sec:ew-orth}. It is not too difficult to
+\subsection{Convergence in mean square and Parseval's theorem}
+Another useful form of convergence for sequences of functions is the \emph{convergence in mean square}, also called \emph{$L^2$ convergence}, based on the functional norm introduced in~\cref{sec:ew-orth}. In all this section, we will work with square-integrable $\tau$-periodic functions. Such a function $f$ is defined by requiring that $|f|^2$ has a defined finite integral on $[0,\tau]$. This is the general class of functions for which the dot product is well-defined, which we will admit here. In particular, all piecewise smooth functions are square-integrable.
+\begin{definition}
+  Let $f$ be a $\tau$-periodic square-integrable function. A sequence of $\tau$-periodic square-integrable functions $f_n$ is said to converge to $f$ \emph{in mean} if
+  \begin{equation}
+    \lim_{n\to+\infty}\|f-f_n\|=0\,.
+  \end{equation}
+\end{definition}
+This type of convergence is useful because the norm is related to the dot product of functions,
+and as we saw in the previous chapter, the orthogonality of elementary waves. However, it is important to notice that this is a rather weak form of convergence, and without further assumptions it does not generally imply pointwise or uniform convergence.
+
+We now generalise some results of~\cref{sec:ew-orth}, which we will then use to prove that Fourier series generally converge in mean square. Firstly, it is not too difficult to
 show that the norm of a partial Fourier sum is always smaller than the norm of the associated function,
 an important result known as \emph{Bessel's inequality}.
 \begin{theorem}[Bessel's inequality]
@@ -628,7 +638,7 @@ an important result known as \emph{Bessel's inequality}.
 In reality, this inequality is an equality, generalising~\cref{thm:trigp-parseval}. This is a much harder result to prove, and we will admit it here.
 \begin{theorem}[Parseval]
   \label{thm:parseval}
-  Let $f$ and $g$ be two piecewise smooth $\tau$-periodic functions. The following identities hold
+  Let $f$ and $g$ be two square-integrable $\tau$-periodic functions. The following identities hold
   \begin{align}
     \braket{f,g}&=\tau\sumz{n}c_n(f)c_n(g)^*\,,
     \label{eq:fs-dot}\\
@@ -638,10 +648,32 @@ In reality, this inequality is an equality, generalising~\cref{thm:trigp-parseva
 \end{theorem}
 For completeness, we provide below the Parseval theorem identities for the sine-cosine form
 \begin{align}
-  \braket{f,g}&=\frac{\tau}{2}\left\{\frac{a_0(f)a_0(g)^*}{4}
-  +\sumnp{n}[a_n(f)a_n(g)^*+b_n(f)b_n(g)^*]\right\}\,,\\
-  \|f\|^2&=\frac{\tau}{2}\left\{\frac{|a_0(f)|^2}{4}+\sumnp{n}[|a_n(f)|^2+|b_n(f)|^2]\right\}\,.
+  \braket{f,g}&=\tau\,\frac{a_0(f)a_0(g)^*}{4}
+  +\frac{\tau}{2}\left\{\sumnp{n}[a_n(f)a_n(g)^*+b_n(f)b_n(g)^*]\right\}\,,\\
+  \|f\|^2&=\tau\,\frac{|a_0(f)|^2}{4}+\frac{\tau}{2}\left\{\sumnp{n}[|a_n(f)|^2+|b_n(f)|^2]\right\}\,.
 \end{align}
+\begin{theorem}
+  Let $f$ be a square-integrable $\tau$-periodic function. The Fourier series of $f$
+  converges to $f$ in mean.
+\end{theorem}
+\begin{proof}
+  We need to show that
+  \begin{equation}
+    \Delta_N =\|f-s_N(f)\|^2
+  \end{equation}
+  converges to $0$ for $N\to+\infty$. As already demonstrated in the proof of~\cref{thm:bessel},
+  \begin{equation}
+    \Delta_N =\|f\|^2-\tau\sum_{n=-N}^{N}|c_n(f)|^2\,.\label{eq:l2cvg-deltan}
+  \end{equation}
+  Using Parseval's theorem, we know that
+  \begin{equation}
+    \lim_{N\to+\infty}\tau\sum_{n=-N}^{N}|c_n(f)|^2=\|f\|^2\,,
+  \end{equation}
+  which applied to~\cref{eq:l2cvg-deltan} proves the theorem.
+\end{proof}
+The proof above is quite simple once one knows Parseval's theorem. In fact, Parseval's theorem
+is truly the non-trivial property here, and it can be shown to be a necessary and sufficient condition
+to the convergence in mean square. Proving Parseval's theorem it quite technical and out of the scope of this introductory course, however we will sketch the proof in the next section.
 \subsection{Uniform convergence}
 We start by reminding the definition of uniform convergence for a sequence of functions.
 Essentially, such sequence is uniformly convergent if the distance to the limit can be
