@@ -3,7 +3,7 @@
 \section{Exercises}
 \begin{ExerciseList}
   %---------------------------------------------------------------------------------------
-  \Exercise~
+  \Exercise[label=seriesex]~
   \Question Compute the Fourier coefficients of the functions below. All functions are assumed periodic, and the given interval represents one period.
   \subQuestion $f(t)=t^2$, on $[-\pi,\pi]$.
   \subQuestion $f(t)=t^2$, on $[0,2\pi]$.
@@ -11,14 +11,14 @@
   \subQuestion $f(t)=|\sin(t)|^3$ (determine the fundamental period).
   \Question Using the result of question 1.c, show that if $t\in\mathbb{R}$ is not an integer multiple of $\pi$,
   \begin{equation}
-    \frac{1}{\tan(t)}=\frac{1}{t}+\sumnp{n}\frac{2t}{t^2-n^2\pi^2}\,.
+    \frac{1}{\tan(t)}=\frac{1}{t}+\sumnp{n}\frac{2t}{t^2-n^2\pi^2}\,.\label{eq:cotan-sing}
   \end{equation}
   \Question Using the result of question 1.d, show that
   \begin{equation}
-    \pi^2=\frac{256}{45}+\frac{4608}{5}\sumnp{n}\frac{1}{(4n^2-1)^2(4n^2-9)^2}\,.
+    \pi^2=\frac{256}{45}+\frac{4608}{5}\sumnp{n}\frac{1}{(4n^2-1)^2(4n^2-9)^2}\,.\label{eq:hard-pi2}
   \end{equation}
   %---------------------------------------------------------------------------------------
-  \Exercise Let $f$ be a real twice-differentiable function on $\mathbb{R}$ which is
+  \Exercise[label=fourierode2] Let $f$ be a real twice-differentiable function on $\mathbb{R}$ which is
   a solution of the ordinary differential equation
   \begin{equation}
     f''(t) + A f(t) = 0\,,
