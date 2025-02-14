@@ -906,17 +906,17 @@ inequality also generalises to trigonometric polynomials
     \vec{A}=(a_0,a_1,b_1,a_2,b_2,\dots,a_N,b_N)\quad\text{and}\quad
     \vec{A}'=(a'_0,a'_1,b'_1,a'_2,b'_2,\dots,a'_N,b'_N)\,,
   \end{equation}
-  where $N$ is the maximum of the degrees of $P$ and $Q$, and the coefficients of the
+  where $N$ is the minimum of the degrees of $P$ and $Q$, and the coefficients of the
   lowest-degree polynomial have been extended with zeros. Then
   using~\cref{thm:trigp-parseval} we have
   \begin{equation}
-    \braket{P,Q}=\frac{\tau}{2}(\vec{A}\cdot\vec{A}'),\quad\|P\|
-    =\sqrt{\frac{\tau}{2}}|\vec{A}|,
-    \quad\text{and}\quad\|Q\|=\sqrt{\frac{\tau}{2}}|\vec{A}'|\,.
+    \braket{P,Q}=\tau(\vec{A}\cdot\vec{A}'),\quad\|P\|
+    =\sqrt{\tau}|\vec{A}|,
+    \quad\text{and}\quad\|Q\|=\sqrt{\tau}|\vec{A}'|\,.
   \end{equation}
   Using the Cauchy-Schwarz inequality for vectors~\cref{eq:cs-vec},
   \begin{equation}
-    \frac{\tau}{2}|\vec{A}\cdot\vec{A}'|\leq\frac{\tau}{2}|\vec{A}||\vec{A}'|\,,
+    \tau|\vec{A}\cdot\vec{A}'|\leq\tau|\vec{A}||\vec{A}'|\,,
   \end{equation}
   which proves the theorem. In principle, we reminded the Cauchy-Schwarz inequality
   in~\cref{eq:cs-vec} for vectors with real coefficients, it is also correct with vector
