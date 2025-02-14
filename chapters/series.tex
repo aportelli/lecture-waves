@@ -44,18 +44,18 @@ functions are essentially continuous and differentiable functions, except perhap
 finite number of points, with finite limits around discontinuities. We start by defining
 this specific type of discontinuity.
 \begin{definition}
-  Let $f$ be a complex function of a single real variable. We consider a point $t_0\in\mathbb{R}$,
-  and assume $f$, and let assume $f$ is defined in a neighbourhood of some point
-  $t_0\in\mathbb{R}$. If $f(t)$ admits a finite limit for $t\to t_0$ with $t<t_0$, we call
-  it the \emph{left limit} of $f(t)$ at $t_0$, noted $f(t_0^-)$. Similarly, if $f(t)$
-  admits a finite limit for $t\to t_0$ with $t>t_0$, we call it the \emph{right limit} of
-  $f(t)$ at $t_0$, noted $f(t_0^+)$. In general $f(t_0^-)$ and $f(t_0^+)$ are called
-  \emph{one-sided} limits of $f$ at $t_0$.
+  Let $f$ be a complex function of a single real variable. We consider a point
+  $t_0\in\mathbb{R}$, and assume $f$, and let assume $f$ is defined in a neighbourhood of
+  some point $t_0\in\mathbb{R}$. If $f(t)$ admits a finite limit for $t\to t_0$ with
+  $t<t_0$, we call it the \emph{left limit} of $f(t)$ at $t_0$, noted $f(t_0^-)$.
+  Similarly, if $f(t)$ admits a finite limit for $t\to t_0$ with $t>t_0$, we call it the
+  \emph{right limit} of $f(t)$ at $t_0$, noted $f(t_0^+)$. In general $f(t_0^-)$ and
+  $f(t_0^+)$ are called \emph{one-sided} limits of $f$ at $t_0$.
 \end{definition}
 \begin{definition}
-  Let $f$ be a complex function of a single real variable, which admits a left and right limits at
-  a given point $t_0$. If $f(t_0^-)\neq f(t_0^+)$, then $t_0$ is called a \emph{jump
-  discontinuity} of $f$, and the difference $f(t_0^+)-f(t_0^-)$ is called the
+  Let $f$ be a complex function of a single real variable, which admits a left and right
+  limits at a given point $t_0$. If $f(t_0^-)\neq f(t_0^+)$, then $t_0$ is called a
+  \emph{jump discontinuity} of $f$, and the difference $f(t_0^+)-f(t_0^-)$ is called the
   \emph{height} of the jump discontinuity.
 \end{definition}
 \begin{example}
@@ -66,10 +66,10 @@ We now define \emph{piecewise continuous functions}, which are continuous functi
 perhaps at the exception to a finite number of jump discontinuities.
 \begin{definition}
   \label{def:pw-cont}
-  Let $f$ be a complex function of a single real variable defined on a compact interval $[a,b]$.
-  $f$ is said to be \emph{piecewise continuous} is said to be on $[a,b]$ if there exists a
-  finite set of points of $t_0=a<t_1<\dots<t_{N-1}<t_N=b$ in $(a,b)$ satisfying all the
-  following conditions:
+  Let $f$ be a complex function of a single real variable defined on a compact interval
+  $[a,b]$. $f$ is said to be \emph{piecewise continuous} is said to be on $[a,b]$ if there
+  exists a finite set of points of $t_0=a<t_1<\dots<t_{N-1}<t_N=b$ in $(a,b)$ satisfying
+  all the following conditions:
   \begin{itemize}
     \item[(PC1)] for all integers $n$ with $0\leq n< N$, $f$ is continuous on
       $(t_n,t_{n+1})$;
@@ -83,9 +83,9 @@ perhaps at the exception to a finite number of jump discontinuities.
 derivative to be piecewise continuous.
 \begin{definition}
   \label{def:pw-smooth}
-  Let $f$ be a complex function of a single real variable defined on a compact interval $[a,b]$.
-  $f$ is said to be \emph{piecewise smooth} on $[a,b]$ if it is piecewise continuous and
-  admits a derivative which is piecewise continuous.
+  Let $f$ be a complex function of a single real variable defined on a compact interval
+  $[a,b]$. $f$ is said to be \emph{piecewise smooth} on $[a,b]$ if it is piecewise
+  continuous and admits a derivative which is piecewise continuous.
 \end{definition}
 \begin{example}
   The square wave function $\sq$ is piecewise smooth.
@@ -161,8 +161,8 @@ integrability.
   \caption{Curve of the function $f(t)=\sin(\frac{1}{t})$ from~\cref{ex:sininv}.}
   \label{fig:sininv}
 \end{figure}
-Finally, we show that the one-sided limits of the derivative of piecewise smooth functions
-can be calculated with the usual limits:
+We then show that the one-sided limits of the derivative of piecewise smooth functions can
+be calculated with the usual limits:
 \begin{proposition}
   \label{prop:oneside-der}
   Let $f$ be a piecewise smooth function on $[a,b]$, and let $t_0\in(a,b)$. The one-sided
@@ -191,13 +191,64 @@ can be calculated with the usual limits:
   identically proven by considering the mean value theorem on a small interval
   $[t_0,t_0+h]$.
 \end{proof}
+Finally, we generalise integration by parts to piecewise smooth functions:
+\begin{theorem}
+  \label{thm:pw-smooth-intpart}
+  Let $f$ be a piecewise smooth function on $[a,b]$, and $g$ be a continuously
+  differentiable function on $[a,b]$. We have the following integration by part formula
+  \begin{equation}
+    \int_a^b\diff t\,f(t)\,g'(t)=\left[f(t)\,g(t)\right]_a^b
+    -\sum_{n=1}^{N-1}h_n\,g(t_n)
+    -\int_a^b\diff t\, f'(t)\,g(t)\,,\label{eq:pw-smooth-intpart}
+  \end{equation}
+  where we reused the notation of~\cref{def:pw-cont}, and $h_n=f(t_n^+)-f(t_n^-)$ is the
+  height of the jump discontinuity of $f$ at $t_n$, for $1\leq n<N$.
+\end{theorem}
+\begin{proof}
+  We start by splitting the integral on each interval $(t_n,t_{n+1})$, with $0\leq n<N$,
+  on which $f$ is continuously differentiable:
+  \begin{equation}
+    \int_a^b\diff t\, f(t)\,g'(t)
+    =\sum_{n=0}^{N-1}\int_{t_n}^{t_{n+1}}\diff t\, f(t)\,g'(t)\,.
+  \end{equation}
+  One can now use integration by parts for every term in the sum, explicitly
+  \begin{equation}
+    \int_{t_n}^{t_{n+1}}\diff t\, f(t)\,g'(t)=
+    f(t_{n+1}^-)g(t_{n+1})-f(t_n^+)g(t_n)-\int_{t_n}^{t_{n+1}}\diff t\, f'(t)\,g(t)\,,
+  \end{equation}
+  where the limits $f(t_{n+1}^-)$ and $f(t_n^+)$ are guaranteed to exist since $f$ is
+  piecewise continuous. Substituting the result above in the integral over $(a,b)$, we get
+  \begin{align}
+    \int_a^b\diff t\, f(t)\,g'(t)&=f(t_1^-)g(t_1)-f(a^+)g(a)+f(t_2^-)g(t_2)
+    -f(t_1^+)g(t-1)+\dots\notag\\
+    &\quad+f(b^-)g(b)-f(t_{N-1}^+)g(t_{N-1})-
+    \sum_{n=0}^{N-1}\int_{t_n}^{t_{n+1}}\diff t\, f'(t)\,g(t)\\
+    &=\left[f(t)\,g(t)\right]_a^b-\sum_{n=1}^{N-1}[f(t_n^+)-f(t_n^-)]\,g(t_n)
+    -\int_a^b\diff t\, f'(t)\,g(t)\,,
+  \end{align}
+  which proves the theorem.
+\end{proof}
+In particular, the theorem above implies that integration by parts takes its usual form
+for piecewise smooth continuous functions (which do not necessary have a continuous
+derivative):
+\begin{corollary}
+  Let $f$ be a piecewise smooth continuous function on $[a,b]$, and $g$ be a continuously
+  differentiable function on $[a,b]$. We have the following integration by part formula
+  \begin{equation}
+    \int_a^b\diff t\,f(t)\,g'(t)=\left[f(t)\,g(t)\right]_a^b
+    -\int_a^b\diff t\, f'(t)\,g(t)\,.
+  \end{equation}
+\end{corollary}
+\begin{proof}
+  Since $f$ is continuous, $h_n=0$ in for all $n$ in~\cref{eq:pw-smooth-intpart}.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Partial Fourier sums}
 In this section, we formalise the generalisation of the
 coefficients~\cref{eq:series-an-intro,eq:series-bn-intro,eq:series-cn-intro} mentioned in
 the introduction to this section, as well as the associated trigonometric polynomials.
-%.........................................................................................
+%-----------------------------------------------------------------------------------------
 \subsection{Fourier coefficients}
 \begin{definition}
   \label{def:fourier-coef}
@@ -226,7 +277,7 @@ the introduction to this section, as well as the associated trigonometric polyno
 Since we aim at studying the convergence of Fourier sums for $N\to+\infty$, an important
 question is the asymptotic behaviour of Fourier coefficients for $n\to+\infty$, discussed
 in the next section.
-%.........................................................................................
+%-----------------------------------------------------------------------------------------
 \subsection{Riemann-Lebesgue lemma}
 For a fairly general class of functions, it can be shown that these coefficients converge
 to $0$ for $n\to+\infty$. This is a crucial result in Fourier analysis generally called
@@ -260,7 +311,7 @@ intervals.
   Reusing the notation of~\cref{def:pw-cont}, we have
   \begin{equation}
     \int_a^b\diff t\, f(t)\sin(kt)
-    =\sum_{n=0}^{N}\int_{t_n}^{t_{n+1}}\diff t\, f(t)\sin(kt)\,.
+    =\sum_{n=0}^{N-1}\int_{t_n}^{t_{n+1}}\diff t\, f(t)\sin(kt)\,.
     \label{eq:pw-int}
   \end{equation}
   The function $f$ is piecewise continuous, so according to condition (PC1)
@@ -353,7 +404,7 @@ intervals.
   This is a trivial consequence of the Riemann-Lebesgue lemma applied
   to~\cref{def:fourier-coef}.
 \end{proof}
-%.........................................................................................
+%-----------------------------------------------------------------------------------------
 \subsection{Dirichlet kernel}
 In this section, we discuss a special function called the \emph{Dirichlet kernel}. This
 function allows to write the partial Fourier sums as an integral (and as we will see in
@@ -585,19 +636,29 @@ a finite number of points of jump discontinuity.
 \end{example}
 %-----------------------------------------------------------------------------------------
 \subsection{Convergence in mean square and Parseval's theorem}
-Another useful form of convergence for sequences of functions is the \emph{convergence in mean square}, also called \emph{$L^2$ convergence}, based on the functional norm introduced in~\cref{sec:ew-orth}. In all this section, we will work with square-integrable $\tau$-periodic functions. Such a function $f$ is defined by requiring that $|f|^2$ has a defined finite integral on $[0,\tau]$. This is the general class of functions for which the dot product is well-defined, which we will admit here. In particular, all piecewise smooth functions are square-integrable.
+Another useful form of convergence for sequences of functions is the \emph{convergence in
+mean square}, also called \emph{$L^2$ convergence}, based on the functional norm
+introduced in~\cref{sec:ew-orth}. In all this section, we will work with square-integrable
+$\tau$-periodic functions. Such a function $f$ is defined by requiring that $|f|^2$ has a
+defined finite integral on $[0,\tau]$. This is the general class of functions for which
+the dot product is well-defined, which we will admit here. In particular, all piecewise
+smooth functions are square-integrable.
 \begin{definition}
-  Let $f$ be a $\tau$-periodic square-integrable function. A sequence of $\tau$-periodic square-integrable functions $f_n$ is said to converge to $f$ \emph{in mean} if
+  Let $f$ be a $\tau$-periodic square-integrable function. A sequence of $\tau$-periodic
+  square-integrable functions $f_n$ is said to converge to $f$ \emph{in mean square} if
   \begin{equation}
     \lim_{n\to+\infty}\|f-f_n\|=0\,.
   \end{equation}
 \end{definition}
-This type of convergence is useful because the norm is related to the dot product of functions,
-and as we saw in the previous chapter, the orthogonality of elementary waves. However, it is important to notice that this is a rather weak form of convergence, and without further assumptions it does not generally imply pointwise or uniform convergence.
+This type of convergence is useful because the norm is related to the dot product of
+functions, and as we saw in the previous chapter, the orthogonality of elementary waves.
+However, it is important to notice that this is a rather weak form of convergence, and
+without further assumptions it does not generally imply pointwise or uniform convergence.
 
-We now generalise some results of~\cref{sec:ew-orth}, which we will then use to prove that Fourier series generally converge in mean square. Firstly, it is not too difficult to
-show that the norm of a partial Fourier sum is always smaller than the norm of the associated function,
-an important result known as \emph{Bessel's inequality}.
+We now generalise some results of~\cref{sec:ew-orth}, which we will then use to prove that
+Fourier series generally converge in mean square. Firstly, it is not too difficult to show
+that the norm of a partial Fourier sum is always smaller than the norm of the associated
+function, an important result known as \emph{Bessel's inequality}.
 \begin{theorem}[Bessel's inequality]
   \label{thm:bessel}
   Let $f$ be a piecewise smooth $\tau$-periodic function. The series over $n\in\mathbb{Z}$
@@ -623,9 +684,9 @@ an important result known as \emph{Bessel's inequality}.
     &=\sum_{n=-N}^{N}c_n(f)^*\braket{f,\ew(n\omega)}\\
     &=\tau\sum_{n=-N}^{N}|c_n(f)|^2\,.
   \end{align}
-  Using Parseval's theorem for trigonometric polynomials (\cref{thm:trigp-parseval}), the result
-  above implies that $\braket{f,s_N(f)}=\|s_N(f)\|^2$. Substituting this expression back into
-  \cref{eq:bessel-l2err}, we get
+  Using Parseval's theorem for trigonometric polynomials (\cref{thm:trigp-parseval}), the
+  result above implies that $\braket{f,s_N(f)}=\|s_N(f)\|^2$. Substituting this expression
+  back into \cref{eq:bessel-l2err}, we get
   \begin{equation}
     \Delta_N=\|f\|^2-\|s_N(f)\|^2\,,
   \end{equation}
@@ -633,12 +694,16 @@ an important result known as \emph{Bessel's inequality}.
   \begin{equation}
     \forall N>0,\quad \|s_N(f)\|^2=\tau\sum_{n=-N}^{N}|c_n(f)|^2\leq \|f\|^2\,.
   \end{equation}
-  $\|s_N(f)\|^2$ is a sum of positive numbers, and therefore a monotonous sequence in $N$. As per the inequality above, it is bounded by $\|f\|^2$ and therefore converges, which proves the theorem.
+  $\|s_N(f)\|^2$ is a sum of positive numbers, and therefore a monotonous sequence in $N$.
+  As per the inequality above, it is bounded by $\|f\|^2$ and therefore converges, which
+  proves the theorem.
 \end{proof}
-In reality, this inequality is an equality, generalising~\cref{thm:trigp-parseval}. This is a much harder result to prove, and we will admit it here.
+In reality, this inequality is an equality, generalising~\cref{thm:trigp-parseval}. This
+is a much harder result to prove, and we will admit it here.
 \begin{theorem}[Parseval]
   \label{thm:parseval}
-  Let $f$ and $g$ be two square-integrable $\tau$-periodic functions. The following identities hold
+  Let $f$ and $g$ be two square-integrable $\tau$-periodic functions. The following
+  identities hold
   \begin{align}
     \braket{f,g}&=\tau\sumz{n}c_n(f)c_n(g)^*\,,
     \label{eq:fs-dot}\\
@@ -646,22 +711,25 @@ In reality, this inequality is an equality, generalising~\cref{thm:trigp-parseva
     \label{eq:fs-norm}
   \end{align}
 \end{theorem}
-For completeness, we provide below the Parseval theorem identities for the sine-cosine form
+For completeness, we provide below the Parseval theorem identities for the sine-cosine
+form
 \begin{align}
   \braket{f,g}&=\tau\,\frac{a_0(f)a_0(g)^*}{4}
   +\frac{\tau}{2}\left\{\sumnp{n}[a_n(f)a_n(g)^*+b_n(f)b_n(g)^*]\right\}\,,\\
-  \|f\|^2&=\tau\,\frac{|a_0(f)|^2}{4}+\frac{\tau}{2}\left\{\sumnp{n}[|a_n(f)|^2+|b_n(f)|^2]\right\}\,.
+  \|f\|^2&=\tau\,\frac{|a_0(f)|^2}{4}
+  +\frac{\tau}{2}\left\{\sumnp{n}[|a_n(f)|^2+|b_n(f)|^2]\right\}\,.
 \end{align}
 \begin{theorem}
   Let $f$ be a square-integrable $\tau$-periodic function. The Fourier series of $f$
-  converges to $f$ in mean.
+  converges to $f$ in mean square.
 \end{theorem}
 \begin{proof}
   We need to show that
   \begin{equation}
     \Delta_N =\|f-s_N(f)\|^2
   \end{equation}
-  converges to $0$ for $N\to+\infty$. As already demonstrated in the proof of~\cref{thm:bessel},
+  converges to $0$ for $N\to+\infty$. As already demonstrated in the proof
+  of~\cref{thm:bessel},
   \begin{equation}
     \Delta_N =\|f\|^2-\tau\sum_{n=-N}^{N}|c_n(f)|^2\,.\label{eq:l2cvg-deltan}
   \end{equation}
@@ -671,24 +739,35 @@ For completeness, we provide below the Parseval theorem identities for the sine-
   \end{equation}
   which applied to~\cref{eq:l2cvg-deltan} proves the theorem.
 \end{proof}
-The proof above is quite simple once one knows Parseval's theorem. In fact, Parseval's theorem
-is truly the non-trivial property here, and it can be shown to be a necessary and sufficient condition
-to the convergence in mean square. Proving Parseval's theorem it quite technical and out of the scope of this introductory course, however we will sketch the proof in the next section.
+The proof above is quite simple once one knows Parseval's theorem. In fact, Parseval's
+theorem is truly the non-trivial property here, and it can be shown to be a necessary and
+sufficient condition to the convergence in mean square.
+
+As commented above, in principle the convergence in mean square is rather weak. However,
+it was shown in 1966 by Lennart Carleson that the convergence in mean square of a Fourier
+series implies pointwise convergence except perhaps on a negligible set of points. This
+result is still considered to this day as a highly non-trivial theorem to prove.
+
+We now discuss uniform convergence, which is the strongest possible form of convergence
+for Fourier series.
+%-----------------------------------------------------------------------------------------
 \subsection{Uniform convergence}
 We start by reminding the definition of uniform convergence for a sequence of functions.
 Essentially, such sequence is uniformly convergent if the distance to the limit can be
 bounded independently of the point at which the function is evaluated, as formalised in
 the definition below.
 \begin{definition}
+  \label{def:uni-cvg}
   A sequence of function $f_n$ is said to \emph{converge uniformly} to $f$ on a domain $D$
   if for all $\epsilon>0$, there exists $N\in\mathbb{N}$ such that
   \begin{equation}
-    \forall n\geq N,\quad\forall x\in D,\quad|f_n(x)-f(x)|<\epsilon\,,
+    \forall n\geq N,\quad\forall x\in D,\quad|f_n(x)-f(x)|<\epsilon\,,\label{eq:uniconv-eps}
   \end{equation}
   which can equivalently be defined as the limit
   \begin{equation}
     \lim_{n\to+\infty}\,\sup_{x\in D}|f_n(x)-f(x)|=0\,.
   \end{equation}
+  In particular,~\cref{eq:uniconv-eps} implies $f_n$ converges pointwise to $f$ on $D$.
 \end{definition}
 \begin{example}
   The sequence of functions defined by $\sin(t+\frac{1}{n})$ converges uniformly to
@@ -726,18 +805,169 @@ the definition below.
   \end{equation}
   so $t^n$ does not converge uniformly to $0$ on $[0,1)$.
 \end{example}
+Uniform convergence is a strong sufficient condition for a number of important limit
+exchange theorems. One first important result is that uniform convergence preserves
+continuity
 \begin{theorem}
-  Let $f$ be a $\tau$-periodic function which is piecewise smooth and continuous on
-  $[0,\tau]$. The Fourier series of $f$ converges uniformly to $f$.
+  \label{thm:uniconv-continuous}
+  Let $f_n$ be a sequence of functions uniformly converging to $f$ on a domain $D$. If
+  $f_n$ is continuous on $D$ for all integers $n$, then $f$ is continuous on $D$. In other
+  words, the following exchange of limits holds
+  \begin{equation}
+    \lim_{x\to x_0}\lim_{n\to+\infty}f_n(x)=\lim_{n\to+\infty}\lim_{x\to x_0}f_n(x)=f(x_0)\,,
+  \end{equation}
+  for all $x_0\in D$.
 \end{theorem}
+\begin{proof}
+  Let $\epsilon>0$, using~\cref{def:uni-cvg} we know that there exists $N\in\mathbb{N}$
+  such that for all $x\in D$,
+  \begin{equation}
+    |f_N(x)-f(x)|<\frac{\epsilon}{3}\,.
+  \end{equation}
+  Let $x_0\in D$, since $f_N$ is continuous in $x_0$ we can find $x$ close to $x_0$ such
+  that
+  \begin{equation}
+    |f_N(x)-f_N(x_0)|<\frac{\epsilon}{3}\,.
+  \end{equation}
+  Then, using the triangle inequality,
+  \begin{equation}
+    |f(x)-f(x_0)|=|f(x)-f_N(x)+f_N(x)-f_N(x_0)+f_N(x_0)-f(x_0)|<\epsilon\,,
+  \end{equation}
+  which implies that $f$ is continuous in $x_0$.
+\end{proof}
+Another important result is the exchange of limit and integral:
+\begin{theorem}
+  Let $f_n$ be a sequence of functions uniformly converging to $f$ on a finite interval
+  $(a,b)$. We assume that $f$ is integrable on $(a,b)$, as well as $f_n$ for all integers
+  $n$. The following limit holds
+  \begin{equation}
+    \lim_{n\to+\infty}\int_a^b\diff t\,f_n(t)=\int_a^b\diff t\,f(t)\,.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  Using the triangle inequality,
+  \begin{equation}
+    \left|\int_a^b\diff t\,f_n(t)-\int_a^b\diff t\,f(t)\right|
+    \leq\int_a^b\diff t\,|f_n(t)-f(t)|\leq (b-a)\sup_{x\in (a,b)}|f_n(x)-f(x)|\,.
+  \end{equation}
+  Since $f_n$ converges uniformly to $f$ on $(a,b)$, the rightmost term in the inequality
+  above goes to zero for $n\to+\infty$, which proves the theorem.
+\end{proof}
+A direct consequence of~\cref{thm:uniconv-continuous} is that the Fourier series of a
+discontinuous function never converges uniformly on a period:
+\begin{proposition}
+  Let $f$ be a $\tau$-periodic function which is piecewise smooth and discontinuous. The
+  Fourier series of $f$ does not converge uniformly on $[0,\tau]$.
+\end{proposition}
+\begin{proof}
+  We define $\bar{f}$ to be the pointwise sum of the Fourier series of $f$, \ie
+  \begin{equation}
+    \bar{f}(t)=\lim_{N\to+\infty}s_N(f)(t)\,,
+  \end{equation}
+  for all $t\in\mathbb{R}$. Using~\cref{thm:fourier-pt}, we know that $\bar{f}$ is equal
+  to $f$ except perhaps at points of jump discontinuity, and in any case $\bar{f}$ has the
+  same jump discontinuities than $f$. Since the partial Fourier sum $s_N(f)$ is a linear
+  combination of continuous function, if it was uniformly convergence then according
+  to~\cref{thm:uniconv-continuous}, $\bar{f}$ would be continuous, which by contradiction
+  proves the proposition.
+\end{proof}
+We now formulate the main result of this section, which provides a sufficient condition
+for the uniform convergence of the Fourier series of a continuous function.
+\begin{theorem}
+  \label{thm:fourier-uniconv}
+  Let $f$ be a $\tau$-periodic function which is piecewise smooth and continuous on
+  $[0,\tau]$. The Fourier series of $f$ converges uniformly to $f$ on $\mathbb{R}$.
+\end{theorem}
+The proof of the theorem above requires to know the Fourier coefficients of the derivative
+of a piecewise smooth function, given in the result below.
+\begin{theorem}
+  Let $f$ be a piecewise smooth $\tau$-periodic function. The complex Fourier coefficients
+  of the derivative $f'$ are given by
+  \begin{equation}
+    c_n(f')=\frac{1}{\tau}[f(\tau^-)-f(0^+)]
+    -\frac{1}{\tau}\sum_{m=1}^{N-1}h_m\,e^{-2\pi im\omega t_m}
+    +2\pi i n\omega\,c_n(f)\,,\label{eq:fourier-derivative}
+  \end{equation}
+  where, as in~\cref{thm:pw-smooth-intpart}, the $t_m$ are the jump discontinuities of $f$
+  with heights of $h_m$, respectively.  In particular, if $f$ is continuous, one has
+  \begin{equation}
+    c_n(f')=2\pi i n\omega\,c_n(f)\,,\label{eq:fourier-derivative-cont}
+  \end{equation}
+  which in the sine-cosine form gives
+  \begin{equation}
+    a_n(f')=\pi n\omega\,b_n(f)\qquad\text{and}\qquad b_n(f')=-\pi n\omega\,a_n(f)\,.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  Using integration by parts for piecewise smooth functions
+  (\cref{thm:pw-smooth-intpart}), one obtains
+  \begin{align}
+    c_n(f')&=\frac{1}{\tau}\int_0^\tau\diff t\,f'(t)\,e^{-2\pi i n\omega t}\\
+    &=\frac{1}{\tau}\left[f(t)e^{-2\pi i n\omega t}\right]_0^\tau
+    -\frac{1}{\tau}\sum_{m=1}^{N-1}h_m\,e^{-2\pi im\omega t_m}
+    +2\pi i n\int_0^\tau\diff t\,f(t)\,e^{-2\pi i n\omega t}\\
+    &=\frac{1}{\tau}[f(\tau^-)-f(0^+)]
+    -\frac{1}{\tau}\sum_{m=1}^{N-1}h_m\,e^{-2\pi im\omega t_m}
+    +2\pi i n\omega\,c_n(f)\,,
+  \end{align}
+  which proves~\cref{eq:fourier-derivative}. If $f$ is continuous, then $h_m=0$ for all
+  possible values of $m$, and additionally $f(0^+)=f(0)=f(\tau)=f(\tau^-)$ by periodicity.
+  This simplifies the formula above to give~\cref{eq:fourier-derivative-cont}.
+\end{proof}
+We now proceed with the proof of~\cref{thm:fourier-uniconv}.
+\begin{proof}[Proof of \cref{thm:fourier-uniconv}]
+  Since $f$ is piecewise smooth, its derivative $f'$ is piecewise continuous. It is in
+  particular square-integrable and satisfies Bessel's inequality (\cref{thm:bessel}). This
+  implies that the series
+  \begin{equation}
+    \sumz{n}|c_n(f')|^2
+  \end{equation}
+  is convergent. Then, for any non-zero integer $n$, we consider the inequality
+  \begin{equation}
+    \left(|c_n(f')|-\frac{1}{2\pi |n|\omega}\right)^2=|c_n(f')|^2
+    +\frac{1}{(2\pi n\omega)^2}-\frac{|c_n(f')|}{\pi |n|\omega}\geq 0\,.
+  \end{equation}
+  Using the fact that $f$ is continuous and~\cref{eq:fourier-derivative-cont}, we know
+  that $|c_n(f')|=2\pi|n|\omega |c_n(f)|$. Therefore, the inequality above implies that
+  \begin{equation}
+    2|c_n(f)|\leq |c_n(f')|^2
+    +\frac{1}{(2\pi n\omega)^2}\,.
+    \label{eq:fourier-remainder}
+  \end{equation}
+  The right-hand side of this inequality is the summand of a convergent series, and all
+  terms in the inequality are positive, therefore the series $\sumz{n}|c_n(f)|$ is
+  convergent, and in particular
+  \begin{equation}
+    \lim_{N\to+\infty}\,\sum_{|n|>N}|c_n(f)|=0\,.
+  \end{equation}
+  Now, $f$ is piecewise smooth and continuous, so we know from~\cref{thm:fourier-pt} that
+  its Fourier series converges pointwise to $f$, \ie
+  \begin{equation}
+    f(t)=\sumz{n}c_n(f)\,e^{2\pi i n\omega t}\,,
+  \end{equation}
+  for all $t\in\mathbb{R}$. Therefore, for $N\in\mathbb{N}$ and $t\in\mathbb{R}$
+  \begin{equation}
+    |f(t)-s_N(f)(t)|=\left|\sum_{|n|>N}c_n(f)\,e^{2\pi i n\omega t}\right|
+    \leq \sum_{|n|>N}|c_n(f)|\,.
+  \end{equation}
+  Taking the supremum over $t\in\mathbb{R}$ and using~\cref{eq:fourier-remainder}, we
+  obtain
+  \begin{equation}
+    \lim_{N\to+\infty}\,\sup_{t\in\mathbb{R}}|f(t)-s_N(f)(t)|=0\,,
+  \end{equation}
+  which proves the uniform convergence to $f$ of the Fourier series of $f$.
+\end{proof}
+This concludes the discussion on uniform convergence, and we now discuss in details the
+case of the non-uniform convergence of the Fourier series for discontinuous functions.
+%-----------------------------------------------------------------------------------------
 \subsection{Gibbs phenomenon}
-If a periodic function has a jump discontinuity, then its Fourier series cannot be
-uniformly convergent. This generates irregularities around discontinuities where the
-Fourier expansion tends to ``overshoot'' the function by approximately $9\%$ of the height
-of the discontinuity. This effect is generally called the \emph{Gibbs phenomenon}, and is
-a well known engineering issue when cutting data before computing its Fourier
-coefficients. A key example of Gibbs phenomenon is the Fourier expansion of the square
-wave.
+If a periodic function has at least one jump discontinuity, then its Fourier series cannot
+be uniformly convergent on $\mathbb{R}$. This generates irregularities around
+discontinuities where the Fourier expansion tends to ``overshoot'' the function by
+approximately $9\%$ of the height of the discontinuity. This effect is generally called
+the \emph{Gibbs phenomenon}, and is a well known engineering issue when cutting data
+before computing its Fourier coefficients. A key example of Gibbs phenomenon is the
+Fourier expansion of the square wave.
 \begin{lemma}
   \label{lem:gibbs-sq}
   The square wave Fourier series does not converge uniformly on $[0,1]$, and
@@ -745,7 +975,7 @@ wave.
     \lim_{N\to+\infty}\,s_N(\sq)\left(\frac12-\frac{1}{2N}\right)
     &=1+2\left(\frac{G'}{\pi}-\frac12\right)\,,\label{eq:gibbs-sq-left}\\
     \lim_{N\to+\infty}\,s_N(\sq)\left(\frac12+\frac{1}{2N}\right)
-    &=-1-2\left(\frac{G'}{\pi}-\frac12\right)\,,
+    &=-1-2\left(\frac{G'}{\pi}-\frac12\right)\,,\label{eq:gibbs-sq-right}
   \end{align}
   where $G'$ is the \emph{Wilbraham-Gibbs constant} given by
   \begin{equation}
@@ -770,17 +1000,53 @@ generalised to arbitrary discontinuous piecewise smooth functions, as summarised
 theorem below.
 \begin{theorem}[Gibbs phenomenon]
   Let be a $\tau$-periodic function which is piecewise smooth on $[0,\tau]$, which has a
-  jump discontinuity of height $d$ at $t_0\in(0,\tau)$. Let $[a,b]$ be a sub-interval of
+  jump discontinuity of height $h$ at $t_0\in(0,\tau)$. Let $[a,b]$ be a sub-interval of
   $[0,\tau]$ such that $t_0\in(a,b)$, and $t_0$ is the only jump discontinuity of $f$ in
   $[a,b]$. The Fourier series of $f$ does not converge uniformly to $f$ on $[a,b]$, and
   \begin{align}
     \lim_{N\to+\infty}\,s_N(f)\left(t_0-\frac{\tau}{2N}\right)
-    &=f(t_0^-)-d\left(\frac{G'}{\pi}-\frac12\right)\,,\\
+    &=f(t_0^-)-h\left(\frac{G'}{\pi}-\frac12\right)\,,\label{eq:gibbs-left}\\
     \lim_{N\to+\infty}\,s_N(f)\left(t_0+\frac{\tau}{2N}\right)
-    &=f(t_0^+)+d\left(\frac{G'}{\pi}-\frac12\right)\,,
+    &=f(t_0^+)+h\left(\frac{G'}{\pi}-\frac12\right)\,,\label{eq:gibbs-right}
   \end{align}
   where $G'$ is the Wilbraham-Gibbs constant defined in~\cref{lem:gibbs-sq}.
 \end{theorem}
+\begin{proof}
+  We do not prove entirely this result, however we sketch how it is a reasonably direct
+  consequence of the Gibbs phenomenon for the square wave. Let us define the
+  $\tau$-periodic function $\phi$ given on $[0,\tau]$ by
+  \begin{equation}
+    \phi(t)=
+    \begin{cases}
+      f(t_0^-)&\text{if}\quad t<\frac{\tau}{2}\\
+      f(t_0^+)&\text{if}\quad t\geq \frac{\tau}{2}
+    \end{cases}\,.
+  \end{equation}
+  We can show that $\phi$ is a simple transformation of the square wave. Indeed, let us
+  define
+  \begin{equation}
+    a=\frac{f(t_0^-)+f(t_0^+)}{2}\,,
+  \end{equation}
+  and one can easily check that $\phi$ is given by
+  \begin{equation}
+    \phi(t)=-\frac{h}{2}\sq\left(\frac{t}{\tau}\right)+a\,.\label{eq:sq-rescale}
+  \end{equation}
+  Then, $f$ can be written as
+  \begin{equation}
+    f(t)=f_c(t)+\phi\left(t-t_0+\frac{\tau}{2}\right)\qquad\text{with}\qquad f_c(t)=f(t)
+    -\phi\left(t-t_0+\frac{\tau}{2}\right)\,.
+  \end{equation}
+  By construction, $f_c$ is continuous in $t_0$, and will not suffer from the Gibbs
+  phenomenon as its Fourier series will converge uniformly around $t_0$. On the other
+  hand, $\phi$ is just a rescaling and translation of the square wave, and it is not
+  difficult to see that its partial Fourier sum will suffer from the Gibbs phenomenon, and
+  that the transformation~\cref{eq:sq-rescale} transforms
+  \cref{eq:gibbs-sq-left,eq:gibbs-sq-right} into \cref{eq:gibbs-left,eq:gibbs-right}. A
+  careful proof of these steps requires however requires more knowledge on the local
+  convergence properties of the Fourier series, which is out of the scope of this
+  introductory course. This is nonetheless a well-documented topic generally referred to
+  as the \emph{localisation principle}.
+\end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properties of Fourier coefficients}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
