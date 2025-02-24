@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+  % Define the colors for each set
+  \colorlet{setcolor1}{blue!20}
+  \colorlet{setcolor2}{red!20}
+  \colorlet{setcolor3}{green!20}
+  \colorlet{setcolor4}{yellow!20}
+
+  % Draw the largest set with an ellipse shape (outermost)
+  \fill[setcolor2] (0,0) ellipse (5.0 and 3.8);
+  \node at (0,3.3) {square-integrable};
+
+  % Draw the second largest set with an ellipse shape
+  \fill[setcolor2] (0,0) ellipse (4 and 2.8);
+  \node at (0,2.4) {pw. cont.};
+
+  % Draw the second smallest set with an ellipse shape
+  \fill[setcolor4] (0,0) ellipse (3 and 2);
+  \node at (0,1.5) {pw. smooth};
+
+  % Draw the smallest set with an ellipse shape (innermost)
+  \fill[setcolor3] (0,0) ellipse (2 and 1.2);
+  \node at (0,0) {cont. pw. smooth};
+
+  % Draw the boundary lines for each set
+  \draw[thick] (0,0) ellipse (5 and 3.8);
+  \draw[thick] (0,0) ellipse (4 and 2.8);
+  \draw[thick] (0,0) ellipse (3 and 2);
+  \draw[thick] (0,0) ellipse (2 and 1.2);
+
+  % Add legend
+  \node[anchor=west, align=left] at (5.8,3.2) {\textbf{Strongest convergence}\\\textbf{of Fourier series:}};
+
+  % Legend item 1: Mean square
+  \draw[draw=black, fill=setcolor2] (6,2) rectangle ++(0.5,0.5);
+  \node[anchor=west] at (6.6,2.25) {mean square};
+
+  % Legend item 2: Pointwise
+  \draw[draw=black, fill=setcolor4] (6,1.35) rectangle ++(0.5,0.5);
+  \node[anchor=west] at (6.6,1.6) {pointwise};
+
+  % Legend item 3: Uniform
+  \draw[draw=black, fill=setcolor3] (6,0.7) rectangle ++(0.5,0.5);
+  \node[anchor=west] at (6.6,0.95) {uniform};
+
+\end{tikzpicture}

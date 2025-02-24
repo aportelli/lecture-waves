@@ -7,9 +7,9 @@
   \Question Compute the Fourier coefficients of the functions below. All functions are assumed periodic, and the given interval represents one period.
   \subQuestion $f(t)=t^2$, on $[-\pi,\pi]$.
   \subQuestion $f(t)=t^2$, on $[0,2\pi]$.
-  \subQuestion $f(t)=\cos(\alpha t)$, where $\alpha\in\mathbb{R}$ is not an integer, on $[-\pi,\pi]$.
+  \subQuestion $f(t)=\cos(\alpha t)$, where $\alpha\in\R$ is not an integer, on $[-\pi,\pi]$.
   \subQuestion $f(t)=|\sin(t)|^3$ (determine the fundamental period).
-  \Question Using the result of question 1.c, show that if $t\in\mathbb{R}$ is not an integer multiple of $\pi$,
+  \Question Using the result of question 1.c, show that if $t\in\R$ is not an integer multiple of $\pi$,
   \begin{equation}
     \frac{1}{\tan(t)}=\frac{1}{t}+\sumnp{n}\frac{2t}{t^2-n^2\pi^2}\,.\label{eq:cotan-sing}
   \end{equation}
@@ -18,12 +18,12 @@
     \pi^2=\frac{256}{45}+\frac{4608}{5}\sumnp{n}\frac{1}{(4n^2-1)^2(4n^2-9)^2}\,.\label{eq:hard-pi2}
   \end{equation}
   %---------------------------------------------------------------------------------------
-  \Exercise[label=fourierode2] Let $f$ be a real twice-differentiable function on $\mathbb{R}$ which is
+  \Exercise[label=fourierode2] Let $f$ be a real twice-differentiable function on $\R$ which is
   a solution of the ordinary differential equation
   \begin{equation}
     f''(t) + A f(t) = 0\,,
   \end{equation}
-  where $A\in\mathbb{R}$. We additionally assume that $f$ is $\tau$-periodic.
+  where $A\in\R$. We additionally assume that $f$ is $\tau$-periodic.
   \Question Using Fourier series, show that $f\neq 0$ if and only if $A>0$.
   \Question If $A>0$, show that there exists two real numbers $a$ and $b$
   such that
@@ -31,5 +31,22 @@
     f(t)=a\cos(\sqrt{A} t)+b\sin(\sqrt{A} t)\,.
   \end{equation}
   %---------------------------------------------------------------------------------------
-  \InputIfFileExists{solutions/series}{}{}
+  \Exercise[label=seriesdecay]~
+  Let $f$ be the periodic function defined by $f(t)=|\sin(t)|^3$. What is the expected
+  decay rate for the Fourier coefficients of $f$? Compare this expectation with the
+answer of question 1.d) in~\cref{seriesex}.
+%---------------------------------------------------------------------------------------
+\Exercise[label=seriessmooth]~
+Let $f$ be the $2\pi$-periodic function defined by
+\begin{equation}
+  f(t)=\frac{1-p\cos(t)}{1+p^2-2p\cos(t)}\,,
+\end{equation}
+with $p\in(-1,1)$.
+\Question Show that
+\begin{equation}
+  f(t)=\Re\left[\frac{1}{1-pe^{-it}}\right]\,.
+\end{equation}
+\Question Deduce the Fourier series of $f$ from the answer to the previous question.
+\pagebreak
+\InputIfFileExists{solutions/series}{}{}
 \end{ExerciseList}

@@ -44,9 +44,10 @@ functions are essentially continuous and differentiable functions, except perhap
 finite number of points, with finite limits around discontinuities. We start by defining
 this specific type of discontinuity.
 \begin{definition}
+  \label{def:limit-onesided}
   Let $f$ be a complex function of a single real variable. We consider a point
-  $t_0\in\mathbb{R}$, and assume $f$, and let assume $f$ is defined in a neighbourhood of
-  some point $t_0\in\mathbb{R}$. If $f(t)$ admits a finite limit for $t\to t_0$ with
+  $t_0\in\R$, and assume $f$, and let assume $f$ is defined in a neighbourhood of
+  some point $t_0\in\R$. If $f(t)$ admits a finite limit for $t\to t_0$ with
   $t<t_0$, we call it the \emph{left limit} of $f(t)$ at $t_0$, noted $f(t_0^-)$.
   Similarly, if $f(t)$ admits a finite limit for $t\to t_0$ with $t>t_0$, we call it the
   \emph{right limit} of $f(t)$ at $t_0$, noted $f(t_0^+)$. In general $f(t_0^-)$ and
@@ -60,7 +61,7 @@ this specific type of discontinuity.
 \end{definition}
 \begin{example}
   The square wave function $\sq$ defined in~\cref{eq:wave-square} has jump discontinuities
-  of height $2$ at all points $t$ such that $t=\frac{n}{2}$ where $n\in\mathbb{Z}$.
+  of height $2$ at all points $t$ such that $t=\frac{n}{2}$ where $n\in\Z$.
 \end{example}
 We now define \emph{piecewise continuous functions}, which are continuous functions,
 perhaps at the exception to a finite number of jump discontinuities.
@@ -229,10 +230,10 @@ Finally, we generalise integration by parts to piecewise smooth functions:
   which proves the theorem.
 \end{proof}
 In particular, the theorem above implies that integration by parts takes its usual form
-for piecewise smooth continuous functions (which do not necessary have a continuous
+for continuous piecewise smooth functions (which do not necessary have a continuous
 derivative):
 \begin{corollary}
-  Let $f$ be a piecewise smooth continuous function on $[a,b]$, and $g$ be a continuously
+  Let $f$ be a continuous piecewise smooth function on $[a,b]$, and $g$ be a continuously
   differentiable function on $[a,b]$. We have the following integration by part formula
   \begin{equation}
     \int_a^b\diff t\,f(t)\,g'(t)=\left[f(t)\,g(t)\right]_a^b
@@ -256,13 +257,16 @@ the introduction to this section, as well as the associated trigonometric polyno
   \emph{sine}, and \emph{complex Fourier coefficients} the sequences
   \begin{align}
     a_n(f)&=\frac{2}{\tau}\braket{f,\cw(n\omega)}
-    =\frac{2}{\tau}\int_0^{\tau}\diff t\,f(t)\cos(2\pi n\omega t)\,,\\
+    =\frac{2}{\tau}\int_0^{\tau}\diff t\,f(t)\cos(2\pi n\omega t)\,,
+    \label{eq:fourier-an}\\
     b_n(f)&=\frac{2}{\tau}\braket{f,\sw(n\omega)}
-    =\frac{2}{\tau}\int_0^{\tau}\diff t\,f(t)\sin(2\pi n\omega t)\,,\\
+    =\frac{2}{\tau}\int_0^{\tau}\diff t\,f(t)\sin(2\pi n\omega t)\,,
+    \label{eq:fourier-bn}\\
     c_n(f)&=\frac{1}{\tau}\braket{f,\ew(n\omega)}
     =\frac{1}{\tau}\int_0^{\tau}\diff t\,f(t)\,e^{-2\pi i n\omega t}\,,
+    \label{eq:fourier-cn}
   \end{align}
-  respectively, where $n\in\mathbb{Z}$ and $\omega=\frac{1}{\tau}$.
+  respectively, where $n\in\Z$ and $\omega=\frac{1}{\tau}$.
 \end{definition}
 \begin{definition}
   \label{def:fourier-partial}
@@ -295,12 +299,12 @@ intervals.
 \begin{proof}
   The proof of this theorem is rather abstract and technical, but it is based on a fairly
   intuitive idea. A first observation one can make is that the Riemann-Lebesgue lemma is
-  easily demonstrated for constant functions. Indeed, for any constant $A\in\mathbb{R}$
+  easily demonstrated for constant functions. Indeed, for any constant $A\in\R$
   \begin{equation}
     \int_a^b\diff t\,A\sin(kt)=\frac{A}{k}\,[\cos(ka)-\cos(kb)]\,.
     \label{eq:rl-const}
   \end{equation}
-  Then $|\cos(ka)-\cos(kb)|<2$ for all $k\in\mathbb{R}$, so the integral above clearly
+  Then $|\cos(ka)-\cos(kb)|<2$ for all $k\in\R$, so the integral above clearly
   converges to $0$ for $k\to+\infty$. In the general case where $f$ is piecewise
   continuous, $f$ is an assembly of bounded continuous functions. Such functions can be
   approximated arbitrarily well by piecewise constant functions, similarly to what is done
@@ -371,7 +375,8 @@ intervals.
   \label{fig:rl}
 \end{figure}
 \begin{corollary}
-  Let $f$ be a function on $\mathbb{R}$ piecewise smooth on a compact interval $[a,b]$. We
+  \label{corr:rl}
+  Let $f$ be a function on $\R$ piecewise smooth on a compact interval $[a,b]$. We
   have the following limits
   \begin{align}
     \lim_{k\to+\infty}\int_a^b\diff t\, f(t)\cos(kt)&=0\,,\\
@@ -385,7 +390,7 @@ intervals.
   \begin{equation}
     \int_a^b\diff t\, f(t)\cos(kt)=\frac{1}{k}[\sin(bk)-\sin(ak)]\,,
   \end{equation}
-  and since $|\sin(bk)-\sin(ak)|<2$ for all $k\in\mathbb{R}$, the integral above vanishes
+  and since $|\sin(bk)-\sin(ak)|<2$ for all $k\in\R$, the integral above vanishes
   for $k\to+\infty$. A similar argument can be made for the complex exponential, although
   one can also notice that it is now a trivial consequence the equality
   \begin{equation}
@@ -422,7 +427,7 @@ The Dirichlet kernel can in fact be expressed as a simple ratio of sine function
 discussed in the result below.
 \begin{proposition}
   \label{prop:dirichlet-id}
-  For all $x\in\mathbb{R}$, and all $N\in\mathbb{N}$, we have
+  For all $x\in\R$, and all $N\in\N$, we have
   \begin{equation}
     D_N(x)=1+2\sum_{n=1}^{N}\cos(nx)=\frac{\sin[(N+\frac{1}{2})x]}{\sin(\frac{x}{2})}\,.
     \label{eq:dk-sinratio}
@@ -458,7 +463,7 @@ discussed in the result below.
 \end{proof}
 \begin{proposition}
   \label{prop:dk-int}
-  The Dirichlet kernel has the following integral on $[0,2\pi]$ for all $N\in\mathbb{N}$:
+  The Dirichlet kernel has the following integral on $[0,2\pi]$ for all $N\in\N$:
   \begin{equation}
     \int_0^{2\pi}\diff x\,D_N(x)=2\pi\,.
   \end{equation}
@@ -473,7 +478,7 @@ discussed in the result below.
 We now formulate the main theorem on the integral representation of partial Fourier sums.
 \begin{theorem}
   \label{thm:fourier-dk-rep}
-  Let $f$ be a piecewise smooth $\tau$-periodic function. For all $N\in\mathbb{N}$, the
+  Let $f$ be a piecewise smooth $\tau$-periodic function. For all $N\in\N$, the
   partial Fourier sum of $f$ has the following integral representation:
   \begin{equation}
     s_N(f)(t)=\frac{1}{\tau}\int_0^{\tau}\diff u\,f(u)\,D_N[2\pi\omega(t-u)]\,.
@@ -511,8 +516,8 @@ series does converge back to a given piecewise smooth periodic function, expect 
 a finite number of points of jump discontinuity.
 \begin{theorem}
   \label{thm:fourier-pt}
-  Let $f$ be a $\tau$-periodic function which is piecewise smooth on $[0,\tau]$. For all
-  $t\in\mathbb{R}$, the Fourier series for $f(t)$ converges with the following limit
+  Let $f$ be a piecewise smooth $\tau$-periodic function which $[0,\tau]$. For all
+  $t\in\R$, the Fourier series for $f(t)$ converges with the following limit
   \begin{equation}
     \sumz{n}c_n(f)\,e^{2\pi i \omega nt}=\lim_{N\to+\infty}s_N(f)(t)
     =\frac{f(t^-)+f(t^+)}{2}\,.
@@ -636,6 +641,7 @@ a finite number of points of jump discontinuity.
 \end{example}
 %-----------------------------------------------------------------------------------------
 \subsection{Convergence in mean square and Parseval's theorem}
+\label{sec:series-l2-conv}
 Another useful form of convergence for sequences of functions is the \emph{convergence in
 mean square}, also called \emph{$L^2$ convergence}, based on the functional norm
 introduced in~\cref{sec:ew-orth}. In all this section, we will work with square-integrable
@@ -661,7 +667,7 @@ that the norm of a partial Fourier sum is always smaller than the norm of the as
 function, an important result known as \emph{Bessel's inequality}.
 \begin{theorem}[Bessel's inequality]
   \label{thm:bessel}
-  Let $f$ be a piecewise smooth $\tau$-periodic function. The series over $n\in\mathbb{Z}$
+  Let $f$ be a piecewise smooth $\tau$-periodic function. The series over $n\in\Z$
   with summand $|c_n(f)|^2$ converges, and one has the inequality
   \begin{equation}
     \tau\sumz{n}|c_n(f)|^2\leq\|f\|^2\,.
@@ -759,7 +765,7 @@ the definition below.
 \begin{definition}
   \label{def:uni-cvg}
   A sequence of function $f_n$ is said to \emph{converge uniformly} to $f$ on a domain $D$
-  if for all $\epsilon>0$, there exists $N\in\mathbb{N}$ such that
+  if for all $\epsilon>0$, there exists $N\in\N$ such that
   \begin{equation}
     \forall n\geq N,\quad\forall x\in D,\quad|f_n(x)-f(x)|<\epsilon\,,\label{eq:uniconv-eps}
   \end{equation}
@@ -778,7 +784,7 @@ the definition below.
   \end{equation}
   therefore
   \begin{equation}
-    \sup_{t\in\mathbb{R}}\left|\sin\left(t+\frac{1}{n}\right)
+    \sup_{t\in\R}\left|\sin\left(t+\frac{1}{n}\right)
     -\sin(t)\right|=2\sin\left(\frac{1}{2n}\right)\,.
   \end{equation}
   The right-hand side of the equation above converges to $0$ for $n\to+\infty$, which
@@ -790,7 +796,18 @@ the definition below.
   \begin{equation}
     \lim_{n\to+\infty}t^n=0\,,
   \end{equation}
-  so $t^n$ converges pointwise to $0$ on $[0,1)$. Let $a\in(0,1)$, since $t^n$ is a
+  so $t^n$ converges pointwise to $0$ on $[0,1)$. Additionally, $t^n$ converges in mean square on $[0,1)$ to
+  zero as well. Indeed, defining $f_n(t)=t^n$
+  \begin{equation}
+    \|f_n\|^2=\int_0^1\diff t\,t^{2n}=\frac{1}{2n+1}\,,
+  \end{equation}
+  which clearly converges to $0$ for $n\to+\infty$. However,
+  \begin{equation}
+    \sup_{t\in[0,1)}|t^n|=1\,,
+  \end{equation}
+  so $t^n$ does not converge uniformly to $0$ on $[0,1)$.
+
+  Let $a\in(0,1)$, since $t^n$ is a
   positive, increasing function for $t>0$, we have
   \begin{equation}
     \sup_{t\in[0,a]}|t^n|=a^n\,,
@@ -799,11 +816,7 @@ the definition below.
   \begin{equation}
     \lim_{n\to+\infty}\sup_{t\in[0,a]}t^n=0\,,
   \end{equation}
-  so $t^n$ converges uniformly to $0$ on $[0,a]$. However,
-  \begin{equation}
-    \sup_{t\in[0,1)}|t^n|=1\,,
-  \end{equation}
-  so $t^n$ does not converge uniformly to $0$ on $[0,1)$.
+  so $t^n$ converges uniformly to $0$ on $[0,a]$.
 \end{example}
 Uniform convergence is a strong sufficient condition for a number of important limit
 exchange theorems. One first important result is that uniform convergence preserves
@@ -819,7 +832,7 @@ continuity
   for all $x_0\in D$.
 \end{theorem}
 \begin{proof}
-  Let $\epsilon>0$, using~\cref{def:uni-cvg} we know that there exists $N\in\mathbb{N}$
+  Let $\epsilon>0$, using~\cref{def:uni-cvg} we know that there exists $N\in\N$
   such that for all $x\in D$,
   \begin{equation}
     |f_N(x)-f(x)|<\frac{\epsilon}{3}\,.
@@ -864,7 +877,7 @@ discontinuous function never converges uniformly on a period:
   \begin{equation}
     \bar{f}(t)=\lim_{N\to+\infty}s_N(f)(t)\,,
   \end{equation}
-  for all $t\in\mathbb{R}$. Using~\cref{thm:fourier-pt}, we know that $\bar{f}$ is equal
+  for all $t\in\R$. Using~\cref{thm:fourier-pt}, we know that $\bar{f}$ is equal
   to $f$ except perhaps at points of jump discontinuity, and in any case $\bar{f}$ has the
   same jump discontinuities than $f$. Since the partial Fourier sum $s_N(f)$ is a linear
   combination of continuous function, if it was uniformly convergence then according
@@ -876,7 +889,7 @@ for the uniform convergence of the Fourier series of a continuous function.
 \begin{theorem}
   \label{thm:fourier-uniconv}
   Let $f$ be a $\tau$-periodic function which is piecewise smooth and continuous on
-  $[0,\tau]$. The Fourier series of $f$ converges uniformly to $f$ on $\mathbb{R}$.
+  $[0,\tau]$. The Fourier series of $f$ converges uniformly to $f$ on $\R$.
 \end{theorem}
 The proof of the theorem above requires to know the Fourier coefficients of the derivative
 of a piecewise smooth function, given in the result below.
@@ -945,24 +958,44 @@ We now proceed with the proof of~\cref{thm:fourier-uniconv}.
   \begin{equation}
     f(t)=\sumz{n}c_n(f)\,e^{2\pi i n\omega t}\,,
   \end{equation}
-  for all $t\in\mathbb{R}$. Therefore, for $N\in\mathbb{N}$ and $t\in\mathbb{R}$
+  for all $t\in\R$. Therefore, for $N\in\N$ and $t\in\R$
   \begin{equation}
     |f(t)-s_N(f)(t)|=\left|\sum_{|n|>N}c_n(f)\,e^{2\pi i n\omega t}\right|
     \leq \sum_{|n|>N}|c_n(f)|\,.
   \end{equation}
-  Taking the supremum over $t\in\mathbb{R}$ and using~\cref{eq:fourier-remainder}, we
+  Taking the supremum over $t\in\R$ and using~\cref{eq:fourier-remainder}, we
   obtain
   \begin{equation}
-    \lim_{N\to+\infty}\,\sup_{t\in\mathbb{R}}|f(t)-s_N(f)(t)|=0\,,
+    \lim_{N\to+\infty}\,\sup_{t\in\R}|f(t)-s_N(f)(t)|=0\,,
   \end{equation}
   which proves the uniform convergence to $f$ of the Fourier series of $f$.
 \end{proof}
+Finally, let us discuss how stronger uniform convergence is compared to pointwise and
+$L^2$ convergence. As we saw through the counter-examples above, $L^2$ and pointwise convergence do not
+generally imply uniform convergence. We know that uniform convergence implies pointwise convergence
+by definition, but we can show it also implies $L^2$ convergence for periodic functions.
+\begin{proposition}
+  Let $f_n$ be a sequence of square-integrable $\tau$-periodic functions that converge uniformly to a limit $f$.
+  Then $f_n$ converge pointwise and in mean square to $f$.
+\end{proposition}
+\begin{proof}
+  By assumption,
+  \begin{equation}
+    s_n=\sup_{t\in\R}|f(t)-f_n(t)|
+  \end{equation}
+  is a bounded sequence that converges to zero for $n\to+\infty$. Then,
+  \begin{equation}
+    \|f-f_n\|^2=\int_{0}^{\tau}\diff t\,|f(t)-f_n(t)|^2\leq \tau s_n^2\,.
+  \end{equation}
+  Since $s_n^2$ converges to zero, $\|f-f_n\|^2$ converge to zero which proves the proposition.
+\end{proof}
+
 This concludes the discussion on uniform convergence, and we now discuss in details the
 case of the non-uniform convergence of the Fourier series for discontinuous functions.
 %-----------------------------------------------------------------------------------------
 \subsection{Gibbs phenomenon}
 If a periodic function has at least one jump discontinuity, then its Fourier series cannot
-be uniformly convergent on $\mathbb{R}$. This generates irregularities around
+be uniformly convergent on $\R$. This generates irregularities around
 discontinuities where the Fourier expansion tends to ``overshoot'' the function by
 approximately $9\%$ of the height of the discontinuity. This effect is generally called
 the \emph{Gibbs phenomenon}, and is a well known engineering issue when cutting data
@@ -1047,7 +1080,250 @@ theorem below.
   introductory course. This is nonetheless a well-documented topic generally referred to
   as the \emph{localisation principle}.
 \end{proof}
+%-----------------------------------------------------------------------------------------
+\subsection{Summary}
+\begin{figure}[t]
+  \centering
+  \includegraphics{tikz_ven-periodic.pdf}
+  \caption{Visualisation of the various periodic function spaces studied in this section.
+    The colour of each ellipse represents the strongest form of convergence generally
+    expected for the Fourier series on each space. The abbreviations ``pw.'' and ``cont.''
+  mean ``piecewise'' and ``continuous'', respectively.}
+  \label{fig:ven-periodic}
+\end{figure}
+We summarise here the various forms of convergence of the Fourier series. The various
+classes of functions studied in this section are represented visually
+in~\cref{fig:ven-periodic}. The most general assumption made was square-integrability
+in~\cref{sec:series-l2-conv}, for which the Fourier series converges in mean square.
+Piecewise continuous functions, defined in~\cref{def:pw-cont}, are special cases of
+square-integrable functions. For piecewise smooth functions, defined
+in~\cref{def:pw-smooth}, the Fourier series converge pointwise, potentially to different
+values than the original function at jump discontinuities, as established in
+\cref{thm:fourier-pt}. Finally, for continuous piecewise smooth functions, the Fourier
+series converges uniformly (\cref{thm:fourier-uniconv}), which implies both pointwise and
+mean square convergence.
+
+Finally, we would like to emphasise that the term ``strongest convergence'' used in the
+caption of~\cref{fig:ven-periodic} is somewhat loose. Firstly, most theorems in this
+section give sufficient convergent conditions, which are not always necessary ones.
+Secondly, strictly speaking, only uniform convergence is stronger than both pointwise and
+$L^2$ convergence, and there is in principle no hierarchy between $L^2$ and pointwise
+convergence. Indeed, there exists pointwise convergent sequences that are not $L^2$
+convergent. However, pointwise convergence corresponds to the naive notion of a sequence
+of function converging point by point, and is sometimes intuitively considered stronger
+than a convergence in mean.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properties of Fourier coefficients}
+In this section we discuss further results related to the properties of Fourier coefficients.
+% First an important consequence of the results of~\cref{sec:series-l2-conv} is that the
+% Fourier expansion of a function is unique.
+% \begin{proposition}
+%   Let $f$ be $\tau$-periodic piecewise smooth function. Let $\gamma_n$ be a sequence of
+%   complex numbers such that
+%   \begin{equation}
+%     f(t)=\sumz{n}\gamma_n\,e^{2\pi i n\omega t}\,,
+%   \end{equation}
+%   for $t\in\R$ such that $t$ is not a jump discontinuity of $f$. Then the $\gamma_n$ are the
+%   Fourier coefficients of $f$, \ie for all $n\in\Z$,
+%   \begin{equation}
+%     \gamma_n=c_n(f)\,.
+%   \end{equation}
+% \end{proposition}
+\begin{definition}
+  We define the \emph{reflection operator} $\mathcal{R}$ that associates to any function $f$ on $\R$
+  the function $\mathcal{R}f$, or $\tilde{f}$, defined by
+  \begin{equation}
+    (\mathcal{R}f)(t)=\tilde{f}(t)=f(-t)\,,
+  \end{equation}
+  for all $t\in\R$.
+\end{definition}
+\begin{definition}
+  For any real number $a\in\R$, we define the \emph{translation operator}
+  $\mathcal{T}_a$ that associates to any function $f$ on $\R$ to the function
+  $\mathcal{T}_af$ defined by
+  \begin{equation}
+    (\mathcal{T}_af)(t)=f(t-a)\,,
+  \end{equation}
+  for all $t\in\R$.
+\end{definition}
+
+\begin{proposition}
+  \label{prop:fourier-coef-trans}
+  Let $f$ be a $\tau$-periodic square-integrable function, and as usual
+  $\omega=\frac{1}{\tau}$. The following properties hold
+  \begin{enumerate}
+    \item \emph{Conjugation:} for all $n\in\Z$,
+      \begin{equation}
+        c_n(f^*)=c_{-n}(f)^*,\quad a_n(f^*)=a_n(f)^*,\quad\text{and}\quad
+        b_n(f^*)=b_n(f)^*
+      \end{equation}
+    \item \emph{Reflection:} for all $n\in\Z$,
+      \begin{equation}
+        c_n(\tilde{f})=c_{-n}(f),\quad a_n(\tilde{f})=a_n(f),\quad\text{and}\quad
+        b_n(\tilde{f})=-b_n(f)\,.
+      \end{equation}
+    \item \emph{Time translation:} for any real number $a$, and all $n\in\Z$,
+      \begin{equation}
+        c_n(\mathcal{T}_af)=e^{-2\pi i n\omega a}c_n(f)\label{eq:cn-timetrans}
+      \end{equation}
+    \item \emph{Frequency translation:} for all pairs of integers $n$ and $m$,
+      \begin{equation}
+        c_{n-m}(f)=c_{n}[\ew(m\omega)f]
+      \end{equation}
+    \item \emph{Differentiation:} if $f$ admits a continuous piecewise smooth order $p-1$
+      derivative,
+      \begin{equation}
+        c_n(f^{(k)})=(2\pi i n\omega)^kc_n(f)\,,\label{eq:cn-der}
+      \end{equation}
+      for any positive integer $k\leq p$, where $f^{(k)}$ is the order $k$ derivative of
+      $f$, and we use the convention~$f^{(0)}=f$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof} Let us demonstrate the properties for the complex coefficients. When
+  relevant, properties for the sine-cosine coefficients are trivial consequences of those
+  for complex coefficients.
+  \begin{enumerate}
+    \item Conjugation: we have
+      \begin{equation}
+        c_n(f^*)=\frac{1}{\tau}\int_0^{\tau}\diff t\, f(t)^*e^{-2\pi i n\omega t}
+        =\left[\frac{1}{\tau}\int_0^{\tau}\diff t\, f(t)\,e^{2\pi i n\omega t}\right]^*
+        =c_{-n}(f)^*\,.
+      \end{equation}
+    \item Reflection: we have
+      \begin{equation}
+        c_n(\tilde{f})=\frac{1}{\tau}\int_0^{\tau}\diff t\, f(-t)\,e^{-2\pi i n\omega t}
+        =\frac{1}{\tau}\int_0^{\tau}\diff t\, f(-t)\,e^{2\pi i n\omega t}=c_{-n}(f)\,,
+      \end{equation}
+      where we used the change of variable $t\mapsto -t$ in the last integral.
+    \item Time translation: we have
+      \begin{align}
+        c_n(\mathcal{T}_af)&=\frac{1}{\tau}\int_0^{\tau}\diff t\, f(t-a)\,
+        e^{-2\pi i n\omega t}\\
+        &=\frac{1}{\tau}\int_{-a}^{\tau-a}\diff t\, f(t)\,e^{-2\pi i n\omega (t+a)}\\
+        &=\frac{e^{-2\pi i n\omega a}}{\tau}\int_{0}^{\tau}\diff t\, f(t)\,
+        e^{-2\pi i n\omega t}
+        =e^{-2\pi i n\omega a}c_n(f)\,,
+      \end{align}
+      where used the change of variable $t\mapsto t+a$, as well as the $\tau$-periodicity
+      of the integrand.
+    \item Frequency translation: we have
+      \begin{align}
+        c_{n-m}(f)&=\frac{1}{\tau}\int_0^{\tau}\diff t\, f(t)\,e^{-2\pi i (n-m)\omega t}\\
+        &=\frac{1}{\tau}\int_0^{\tau}\diff t\,
+        [f(t)\,e^{2\pi i m\omega t}]\,e^{-2\pi i n\omega t}=c_{n}[\ew(m\omega)f]\,.
+      \end{align}
+    \item Differentiation: this is a direct consequence of applying $k$
+      times~\cref{eq:fourier-derivative-cont}.
+  \end{enumerate}
+\end{proof}
+These properties can be connected to symmetries of a function:
+\begin{proposition}
+  Let $f$ be a $\tau$-periodic piecewise smooth function, and as usual
+  $\omega=\frac{1}{\tau}$. The following properties hold
+  \begin{enumerate}
+    \item If $f$ is real, then for all $n\in\Z$, $c_{-n}(f)=c_{n}(f)^*$.
+    \item If $f$ is even, then for all $n\in\Z$, $c_{n}(f)=c_{-n}(f)$ and
+      $b_n(f)=0$.
+    \item If $f$ is even and real, then for all $n\in\Z$, $c_n(f)$ is real.
+    \item If $f$ is odd, then for all $n\in\Z$, $c_{n}(f)=-c_{-n}(f)$ and
+      $a_n(f)=0$.
+    \item If $f$ is odd and real, then for all $n\in\Z$, $c_n(f)$ is purely
+      imaginary.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  These properties are direct consequences of~\cref{prop:fourier-coef-trans}, and left as
+  an exercise to the reader.
+\end{proof}
+In principle, the Fourier series of a periodic function does not need to be based on the
+fundamental frequency of the function. \cref{prop:fourier-coef-trans} and in particular
+\cref{eq:cn-timetrans}, imply that using a non-fundamental period is equivalent to
+regularly inserting zeros in the sequence of the Fourier coefficients:
+\begin{proposition}
+  Let $f$ be a $\tau$-periodic square-integrable function which admits a fundamental
+  period $\tau_0$, and let $r$ be the positive integer such that $\tau=r\tau_0$. We note
+  $c_n^\tau(f)$ and $c_n^{\tau_0}(f)$ the complex Fourier coefficients of $f$ computed on
+  a period $\tau$ and $\tau_0$, respectively. We have the following relationship
+  \begin{equation}
+    c_n^\tau(f)=
+    \begin{cases}
+      c_{n/r}^{\tau_0}(f)&\text{if}~$n$~\text{is a multiple of}~$r$\\
+      0&\text{else}
+    \end{cases}\,.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  By assumption, $\mathcal{T}_{\tau_0}f=f$, therefore using \cref{eq:cn-timetrans} we
+  obtain
+  \begin{equation}
+    c_n^\tau(f)=e^{-2\pi i n\omega \tau_0}c_n^\tau(f)=e^{-2\pi i \frac{n}{r}}c_n^\tau(f)\,.
+  \end{equation}
+  If $c_n^\tau(f)\neq 0$, then the equation above implies that $e^{-2\pi i
+  \frac{n}{r}}=1$, which in turn implies that $\frac{n}{r}$ is an integer, \ie $n$ is a
+  multiple of $r$. So if $n$ is not a multiple of $r$, necessarily $c_n^\tau(f)=0$. If $n$
+  is a multiple of $r$, then $k=\frac{n}{r}$ is an integer and
+  \begin{equation}
+    c_n^\tau(f)=\frac{1}{\tau}\int_{0}^{\tau}\diff t\,f(t)\,e^{-2\pi i k\omega_0 t}\,.
+  \end{equation}
+  Since the integrand above is $\tau_0$-periodic, by periodicity the integrable on
+  $[0,\tau]$ is equal to $r$ times the integral on $[0,\tau_0]$ and
+  \begin{equation}
+    c_n^\tau(f)=\frac{r}{\tau}\int_{0}^{\tau_0}\diff t\,f(t)\,
+    e^{-2\pi i k\omega_0 t}=c_{k}^{\tau_0}(f)\,,
+  \end{equation}
+  which concludes the proof.
+\end{proof}
+\cref{eq:cn-der} of \cref{prop:fourier-coef-trans} establishes a crucial property of Fourier
+coefficients: differentiating a smooth periodic function is equivalent to multiplying its
+Fourier coefficients by powers of the frequency. This property has many applications and
+is crucial to solve linear differential equations using Fourier analysis. One important
+consequence of this formula is the decay rate of Fourier coefficients:
+\begin{theorem}
+  \label{thm:fourier-series-decay}
+  Let $f$ be a $\tau$-periodic function. If $f$ admits a piecewise smooth and continuous
+  derivative of order $p-1$, where $p$ is a positive integer, then its Fourier
+  coefficients $c_n(f)$ decay faster than $\frac{1}{|n|^p}$ for $|n|\to+\infty$, \ie
+  \begin{equation}
+    \lim_{|n|\to+\infty} |n|^p|c_n(f)|=0\,.
+  \end{equation}
+  In particular, if $f$ is infinitely differentiable, its Fourier coefficients $c_n(f)$
+  decay faster than any power of $n$.
+\end{theorem}
+\begin{proof}
+  By assumption, $f^{(p)}$ is a piecewise continuous function, so according to the
+  Riemann-Lebesgue lemma (\cref{corr:rl}), we have
+  \begin{equation}
+    \lim_{|n|\to+\infty} c_n(f^{(p)})=0\,.
+  \end{equation}
+  Using \cref{prop:fourier-coef-trans,eq:cn-der},
+  \begin{equation}
+    |c_n(f^{(p)})|=(2\pi |n|\omega)^p|c_n(f)|\,,
+  \end{equation}
+  which, combined with the previous limit, proves the theorem.
+\end{proof}
+\begin{example}
+  The $2\pi$-periodic function $f$ defined on $[-\pi,\pi)$ by $f(t)=t^2$ is clearly
+  piecewise smooth, and is also continuous since $f(-\pi)=f(\pi)$. Its derivative
+  $f'(t)=2t$ on $[-\pi,\pi)$ is discontinuous. According
+  to~\cref{thm:fourier-series-decay}, the Fourier coefficients of $f$ are expected to
+  decay faster than $\frac{1}{|n|}$, but not faster than $\frac{1}{|n|^2 }$. Indeed, these
+  coefficients of are given for $n>0$ by (\cf\cref{seriesex})
+  \begin{equation}
+    a_n(f)=\frac{4}{n^2}(-1)^n\qquad\text{and}\qquad b_n(f)=0\,.
+  \end{equation}
+\end{example}
+\begin{example}
+  The $2\pi$-periodic function $f$ defined by
+  \begin{equation}
+    f(t)=\frac{4-2\cos(t)}{5-4\cos(t)}\,,
+  \end{equation}
+  has the Fourier expansion (\cf\cref{seriessmooth})
+  \begin{equation}
+    f(t)=\sumn{n}\frac{\cos(nt)}{2^n}\,.
+  \end{equation}
+  $f$ is infinitely differentiable, and in accordance with
+  \cref{thm:fourier-series-decay}, its Fourier coefficients decay faster than any power of
+  $n$.
+\end{example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multidimensional Fourier series}
