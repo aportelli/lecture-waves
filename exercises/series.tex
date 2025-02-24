@@ -18,14 +18,14 @@
     \pi^2=\frac{256}{45}+\frac{4608}{5}\sumnp{n}\frac{1}{(4n^2-1)^2(4n^2-9)^2}\,.\label{eq:hard-pi2}
   \end{equation}
   %---------------------------------------------------------------------------------------
-  \Exercise[label=fourierode2] Let $f$ be a real twice-differentiable function on $\R$ which is
+  \Exercise[label=fourierode2] Let $f$ be a real twice and continuously differentiable function on $\R$ which is
   a solution of the ordinary differential equation
   \begin{equation}
-    f''(t) + A f(t) = 0\,,
+    f''(t) + A f(t) = 0\,,\label{eq:fourierode2}
   \end{equation}
   where $A\in\R$. We additionally assume that $f$ is $\tau$-periodic.
-  \Question Using Fourier series, show that $f\neq 0$ if and only if $A>0$.
-  \Question If $A>0$, show that there exists two real numbers $a$ and $b$
+  \Question Using Fourier series, show that if $f\neq 0$ then $A\geq 0$.
+  \Question If $A\geq 0$, show that there exists two real numbers $a$ and $b$
   such that
   \begin{equation}
     f(t)=a\cos(\sqrt{A} t)+b\sin(\sqrt{A} t)\,.
