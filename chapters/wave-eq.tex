@@ -220,7 +220,7 @@ specifically for the plucked string problem.
 We remind here the considered physical problem: the string will be pulled in a given
 position, and then released. This means the initial velocity $u_1$ in~\cref{eq:wave-eq-ic}
 is zero. Additionally, the string is attached at the two points $(0,0)$ and $(L,0)$, which
-implies that for all times $t\in\mathbb{R}$
+implies that for all times $t\in\R$
 \begin{equation}
   u(t,0)=0\qquad\text{and}\qquad u(t,L)=0\,.\label{eq:string-bc}
 \end{equation}
@@ -252,7 +252,7 @@ and $g$ are both equal to half the initial position $u_0$, up to an integration 
 To obtain the full solution~\cref{eq:wave-eq-sol}, we now need to solve $f$ and $g$
 outside the interval $[0,L]$, which can be done using the boundary
 conditions~\cref{eq:string-bc}. The first boundary condition implies that for all
-$t\in\mathbb{R}$,
+$t\in\R$,
 \begin{equation}
   f(-ct)=-g(ct)\,.
 \end{equation}
@@ -263,11 +263,11 @@ $g$ on the interval $[-L,0]$, \ie for all $x\in[0,L]$
   g(-x)&=-\frac{1}{2}u_0(x)-K\,.\label{eq:wave-eq-gmL0}
 \end{align}
 Now, the second boundary condition in~\cref{eq:string-bc} implies that for all
-$t\in\mathbb{R}$,
+$t\in\R$,
 \begin{equation}
   f(L-ct)=-g(L+ct)=f(-L-ct)\,.
 \end{equation}
-For all $x\in\mathbb{R}$, the equation above for $t=-\frac{1}{c}(L+x)$ gives
+For all $x\in\R$, the equation above for $t=-\frac{1}{c}(L+x)$ gives
 \begin{equation}
   f(x+2L)=f(x)\,.
 \end{equation}

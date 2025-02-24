@@ -1,11 +1,97 @@
 % !TEX root = ../waves.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Definition of the Fourier transform}
+\section{Fourier transform of Schwartz functions}
+%-----------------------------------------------------------------------------------------
+\subsection{Definition and properties}
+\begin{definition}
+  We call \emph{multi-index} $\alpha$ in $d$ dimensions any $d$-tuple
+  $\alpha=(\alpha_1,\dots,\alpha_d)$ of  non-negative integers. We note
+  $|\alpha|=\alpha_1+\cdots+\alpha_d$ the sum of all components of $\alpha$.
+  For any vector $\vec{x}\in\R^d$, we also define the power
+  \begin{equation}
+    \vec{x}^\alpha=x_1^{\alpha_1}\cdots x_d^{\alpha_d}\,,
+  \end{equation}
+  and similarly
+  \begin{equation}
+    \partial^{\alpha}=\partial_1^{\alpha_1}\cdots\partial_d^{\alpha_d}\,,
+  \end{equation}
+  where $\partial_j$ is the partial derivative in the $j$-th variable.
+\end{definition}
+\begin{example}
+  We consider in $3$ dimensions the multi-index $\alpha=(2,0,1)$. Let $f$ be a
+  differentiable function on $\R^3$ and $\vec{x}=(x,y,z)$. Then
+  \begin{equation}
+    \vec{x}^\alpha=x^2z\qquad\text{and}\qquad\partial^\alpha
+    f(\vec{x})=\frac{\partial^3}{\partial x^2\partial z}\,f(x,y,z)\,.
+  \end{equation}
+\end{example}
+\begin{definition}
+  \label{def:schwartz-fn}
+  A function $f$ on $\R^d$ is called a \emph{Schwartz function} if it is infinitely
+  differentiable, and the function and all its derivatives decay faster than any power
+  at infinity. More explicitly, for all pairs of multi-indices $\alpha$ and $\beta$,
+  \begin{equation}
+    \partial^{\alpha}f\quad\text{exists everywhere,}\qquad\text{and}\qquad
+    \lim_{|\vec{x}|\to+\infty}\vec{x}^\beta\partial^{\alpha}f(\vec{x})=0\,.
+  \end{equation}
+\end{definition}
+\begin{definition}
+  We call \emph{Gaussian kernel} with \emph{width} $\sigma$ the function $\gauss_{\sigma}$
+  defined on $\R^d$ by
+  \begin{equation}
+    \gauss_{\sigma}(\vec{x})=\frac{1}{(2\pi)^{\frac{d}{2}}\sigma^d}\,e^{-\frac{|\vec{x}|^2}{2\sigma^2}}\,,
+  \end{equation}
+  where $\sigma$ is a positive real number.
+\end{definition}
+\begin{proposition}
+  The Gaussian kernel $\gauss_{\sigma}$ is a Schwartz function for any width $\sigma$.
+\end{proposition}
+\begin{example}
+  The function $f$ defined for $\vec{x}\in\R^3$ by
+  \begin{equation}
+    f(\vec{x})=\frac{1}{|\vec{x}|^2+2}\,,
+  \end{equation}
+  is not a Schwartz function, although it is infinitely differentiable. Indeed,
+  \begin{equation}
+    \lim_{x_1\to+\infty} x_1^2\,f(\vec{x})=1\,,
+  \end{equation}
+  which does not satisfy~\cref{def:schwartz-fn} for the multi-indices $\alpha=(0,0,0)$ and
+  $\beta=(2,0,0)$.
+\end{example}
+\begin{example}
+  The function $f$ defined for $x\in\R$ by
+  \begin{equation}
+    f(x)=e^{-|x|}\,,
+  \end{equation}
+  is not a Schwartz function, although it decays faster than any powers of $x$. Indeed,
+  \begin{equation}
+    f'(x)=-\sign(x)\,e^{-|x|}\,,
+  \end{equation}
+  is discontinuous at $0$, and therefore $f$ does not admit a second derivative.
+\end{example}
+\begin{proposition}
+  An arbitrary linear combination of Schwartz functions is a Schwartz function. A product
+  of Schwartz functions is also a Schwartz function.
+\end{proposition}
+\begin{proposition}
+  Let $f$ be a Schwartz function.
+\end{proposition}
+\begin{definition}
+  Let $f$ be a Schwartz function on $\R^d$, the function $\hat{f}$ defined on $\R^d$ by
+  \begin{equation}
+    \hat{f}(\vec{k})=\int_{\R^d}\diff^d\vec{x}\,f(x)\,e^{-i\vec{k}\cdotp\vec{x}}\,,
+  \end{equation}
+  is called the \emph{Fourier transform} of $f$. We additionally note $\mathcal{F}$ the operator
+  that associate $f$ to its Fourier transform $\mathcal{F}f=\hat{f}$.
+\end{definition}
+\
+%-----------------------------------------------------------------------------------------
+\subsection{Inverse Fourier transform}
+%-----------------------------------------------------------------------------------------
+\subsection{Convolution product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Properties of the Fourier transform}
+\section{Generalised functions -- \textit{There be dragons}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{The Dirac delta distribution}
+\section{Back to Fourier series}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{The convolution theorem}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Diagonalisation of differential operators}
+\section{Inversion of differential operators}

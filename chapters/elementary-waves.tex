@@ -8,7 +8,7 @@ duration. In mathematical terms:
   A function $f$ of a single real variable is said to be~\emph{periodic} or specifically
   \emph{$\tau$-periodic} if there exists a positive real number $\tau$ such that
   \begin{equation}
-    \forall t\in\mathbb{R},\quad f(t+\tau)=f(t)\,.
+    \forall t\in\R,\quad f(t+\tau)=f(t)\,.
   \end{equation}
   $\tau$ is called a \emph{period} of $f$.
 \end{definition}
@@ -88,7 +88,7 @@ period $1$ and amplitude $1$, and can be rewritten as
   \sq(t)=2(2\lfloor t\rfloor-\lfloor 2t\rfloor)+1\,.
 \end{equation}
 Additionally, $\sq(t)$ is discontinuous at all points of the form $t=\frac{n}{2}$ where
-$n\in\mathbb{Z}$. The curve of $\sq(t)$ is represented in~\cref{fig:sq-wave}.
+$n\in\Z$. The curve of $\sq(t)$ is represented in~\cref{fig:sq-wave}.
 \begin{figure}[t]
   \centering
   \includegraphics{gp_sq-wave.pdf}
@@ -178,7 +178,7 @@ A crucial set of formula to manipulate waves is given by the angle addition theo
 \end{theorem}
 \begin{proof}
   We remind that the sine and cosine function are the real and imaginary part of the
-  exponential of a purely imaginary number, namely for all $\theta\in\mathbb{R}$,
+  exponential of a purely imaginary number, namely for all $\theta\in\R$,
   \begin{equation}
     e^{i\theta}=\cos(\theta)+i\sin(\theta)\,.
   \end{equation}
@@ -364,7 +364,7 @@ waves), and can add up or cancel when summed. This can be formalised in the foll
     |h|^2=|f|^2+|g|^2+2\Re(f^*g)\,.
   \end{equation}
   The last term $2\Re(f^*g)$ in the equation is called the \emph{interference term}. At a
-  given point $t\in\mathbb{R}$:
+  given point $t\in\R$:
   \begin{enumerate}
     \item if $\Re[f^*(t)g(t)]>0$, $f$ and $g$ are said to \emph{interfere constructively}
       at $t$;
@@ -542,7 +542,7 @@ their coefficients, formulated in the theorem below.
   Let $P$ and $Q$ be two trigonometric polynomials with the same frequency $\omega$,
   degrees $N$ and $N'$, and sine-cosine coefficients $a_n$, $b_n$ and $a'_n$, $b'_n$,
   respectively. $P$ and $Q$ are identically equal,~\ie $P(t)=Q(t)$ for all
-  $t\in\mathbb{R}$, if and only if their degrees and coefficients are equal, \ie $N=N'$
+  $t\in\R$, if and only if their degrees and coefficients are equal, \ie $N=N'$
   and for all $n$
   \begin{equation}
     a_n=a'_n\quad\text{and}\quad b_n=b'_n\,.
@@ -586,7 +586,7 @@ which becomes an equality if and only if $\vec{v}$ and $\vec{u}$ are \emph{colli
 the other hand, the dot product $\vec{v}\cdot \vec{u}$ clearly vanishes when $\vec{v}$ and
 $\vec{u}$ are \emph{orthogonal} (\ie they form an angle of $\pi$ radians). This makes it
 an essential tool of vector calculus to compute the coordinate of vectors in an
-orthonormal basis. Explicitly, let $\vec{e}_j$ be an orthonormal basis of $\mathbb{R}^n$,
+orthonormal basis. Explicitly, let $\vec{e}_j$ be an orthonormal basis of $\R^n$,
 and let $v^{\vec{e}}_j$ be the coefficients of $\vec{v}$ in that basis, \ie
 \begin{equation}
   \vec{v}=\sum_{j=1}^{n}v^{\vec{e}}_j\,\vec{e}_j\qquad\text{and}\qquad
@@ -897,7 +897,7 @@ inequality also generalises to trigonometric polynomials
     |\braket{P,Q}|\leq\|P\|\|Q\|\,.
   \end{equation}
   This inequality is an equality if and only if there exists a constant
-  $\alpha\in\mathbb{R}$ such that $P=\alpha Q$.
+  $\alpha\in\R$ such that $P=\alpha Q$.
 \end{theorem}
 \begin{proof}
   Let $a_n$, $b_n$ and $a'_n$, $b'_n$ be the sine-cosine coefficients of $P$ and $Q$,
@@ -938,7 +938,7 @@ define trigonometric polynomials in multiple dimensions, we need to formulate a 
 for multidimensional periodic functions. This can be done simply by considering functions
 that are periodic in each of their variables:
 \begin{definition}
-  A function $f$ on $\mathbb{R}^d$ is said to be \emph{periodic} or specifically
+  A function $f$ on $\R^d$ is said to be \emph{periodic} or specifically
   \emph{$\vec{\tau}$-periodic} if there exists a vector $\vec{\tau}$ with positive
   components such that $f(\vec{x})=f(x_1,\dots,x_d)$ is $\tau_j$-periodic in the variable
   $x_j$, for all directions $j$. The vector $\vec{\tau}$ is called a \emph{period} of $f$,
@@ -991,13 +991,13 @@ This motivates the following definitions for multidimensional elementary waves
 \begin{definition}
   \label{def:multidim-waves}
   We call \emph{elementary sine wave}, \emph{elementary cosine wave}, and \emph{elementary
-  complex wave} on $\mathbb{R}^d$ the functions defined by
+  complex wave} on $\R^d$ the functions defined by
   \begin{align}
     \sw(\vec{x};\vec{\omega},\phi)&=\sin(2\pi\vec{\omega}\cdot\vec{x}+\phi)\,,\\
     \cw(\vec{x};\vec{\omega},\phi)&=\cos(2\pi\vec{\omega}\cdot\vec{x}+\phi)\,,\\
     \ew(\vec{x};\vec{\omega},\phi)&=e^{2\pi i\vec{\omega}\cdotp\vec{x}+\phi}\,,
   \end{align}
-  respectively, where the \emph{wave vector} $\vec{\omega}\in\mathbb{R}^d$ has only
+  respectively, where the \emph{wave vector} $\vec{\omega}\in\R^d$ has only
   non-zero components, and the \emph{phase} $\phi$ is a real number such that $0\leq \phi
   <2\pi$.
 \end{definition}
@@ -1033,7 +1033,7 @@ and therefore, using sine waves as an example
 So the oscillations of a sine wave with frequency vector $\vec{\omega}$ only occur in the
 direction parallel to $\vec{\omega}$, and the wave is constant in the perpendicular
 direction. Assuming $\vec{x}$ is aligned with $\vec{\omega}$, \ie it can be written
-$\vec{x}=z\hat{\vec{\omega}}$ with $z\in\mathbb{R}$, then
+$\vec{x}=z\hat{\vec{\omega}}$ with $z\in\R$, then
 \begin{equation}
   \sw(\vec{x};\vec{\omega},\phi)=\sin(2\pi|\vec{\omega}|z+\phi)
   =\sw(z;|\vec{\omega}|,\phi)\,.
@@ -1091,7 +1091,7 @@ Similarly to one-dimensional elementary waves, multidimensional elementary waves
 orthogonal for distinct wave vectors. In order to show that, we need to first define an
 appropriate dot product:
 \begin{definition}
-  Let $f$ and $g$ be two $\vec{\tau}$-periodic functions on $\mathbb{R}^d$. The \emph{dot
+  Let $f$ and $g$ be two $\vec{\tau}$-periodic functions on $\R^d$. The \emph{dot
   product} between $f$ and $g$ is defined by
   \begin{equation}
     \braket{f,g}=\int_0^{\tau_1}\diff x_1\cdots\int_0^{\tau_d}\diff x_d\,
@@ -1148,12 +1148,12 @@ to vectors as follows
 We can now define trigonometric polynomial in multiple dimensions:
 \begin{definition}
   We call \emph{trigonometric polynomial} and wave vector $\vec{\omega}$ any function on
-  $\mathbb{R}^d$ of the form
+  $\R^d$ of the form
   \begin{equation}
     P(\vec{x})=\sum_{\vec{n}\in C}c_{\vec{n}}\ew(\vec{x};\vec{\omega}\odot\vec{n})
     =\sum_{\vec{n}\in C}c_{\vec{n}}\,e^{2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,,
   \end{equation}
-  where $C$ is a finite subset of $\mathbb{Z}^d$, and the coefficients $c_{\vec{n}}$ are
+  where $C$ is a finite subset of $\Z^d$, and the coefficients $c_{\vec{n}}$ are
   complex numbers. $P$ is real-valued if and only if for all $\vec{n}\in C$, $-\vec{n}$ is
   also in $C$, and
   \begin{equation}
