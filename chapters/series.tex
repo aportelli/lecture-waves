@@ -45,13 +45,13 @@ finite number of points, with finite limits around discontinuities. We start by 
 this specific type of discontinuity.
 \begin{definition}
   \label{def:limit-onesided}
-  Let $f$ be a complex function of a single real variable. We consider a point
-  $t_0\in\R$, and assume $f$, and let assume $f$ is defined in a neighbourhood of
-  some point $t_0\in\R$. If $f(t)$ admits a finite limit for $t\to t_0$ with
-  $t<t_0$, we call it the \emph{left limit} of $f(t)$ at $t_0$, noted $f(t_0^-)$.
-  Similarly, if $f(t)$ admits a finite limit for $t\to t_0$ with $t>t_0$, we call it the
-  \emph{right limit} of $f(t)$ at $t_0$, noted $f(t_0^+)$. In general $f(t_0^-)$ and
-  $f(t_0^+)$ are called \emph{one-sided} limits of $f$ at $t_0$.
+  Let $f$ be a complex function of a single real variable. We consider a point $t_0\in\R$,
+  and assume $f$, and let assume $f$ is defined in a neighbourhood of some point
+  $t_0\in\R$. If $f(t)$ admits a finite limit for $t\to t_0$ with $t<t_0$, we call it the
+  \emph{left limit} of $f(t)$ at $t_0$, noted $f(t_0^-)$. Similarly, if $f(t)$ admits a
+  finite limit for $t\to t_0$ with $t>t_0$, we call it the \emph{right limit} of $f(t)$ at
+  $t_0$, noted $f(t_0^+)$. In general $f(t_0^-)$ and $f(t_0^+)$ are called
+  \emph{one-sided} limits of $f$ at $t_0$.
 \end{definition}
 \begin{definition}
   Let $f$ be a complex function of a single real variable, which admits a left and right
@@ -253,7 +253,7 @@ the introduction to this section, as well as the associated trigonometric polyno
 \subsection{Fourier coefficients}
 \begin{definition}
   \label{def:fourier-coef}
-  Let $f$ be a piecewise smooth $\tau$-periodic function. We call \emph{cosine},
+  Let $f$ be a piecewise continuous $\tau$-periodic function. We call \emph{cosine},
   \emph{sine}, and \emph{complex Fourier coefficients} the sequences
   \begin{align}
     a_n(f)&=\frac{2}{\tau}\braket{f,\cw(n\omega)}
@@ -270,8 +270,8 @@ the introduction to this section, as well as the associated trigonometric polyno
 \end{definition}
 \begin{definition}
   \label{def:fourier-partial}
-  Let $f$ be a piecewise smooth $\tau$-periodic function. For any integer $N\geq 0$, we
-  call \emph{partial Fourier sum} of degree $N$ the trigonometric polynomial defined by
+  Let $f$ be a piecewise continuous $\tau$-periodic function. For any integer $N\geq 0$,
+  we call \emph{partial Fourier sum} of degree $N$ the trigonometric polynomial defined by
   \begin{equation}
     s_N(f)=\frac{a_0(f)}{2}+\sum_{n=1}^N[a_n(f)\cw(n\omega)+b_n(f)\sw(n\omega)]=
     \sum_{n=-N}^{N}c_n(f)\ew(n\omega)\,,
@@ -304,13 +304,13 @@ intervals.
     \int_a^b\diff t\,A\sin(kt)=\frac{A}{k}\,[\cos(ka)-\cos(kb)]\,.
     \label{eq:rl-const}
   \end{equation}
-  Then $|\cos(ka)-\cos(kb)|<2$ for all $k\in\R$, so the integral above clearly
-  converges to $0$ for $k\to+\infty$. In the general case where $f$ is piecewise
-  continuous, $f$ is an assembly of bounded continuous functions. Such functions can be
-  approximated arbitrarily well by piecewise constant functions, similarly to what is done
-  when approximating an integral with rectangles. With such a construction, the simple
-  example above with constant functions is then all that is needed to prove the theorem.
-  Let us proceed with justifying this approach in details.
+  Then $|\cos(ka)-\cos(kb)|<2$ for all $k\in\R$, so the integral above clearly converges
+  to $0$ for $k\to+\infty$. In the general case where $f$ is piecewise continuous, $f$ is
+  an assembly of bounded continuous functions. Such functions can be approximated
+  arbitrarily well by piecewise constant functions, similarly to what is done when
+  approximating an integral with rectangles. With such a construction, the simple example
+  above with constant functions is then all that is needed to prove the theorem. Let us
+  proceed with justifying this approach in details.
 
   Reusing the notation of~\cref{def:pw-cont}, we have
   \begin{equation}
@@ -376,8 +376,8 @@ intervals.
 \end{figure}
 \begin{corollary}
   \label{corr:rl}
-  Let $f$ be a function on $\R$ piecewise smooth on a compact interval $[a,b]$. We
-  have the following limits
+  Let $f$ be a function on $\R$ piecewise smooth on a compact interval $[a,b]$. We have
+  the following limits
   \begin{align}
     \lim_{k\to+\infty}\int_a^b\diff t\, f(t)\cos(kt)&=0\,,\\
     \lim_{k\to+\infty}\int_a^b\diff t\, f(t)\,e^{ikt}=0
@@ -390,9 +390,9 @@ intervals.
   \begin{equation}
     \int_a^b\diff t\, f(t)\cos(kt)=\frac{1}{k}[\sin(bk)-\sin(ak)]\,,
   \end{equation}
-  and since $|\sin(bk)-\sin(ak)|<2$ for all $k\in\R$, the integral above vanishes
-  for $k\to+\infty$. A similar argument can be made for the complex exponential, although
-  one can also notice that it is now a trivial consequence the equality
+  and since $|\sin(bk)-\sin(ak)|<2$ for all $k\in\R$, the integral above vanishes for
+  $k\to+\infty$. A similar argument can be made for the complex exponential, although one
+  can also notice that it is now a trivial consequence the equality
   \begin{equation}
     \int_a^b\diff t\, f(t)\,e^{ikt}
     =\int_a^b\diff t\, f(t)\cos(kt)+i\int_a^b\diff t\, f(t)\sin(kt)\,.
@@ -478,8 +478,8 @@ discussed in the result below.
 We now formulate the main theorem on the integral representation of partial Fourier sums.
 \begin{theorem}
   \label{thm:fourier-dk-rep}
-  Let $f$ be a piecewise smooth $\tau$-periodic function. For all $N\in\N$, the
-  partial Fourier sum of $f$ has the following integral representation:
+  Let $f$ be a piecewise smooth $\tau$-periodic function. For all $N\in\N$, the partial
+  Fourier sum of $f$ has the following integral representation:
   \begin{equation}
     s_N(f)(t)=\frac{1}{\tau}\int_0^{\tau}\diff u\,f(u)\,D_N[2\pi\omega(t-u)]\,.
   \end{equation}
@@ -667,8 +667,8 @@ that the norm of a partial Fourier sum is always smaller than the norm of the as
 function, an important result known as \emph{Bessel's inequality}.
 \begin{theorem}[Bessel's inequality]
   \label{thm:bessel}
-  Let $f$ be a piecewise smooth $\tau$-periodic function. The series over $n\in\Z$
-  with summand $|c_n(f)|^2$ converges, and one has the inequality
+  Let $f$ be a piecewise smooth $\tau$-periodic function. The series over $n\in\Z$ with
+  summand $|c_n(f)|^2$ converges, and one has the inequality
   \begin{equation}
     \tau\sumz{n}|c_n(f)|^2\leq\|f\|^2\,.
   \end{equation}
@@ -796,8 +796,8 @@ the definition below.
   \begin{equation}
     \lim_{n\to+\infty}t^n=0\,,
   \end{equation}
-  so $t^n$ converges pointwise to $0$ on $[0,1)$. Additionally, $t^n$ converges in mean square on $[0,1)$ to
-  zero as well. Indeed, defining $f_n(t)=t^n$
+  so $t^n$ converges pointwise to $0$ on $[0,1)$. Additionally, $t^n$ converges in mean
+  square on $[0,1)$ to zero as well. Indeed, defining $f_n(t)=t^n$
   \begin{equation}
     \|f_n\|^2=\int_0^1\diff t\,t^{2n}=\frac{1}{2n+1}\,,
   \end{equation}
@@ -807,8 +807,7 @@ the definition below.
   \end{equation}
   so $t^n$ does not converge uniformly to $0$ on $[0,1)$.
 
-  Let $a\in(0,1)$, since $t^n$ is a
-  positive, increasing function for $t>0$, we have
+  Let $a\in(0,1)$, since $t^n$ is a positive, increasing function for $t>0$, we have
   \begin{equation}
     \sup_{t\in[0,a]}|t^n|=a^n\,,
   \end{equation}
@@ -832,8 +831,8 @@ continuity
   for all $x_0\in D$.
 \end{theorem}
 \begin{proof}
-  Let $\epsilon>0$, using~\cref{def:uni-cvg} we know that there exists $N\in\N$
-  such that for all $x\in D$,
+  Let $\epsilon>0$, using~\cref{def:uni-cvg} we know that there exists $N\in\N$ such that
+  for all $x\in D$,
   \begin{equation}
     |f_N(x)-f(x)|<\frac{\epsilon}{3}\,.
   \end{equation}
@@ -877,9 +876,9 @@ discontinuous function never converges uniformly on a period:
   \begin{equation}
     \bar{f}(t)=\lim_{N\to+\infty}s_N(f)(t)\,,
   \end{equation}
-  for all $t\in\R$. Using~\cref{thm:fourier-pt}, we know that $\bar{f}$ is equal
-  to $f$ except perhaps at points of jump discontinuity, and in any case $\bar{f}$ has the
-  same jump discontinuities than $f$. Since the partial Fourier sum $s_N(f)$ is a linear
+  for all $t\in\R$. Using~\cref{thm:fourier-pt}, we know that $\bar{f}$ is equal to $f$
+  except perhaps at points of jump discontinuity, and in any case $\bar{f}$ has the same
+  jump discontinuities than $f$. Since the partial Fourier sum $s_N(f)$ is a linear
   combination of continuous function, if it was uniformly convergence then according
   to~\cref{thm:uniconv-continuous}, $\bar{f}$ would be continuous, which by contradiction
   proves the proposition.
@@ -963,20 +962,21 @@ We now proceed with the proof of~\cref{thm:fourier-uniconv}.
     |f(t)-s_N(f)(t)|=\left|\sum_{|n|>N}c_n(f)\,e^{2\pi i n\omega t}\right|
     \leq \sum_{|n|>N}|c_n(f)|\,.
   \end{equation}
-  Taking the supremum over $t\in\R$ and using~\cref{eq:fourier-remainder}, we
-  obtain
+  Taking the supremum over $t\in\R$ and using~\cref{eq:fourier-remainder}, we obtain
   \begin{equation}
     \lim_{N\to+\infty}\,\sup_{t\in\R}|f(t)-s_N(f)(t)|=0\,,
   \end{equation}
   which proves the uniform convergence to $f$ of the Fourier series of $f$.
 \end{proof}
 Finally, let us discuss how stronger uniform convergence is compared to pointwise and
-$L^2$ convergence. As we saw through the counter-examples above, $L^2$ and pointwise convergence do not
-generally imply uniform convergence. We know that uniform convergence implies pointwise convergence
-by definition, but we can show it also implies $L^2$ convergence for periodic functions.
+$L^2$ convergence. As we saw through the counter-examples above, $L^2$ and pointwise
+convergence do not generally imply uniform convergence. We know that uniform convergence
+implies pointwise convergence by definition, but we can show it also implies $L^2$
+convergence for periodic functions.
 \begin{proposition}
-  Let $f_n$ be a sequence of square-integrable $\tau$-periodic functions that converge uniformly to a limit $f$.
-  Then $f_n$ converge pointwise and in mean square to $f$.
+  \label{prop:uniconv-l2conv}
+  Let $f_n$ be a sequence of square-integrable $\tau$-periodic functions that converge
+  uniformly to a limit $f$. Then $f_n$ converge pointwise and in mean square to $f$.
 \end{proposition}
 \begin{proof}
   By assumption,
@@ -987,7 +987,8 @@ by definition, but we can show it also implies $L^2$ convergence for periodic fu
   \begin{equation}
     \|f-f_n\|^2=\int_{0}^{\tau}\diff t\,|f(t)-f_n(t)|^2\leq \tau s_n^2\,.
   \end{equation}
-  Since $s_n^2$ converges to zero, $\|f-f_n\|^2$ converge to zero which proves the proposition.
+  Since $s_n^2$ converges to zero, $\|f-f_n\|^2$ converge to zero which proves the
+  proposition.
 \end{proof}
 
 This concludes the discussion on uniform convergence, and we now discuss in details the
@@ -995,12 +996,12 @@ case of the non-uniform convergence of the Fourier series for discontinuous func
 %-----------------------------------------------------------------------------------------
 \subsection{Gibbs phenomenon}
 If a periodic function has at least one jump discontinuity, then its Fourier series cannot
-be uniformly convergent on $\R$. This generates irregularities around
-discontinuities where the Fourier expansion tends to ``overshoot'' the function by
-approximately $9\%$ of the height of the discontinuity. This effect is generally called
-the \emph{Gibbs phenomenon}, and is a well known engineering issue when cutting data
-before computing its Fourier coefficients. A key example of Gibbs phenomenon is the
-Fourier expansion of the square wave.
+be uniformly convergent on $\R$. This generates irregularities around discontinuities
+where the Fourier expansion tends to ``overshoot'' the function by approximately $9\%$ of
+the height of the discontinuity. This effect is generally called the \emph{Gibbs
+phenomenon}, and is a well known engineering issue when cutting data before computing its
+Fourier coefficients. A key example of Gibbs phenomenon is the Fourier expansion of the
+square wave.
 \begin{lemma}
   \label{lem:gibbs-sq}
   The square wave Fourier series does not converge uniformly on $[0,1]$, and
@@ -1114,33 +1115,19 @@ of function converging point by point, and is sometimes intuitively considered s
 than a convergence in mean.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properties of Fourier coefficients}
-In this section we discuss further results related to the properties of Fourier coefficients.
-% First an important consequence of the results of~\cref{sec:series-l2-conv} is that the
-% Fourier expansion of a function is unique.
-% \begin{proposition}
-%   Let $f$ be $\tau$-periodic piecewise smooth function. Let $\gamma_n$ be a sequence of
-%   complex numbers such that
-%   \begin{equation}
-%     f(t)=\sumz{n}\gamma_n\,e^{2\pi i n\omega t}\,,
-%   \end{equation}
-%   for $t\in\R$ such that $t$ is not a jump discontinuity of $f$. Then the $\gamma_n$ are the
-%   Fourier coefficients of $f$, \ie for all $n\in\Z$,
-%   \begin{equation}
-%     \gamma_n=c_n(f)\,.
-%   \end{equation}
-% \end{proposition}
+In this section we discuss further results related to the properties of Fourier
+coefficients.
 \begin{definition}
-  We define the \emph{reflection operator} $\mathcal{R}$ that associates to any function $f$ on $\R$
-  the function $\mathcal{R}f$, or $\tilde{f}$, defined by
+  We define the \emph{reflection operator} $\mathcal{R}$ that associates to any function
+  $f$ on $\R$ the function $\mathcal{R}f$, or $\tilde{f}$, defined by
   \begin{equation}
     (\mathcal{R}f)(t)=\tilde{f}(t)=f(-t)\,,
   \end{equation}
   for all $t\in\R$.
 \end{definition}
 \begin{definition}
-  For any real number $a\in\R$, we define the \emph{translation operator}
-  $\mathcal{T}_a$ that associates to any function $f$ on $\R$ to the function
-  $\mathcal{T}_af$ defined by
+  For any real number $a\in\R$, we define the \emph{translation operator} $\mathcal{T}_a$
+  that associates to any function $f$ on $\R$ to the function $\mathcal{T}_af$ defined by
   \begin{equation}
     (\mathcal{T}_af)(t)=f(t-a)\,,
   \end{equation}
@@ -1222,13 +1209,10 @@ These properties can be connected to symmetries of a function:
   $\omega=\frac{1}{\tau}$. The following properties hold
   \begin{enumerate}
     \item If $f$ is real, then for all $n\in\Z$, $c_{-n}(f)=c_{n}(f)^*$.
-    \item If $f$ is even, then for all $n\in\Z$, $c_{n}(f)=c_{-n}(f)$ and
-      $b_n(f)=0$.
+    \item If $f$ is even, then for all $n\in\Z$, $c_{n}(f)=c_{-n}(f)$ and $b_n(f)=0$.
     \item If $f$ is even and real, then for all $n\in\Z$, $c_n(f)$ is real.
-    \item If $f$ is odd, then for all $n\in\Z$, $c_{n}(f)=-c_{-n}(f)$ and
-      $a_n(f)=0$.
-    \item If $f$ is odd and real, then for all $n\in\Z$, $c_n(f)$ is purely
-      imaginary.
+    \item If $f$ is odd, then for all $n\in\Z$, $c_{n}(f)=-c_{-n}(f)$ and $a_n(f)=0$.
+    \item If $f$ is odd and real, then for all $n\in\Z$, $c_n(f)$ is purely imaginary.
   \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -1273,11 +1257,11 @@ regularly inserting zeros in the sequence of the Fourier coefficients:
   \end{equation}
   which concludes the proof.
 \end{proof}
-\cref{eq:cn-der} of \cref{prop:fourier-coef-trans} establishes a crucial property of Fourier
-coefficients: differentiating a smooth periodic function is equivalent to multiplying its
-Fourier coefficients by powers of the frequency. This property has many applications and
-is crucial to solve linear differential equations using Fourier analysis. One important
-consequence of this formula is the decay rate of Fourier coefficients:
+\cref{eq:cn-der} of \cref{prop:fourier-coef-trans} establishes a crucial property of
+Fourier coefficients: differentiating a smooth periodic function is equivalent to
+multiplying its Fourier coefficients by powers of the frequency. This property has many
+applications and is crucial to solve linear differential equations using Fourier analysis.
+One important consequence of this formula is the decay rate of Fourier coefficients:
 \begin{theorem}
   \label{thm:fourier-series-decay}
   Let $f$ be a $\tau$-periodic function. If $f$ admits a piecewise smooth and continuous
@@ -1327,3 +1311,176 @@ consequence of this formula is the decay rate of Fourier coefficients:
 \end{example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multidimensional Fourier series}
+Multidimensional Fourier series can be considered as a natural extension of
+multidimensional trigonometric polynomial introduced in~\cref{def:trigpoly-nd}. We start
+by defining the Fourier coefficients of functions on $\R^d$:
+\begin{definition}
+  Let $f$ be a $\vec{\tau}$-periodic function on $\R^d$, which we assume to be integrable
+  on one period. The \emph{Fourier coefficients} of $f$ are defined by
+  \begin{align}
+    c_{\vec{n}}(f)&=\frac{1}{V(\vec{\tau})}\braket{f,\ew(\vec{\omega}\odot\vec{n})}\notag\\
+    &=\frac{1}{V(\vec{\tau})}
+    \int_{P(\vec{\tau})}\diff^d\vec{x}\,e^{-2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,,
+  \end{align}
+  for all $n\in\Z^d$, where $V(\vec{\tau})=\tau_1\cdots\tau_d$ is the volume of one
+  period, $P(\vec{\tau})$ is the Cartesian product of intervals
+  $(0,\tau_1)\times\cdots\times(0,\tau_d)$, and $\vec{\omega}$ is the frequency vector
+  associated to $\vec{\tau}$.
+\end{definition}
+We also define the partial Fourier sum of $f$:
+\begin{definition}
+  Let $f$ be a $\vec{\tau}$-periodic function on $\R^d$, which we assume to be integrable
+  on one period. The \emph{partial Fourier} sum of $f$ of degree $N$ is defined by
+  \begin{equation}
+    s_N(f)=\sum_{n_1=-N}^{N}\cdots\sum_{n_d=-N}^{N}c_{\vec{n}}(f)\,
+    e^{2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,.
+  \end{equation}
+\end{definition}
+It is considerably less trivial to define the notion of a piecewise smooth function in
+multiple dimensions, since now jump discontinuities can potentially happen along curves
+and surfaces. For continuously differentiable periodic functions one can show, and we will
+admit it here, that they have a uniformly convergent Fourier series, as in the
+one-dimensional case.
+\begin{theorem}
+  Let $f$ be a $\vec{\tau}$-periodic continuously differentiable function on $\R^d$. Then
+  $f$ is the sum of its Fourier series, \ie for all $\vec{x}\in\R^d$,
+  \begin{equation}
+    f(\vec{x})=\sum_{\vec{n}\in\Z^d}c_{\vec{n}}(f)\,
+    e^{2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,.
+  \end{equation}
+  Additionally, the series above converges uniformly, explicitly
+  \begin{equation}
+    \lim_{N\to+\infty}\,\sup_{\vec{x}\in\R^d}|s_N(f)(\vec{x})-f(\vec{x})|=0\,.
+  \end{equation}
+\end{theorem}
+For functions which are more generally square-integrable, we also have a multidimensional
+version of Parseval's theorem:
+\begin{theorem}[Parseval]
+  Let $f$ be a square-integrable $\vec{\tau}$-periodic function on $\R^d$. The Fourier
+  series of $f$ converges to $f$ in mean square, \ie
+  \begin{equation}
+    \lim_{N\to+\infty}\|s_N(f)-f\|^2=\lim_{N\to+\infty}
+    \int_{P(\vec{\tau})}\diff^d\vec{x}\,|s_N(f)(\vec{x})-f(\vec{x})|^2=0\,.
+  \end{equation}
+  Additionally, if $g$ is another square-integrable $\vec{\tau}$-periodic function on
+  $\R^d$,
+  \begin{equation}
+    \braket{f,g}=V(\vec{\tau})\sum_{\vec{n}\in\Z^d}c_{\vec{n}}(f)c_{\vec{n}}(g)^*\,,
+  \end{equation}
+  and in particular
+  \begin{equation}
+    \|f\|^2=V(\vec{\tau})\sum_{\vec{n}\in\Z^d}|c_{\vec{n}}(f)|^2\,.
+  \end{equation}
+\end{theorem}
+The case of multidimensional functions given by a product of one-dimensional functions is
+particularly simple:
+\begin{proposition}
+  Let $f$ be a $\vec{\tau}$-periodic function on $\R^d$ which can be written has a product
+  \begin{equation}
+    f=f_1\cdots f_d\,,
+  \end{equation}
+  where $f_j$ is a $\tau_j$-periodic function on $\R$. Then, if defined, the Fourier
+  coefficients of $f$ are the product of the Fourier coefficients of the functions $f_j$,
+  explicitly
+  \begin{equation}
+    c_{\vec{n}}(f)=c_{n_1}(f_1)\cdots c_{n_d}(f_d)\,.
+  \end{equation}
+  Additionally,
+  \begin{equation}
+    s_N(f)=s_N(f_1)\cdots s_N(f_d)\,.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  These properties are a simple consequence of
+  \begin{equation}
+    e^{2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}=e^{2\pi ix_1n_1\omega_1}\cdots
+    e^{2\pi ix_dn_d\omega_d}\,,
+  \end{equation}
+  and are left as an exercise to the reader.
+\end{proof}
+Although we only mentioned above the cases for uniform and $L^2$ convergence, pointwise
+convergence for discontinuous function and the Gibbs phenomenon do also happen in multiple
+dimensions. It is difficult to formulate these results in a general way, and beyond the
+scope of this introductory course. Nevertheless, we illustrate them through the example
+below.
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_bessel-J01.pdf}
+  \caption{Curves of the Bessel functions $J_0$ and $J_1$.}
+  \label{fig:bessel-J01}
+\end{figure}
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_disk-indicator.pdf}
+  \caption{The left pane represents the disk function $\chi_D$
+  from~\cref{ex:disk-indicator}, and the right pane its partial Fourier sum of degree 15.}
+  \label{fig:disk-indicator}
+\end{figure}
+\begin{example}
+  \label{ex:disk-indicator}
+  Let $\chi_D$ be the $(1,1)$-periodic function on $\R^2$ defined for
+  $x,y\in(-\frac12,\frac12)$ by
+  \begin{equation}
+    \chi_D(x,y)=
+    \begin{cases}
+      1&\text{if}~\sqrt{x^2+y^2}\leq\frac14\\
+      0&\text{else}
+    \end{cases}\,,
+  \end{equation}
+  \ie $\chi_D$ is equal to $1$ in the disk $D$ of centre $(0,0)$ and radius $\frac14$, and
+  $0$ outside. The coefficient $c_0(\chi_D)$ is simply the area of $D$:
+  \begin{equation}
+    c_0(\chi_D)=\frac{\pi}{16}\,.
+  \end{equation}
+  For a non-zero integer vector $\vec{n}\in\Z^2$,
+  \begin{equation}
+    c_{\vec{n}}(\chi_D)=\int_{D}\diff^2\vec{x}\,e^{-2\pi i\vec{x}\cdotp\vec{n}}\,.
+  \end{equation}
+  Switching to the polar coordinates where $\vec{n}$ has an angle of $\pi$,~\ie
+  $\vec{x}=(r\cos(\theta),r\sin(\theta))$ with $\theta$ defined such that
+  $\vec{n}=(0,|\vec{n}|\sin(\theta))$, we get
+  \begin{equation}
+    c_{\vec{n}}(\chi_D)=\int_{-\pi}^{\pi}\diff\theta\int_{0}^{\frac14}\diff r\,
+    re^{-2\pi ir|\vec{n}|\sin(\theta)}\,.
+  \end{equation}
+  Using the $\theta\mapsto -\theta$ symmetry of the integrand, this can be simplified to
+  the manifestly real form
+  \begin{equation}
+    c_{\vec{n}}(\chi_D)=2\int_{-\pi}^{\pi}\diff\theta\int_{0}^{\frac14}\diff r\,
+    r\cos[2\pi r|\vec{n}|\sin(\theta)]\,.
+  \end{equation}
+  The integral in $\theta$ above cannot be simplified much further, however it is a part
+  of a well-known class of special functions called \emph{Bessel functions of the first
+  kind}. The $n$-th Bessel function of the first kind $J_n$ can be defined through the
+  \emph{Bessel first integral}
+  \begin{equation}
+    J_n(x)=\frac{1}{\pi}\int_0^\pi\diff\theta\,\cos[x\sin(\theta)-n\theta]\,,
+  \end{equation}
+  for $x\in\R$ and $n\in\N$. A useful identity, admitted here, is the integral formula
+  \begin{equation}
+    \int_0^A\diff x\,x\,J_0(x)=A\,J_1(A)\,,
+  \end{equation}
+  where $A$ is any positive real number. Bessel functions of the first kind are
+  oscillatory functions that decay like an inverse square root at infinity. The functions
+  $J_0$ and $J_1$ are represented in~\cref{fig:bessel-J01}. Using Bessel functions, we get
+  \begin{equation}
+    c_{\vec{n}}(\chi_D)=2\pi\int_0^{\frac{1}{4}}\diff r\,r\,J_0(2\pi r|\vec{n}|)
+    =\frac{1}{4|\vec{n}|}\,J_1\left(\frac{\pi|\vec{n}|}{2}\right)\,.
+  \end{equation}
+  Like in the one-dimensional case, the Fourier series of $\chi_D$ converges pointwise
+  perhaps except at points of jump discontinuity, which we will admit here. For $\chi_D$,
+  the jump discontinuities are located along the circle $C$ of centre $(0,0)$ and radius
+  $\frac14$. Therefore, for $x,y\in(-\frac12,\frac12)$ such that $\vec{x}=(x,y)\notin C$,
+  \begin{align}
+    \chi_D(\vec{x})&=\sum_{\vec{n}\in\Z^2}c_{\vec{n}}(\chi_D)\,
+    e^{2\pi i\vec{n}\cdotp\vec{x}}\\
+    &=\frac{\pi}{16}+\sum_{\vec{n}\neq\vec{0}}
+    \frac{1}{4|\vec{n}|}\,J_1\left(\frac{\pi|\vec{n}|}{2}\right)
+    \cos(2\pi\vec{n}\cdot\vec{x})\,,
+  \end{align}
+  where we exploited the $\vec{n}\mapsto-\vec{n}$ symmetry of the Fourier coefficients to
+  remove the sine component, similarly to the case of even functions in one dimension.
+  Finally, we represent in \cref{fig:disk-indicator} the function $\chi_D$ and its partial
+  Fourier sum of degree $15$. One can clearly see the Gibbs phenomenon generated by
+  discontinuities.
+\end{example}
