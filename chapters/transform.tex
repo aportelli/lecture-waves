@@ -1,4 +1,59 @@
 % !TEX root = ../waves.tex
+In the previous chapter, we demonstrated that under good conditions, periodic functions
+can be written as an infinite series of elementary trigonometric functions, the Fourier
+series. This expansion is crucial for studying oscillatory phenomena, as it decomposes any
+oscillating function into a sum of pure sine and cosine waves. Another crucial property
+presented in~\cref{eq:cn-der} is that the Fourier coefficients of the derivative of a
+function $f$ are simply the coefficients of $f$ multiplied by a power of the frequency.
+This property is quite powerful as it can transform linear differential equations into
+simpler polynomial equations. However, the Fourier series expansion is in principle
+limited to describing periodic functions, and one can legitimately wonder if it can be
+generalised to non-periodic functions.
+
+A first interesting observation is that Fourier series can be used to represent
+non-periodic functions on any finite interval. Indeed, let us consider a function $f$ on
+$\R$, which we consider smooth for the sake of simplicity. Let $A$ be a positive real
+number, then according to~\cref{thm:fourier-pt}, for all $x\in(-A,A)$,
+\begin{equation}
+  f(x)=\sumz{n}c_n\,e^{\frac{\pi}{A}inx}\,,\label{eq:series-nonper}
+\end{equation}
+with the Fourier coefficients
+\begin{equation}
+  c_n=\frac{1}{2A}\int_{-A}^{A}\diff x\,f(x)\,e^{-\frac{\pi}{A}inx}\,.\label{eq:cn-nonper}
+\end{equation}
+This happens because $f$ restricted to $(-A,A)$ can be interpreted as one period of a
+$2A$-periodic function $\bar{f}$ defined by $\bar{f}=f$ on $(-A,A)$. Outside $(-A,A)$, the
+series~\cref{eq:series-nonper} converges to a periodic copy of $f$ in $(-A,A)$.
+Interestingly, this can be done for arbitrarily large $A$, and one can question whether
+the whole function $f$ on $\R$ can be described in that way by taking the $A\to+\infty$
+limit. We can try to formally conjecture what such a limit would look like, ignoring for
+the moment potential convergence issues. We start by recalling the rectangle approximation
+for an integral
+\begin{equation}
+  \lim_{a\to0}\,\sumz{n}a\,F(an)=\int_{-\infty}^{+\infty}\diff x\, F(x)\,,
+\end{equation}
+where $F$ is an integrable function on $\R$. Using this formula with $a=\frac{1}{2A}$, one
+can conjecture that the $A\to+\infty$ limit of~\cref{eq:series-nonper} leads to
+\begin{equation}
+  f(x)=\int_{-\infty}^{+\infty}\diff\omega\,\hat{f}(\omega)\,e^{2\pi i\omega x},
+  \qquad\text{with}\qquad
+  \hat{f}(\omega)=\int_{-\infty}^{+\infty}\diff x\,f(x)\,e^{-2\pi i\omega x}\,.
+\end{equation}
+So on an infinite range, the Fourier coefficient index $n$ becomes a continuous variable.
+The associated function $\hat{f}$ is called the \emph{Fourier transform} of $f$, and $f$
+and $\hat{f}$ have an interesting duality through the relationships above. This duality is
+absolutely fundamental both in physics and mathematics, and can be seen as a
+generalisation of Fourier series. Clearly, many things can go wrong when taking the
+$A\to+\infty$ limit above, and one needs to derive the formulas above more carefully. It
+can be shown that the Fourier transform can be defined for a remarkably wide range of
+mathematical objects. However, its proper construction relies on quite technical in-depth
+knowledge of functional analysis, going beyond the scope of this introductory course.
+Therefore, this chapter is mostly aimed at explaining how to use Fourier transforms
+practically, and most results will be admitted.
+
+We start by defining the Fourier transform and studying its properties for a simple class
+of functions for which the integrals above are clearly defined. In all this chapter, we
+will directly give results in $d$ dimensions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fourier transform of Schwartz functions}
 %-----------------------------------------------------------------------------------------
@@ -73,18 +128,21 @@
   An arbitrary linear combination of Schwartz functions is a Schwartz function. A product
   of Schwartz functions is also a Schwartz function.
 \end{proposition}
-\begin{proposition}
-  Let $f$ be a Schwartz function.
-\end{proposition}
 \begin{definition}
   Let $f$ be a Schwartz function on $\R^d$, the function $\hat{f}$ defined on $\R^d$ by
   \begin{equation}
-    \hat{f}(\vec{k})=\int_{\R^d}\diff^d\vec{x}\,f(x)\,e^{-i\vec{k}\cdotp\vec{x}}\,,
+    \hat{f}(\vec{k})=\int_{\R^d}\diff^d\vec{x}\,f(\vec{x})\,e^{-i\vec{k}\cdotp\vec{x}}\,,
   \end{equation}
   is called the \emph{Fourier transform} of $f$. We additionally note $\mathcal{F}$ the operator
   that associate $f$ to its Fourier transform $\mathcal{F}f=\hat{f}$.
 \end{definition}
-\
+% \begin{proposition}
+%   Let $f$ be a Schwartz function on $\R^d$, the following properties hold
+%   \begin{enumerate}
+%     \item Conjugation: $\hat{f}^*=\mathcal{R}\mathcal{F}(f^*)$
+%     \item
+%   \end{enumerate}
+% \end{proposition}
 %-----------------------------------------------------------------------------------------
 \subsection{Inverse Fourier transform}
 %-----------------------------------------------------------------------------------------
