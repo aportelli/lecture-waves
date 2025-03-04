@@ -52,101 +52,347 @@ Therefore, this chapter is mostly aimed at explaining how to use Fourier transfo
 practically, and most results will be admitted.
 
 We start by defining the Fourier transform and studying its properties for a simple class
-of functions for which the integrals above are clearly defined. In all this chapter, we
-will directly give results in $d$ dimensions.
+of functions for which the integrals above are clearly defined.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fourier transform of Schwartz functions}
+As we discussed in the case of Fourier series,
+particularly~\cref{thm:fourier-series-decay}, there is a connection between the smoothness
+of a function and the decay rate of its Fourier coefficients. So, unsurprisingly, a good
+starting point to build the Fourier transform is to define a class of very smooth and
+rapidly decaying functions, which are the Schwartz functions.
 %-----------------------------------------------------------------------------------------
 \subsection{Definition and properties}
+We start by defining two classes of functions based on their decay rates.
 \begin{definition}
-  We call \emph{multi-index} $\alpha$ in $d$ dimensions any $d$-tuple
-  $\alpha=(\alpha_1,\dots,\alpha_d)$ of  non-negative integers. We note
-  $|\alpha|=\alpha_1+\cdots+\alpha_d$ the sum of all components of $\alpha$.
-  For any vector $\vec{x}\in\R^d$, we also define the power
+  A function $f$ on $\R$ is called a \emph{rapidly decaying function} if it decays faster
+  than any power at infinity. Explicitly, for all non-negative integer $\alpha$,
   \begin{equation}
-    \vec{x}^\alpha=x_1^{\alpha_1}\cdots x_d^{\alpha_d}\,,
+    \lim_{|x|\to+\infty}x^\alpha f(x)=0\,.
   \end{equation}
-  and similarly
-  \begin{equation}
-    \partial^{\alpha}=\partial_1^{\alpha_1}\cdots\partial_d^{\alpha_d}\,,
-  \end{equation}
-  where $\partial_j$ is the partial derivative in the $j$-th variable.
 \end{definition}
-\begin{example}
-  We consider in $3$ dimensions the multi-index $\alpha=(2,0,1)$. Let $f$ be a
-  differentiable function on $\R^3$ and $\vec{x}=(x,y,z)$. Then
+\begin{definition}
+  A function $f$ on $\R$ is called a \emph{moderately growing function} if it does not
+  grow faster than a given power. Explicitly, there exists a non-negative integer $\alpha$
+  such that
   \begin{equation}
-    \vec{x}^\alpha=x^2z\qquad\text{and}\qquad\partial^\alpha
-    f(\vec{x})=\frac{\partial^3}{\partial x^2\partial z}\,f(x,y,z)\,.
+    \lim_{|x|\to+\infty}x^{-\alpha}f(x)=0\,.
   \end{equation}
-\end{example}
+\end{definition}
+The key idea here is that if a function is rapidly decaying, multiplying it by a
+moderately growing function will not change that, which will be useful when considering
+dot products of functions.
+\begin{proposition}
+  \label{prop:rapid-times-moderate}
+  All rapidly decaying functions on $\R$ are moderately growing. The product of a rapidly
+  decaying function and a moderately growing function is a rapidly decaying function.
+\end{proposition}
+\begin{proof}
+  Let $f$ be a rapidly decaying function on $\R$, and $g$ a moderately growing function on
+  $\R$. Then there exists a non-negative integer $\alpha$ such that
+  \begin{equation}
+    \lim_{|x|\to+\infty}x^{-\alpha}g(x)=0\,.
+  \end{equation}
+  Let $\beta$ be a non-negative integer, then
+  \begin{equation}
+    \lim_{|x|\to+\infty}x^\beta f(x)g(x)=
+    \lim_{|x|\to+\infty}[x^{\alpha+\beta} f(x)][x^{-\alpha}g(x)]=0\,,
+  \end{equation}
+  so $fg$ is a rapidly decaying function.
+\end{proof}
+We now define Schwartz functions:
 \begin{definition}
   \label{def:schwartz-fn}
-  A function $f$ on $\R^d$ is called a \emph{Schwartz function} if it is infinitely
-  differentiable, and the function and all its derivatives decay faster than any power
-  at infinity. More explicitly, for all pairs of multi-indices $\alpha$ and $\beta$,
+  A function $f$ on $\R$ is called a \emph{Schwartz function} if it is infinitely
+  differentiable, and if $f$ and all its derivatives are rapidly decaying functions. More
+  explicitly, for all pairs of non-negative integers $\alpha$ and $\beta$,
   \begin{equation}
-    \partial^{\alpha}f\quad\text{exists everywhere,}\qquad\text{and}\qquad
-    \lim_{|\vec{x}|\to+\infty}\vec{x}^\beta\partial^{\alpha}f(\vec{x})=0\,.
+    \lim_{|x|\to+\infty}x^\beta f^{(\alpha)}(x)=0\,.
   \end{equation}
 \end{definition}
+We then have the two proposition below regarding simple combinations of Schwartz
+functions. The proofs are fairly straightforward and let as an exercise to the reader.
+\begin{proposition}
+  \label{prop:schwartz-comb}
+  An arbitrary linear combination of Schwartz functions is a Schwartz function. A product
+  of Schwartz functions is also a Schwartz function. A derivative of a Schwartz function
+  is a Schwartz function.
+\end{proposition}
+\begin{proposition}
+  Let $f$ be a Schwartz function on $\R$, and $g$ be an infinitely differentiable function
+  of moderate growth. Then the product $fg$ is a Schwartz function.
+\end{proposition}
+Let us know discuss some examples and counter-examples. A crucial example of Schwartz
+function is the Gaussian kernel.
 \begin{definition}
+  \label{def:gauss}
   We call \emph{Gaussian kernel} with \emph{width} $\sigma$ the function $\gauss_{\sigma}$
-  defined on $\R^d$ by
+  defined on $\R$ by
   \begin{equation}
-    \gauss_{\sigma}(\vec{x})=\frac{1}{(2\pi)^{\frac{d}{2}}\sigma^d}\,e^{-\frac{|\vec{x}|^2}{2\sigma^2}}\,,
+    \gauss_{\sigma}(x)=\frac{1}{\sigma\sqrt{2\pi}}\,e^{-\frac{x^2}{2\sigma^2}}\,,
   \end{equation}
   where $\sigma$ is a positive real number.
 \end{definition}
 \begin{proposition}
-  The Gaussian kernel $\gauss_{\sigma}$ is a Schwartz function for any width $\sigma$.
+  The Gaussian kernel $\gauss_{\sigma}$ is a Schwartz function.
 \end{proposition}
+\begin{proof}
+  This proof is part of the exercises of this chapter.
+\end{proof}
+The Gaussian kernel is illustrated in~\cref{fig:gauss}. It is a function peaked at zero
+for small widths. A well-known result, particularly in statistics, is that for a given
+width $\sigma$, approximately $68.3\%$ of the area under the curve of $\gauss_{\sigma}$ is
+in the interval $[-\sigma,\sigma]$, and $95\%$ is in the interval $[-2\sigma,2\sigma]$.
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_gauss.pdf}
+  \caption{Curve of the Gaussian kernel defined in \cref{def:gauss} for several widths.}
+  \label{fig:gauss}
+\end{figure}
 \begin{example}
-  The function $f$ defined for $\vec{x}\in\R^3$ by
+  The function $f$ defined for $x\in\R$ by
   \begin{equation}
-    f(\vec{x})=\frac{1}{|\vec{x}|^2+2}\,,
+    f(x)=\frac{1}{x^2+2}\,,
   \end{equation}
   is not a Schwartz function, although it is infinitely differentiable. Indeed,
   \begin{equation}
-    \lim_{x_1\to+\infty} x_1^2\,f(\vec{x})=1\,,
+    \lim_{x\to+\infty} x^2\,f(x)=1\,,
   \end{equation}
-  which does not satisfy~\cref{def:schwartz-fn} for the multi-indices $\alpha=(0,0,0)$ and
-  $\beta=(2,0,0)$.
+  which does not satisfy~\cref{def:schwartz-fn}. It is, however, a function of moderate
+  growth.
 \end{example}
 \begin{example}
   The function $f$ defined for $x\in\R$ by
   \begin{equation}
     f(x)=e^{-|x|}\,,
   \end{equation}
-  is not a Schwartz function, although it decays faster than any powers of $x$. Indeed,
+  is not a Schwartz function, although it is a rapidly decaying function. Indeed,
   \begin{equation}
     f'(x)=-\sign(x)\,e^{-|x|}\,,
   \end{equation}
   is discontinuous at $0$, and therefore $f$ does not admit a second derivative.
 \end{example}
-\begin{proposition}
-  An arbitrary linear combination of Schwartz functions is a Schwartz function. A product
-  of Schwartz functions is also a Schwartz function.
-\end{proposition}
+\begin{example}
+  All polynomials are functions of moderate growth, but the exponential function is not a
+  function of moderate growth.
+\end{example}
+We also generalise the dot product introduced in~\cref{def:func-dot}
 \begin{definition}
-  Let $f$ be a Schwartz function on $\R^d$, the function $\hat{f}$ defined on $\R^d$ by
+  Let $f$ be a Schwartz function on $\R$, and $g$ be an integrable moderately growing
+  function on $\R$. We define the \emph{dot product} $\braket{f,g}$ of $f$ and $g$ with
+  the following integral
   \begin{equation}
-    \hat{f}(\vec{k})=\int_{\R^d}\diff^d\vec{x}\,f(\vec{x})\,e^{-i\vec{k}\cdotp\vec{x}}\,,
+    \braket{f,g}=\intr{x}f(x)g(x)^*\,.
   \end{equation}
-  is called the \emph{Fourier transform} of $f$. We additionally note $\mathcal{F}$ the operator
-  that associate $f$ to its Fourier transform $\mathcal{F}f=\hat{f}$.
+  Additionally, the norm $\|f\|$ of a Schwartz function $f$ is defined by
+  \begin{equation}
+    \|f\|^2=\braket{f,f}=\intr{x}|f(x)|^2
+  \end{equation}
 \end{definition}
-% \begin{proposition}
-%   Let $f$ be a Schwartz function on $\R^d$, the following properties hold
-%   \begin{enumerate}
-%     \item Conjugation: $\hat{f}^*=\mathcal{R}\mathcal{F}(f^*)$
-%     \item
-%   \end{enumerate}
-% \end{proposition}
-%-----------------------------------------------------------------------------------------
-\subsection{Inverse Fourier transform}
+It is important to note that the norm of a moderately growing function and the dot product
+of two moderately growing functions are generally not well-defined, as the associated
+integrals might not converge. Schwartz functions have the following simple integration by
+parts formula.
+\begin{proposition}
+  Let $f$ be a Schwartz function on $\R$, and let $g$ be a continuously differentiable
+  function of moderate growth. Then we have the integration by parts formula
+  \begin{equation}
+    \intr{x}f'(x)g(x)=-\intr{x}f(x)g'(x)\,.
+  \end{equation}
+  Or, equivalently, $\braket{f',g}=-\braket{f,g'}$.
+\end{proposition}
+\begin{proof}
+  Let $A$ be a positive real number, we have
+  \begin{equation}
+    \int_{-A}^A\diff x\,f'(x)g(x)=[f(x)g(x)]_{-A}^A-\int_{-A}^A\diff x\,f(x)g'(x)\,.
+  \end{equation}
+  Using \cref{prop:rapid-times-moderate}, $fg$ is a rapidly decaying function so
+  \begin{equation}
+    \lim_{A\to+\infty}[f(x)g(x)]_{-A}^A=0\,.
+  \end{equation}
+  Taking the same limit in the two integrals above proves the proposition.
+\end{proof}
+We are now ready to define the Fourier transform:
+\begin{definition}
+  Let $f$ be an integrable function on $\R$, the function $\hat{f}$ defined on $\R$ by
+  \begin{equation}
+    \hat{f}(\omega)=\int_{-\infty}^{+\infty}\diff x\,f(x)\,e^{-2\pi i\omega x}\,,
+  \end{equation}
+  is called the \emph{Fourier transform} of $f$. We additionally note $\mathcal{F}$ the
+  operator that associates $f$ to its Fourier transform $\mathcal{F}f=\hat{f}$.
+\end{definition}
+\begin{proposition}
+  All Schwartz functions have a well-defined Fourier transform.
+\end{proposition}
+\begin{example}
+  Let $\chi$ the function on $\R$ defined by
+  \begin{equation}
+    \chi(x)=
+    \begin{cases}
+      1&\text{if}~-1<x<1\\
+      0&\text{else}
+    \end{cases}\,,
+  \end{equation}
+  for all $x\in\R$. $\chi$ is a rapidly decaying function, but it is not a Schwartz
+  function as it has discontinuities in $-1$ and $1$. Its Fourier transform is given by
+  \begin{equation}
+    \hat{\chi}(\omega)=\int_{-1}^1\diff x\,e^{-2\pi i\omega x}=
+    -\frac{1}{2\pi i\omega}(e^{-2\pi i\omega x}-e^{2\pi i\omega x})=\frac{\sin(2\pi\omega)}{\pi\omega}\,.
+  \end{equation}
+  We can observe that although $\chi$ is rapidly decaying, its Fourier transform is not.
+  This is related to the lack of smoothness of $\chi$. As we will see below, this is not
+  an issue with Schwartz functions.
+\end{example}
+As in the case of Fourier coefficients (\cref{prop:fourier-coef-trans}), the Fourier
+transform admits some useful transformation identities. We start by defining the
+conjugation and scaling operators.
+\begin{definition}
+  For any function $f$ on $\R$, we define the \emph{conjugation operator} $\mathcal{C}$
+  which associates to $f$ its complex conjugate $\mathcal{C}f=f^*$.
+\end{definition}
+\begin{definition}
+  For any function $f$ on $\R$, and any positive real number $\delta$, we define the
+  \emph{scaling operator} $\mathcal{S}_{\delta}$ which associates to $f$ the function
+  defined by $\mathcal{S}_{\delta}f(x)=f(\delta x)$, for all $x\in\R$.
+\end{definition}
+\begin{proposition}
+  The conjugation, reflection, translation, and scaling of a Schwartz function are still
+  Schwartz functions.
+\end{proposition}
+Then we have the following transformation rules.
+\begin{proposition}
+  \label{prop:ft-trans}
+  Let $f$ be a Schwartz function on $\R$, the following properties hold
+  \begin{enumerate}
+    \item \emph{Conjugation}: $\mathcal{F}(f^*)(\omega)=[\hat{f}(-\omega)]^*$, or
+      $\mathcal{F}\mathcal{C}=\mathcal{C}\mathcal{R}\mathcal{F}$.
+    \item \emph{Reflection}: $\mathcal{F}(\tilde{f})(\omega)=\hat{f}(-\omega)$, or
+      $\mathcal{F}\mathcal{R}=\mathcal{R}\mathcal{F}$.
+    \item \emph{Translation}: For $a\in\R$, $(\mathcal{F}\mathcal{T}_{a})f(\omega)
+      =e^{-2\pi i\omega a}\hat{f}(\omega)$, or
+      $\mathcal{F}\mathcal{T}_{a}=\ew(-a)\mathcal{F}$.
+    \item \emph{Scaling}: For $\delta\in\R$ with $\delta>0$,
+      $(\mathcal{F}\mathcal{S}_{\delta})f(\omega)=\delta^{-1}\hat{f}(\delta^{-1}\omega)$,
+      or
+      $\mathcal{F}\mathcal{S}_{\delta}=\delta^{-1}\mathcal{S}_{\delta^{-1}}\mathcal{F}$.
+    \item \emph{Differentiation in space:} For $\alpha$ a non-negative integer,
+      $\mathcal{F}(f^{(\alpha )})=(2\pi i\omega)^{\alpha}\hat{f}(\omega)$.
+    \item \emph{Differentiation in frequency:} For $\alpha$ a non-negative integer and $g$
+      the function defined for $x\in\R$ by $g(x)=(-2\pi ix)^\alpha f(x)$, then
+      $\hat{g}=\hat{f}^{(\alpha)}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  The proof of this proposition is part of the exercises of this chapter.
+\end{proof}
+A first important property of Schwartz function is that their decay and smoothness
+properties are preserved by the Fourier transform:
+\begin{theorem}
+  If $f$ is a Schwartz function, then its Fourier transform $\hat{f}$ is also a Schwartz
+  function.
+\end{theorem}
+\begin{proof}
+  Let us first observe that the Fourier transform of a Schwartz function always goes to
+  zero at infinity, which is a variant of the Riemann-Lebesgue lemma for Schwartz
+  functions. Using \cref{prop:ft-trans}, we know that for $\omega\neq 0$,
+  \begin{equation}
+    \hat{f}(\omega)=\frac{1}{2\pi i\omega}\mathcal{F}(f')\,.\label{eq:ft-ip}
+  \end{equation}
+  Since $f'$ is a Schwartz function, its Fourier transform is bounded by
+  \begin{equation}
+    |\mathcal{F}(f')|=\left|\intr{x}f'(x)\,e^{-2\pi i \omega x}\right|\leq
+    \intr{x}|f'(x)|\,,
+  \end{equation}
+  therefore taking $|\omega|\to+\infty$ in~\cref{eq:ft-ip}, we get
+  \begin{equation}
+    \lim_{|\omega|\to+\infty}\hat{f}(\omega)=0
+  \end{equation}
+  Now, let $\alpha$ and $\beta$ be two non-negative integers. Then, using
+  \cref{prop:ft-trans}, for all $\omega\in\R$,
+  \begin{equation}
+    \omega^\beta\hat{f}^{(\alpha)}(\omega)=\frac{1}{(2\pi i)^{\beta}}\mathcal{F}(f^{(\alpha+\beta)})(\omega)\,.
+  \end{equation}
+  Since $f^{(\alpha+\beta)}$ is a Schwartz function (\cref{prop:schwartz-comb}), then as
+  discussed above its Fourier transform goes to zero at infinity, and therefore
+  \begin{equation}
+    \lim_{|\omega|\to+\infty}\omega^\beta\hat{f}^{(\alpha)}(\omega)=0\,,
+  \end{equation}
+  which proves that $\hat{f}$ is a Schwartz function.
+\end{proof}
+Another important property is the Fourier transform of Gaussian kernels.
+\begin{theorem}[Gaussian uncertainty principle]
+  The Fourier transform of a Gaussian kernel of width $\sigma$ is, up to proportionality
+  factor, a Gaussian kernel of width $\hat{\sigma}=\frac{1}{2\pi\sigma}$:
+  \begin{equation}
+    \hat{\gauss}_{\sigma}(\omega)=
+    \frac{1}{\sigma\sqrt{2\pi}}\gauss_{\hat{\sigma}}(\omega)
+    =e^{-2\pi^2\sigma^2\omega^2}\,.
+  \end{equation}
+  In particular,
+  \begin{equation}
+    \sigma\hat{\sigma}=\frac{1}{2\pi}\,.\label{eq:gauss-uncertainty}
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  The proof of this proposition is part of the exercises of this chapter.
+\end{proof}
 %-----------------------------------------------------------------------------------------
 \subsection{Convolution product}
+\begin{definition}
+  Let $f$ and $g$ be two functions on $\R$ such that the integral
+  \begin{equation}
+    (f\ast g)(x)=\intr{y}f(x-y)g(y)
+  \end{equation}
+  is well-defined and finite for all $x\in\R$. The function $f\ast g$ defined on $\R$ by
+  the relation above is called the \emph{convolution product} of $f$ and $g$.
+\end{definition}
+\begin{theorem}
+  Let $f$ be a Schwartz function on $\R$ and $g$ be an integrable moderately growing
+  function on $\R$. The convolution product $f\ast g$ is a Schwartz function and for all
+  non-negative integers $\alpha$,
+  \begin{equation}
+    (f\ast g)^{(\alpha)}=f^{(\alpha)}\ast g\,.
+  \end{equation}
+\end{theorem}
+\begin{theorem}
+  Let $f$ be a Schwartz function on $\R$, then $f\ast \gauss_{\sigma}$ converges uniformly
+  to $f$ for $\sigma\to 0$.
+\end{theorem}
+%-----------------------------------------------------------------------------------------
+\subsection{Inverse Fourier transform}
+\begin{theorem}[Multiplication formula]
+  Let $f$ and $g$ be two Schwartz functions, then
+  \begin{equation}
+    \intr{x}\hat{f}(x)g(x)=\intr{x}f(x)\hat{g}(x)\,.
+  \end{equation}
+\end{theorem}
+\begin{theorem}[Fourier inversion]
+  Let $f$ be a Schwartz function on $\R$, then for all $x\in\R$,
+  \begin{equation}
+    f(x)=\intr{\omega}\hat{f}(\omega)\,e^{2\pi i\omega x}\,.
+  \end{equation}
+  In other words, the Fourier transform is an invertible operation, and
+  $\mathcal{F}^{-1}=\mathcal{R}\mathcal{F}$.
+\end{theorem}
+\begin{corollary}
+  We have the following identities
+  \begin{equation}
+    \mathcal{F}^2=\mathcal{R}\qquad\text{and}\qquad\mathcal{F}^4=1\,,
+  \end{equation}
+  \ie two successive Fourier transforms are equivalent to a reflection, and four
+  successive Fourier transforms are equivalent to no transformation.
+\end{corollary}
+%-----------------------------------------------------------------------------------------
+\subsection{Plancherel formula}
+\begin{theorem}[Convolution theorem]
+  Let $f$ and $g$ be two Schwartz functions on $\R$, then
+  \begin{equation}
+    \mathcal{F}(f\ast g)=\hat{f}\,\hat{g}\qquad\text{and}\qquad
+    \mathcal{F}(fg)=\hat{f}\ast\hat{g}\,.
+  \end{equation}
+\end{theorem}
+\begin{theorem}[Plancherel]
+  Let $f$ be a Schwartz function on $\R$, then $\|f\|=\|\hat{f}\|$.
+\end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Generalised functions -- \textit{There be dragons}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
