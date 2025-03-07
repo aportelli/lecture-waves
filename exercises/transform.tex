@@ -1,0 +1,71 @@
+% !TEX root = ../waves.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises}
+\begin{ExerciseList}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=ft-trans] Prove~\cref{prop:ft-trans}. For the \emph{differentiation in frequency}
+  property, we assume we can use the \emph{Leibniz integral rule}, which can be formulated as follows.
+  Let $F(x,\omega)$ be a function of two real variables such that $|F(x,\omega)|$ is integrable,
+  $|\smash{\pd{}{\omega}F(x,\omega)}|$ exists everywhere and is integrable, then the function defined
+  by
+  \begin{equation}
+    \phi(\omega)=\intr{x}F(x,\omega)\,,
+  \end{equation}
+  is differentiable and,
+  \begin{equation}
+    \phi'(\omega)=\intr{x}\pd{}{\omega}F(x,\omega)\,.
+  \end{equation}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=gauss-schwartz] This exercise is a guided proof
+  of~\cref{prop:gauss-schwartz}, as well as an introduction
+  to Hermite polynomials.
+  \Question Let $\sigma$ be a positive real number. Prove that for all positive
+  integer $\alpha$,
+  \begin{equation}
+    \gauss_{\sigma}^{(\alpha)}=P_{\alpha}\gauss_{\sigma}\,,
+  \end{equation}
+  where $\gauss_{\sigma}$ is the Gaussian kernel introduced in~\cref{def:gauss},
+  and $P_{\alpha}$ is a degree $\alpha$ polynomial verifying the recurrence relation
+  \begin{equation}
+    P_{\alpha+1}=P_{\alpha}'+P_1P_{\alpha}\,.
+  \end{equation}
+  \Question Prove that $\gauss_{\sigma}$ is a Schwartz function (\cref{prop:gauss-schwartz}).
+  \Question The $n$-th \emph{Hermite polynomial} $H_n$ is defined by
+  \begin{equation}
+    H_n(x)=(-1)^ne^{x^2}\frac{\diff^n}{\diff x^n}(e^{-x^2})\,.
+  \end{equation}
+  Show that
+  \begin{equation}
+    H_n=(-1)^nP_n\qquad\text{with}\qquad \sigma=\frac{1}{\sqrt{2}}\,.
+  \end{equation}
+  \Question Compute explicitly $H_1$, $H_2$, and $H_3$.
+  \Question Show that the Hermite polynomials are orthogonal for the dot product
+  \begin{equation}
+    \braket{f,g}=\intr{x}f(x)g(x)\,e^{-x^2}\,,
+  \end{equation}
+  \ie that $\braket{H_n,H_m}=0$ if $n\neq m$.
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=gauss-uncertainty]
+  This exercise is a guided proof of the
+  Gaussian uncertainty principle (\cref{thm:gauss-uncertainty}).
+  \Question Show that
+  \begin{equation}
+    \intr{x}e^{-\pi x^2}=1\,.
+  \end{equation}
+  \emph{Hint: consider the identity }
+  $(\intr{x}e^{-\pi x^2})^2=\intr{x}\intr{y}e^{-\pi (x^2+y^2)}$.
+  \Question Show that
+  \begin{equation}
+    \intr{x}\gauss_{\sigma}(x)=1\,,
+  \end{equation}
+  for all widths $\sigma>0$.
+  \Question Show that the Fourier transform of the Gaussian kernel $\hat{\gauss}_{\sigma}$
+  is a solution of the differential equation
+  \begin{equation}
+    \hat{\gauss}_{\sigma}'(\omega)=-4\pi^2\sigma^2\omega\,\hat{\gauss}_{\sigma}(\omega)\,,
+  \end{equation}
+  with the initial condition $\hat{\gauss}_{\sigma}(0)=1$.
+  \Question By solving the equation above, prove~\cref{thm:gauss-uncertainty}.
+  %---------------------------------------------------------------------------------------
+  \InputIfFileExists{solutions/transform}{}{}
+\end{ExerciseList}

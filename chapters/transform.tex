@@ -35,6 +35,7 @@ for an integral
 where $F$ is an integrable function on $\R$. Using this formula with $a=\frac{1}{2A}$, one
 can conjecture that the $A\to+\infty$ limit of~\cref{eq:series-nonper} leads to
 \begin{equation}
+  \label{eq:ft-conjecture}
   f(x)=\int_{-\infty}^{+\infty}\diff\omega\,\hat{f}(\omega)\,e^{2\pi i\omega x},
   \qquad\text{with}\qquad
   \hat{f}(\omega)=\int_{-\infty}^{+\infty}\diff x\,f(x)\,e^{-2\pi i\omega x}\,.
@@ -133,6 +134,7 @@ function is the Gaussian kernel.
   where $\sigma$ is a positive real number.
 \end{definition}
 \begin{proposition}
+  \label{prop:gauss-schwartz}
   The Gaussian kernel $\gauss_{\sigma}$ is a Schwartz function.
 \end{proposition}
 \begin{proof}
@@ -220,24 +222,42 @@ We are now ready to define the Fourier transform:
   is called the \emph{Fourier transform} of $f$. We additionally note $\mathcal{F}$ the
   operator that associates $f$ to its Fourier transform $\mathcal{F}f=\hat{f}$.
 \end{definition}
-\begin{proposition}
-  All Schwartz functions have a well-defined Fourier transform.
-\end{proposition}
+Clearly, all Schwartz functions are integrable and therefore have a well-defined
+Fourier transform. However, one can question the properties of the Fourier transform,
+and whether the duality conjectured in~\cref{eq:ft-conjecture} holds. Through the example
+below, which is a classical result in Fourier analysis, we can see that rapidly decaying
+functions do not necessarily have a rapidly decaying Fourier transform.
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_sinc-ft.pdf}
+  \caption{This figure illustrates~\cref{ex:sinc-ft}. The indicator function of the interval $(-\frac{1}{2},\frac{1}{2})$ defined in~\cref{eq:int-indicator} is represented in the left pane. The right pane represents its Fourier transform, the sine cardinal function.}
+  \label{fig:sinc-ft}
+\end{figure}
 \begin{example}
+  \label{ex:sinc-ft}
   Let $\chi$ the function on $\R$ defined by
   \begin{equation}
     \chi(x)=
     \begin{cases}
-      1&\text{if}~-1<x<1\\
+      1&\text{if}~-\frac{1}{2}<x<\frac{1}{2}\\
       0&\text{else}
     \end{cases}\,,
+    \label{eq:int-indicator}
   \end{equation}
   for all $x\in\R$. $\chi$ is a rapidly decaying function, but it is not a Schwartz
   function as it has discontinuities in $-1$ and $1$. Its Fourier transform is given by
   \begin{equation}
-    \hat{\chi}(\omega)=\int_{-1}^1\diff x\,e^{-2\pi i\omega x}=
-    -\frac{1}{2\pi i\omega}(e^{-2\pi i\omega x}-e^{2\pi i\omega x})=\frac{\sin(2\pi\omega)}{\pi\omega}\,.
+    \hat{\chi}(\omega)=\int_{-\frac12}^{\frac12}\diff x\,e^{-2\pi i\omega x}=
+    -\frac{1}{2\pi i\omega}(e^{-\pi i\omega}-e^{\pi i\omega})=\frac{\sin(\pi\omega)}{\pi\omega}\,.
   \end{equation}
+  The function $\hat{\chi}(\omega)$ is called the \emph{sine cardinal function} and
+  is generally noted $\sinc$:
+  \begin{equation}
+    \sinc(x)=\frac{\sin(\pi x)}{\pi x}\,.
+  \end{equation}
+  Although this function has an apparent singularity at $x=0$, $\sin(\pi x)\simeq \pi x$
+  for $x\to0$, therefore $\sinc$ can be continued to the finite value $\sinc(0)=1$.
+  $\chi$ and its Fourier transform are illustrated in~\cref{fig:sinc-ft}.
   We can observe that although $\chi$ is rapidly decaying, its Fourier transform is not.
   This is related to the lack of smoothness of $\chi$. As we will see below, this is not
   an issue with Schwartz functions.
@@ -276,9 +296,9 @@ Then we have the following transformation rules.
       $\mathcal{F}\mathcal{S}_{\delta}=\delta^{-1}\mathcal{S}_{\delta^{-1}}\mathcal{F}$.
     \item \emph{Differentiation in space:} For $\alpha$ a non-negative integer,
       $\mathcal{F}(f^{(\alpha )})=(2\pi i\omega)^{\alpha}\hat{f}(\omega)$.
-    \item \emph{Differentiation in frequency:} For $\alpha$ a non-negative integer and $g$
-      the function defined for $x\in\R$ by $g(x)=(-2\pi ix)^\alpha f(x)$, then
-      $\hat{g}=\hat{f}^{(\alpha)}$.
+    \item \emph{Differentiation in frequency:} For $\alpha$ a non-negative integer,
+      $\hat{f}$ is $\alpha$ times differentiable. Let $g$ the function defined for
+      $x\in\R$ by $g(x)=(-2\pi ix)^\alpha f(x)$, then $\hat{g}=\hat{f}^{(\alpha)}$.
   \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -320,6 +340,7 @@ properties are preserved by the Fourier transform:
 \end{proof}
 Another important property is the Fourier transform of Gaussian kernels.
 \begin{theorem}[Gaussian uncertainty principle]
+  \label{thm:gauss-uncertainty}
   The Fourier transform of a Gaussian kernel of width $\sigma$ is, up to proportionality
   factor, a Gaussian kernel of width $\hat{\sigma}=\frac{1}{2\pi\sigma}$:
   \begin{equation}
@@ -335,16 +356,47 @@ Another important property is the Fourier transform of Gaussian kernels.
 \begin{proof}
   The proof of this proposition is part of the exercises of this chapter.
 \end{proof}
+The theorem above is called the ``uncertainty principle'' in reference to the original work
+of physicist Werner Heisenberg in quantum mechanics, where this relationship was first observed.
+However, it is important to note that it has a wide range of implications and interpretations
+beyond quantum mechanics. The general interpretation is that if the resolution of an object in space is dictated by a Gaussian distribution of a given width, then the associated distribution in frequency has the inverse width. A direct consequence is that it is impossible to achieve arbitrarily high resolution both in space and frequency simultaneously, hence the ``uncertainty''.
 %-----------------------------------------------------------------------------------------
 \subsection{Convolution product}
+A key operation in Fourier analysis is the \emph{convolution product}. When convoluting a
+function $f$ by another function $g$, one averages from a given point $x$ the values of $f$
+according to the weights given by $g$:
 \begin{definition}
   Let $f$ and $g$ be two functions on $\R$ such that the integral
   \begin{equation}
-    (f\ast g)(x)=\intr{y}f(x-y)g(y)
+    (f\ast g)(x)=\intr{y}f(x-y)g(y)\label{eq:conv-def}
   \end{equation}
   is well-defined and finite for all $x\in\R$. The function $f\ast g$ defined on $\R$ by
   the relation above is called the \emph{convolution product} of $f$ and $g$.
+  The convolution product can also be written as the dot product
+  \begin{equation}
+    (f\ast g)(x)=\braket{\mathcal{R}\mathcal{T}_xf,g^*}\,.
+  \end{equation}
 \end{definition}
+Convolution products are bilinear and commutative:
+\begin{proposition}
+  Let $f$, $g$ and $h$ three functions on $\R$ such that $f\ast g$ and $f\ast h$ are
+  well-defined. Then,
+  \begin{equation}
+    f\ast g=g\ast f\,,
+  \end{equation}
+  and for all pairs of complex numbers $a$, $b$,
+  \begin{equation}
+    f\ast (ag+bh)=a(f\ast g) + b(f\ast h)\,.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  The commutation property is obtained by using the change of variable
+  $z=x-y$ in the definition \cref{eq:conv-def}. The second formula is a trivial consequence
+  of the integral linearity.
+\end{proof}
+Convolution products have crucial regularisation properties. Roughly speaking, a product
+$f\ast g$ will have the smoothness properties of the smoothest function between $f$
+and $g$. In particular, convoluting by a Schwartz function leads to a Schwartz function:
 \begin{theorem}
   Let $f$ be a Schwartz function on $\R$ and $g$ be an integrable moderately growing
   function on $\R$. The convolution product $f\ast g$ is a Schwartz function and for all
@@ -353,18 +405,74 @@ Another important property is the Fourier transform of Gaussian kernels.
     (f\ast g)^{(\alpha)}=f^{(\alpha)}\ast g\,.
   \end{equation}
 \end{theorem}
+\begin{proof}
+  We will largely admit this result. However, it is not too difficult to see that it is
+  correct if one can freely exchange the integral in~\cref{eq:conv-def} with derivatives
+  and limits in $x$. For example
+  \begin{equation}
+    (f\ast g)'(x)=\frac{\diff}{\diff x}\intr{y}f(x-y)g(y)=
+    =\intr{y}f'(x-y)g(y)\,,
+  \end{equation}
+  and for a non-negative integer $\alpha$,
+  \begin{equation}
+    \lim_{|x|\to+\infty}x^{\alpha}(f\ast g)(x)=
+    \intr{y}\left[\lim_{|x|\to+\infty}x^{\alpha}f(x-y)\right]g(y)=0\,.
+  \end{equation}
+  One can show that the exchange of limit and integral is a consequence of the integrand
+  being a rapidly decaying function (\cref{prop:rapid-times-moderate}), which is the part
+  we are admitting here.
+\end{proof}
 \begin{theorem}
+  \label{thm:gaussian-unit}
   Let $f$ be a Schwartz function on $\R$, then $f\ast \gauss_{\sigma}$ converges uniformly
   to $f$ for $\sigma\to 0$.
 \end{theorem}
+\begin{proof}
+  We will largely admit this result, and give a heuristic proof instead. For $y\neq 0$, by definition
+  \begin{equation}
+    \lim_{\sigma\to 0}\gauss_{\sigma}(y)=0
+  \end{equation}
+  exponentially fast. Let $\eta$ be a small positive real number, we write
+  \begin{equation}
+    (f\ast \gauss_{\sigma})(x)=\intr{y}f(x-y)\gauss_{\sigma}(y)\,.
+  \end{equation}
+  Changing the variable with $y=\sigma z$, we obtain
+  \begin{equation}
+    (f\ast \gauss_{\sigma})(x)=\intr{y}f(x-\sigma z)\gauss_{1}(y)\,.
+  \end{equation}
+  Assuming we can exchange limit and integral, and using the fact that $f$ is continuous,
+  \begin{equation}
+    \lim_{\sigma\to 0}(f\ast \gauss_{\sigma})(x)=f(x)\intr{y}\gauss_{1}(y)=f(x)\,.
+  \end{equation}
+\end{proof}
+\begin{corollary}
+  Let $f$ be a Schwartz function on $\R$, we have the following limit
+  \begin{equation}
+    \lim_{\sigma\to0}\braket{f,\gauss_{\sigma}}=f(0)\,.
+  \end{equation}
+\end{corollary}
+\begin{proof}
+  One first observes that
+  \begin{equation}
+    (\tilde{f}\ast g)(x)=\intr{y}f(y-x)\gauss_{\sigma}(y)\,,
+  \end{equation}
+  therefore
+  \begin{equation}
+    \braket{f,\gauss_{\sigma}}=(\tilde{f}\ast g)(0)\,,
+  \end{equation}
+  which proves the corollary using~\cref{thm:gaussian-unit}.
+\end{proof}
 %-----------------------------------------------------------------------------------------
 \subsection{Inverse Fourier transform}
 \begin{theorem}[Multiplication formula]
-  Let $f$ and $g$ be two Schwartz functions, then
+  Let $f$ and $g$ be two Schwartz functions on $\R$, then
   \begin{equation}
     \intr{x}\hat{f}(x)g(x)=\intr{x}f(x)\hat{g}(x)\,.
   \end{equation}
 \end{theorem}
+\begin{corollary}
+  Let $f$ and $g$ be two Schwartz functions on $\R$, then
+\end{corollary}
 \begin{theorem}[Fourier inversion]
   Let $f$ be a Schwartz function on $\R$, then for all $x\in\R$,
   \begin{equation}
