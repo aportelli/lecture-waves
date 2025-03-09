@@ -1,5 +1,6 @@
+```latex
 % !TEX root = ../waves.tex
-In the previous chapter, we demonstrated that under good conditions, periodic functions
+In the previous chapter, we demonstrated that under favourable conditions, periodic functions
 can be written as an infinite series of elementary trigonometric functions, the Fourier
 series. This expansion is crucial for studying oscillatory phenomena, as it decomposes any
 oscillating function into a sum of pure sine and cosine waves. Another crucial property
@@ -66,7 +67,7 @@ rapidly decaying functions, which are the Schwartz functions.
 We start by defining two classes of functions based on their decay rates.
 \begin{definition}
   A function $f$ on $\R$ is called a \emph{rapidly decaying function} if it decays faster
-  than any power at infinity. Explicitly, for all non-negative integer $\alpha$,
+  than any power at infinity. Explicitly, for all non-negative integers $\alpha$,
   \begin{equation}
     \lim_{|x|\to+\infty}x^\alpha f(x)=0\,.
   \end{equation}
@@ -110,8 +111,8 @@ We now define Schwartz functions:
     \lim_{|x|\to+\infty}x^\beta f^{(\alpha)}(x)=0\,.
   \end{equation}
 \end{definition}
-We then have the two proposition below regarding simple combinations of Schwartz
-functions. The proofs are fairly straightforward and let as an exercise to the reader.
+We then have the two propositions below regarding simple combinations of Schwartz
+functions. The proofs are fairly straightforward and left as an exercise to the reader.
 \begin{proposition}
   \label{prop:schwartz-comb}
   An arbitrary linear combination of Schwartz functions is a Schwartz function. A product
@@ -122,7 +123,7 @@ functions. The proofs are fairly straightforward and let as an exercise to the r
   Let $f$ be a Schwartz function on $\R$, and $g$ be an infinitely differentiable function
   of moderate growth. Then the product $fg$ is a Schwartz function.
 \end{proposition}
-Let us know discuss some examples and counter-examples. A crucial example of Schwartz
+Let us now discuss some examples and counter-examples. A crucial example of a Schwartz
 function is the Gaussian kernel.
 \begin{definition}
   \label{def:gauss}
@@ -238,7 +239,7 @@ not necessarily have a rapidly decaying Fourier transform.
 \end{figure}
 \begin{example}
   \label{ex:sinc-ft}
-  Let $\chi$ the function on $\R$ defined by
+  Let $\chi$ be the function on $\R$ defined by
   \begin{equation}
     \chi(x)=
     \begin{cases}
@@ -248,7 +249,7 @@ not necessarily have a rapidly decaying Fourier transform.
     \label{eq:int-indicator}
   \end{equation}
   for all $x\in\R$. $\chi$ is a rapidly decaying function, but it is not a Schwartz
-  function as it has discontinuities in $-1$ and $1$. Its Fourier transform is given by
+  function as it has discontinuities at $-1$ and $1$. Its Fourier transform is given by
   \begin{equation}
     \hat{\chi}(\omega)=\int_{-\frac12}^{\frac12}\diff x\,e^{-2\pi i\omega x}=
     -\frac{1}{2\pi i\omega}(e^{-\pi i\omega}-e^{\pi i\omega})=\frac{\sin(\pi\omega)}{\pi\omega}\,.
@@ -300,7 +301,7 @@ Then we have the following transformation rules.
     \item \emph{Differentiation in space:} For $\alpha$ a non-negative integer,
       $\mathcal{F}(f^{(\alpha )})=(2\pi i\omega)^{\alpha}\hat{f}(\omega)$.
     \item \emph{Differentiation in frequency:} For $\alpha$ a non-negative integer,
-      $\hat{f}$ is $\alpha$ times differentiable. Let $g$ the function defined for
+      $\hat{f}$ is $\alpha$ times differentiable. Let $g$ be the function defined for
       $x\in\R$ by $g(x)=(-2\pi ix)^\alpha f(x)$, then $\hat{g}=\hat{f}^{(\alpha)}$.
   \end{enumerate}
 \end{proposition}
@@ -310,7 +311,7 @@ Then we have the following transformation rules.
 % \begin{proposition} Let $f$ be a Schwartz function on $\R$, the following properties
 %   hold \begin{enumerate} \item If $f$ is real, the for all $\omega\in\R$,
 %   $\hat{f}(-\omega)=\hat{f}(\omega)^*$ \end{enumerate} \end{proposition}
-A first important property of Schwartz function is that their decay and smoothness
+A first important property of Schwartz functions is that their decay and smoothness
 properties are preserved by the Fourier transform:
 \begin{theorem}
   If $f$ is a Schwartz function, then its Fourier transform $\hat{f}$ is also a Schwartz
@@ -347,7 +348,7 @@ properties are preserved by the Fourier transform:
 Another important property is the Fourier transform of Gaussian kernels.
 \begin{theorem}[Gaussian uncertainty principle]
   \label{thm:gauss-uncertainty}
-  The Fourier transform of a Gaussian kernel of width $\sigma$ is, up to proportionality
+  The Fourier transform of a Gaussian kernel of width $\sigma$ is, up to a proportionality
   factor, a Gaussian kernel of width $\hat{\sigma}=\frac{1}{2\pi\sigma}$:
   \begin{equation}
     \hat{\gauss}_{\sigma}(\omega)=
@@ -389,7 +390,7 @@ $f$ according to the weights given by $g$:
 \end{definition}
 Convolution products are bilinear and commutative:
 \begin{proposition}
-  Let $f$, $g$ and $h$ three functions on $\R$ such that $f\ast g$ and $f\ast h$ are
+  Let $f$, $g$ and $h$ be three functions on $\R$ such that $f\ast g$ and $f\ast h$ are
   well-defined. Then,
   \begin{equation}
     f\ast g=g\ast f\,,
@@ -553,7 +554,7 @@ above can be specialised for Schwartz functions, which we will admit here:
     \mathcal{F}^2=\mathcal{R}\qquad\text{and}\qquad\mathcal{F}^4=1\,,
   \end{equation}
   \ie two successive Fourier transforms are equivalent to a reflection, and four
-  successive Fourier transforms cancel each others. Additionally, if $f$ and $g$ are two
+  successive Fourier transforms cancel each other. Additionally, if $f$ and $g$ are two
   Schwartz functions,
   \begin{equation}
     \braket{\mathcal{F}f,g}=\braket{f,\mathcal{F}^{-1}g}\,.
