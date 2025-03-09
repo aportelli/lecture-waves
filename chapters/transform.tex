@@ -47,10 +47,10 @@ absolutely fundamental both in physics and mathematics, and can be seen as a
 generalisation of Fourier series. Clearly, many things can go wrong when taking the
 $A\to+\infty$ limit above, and one needs to derive the formulas above more carefully. It
 can be shown that the Fourier transform can be defined for a remarkably wide range of
-mathematical objects. However, its proper construction relies on quite technical in-depth
-knowledge of functional analysis, going beyond the scope of this introductory course.
-Therefore, this chapter is mostly aimed at explaining how to use Fourier transforms
-practically, and most results will be admitted.
+mathematical objects. However, its proper construction relies on technical knowledge of
+functional analysis and integration theory, going beyond the scope of this introductory
+course. Therefore, this chapter is mostly aimed at explaining how to use Fourier
+transforms practically, and results will often have part of their proof admitted.
 
 We start by defining the Fourier transform and studying its properties for a simple class
 of functions for which the integrals above are clearly defined.
@@ -222,15 +222,18 @@ We are now ready to define the Fourier transform:
   is called the \emph{Fourier transform} of $f$. We additionally note $\mathcal{F}$ the
   operator that associates $f$ to its Fourier transform $\mathcal{F}f=\hat{f}$.
 \end{definition}
-Clearly, all Schwartz functions are integrable and therefore have a well-defined
-Fourier transform. However, one can question the properties of the Fourier transform,
-and whether the duality conjectured in~\cref{eq:ft-conjecture} holds. Through the example
-below, which is a classical result in Fourier analysis, we can see that rapidly decaying
-functions do not necessarily have a rapidly decaying Fourier transform.
+Clearly, all Schwartz functions are integrable and therefore have a well-defined Fourier
+transform. However, one can question the properties of the Fourier transform, and whether
+the duality conjectured in~\cref{eq:ft-conjecture} holds. Through the example below, which
+is a classical result in Fourier analysis, we can see that rapidly decaying functions do
+not necessarily have a rapidly decaying Fourier transform.
 \begin{figure}[t]
   \centering
   \includegraphics{gp_sinc-ft.pdf}
-  \caption{This figure illustrates~\cref{ex:sinc-ft}. The indicator function of the interval $(-\frac{1}{2},\frac{1}{2})$ defined in~\cref{eq:int-indicator} is represented in the left pane. The right pane represents its Fourier transform, the sine cardinal function.}
+  \caption{This figure illustrates~\cref{ex:sinc-ft}. The indicator function of the
+    interval $(-\frac{1}{2},\frac{1}{2})$ defined in~\cref{eq:int-indicator} is represented
+    in the left pane. The right pane represents its Fourier transform, the sine cardinal
+  function.}
   \label{fig:sinc-ft}
 \end{figure}
 \begin{example}
@@ -250,17 +253,17 @@ functions do not necessarily have a rapidly decaying Fourier transform.
     \hat{\chi}(\omega)=\int_{-\frac12}^{\frac12}\diff x\,e^{-2\pi i\omega x}=
     -\frac{1}{2\pi i\omega}(e^{-\pi i\omega}-e^{\pi i\omega})=\frac{\sin(\pi\omega)}{\pi\omega}\,.
   \end{equation}
-  The function $\hat{\chi}(\omega)$ is called the \emph{sine cardinal function} and
-  is generally noted $\sinc$:
+  The function $\hat{\chi}(\omega)$ is called the \emph{sine cardinal function} and is
+  generally noted $\sinc$:
   \begin{equation}
     \sinc(x)=\frac{\sin(\pi x)}{\pi x}\,.
   \end{equation}
   Although this function has an apparent singularity at $x=0$, $\sin(\pi x)\simeq \pi x$
-  for $x\to0$, therefore $\sinc$ can be continued to the finite value $\sinc(0)=1$.
-  $\chi$ and its Fourier transform are illustrated in~\cref{fig:sinc-ft}.
-  We can observe that although $\chi$ is rapidly decaying, its Fourier transform is not.
-  This is related to the lack of smoothness of $\chi$. As we will see below, this is not
-  an issue with Schwartz functions.
+  for $x\to0$, therefore $\sinc$ can be continued to the finite value $\sinc(0)=1$. $\chi$
+  and its Fourier transform are illustrated in~\cref{fig:sinc-ft}. We can observe that
+  although $\chi$ is rapidly decaying, its Fourier transform is not. This is related to
+  the lack of smoothness of $\chi$. As we will see below, this is not an issue with
+  Schwartz functions.
 \end{example}
 As in the case of Fourier coefficients (\cref{prop:fourier-coef-trans}), the Fourier
 transform admits some useful transformation identities. We start by defining the
@@ -304,6 +307,9 @@ Then we have the following transformation rules.
 \begin{proof}
   The proof of this proposition is part of the exercises of this chapter.
 \end{proof}
+% \begin{proposition} Let $f$ be a Schwartz function on $\R$, the following properties
+%   hold \begin{enumerate} \item If $f$ is real, the for all $\omega\in\R$,
+%   $\hat{f}(-\omega)=\hat{f}(\omega)^*$ \end{enumerate} \end{proposition}
 A first important property of Schwartz function is that their decay and smoothness
 properties are preserved by the Fourier transform:
 \begin{theorem}
@@ -356,23 +362,27 @@ Another important property is the Fourier transform of Gaussian kernels.
 \begin{proof}
   The proof of this proposition is part of the exercises of this chapter.
 \end{proof}
-The theorem above is called the ``uncertainty principle'' in reference to the original work
-of physicist Werner Heisenberg in quantum mechanics, where this relationship was first observed.
-However, it is important to note that it has a wide range of implications and interpretations
-beyond quantum mechanics. The general interpretation is that if the resolution of an object in space is dictated by a Gaussian distribution of a given width, then the associated distribution in frequency has the inverse width. A direct consequence is that it is impossible to achieve arbitrarily high resolution both in space and frequency simultaneously, hence the ``uncertainty''.
+The theorem above is called the ``uncertainty principle'' in reference to the original
+work of physicist Werner Heisenberg in quantum mechanics, where this relationship was
+first observed. However, it is important to note that it has a wide range of implications
+and interpretations beyond quantum mechanics. The general interpretation is that if the
+resolution of an object in space is dictated by a Gaussian distribution of a given width,
+then the associated distribution in frequency has the inverse width. A direct consequence
+is that it is impossible to achieve arbitrarily high resolution both in space and
+frequency simultaneously, hence the ``uncertainty''.
 %-----------------------------------------------------------------------------------------
 \subsection{Convolution product}
 A key operation in Fourier analysis is the \emph{convolution product}. When convoluting a
-function $f$ by another function $g$, one averages from a given point $x$ the values of $f$
-according to the weights given by $g$:
+function $f$ by another function $g$, one averages from a given point $x$ the values of
+$f$ according to the weights given by $g$:
 \begin{definition}
   Let $f$ and $g$ be two functions on $\R$ such that the integral
   \begin{equation}
     (f\ast g)(x)=\intr{y}f(x-y)g(y)\label{eq:conv-def}
   \end{equation}
   is well-defined and finite for all $x\in\R$. The function $f\ast g$ defined on $\R$ by
-  the relation above is called the \emph{convolution product} of $f$ and $g$.
-  The convolution product can also be written as the dot product
+  the relation above is called the \emph{convolution product} of $f$ and $g$. The
+  convolution product can also be written as the dot product
   \begin{equation}
     (f\ast g)(x)=\braket{\mathcal{R}\mathcal{T}_xf,g^*}\,.
   \end{equation}
@@ -390,60 +400,64 @@ Convolution products are bilinear and commutative:
   \end{equation}
 \end{proposition}
 \begin{proof}
-  The commutation property is obtained by using the change of variable
-  $z=x-y$ in the definition \cref{eq:conv-def}. The second formula is a trivial consequence
-  of the integral linearity.
+  The commutation property is obtained by using the change of variable $z=x-y$ in the
+  definition \cref{eq:conv-def}. The second formula is a trivial consequence of the
+  integral linearity.
 \end{proof}
 Convolution products have crucial regularisation properties. Roughly speaking, a product
-$f\ast g$ will have the smoothness properties of the smoothest function between $f$
-and $g$. In particular, convoluting by a Schwartz function leads to a Schwartz function:
+$f\ast g$ will have the smoothness properties of the smoothest function between $f$ and
+$g$. In particular, convoluting by a Schwartz function leads to a smooth function:
 \begin{theorem}
   Let $f$ be a Schwartz function on $\R$ and $g$ be an integrable moderately growing
-  function on $\R$. The convolution product $f\ast g$ is a Schwartz function and for all
-  non-negative integers $\alpha$,
+  function on $\R$. The convolution product $f\ast g$ is an infinitely differentiable
+  moderately growing function and for all non-negative integers $\alpha$,
   \begin{equation}
     (f\ast g)^{(\alpha)}=f^{(\alpha)}\ast g\,.
   \end{equation}
 \end{theorem}
 \begin{proof}
-  We will largely admit this result. However, it is not too difficult to see that it is
-  correct if one can freely exchange the integral in~\cref{eq:conv-def} with derivatives
-  and limits in $x$. For example
+  The function $F$ defined on $\R^2$ by
   \begin{equation}
-    (f\ast g)'(x)=\frac{\diff}{\diff x}\intr{y}f(x-y)g(y)=
-    =\intr{y}f'(x-y)g(y)\,,
+    F(x,y)=f(x-y)g(y)\,,
   \end{equation}
-  and for a non-negative integer $\alpha$,
+  is rapidly decaying in $y$, and its derivative in $x$ is also rapidly decaying in $y$.
+  One can show that under these conditions\footnote{This is the Leibniz integral rule,
+  \cf\cref{ft-trans}}, the integral of $F$ in $y$ is differentiable in $x$, and that the
+  derivative and integral can be exchanged. This leads to
   \begin{equation}
-    \lim_{|x|\to+\infty}x^{\alpha}(f\ast g)(x)=
-    \intr{y}\left[\lim_{|x|\to+\infty}x^{\alpha}f(x-y)\right]g(y)=0\,.
+    (f\ast g)'(x)=\frac{\diff}{\diff x}\intr{y}f(x-y)g(y)
+    =\intr{y}f'(x-y)g(y)=(f'\ast g)(x)\,,
   \end{equation}
-  One can show that the exchange of limit and integral is a consequence of the integrand
-  being a rapidly decaying function (\cref{prop:rapid-times-moderate}), which is the part
-  we are admitting here.
+  and the result of the theorem can be obtained by repeating the operation above $\alpha$
+  times. We will admit the fact that $f\ast g$ is a moderately growing function.
+  Intuitively, since $f$ decays fast, it cannot accelerate the growth of $g$ through the
+  convolution product.
 \end{proof}
+In general, $f\ast g$ inherits from the worse decay rate between $f$ and $g$. The theorem
+above can be specialised for Schwartz functions, which we will admit here:
+\begin{proposition}
+  Let $f$ and $g$ be two Schwartz functions, then $f\ast g$ is a Schwartz function.
+\end{proposition}
 \begin{theorem}
   \label{thm:gaussian-unit}
   Let $f$ be a Schwartz function on $\R$, then $f\ast \gauss_{\sigma}$ converges uniformly
   to $f$ for $\sigma\to 0$.
 \end{theorem}
 \begin{proof}
-  We will largely admit this result, and give a heuristic proof instead. For $y\neq 0$, by definition
-  \begin{equation}
-    \lim_{\sigma\to 0}\gauss_{\sigma}(y)=0
-  \end{equation}
-  exponentially fast. Let $\eta$ be a small positive real number, we write
+  We will largely admit this result, and give a heuristic proof instead. We write
   \begin{equation}
     (f\ast \gauss_{\sigma})(x)=\intr{y}f(x-y)\gauss_{\sigma}(y)\,.
   \end{equation}
   Changing the variable with $y=\sigma z$, we obtain
   \begin{equation}
-    (f\ast \gauss_{\sigma})(x)=\intr{y}f(x-\sigma z)\gauss_{1}(y)\,.
+    (f\ast \gauss_{\sigma})(x)=\intr{z}f(x-\sigma z)\gauss_{1}(z)\,.
   \end{equation}
   Assuming we can exchange limit and integral, and using the fact that $f$ is continuous,
   \begin{equation}
-    \lim_{\sigma\to 0}(f\ast \gauss_{\sigma})(x)=f(x)\intr{y}\gauss_{1}(y)=f(x)\,.
+    \lim_{\sigma\to 0}(f\ast \gauss_{\sigma})(x)=f(x)\intr{z}\gauss_{1}(z)=f(x)\,.
   \end{equation}
+  The exchange of the limit and integral, as well as the uniform convergence, can be shown
+  to be a consequence of $f$ being a Schwartz function.
 \end{proof}
 \begin{corollary}
   Let $f$ be a Schwartz function on $\R$, we have the following limit
@@ -464,16 +478,26 @@ and $g$. In particular, convoluting by a Schwartz function leads to a Schwartz f
 \end{proof}
 %-----------------------------------------------------------------------------------------
 \subsection{Inverse Fourier transform}
-\begin{theorem}[Multiplication formula]
+\begin{theorem}
+  \label{thm:fourier-adj}
   Let $f$ and $g$ be two Schwartz functions on $\R$, then
   \begin{equation}
-    \intr{x}\hat{f}(x)g(x)=\intr{x}f(x)\hat{g}(x)\,.
+    \intr{\omega}\hat{f}(\omega)g(\omega)=\intr{x}f(x)\hat{g}(x)\,.
   \end{equation}
 \end{theorem}
-\begin{corollary}
-  Let $f$ and $g$ be two Schwartz functions on $\R$, then
-\end{corollary}
+\begin{proof}
+  We consider the function $F$ on $\R^2$ defined by
+  \begin{equation}
+    F(x,\omega)=f(x)g(\omega)\,e^{-2\pi i\omega x}\,.
+  \end{equation}
+  Because of the rapid decay of $F$ in $x$ and $\omega$, $|F(x,\omega)|$ has a
+  well-defined two-dimensional integral on $x$ and $\omega$. One can show that under these
+  conditions, the one-dimensional integrals on $x$ and $\omega$ can be performed in any
+  order\footnote{This result is known as \emph{Fubini's theorem}.}, which proves the
+  theorem.
+\end{proof}
 \begin{theorem}[Fourier inversion]
+  \label{thm:fourier-inv}
   Let $f$ be a Schwartz function on $\R$, then for all $x\in\R$,
   \begin{equation}
     f(x)=\intr{\omega}\hat{f}(\omega)\,e^{2\pi i\omega x}\,.
@@ -481,25 +505,90 @@ and $g$. In particular, convoluting by a Schwartz function leads to a Schwartz f
   In other words, the Fourier transform is an invertible operation, and
   $\mathcal{F}^{-1}=\mathcal{R}\mathcal{F}$.
 \end{theorem}
+\begin{proof}
+  Let $\sigma$ be a positive real number. We define the function $G$ on $\R$ with
+  \begin{equation}
+    G(\omega)=e^{-4\pi^2\sigma^2\omega^2}=\frac{1}{\sigma\sqrt{2\pi}}\gauss_{\frac{1}{2\pi\sigma}}(x)\,.
+  \end{equation}
+  $g$ is clearly a Schwartz function, and according to~\cref{thm:gauss-uncertainty}, its
+  Fourier transform is given by
+  \begin{equation}
+    \hat{G}=\frac{1}{\sigma\sqrt{2\pi}}\,\hat{\gauss}_{\frac{1}{2\pi\sigma}}
+    =\gauss_{\sigma}\,.
+  \end{equation}
+  For a given $y\in\R$, we additionally define the function $F$ for all $x\in\R$ with
+  \begin{equation}
+    F(x)=f(x+y)=(\mathcal{T}_{-y}f)(x)\,.
+  \end{equation}
+  According to~\cref{prop:ft-trans}, the Fourier transform of $F$ is given by
+  \begin{equation}
+    \hat{F}(\omega)=e^{2\pi i\omega y}\hat{f}(\omega)\,.
+  \end{equation}
+  Now, using, using~\cref{thm:fourier-adj},
+  \begin{equation}
+    \intr{\omega}\hat{F}(\omega)G(\omega)=\intr{x}F(x)\hat{G}(x)\,.
+  \end{equation}
+  Using the change of variable $z=-x$ in the right-hand side of the equation above, and
+  the fact that $\hat{G}$ is even, one obtains
+  \begin{equation}
+    \intr{x}F(x)\hat{G}(x)=\intr{x}f(y-x)\hat{G}(x)=(f\ast\hat{G})(y)=(f\ast\gauss_{\sigma})(y)\,.
+  \end{equation}
+  Therefore, using~\cref{thm:gaussian-unit},
+  \begin{equation}
+    \lim_{\sigma\to 0}\intr{x}F(x)\hat{G}(x)=f(y)\,,
+  \end{equation}
+  uniformly. Finally,
+  \begin{equation}
+    \lim_{\sigma\to 0}\intr{\omega}\hat{F}(\omega)G(\omega)=
+    \intr{\omega}\hat{F}(\omega)=\intr{\omega}\hat{f}(\omega)\,e^{2\pi i\omega y}\,,
+  \end{equation}
+  which proves the theorem. We did not completely justify the exchange of limit and
+  integral in this last step, and it can be shown to be a consequence of the
+  \emph{dominated convergence theorem}.
+\end{proof}
 \begin{corollary}
+  \label{corr:ft-id}
   We have the following identities
   \begin{equation}
     \mathcal{F}^2=\mathcal{R}\qquad\text{and}\qquad\mathcal{F}^4=1\,,
   \end{equation}
   \ie two successive Fourier transforms are equivalent to a reflection, and four
-  successive Fourier transforms are equivalent to no transformation.
+  successive Fourier transforms cancel each others. Additionally, if $f$ and $g$ are two
+  Schwartz functions,
+  \begin{equation}
+    \braket{\mathcal{F}f,g}=\braket{f,\mathcal{F}^{-1}g}\,.
+  \end{equation}
 \end{corollary}
-%-----------------------------------------------------------------------------------------
-\subsection{Plancherel formula}
+\begin{proof}
+  Using~\cref{prop:ft-trans,thm:fourier-inv},
+  $\mathcal{F}^{-1}=\mathcal{R}\mathcal{F}=\mathcal{F}\mathcal{R}$, so
+  $\mathcal{F}^2=\mathcal{R}$. Clearly two successive reflections cancel each other, \ie
+  $\mathcal{R}^2=1$, so $\mathcal{F}^4=1$. Finally,
+  using~\cref{thm:fourier-adj,prop:ft-trans},
+  \begin{align}
+    \braket{\mathcal{F}f,g}&=\intr{\omega}\hat{f}(\omega)g(\omega)^*
+    =\intr{x}f(x)\mathcal{F}(g^*)(x)\\
+    &=\intr{x}f(x)[(\mathcal{R}\mathcal{F}g)(x)]^*
+    =\intr{x}f(x)[(\mathcal{F}^{-1}g)(x)]^*\\
+    &=\braket{f,\mathcal{F}^{-1}g}\,.
+  \end{align}
+\end{proof}
+\begin{theorem}[Plancherel]
+  Let $f$ be a Schwartz function on $\R$, then $\|f\|=\|\hat{f}\|$.
+\end{theorem}
+\begin{proof}
+  Using~\cref{corr:ft-id},
+  \begin{equation}
+    \|\hat{f}\|^2=\braket{\mathcal{F}f,\mathcal{F}f}=\braket{f,\mathcal{F}^{-1}\mathcal{F}f}
+    =\braket{f,f}=\|f\|^2\,.
+  \end{equation}
+\end{proof}
 \begin{theorem}[Convolution theorem]
   Let $f$ and $g$ be two Schwartz functions on $\R$, then
   \begin{equation}
     \mathcal{F}(f\ast g)=\hat{f}\,\hat{g}\qquad\text{and}\qquad
     \mathcal{F}(fg)=\hat{f}\ast\hat{g}\,.
   \end{equation}
-\end{theorem}
-\begin{theorem}[Plancherel]
-  Let $f$ be a Schwartz function on $\R$, then $\|f\|=\|\hat{f}\|$.
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Generalised functions -- \textit{There be dragons}}
