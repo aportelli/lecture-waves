@@ -437,13 +437,18 @@ above can be specialised for Schwartz functions, which we will admit here:
 \begin{proposition}
   Let $f$ and $g$ be two Schwartz functions, then $f\ast g$ is a Schwartz function.
 \end{proposition}
+A crucial form of convolution is to convolute a function by a Gaussian kernel. Under
+favourable conditions, it generates an arbitrarily good smooth approximation of the
+function as the Gaussian width goes to zero, as discussed below.
 \begin{theorem}
   \label{thm:gaussian-unit}
-  Let $f$ be a Schwartz function on $\R$, then $f\ast \gauss_{\sigma}$ converges uniformly
-  to $f$ for $\sigma\to 0$.
+  Let $f$ be a moderately growing function on $\R$, continuous at a point $x\in\R$. Then,
+  \begin{equation}
+    \lim_{\sigma\to 0}(f\ast \gauss_{\sigma})(x)=f(x)\,.
+  \end{equation}
 \end{theorem}
 \begin{proof}
-  We will largely admit this result, and give a heuristic proof instead. We write
+  We write
   \begin{equation}
     (f\ast \gauss_{\sigma})(x)=\intr{y}f(x-y)\gauss_{\sigma}(y)\,.
   \end{equation}
@@ -451,15 +456,15 @@ above can be specialised for Schwartz functions, which we will admit here:
   \begin{equation}
     (f\ast \gauss_{\sigma})(x)=\intr{z}f(x-\sigma z)\gauss_{1}(z)\,.
   \end{equation}
-  Assuming we can exchange limit and integral, and using the fact that $f$ is continuous,
+  Admitting we can exchange limit and integral, and using the fact that $f$ is continuous,
   \begin{equation}
     \lim_{\sigma\to 0}(f\ast \gauss_{\sigma})(x)=f(x)\intr{z}\gauss_{1}(z)=f(x)\,.
   \end{equation}
-  The exchange of the limit and integral, as well as the uniform convergence, can be shown
-  to be a consequence of $f$ being a Schwartz function.
+  The exchange of the limit and integral can be shown to be a consequence of $f(x-\sigma
+  z)\gauss_{1}(z)$ being rapidly decaying in $z$.
 \end{proof}
 \begin{corollary}
-  Let $f$ be a Schwartz function on $\R$, we have the following limit
+  Let $f$ be a moderately growing function on $\R$ continuous in $0$, then
   \begin{equation}
     \lim_{\sigma\to0}\braket{f,\gauss_{\sigma}}=f(0)\,.
   \end{equation}
@@ -475,6 +480,80 @@ above can be specialised for Schwartz functions, which we will admit here:
   \end{equation}
   which proves the corollary using~\cref{thm:gaussian-unit}.
 \end{proof}
+Finally, for Schwartz functions~\cref{thm:gaussian-unit} is uniformly convergent, which
+we will admit.
+\begin{theorem}
+  Let $f$ be a Schwartz function on $\R$, then $f\ast \gauss_{\sigma}$ converges uniformly
+  to $f$ for $\sigma\to 0$.
+\end{theorem}
+We conclude this section by an explicit example of Gaussian convolution.
+\begin{figure}[t]
+  \centering
+  \includegraphics{gp_erf.pdf}
+  \caption{Curve of the error function defined in~\cref{eq:erf}.}
+  \label{fig:erf}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{gp_sq-gauss.pdf}
+  \caption{Curve of the Gaussian-smoothed square wave
+  in~\cref{eq:sq-gauss,eq:sq-gauss-exp} with smoothing widths from $0.2$ to $0.01$.}
+  \label{fig:sq-gauss}
+\end{figure}
+\begin{example}
+  For a positive real number $\sigma$, we define the following regularisation of the
+  square wave using a Gaussian convolution:
+  \begin{equation}
+    f_\sigma=\sq\ast\gauss_\sigma\,.\label{eq:sq-gauss}
+  \end{equation}
+  Let us evaluate $f_\sigma$ explicitly. We first define the indicator function
+  $\chi(a,b)$ of the interval $[a,b)$, where $a$ and $b$ are two real numbers such that
+  $a<b$:
+  \begin{equation}
+    \chi(a,b)(x)=
+    \begin{cases}
+      1&\text{if}~a\leq x<b\\
+      0&\text{otherwise}
+    \end{cases}\,.
+  \end{equation}
+  The square wave can then clearly be written as an alternating sum of such functions:
+  \begin{equation}
+    \sq=\sumz{n}(-1)^{n}\chi\left(\frac{n}{2},\frac{n+1}{2}\right)\,.
+    \label{eq:sq-chi-series}
+  \end{equation}
+  The series above is clearly convergent since only one term in the sum is non-zero at a
+  given point. Then, for $x\in\R$
+  \begin{equation}
+    [\chi(a,b)\ast\gauss_\sigma](x)=\intr{y}\chi(a,b)(x-y)\gauss_\sigma(y)
+    =\frac{1}{\sigma\sqrt{2\pi}}\int_{x-b}^{x-a}\diff y\,e^{-\frac{y^2}{2\sigma^2}}\,.
+    \label{eq:chi-gauss}
+  \end{equation}
+  The integral above cannot be simplified much further, and is generally standardised
+  through the \emph{error function} defined for $x\in\R$ by
+  \begin{equation}
+    \erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x\diff y\,e^{-y^2}\,.\label{eq:erf}
+  \end{equation}
+  The error function is odd and converges quickly to $\pm 1$ as $x$ approaches
+  $\pm\infty$. It is illustrated in~\cref{fig:erf}. Its name comes from its relevance to
+  error estimation of quantities following Gaussian statistics. Now, using the change of
+  variable $z=\frac{y}{\sigma\sqrt{2}}$ in~\cref{eq:chi-gauss},
+  \begin{equation}
+    [\chi(a,b)\ast\gauss_\sigma](x)=\frac{1}{\sqrt{\pi}}
+    \int_{\frac{x-b}{\sigma\sqrt{2}}}^{\frac{x-a}{\sigma\sqrt{2}}}\diff z\,e^{-z^2}
+    =\frac{1}{2}\left[\erf\left(\frac{x-b}{\sigma\sqrt{2}}\right)
+    -\erf\left(\frac{x-a}{\sigma\sqrt{2}}\right)\right]\,.
+  \end{equation}
+  Using this expression with~\cref{eq:sq-chi-series}, we obtain
+  \begin{equation}
+    f_\sigma=\frac{1}{2}\sumz{n}(-1)^{n}
+    \left[\erf\bigg(\frac{x-\frac{n+1}{2}}{\sigma\sqrt{2}}\bigg)
+    -\erf\bigg(\frac{x-\frac{n}{2}}{\sigma\sqrt{2}}\bigg)\right]\,.
+    \label{eq:sq-gauss-exp}
+  \end{equation}
+  The result above is represented in~\cref{fig:sq-gauss}.
+\end{example}
+We now have the required tools to investigate the inversion of the Fourier transform
+conjectured in~\cref{eq:ft-conjecture}, which is the topic of the next section.
 %-----------------------------------------------------------------------------------------
 \subsection{Inverse Fourier transform}
 \begin{theorem}
@@ -502,7 +581,7 @@ above can be specialised for Schwartz functions, which we will admit here:
     f(x)=\intr{\omega}\hat{f}(\omega)\,e^{2\pi i\omega x}\,.
   \end{equation}
   In other words, the Fourier transform is an invertible operation, and
-  $\mathcal{F}^{-1}=\mathcal{R}\mathcal{F}$.
+  $\mathcal{F}^{-1}=\mathcal{R}\mathcal{F}=\mathcal{F}\mathcal{R}$.
 \end{theorem}
 \begin{proof}
   Let $\sigma$ be a positive real number. We define the function $G$ on $\R$ with
@@ -592,6 +671,34 @@ above can be specialised for Schwartz functions, which we will admit here:
     \mathcal{F}(fg)=\hat{f}\ast\hat{g}\,.
   \end{equation}
 \end{theorem}
+\begin{proof}
+  The proof of this theorem is similar the proof of~\cref{thm:fourier-adj}. For
+  $\omega\in\R$, we define the function
+  \begin{equation}
+    F(x,y)=f(x-y)g(y)e^{-2\pi i \omega x}\,,
+  \end{equation}
+  and clearly
+  \begin{equation}
+    \intr{x}\intr{y}F(x,y)=\mathcal{F}(f\ast g)(\omega)\,.
+  \end{equation}
+  It can be shown that since $f$ and $g$ are both rapidly decaying, the integrals on $x$
+  and $y$ above can be performed in any order. Using~\cref{prop:ft-trans}, integrating
+  first on $x$ leads to
+  \begin{equation}
+    \intr{x}F(x,y)=\hat{f}(\omega)g(y)e^{-2\pi i\omega y}\,,
+  \end{equation}
+  then integrating on $y$ proves $\mathcal{F}(f\ast g)=\hat{f}\,\hat{g}$. The second
+  identity is obtained through
+  \begin{equation}
+    \mathcal{F}(\hat{f}\ast\hat{g})=\mathcal{R}(fg)\,,
+  \end{equation}
+  where we used $\mathcal{F}^2=\mathcal{R}$ (\cref{corr:ft-id}), and the trivial identity
+  $\mathcal{R}(fg)=(\mathcal{R}f)(\mathcal{R}g)$. Then
+  \begin{equation}
+    \hat{f}\ast\hat{g}=\mathcal{F}^{-1}\mathcal{R}(fg)=\mathcal{F}\mathcal{R}^2(fg)
+    =\mathcal{F}(fg)\,.
+  \end{equation}
+\end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Generalised functions -- \textit{There be dragons}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

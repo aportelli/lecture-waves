@@ -8,7 +8,7 @@ set xrange [-4:4]
 set yrange [0.0:2.0]
 set grid
 set key spacing 1.5
-set xlabel '$t$'
+set xlabel '$x$'
 
 g(x,sig) = exp(-x**2/(2*sig**2))/(sig*sqrt(2*pi))
 

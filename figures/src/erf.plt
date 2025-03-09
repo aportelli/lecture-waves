@@ -4,10 +4,10 @@ set term cairolatex pdf size 12.9cm,8cm
 
 load 'common.gp'
 
-set xrange [-20:20]
-set yrange [-0.7:1.1]
+set xrange [-4:4]
+set yrange [-1.1:1.1]
 set grid
-set key spacing 1.5
+set key spacing 1.5 Left left reverse
 set xlabel '$x$'
 
-plot besj0(x) t '$J_0(x)$', besj1(x) t '$J_1(x)$'
+plot erf(x) t '$\erf(x)$'
