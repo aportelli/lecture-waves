@@ -1,15 +1,14 @@
-```latex
 % !TEX root = ../waves.tex
-In the previous chapter, we demonstrated that under favourable conditions, periodic functions
-can be written as an infinite series of elementary trigonometric functions, the Fourier
-series. This expansion is crucial for studying oscillatory phenomena, as it decomposes any
-oscillating function into a sum of pure sine and cosine waves. Another crucial property
-presented in~\cref{eq:cn-der} is that the Fourier coefficients of the derivative of a
-function $f$ are simply the coefficients of $f$ multiplied by a power of the frequency.
-This property is quite powerful as it can transform linear differential equations into
-simpler polynomial equations. However, the Fourier series expansion is in principle
-limited to describing periodic functions, and one can legitimately wonder if it can be
-generalised to non-periodic functions.
+In the previous chapter, we demonstrated that under favourable conditions, periodic
+functions can be written as an infinite series of elementary trigonometric functions, the
+Fourier series. This expansion is crucial for studying oscillatory phenomena, as it
+decomposes any oscillating function into a sum of pure sine and cosine waves. Another
+crucial property presented in~\cref{eq:cn-der} is that the Fourier coefficients of the
+derivative of a function $f$ are simply the coefficients of $f$ multiplied by a power of
+the frequency. This property is quite powerful as it can transform linear differential
+equations into simpler polynomial equations. However, the Fourier series expansion is in
+principle limited to describing periodic functions, and one can legitimately wonder if it
+can be generalised to non-periodic functions.
 
 A first interesting observation is that Fourier series can be used to represent
 non-periodic functions on any finite interval. Indeed, let us consider a function $f$ on
@@ -232,9 +231,9 @@ not necessarily have a rapidly decaying Fourier transform.
   \centering
   \includegraphics{gp_sinc-ft.pdf}
   \caption{This figure illustrates~\cref{ex:sinc-ft}. The indicator function of the
-    interval $(-\frac{1}{2},\frac{1}{2})$ defined in~\cref{eq:int-indicator} is represented
-    in the left pane. The right pane represents its Fourier transform, the sine cardinal
-  function.}
+    interval $(-\frac{1}{2},\frac{1}{2})$ defined in~\cref{eq:int-indicator} is
+    represented in the left pane. The right pane represents its Fourier transform, the
+  sine cardinal function.}
   \label{fig:sinc-ft}
 \end{figure}
 \begin{example}
@@ -252,7 +251,8 @@ not necessarily have a rapidly decaying Fourier transform.
   function as it has discontinuities at $-1$ and $1$. Its Fourier transform is given by
   \begin{equation}
     \hat{\chi}(\omega)=\int_{-\frac12}^{\frac12}\diff x\,e^{-2\pi i\omega x}=
-    -\frac{1}{2\pi i\omega}(e^{-\pi i\omega}-e^{\pi i\omega})=\frac{\sin(\pi\omega)}{\pi\omega}\,.
+    -\frac{1}{2\pi i\omega}(e^{-\pi i\omega}-e^{\pi i\omega})
+    =\frac{\sin(\pi\omega)}{\pi\omega}\,.
   \end{equation}
   The function $\hat{\chi}(\omega)$ is called the \emph{sine cardinal function} and is
   generally noted $\sinc$:
@@ -308,9 +308,6 @@ Then we have the following transformation rules.
 \begin{proof}
   The proof of this proposition is part of the exercises of this chapter.
 \end{proof}
-% \begin{proposition} Let $f$ be a Schwartz function on $\R$, the following properties
-%   hold \begin{enumerate} \item If $f$ is real, the for all $\omega\in\R$,
-%   $\hat{f}(-\omega)=\hat{f}(\omega)^*$ \end{enumerate} \end{proposition}
 A first important property of Schwartz functions is that their decay and smoothness
 properties are preserved by the Fourier transform:
 \begin{theorem}
@@ -336,7 +333,8 @@ properties are preserved by the Fourier transform:
   Now, let $\alpha$ and $\beta$ be two non-negative integers. Then, using
   \cref{prop:ft-trans}, for all $\omega\in\R$,
   \begin{equation}
-    \omega^\beta\hat{f}^{(\alpha)}(\omega)=\frac{1}{(2\pi i)^{\beta}}\mathcal{F}(f^{(\alpha+\beta)})(\omega)\,.
+    \omega^\beta\hat{f}^{(\alpha)}(\omega)
+    =\frac{1}{(2\pi i)^{\beta}}\mathcal{F}(f^{(\alpha+\beta)})(\omega)\,.
   \end{equation}
   Since $f^{(\alpha+\beta)}$ is a Schwartz function (\cref{prop:schwartz-comb}), then as
   discussed above its Fourier transform goes to zero at infinity, and therefore
@@ -509,7 +507,8 @@ above can be specialised for Schwartz functions, which we will admit here:
 \begin{proof}
   Let $\sigma$ be a positive real number. We define the function $G$ on $\R$ with
   \begin{equation}
-    G(\omega)=e^{-4\pi^2\sigma^2\omega^2}=\frac{1}{\sigma\sqrt{2\pi}}\gauss_{\frac{1}{2\pi\sigma}}(x)\,.
+    G(\omega)=e^{-4\pi^2\sigma^2\omega^2}
+    =\frac{1}{\sigma\sqrt{2\pi}}\gauss_{\frac{1}{2\pi\sigma}}(x)\,.
   \end{equation}
   $g$ is clearly a Schwartz function, and according to~\cref{thm:gauss-uncertainty}, its
   Fourier transform is given by
@@ -532,7 +531,8 @@ above can be specialised for Schwartz functions, which we will admit here:
   Using the change of variable $z=-x$ in the right-hand side of the equation above, and
   the fact that $\hat{G}$ is even, one obtains
   \begin{equation}
-    \intr{x}F(x)\hat{G}(x)=\intr{x}f(y-x)\hat{G}(x)=(f\ast\hat{G})(y)=(f\ast\gauss_{\sigma})(y)\,.
+    \intr{x}F(x)\hat{G}(x)=\intr{x}f(y-x)\hat{G}(x)=(f\ast\hat{G})(y)
+    =(f\ast\gauss_{\sigma})(y)\,.
   \end{equation}
   Therefore, using~\cref{thm:gaussian-unit},
   \begin{equation}
@@ -580,7 +580,8 @@ above can be specialised for Schwartz functions, which we will admit here:
 \begin{proof}
   Using~\cref{corr:ft-id},
   \begin{equation}
-    \|\hat{f}\|^2=\braket{\mathcal{F}f,\mathcal{F}f}=\braket{f,\mathcal{F}^{-1}\mathcal{F}f}
+    \|\hat{f}\|^2=\braket{\mathcal{F}f,\mathcal{F}f}
+    =\braket{f,\mathcal{F}^{-1}\mathcal{F}f}
     =\braket{f,f}=\|f\|^2\,.
   \end{equation}
 \end{proof}
