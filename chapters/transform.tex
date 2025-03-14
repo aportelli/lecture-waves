@@ -195,6 +195,7 @@ of two moderately growing functions are generally not well-defined, as the assoc
 integrals might not converge. Schwartz functions have the following simple integration by
 parts formula.
 \begin{proposition}
+  \label{prop:schwartz-partint}
   Let $f$ be a Schwartz function on $\R$, and let $g$ be a continuously differentiable
   function of moderate growth. Then we have the integration by parts formula
   \begin{equation}
@@ -464,6 +465,7 @@ function as the Gaussian width goes to zero, as discussed below.
   z)\gauss_{1}(z)$ being rapidly decaying in $z$.
 \end{proof}
 \begin{corollary}
+  \label{cor:gauss-sample}
   Let $f$ be a moderately growing function on $\R$ continuous in $0$, then
   \begin{equation}
     \lim_{\sigma\to0}\braket{f,\gauss_{\sigma}}=f(0)\,.
@@ -480,8 +482,8 @@ function as the Gaussian width goes to zero, as discussed below.
   \end{equation}
   which proves the corollary using~\cref{thm:gaussian-unit}.
 \end{proof}
-Finally, for Schwartz functions~\cref{thm:gaussian-unit} is uniformly convergent, which
-we will admit.
+Finally, for Schwartz functions~\cref{thm:gaussian-unit} is uniformly convergent, which we
+will admit.
 \begin{theorem}
   Let $f$ be a Schwartz function on $\R$, then $f\ast \gauss_{\sigma}$ converges uniformly
   to $f$ for $\sigma\to 0$.
@@ -556,6 +558,7 @@ We now have the required tools to investigate the inversion of the Fourier trans
 conjectured in~\cref{eq:ft-conjecture}, which is the topic of the next section.
 %-----------------------------------------------------------------------------------------
 \subsection{Inverse Fourier transform}
+We start by discussing a fundamental identity of Fourier analysis.
 \begin{theorem}
   \label{thm:fourier-adj}
   Let $f$ and $g$ be two Schwartz functions on $\R$, then
@@ -574,6 +577,9 @@ conjectured in~\cref{eq:ft-conjecture}, which is the topic of the next section.
   order\footnote{This result is known as \emph{Fubini's theorem}.}, which proves the
   theorem.
 \end{proof}
+Using the previous theorem with~\cref{thm:gauss-uncertainty} allow to prove the Fourier
+inversion conjectured in~\cref{eq:ft-conjecture} for Schwartz functions, which is one of
+the main result of this chapter.
 \begin{theorem}[Fourier inversion]
   \label{thm:fourier-inv}
   Let $f$ be a Schwartz function on $\R$, then for all $x\in\R$,
@@ -626,8 +632,11 @@ conjectured in~\cref{eq:ft-conjecture}, which is the topic of the next section.
   integral in this last step, and it can be shown to be a consequence of the
   \emph{dominated convergence theorem}.
 \end{proof}
+The Fourier inversion theorem can be easily reformulated as a set of operator identities.
+Essentially, from an operator point of view, the Fourier transform is a square root of the
+reflection operation, and a fourth root of the identity.
 \begin{corollary}
-  \label{corr:ft-id}
+  \label{cor:ft-id}
   We have the following identities
   \begin{equation}
     \mathcal{F}^2=\mathcal{R}\qquad\text{and}\qquad\mathcal{F}^4=1\,,
@@ -653,17 +662,23 @@ conjectured in~\cref{eq:ft-conjecture}, which is the topic of the next section.
     &=\braket{f,\mathcal{F}^{-1}g}\,.
   \end{align}
 \end{proof}
+The previous identities lead to Plancherel's theorem, which is the generalisation of
+Parseval's theorem (\cref{thm:parseval}) for Fourier transforms.
 \begin{theorem}[Plancherel]
   Let $f$ be a Schwartz function on $\R$, then $\|f\|=\|\hat{f}\|$.
 \end{theorem}
 \begin{proof}
-  Using~\cref{corr:ft-id},
+  Using~\cref{cor:ft-id},
   \begin{equation}
     \|\hat{f}\|^2=\braket{\mathcal{F}f,\mathcal{F}f}
     =\braket{f,\mathcal{F}^{-1}\mathcal{F}f}
     =\braket{f,f}=\|f\|^2\,.
   \end{equation}
 \end{proof}
+We conclude this section with a crucial identity in Fourier analysis: the
+\emph{convolution theorem}. The Fourier transform maps a convolution product into a
+regular multiplication, which can considerably simplify the practical computation of
+convolutions.
 \begin{theorem}[Convolution theorem]
   Let $f$ and $g$ be two Schwartz functions on $\R$, then
   \begin{equation}
@@ -692,16 +707,522 @@ conjectured in~\cref{eq:ft-conjecture}, which is the topic of the next section.
   \begin{equation}
     \mathcal{F}(\hat{f}\ast\hat{g})=\mathcal{R}(fg)\,,
   \end{equation}
-  where we used $\mathcal{F}^2=\mathcal{R}$ (\cref{corr:ft-id}), and the trivial identity
+  where we used $\mathcal{F}^2=\mathcal{R}$ (\cref{cor:ft-id}), and the trivial identity
   $\mathcal{R}(fg)=(\mathcal{R}f)(\mathcal{R}g)$. Then
   \begin{equation}
     \hat{f}\ast\hat{g}=\mathcal{F}^{-1}\mathcal{R}(fg)=\mathcal{F}\mathcal{R}^2(fg)
     =\mathcal{F}(fg)\,.
   \end{equation}
 \end{proof}
+The convolution theorem also offers another interpretation of the smoothing properties of
+convolution products. If a function $f$ is convoluted with a smooth function $g$, then the
+Fourier transform $\hat{f}$ is simply multiplied by $\hat{g}$. Since $g$ is smooth,
+$\hat{g}$ decays fasts, then the product $\hat{f}\hat{g}$ also decays fast, which in turn
+means that the convolution product is indeed smooth.
+
+As we discussed in this section, Schwartz functions have good properties regarding the
+Fourier transform. The Fourier transform acts as a one-to-one mapping of Schwartz
+functions onto themselves, with a simple inversion formula. The Schwartz functions are
+also stable under key Fourier analysis operations such as convolution products,
+differentiation, and multiplication by powers. However, a large volume of functions
+relevant to physical problems are not Schwartz functions, and some generalisation is
+needed. There are multiple ways to extend the Fourier transform to more general classes of
+functions. In the next section, we will focus on the construction which is implicitly the
+underlying one in most physical applications.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Generalised functions -- \textit{There be dragons}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Back to Fourier series}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Inversion of differential operators}
+\section{Distributions -- \textit{There be dragons}} A key challenge in constructing the
+Fourier transform is to ensure we can properly define its inverse. We showed in the
+previous section that it is well understood for Schwartz functions. However, for
+non-smooth functions, the Fourier transform decays slowly, as illustrated
+in~\cref{ex:sinc-ft}. This lead to issues for defining an inverse transform. As we discuss
+in this section, defining the Fourier transform more widely generally requires
+generalising the concept of function itself, leading to objects called
+\emph{distributions} or \emph{generalised functions}. Such ideas were used heuristically
+in physical problems in the early 20\textsuperscript{th} for solving partial differential
+equations, and notoriously by Paul Dirac in the early days of quantum physics. Those ideas
+were then developed into a more justified mathematical framework, particularly by Sergei
+Sobolev and Laurent Schwartz in the 1930s and 1940s. The theory of distributions is an
+advanced mathematical topic, however it is a crucial tool for formulating modern physics.
+Therefore, this section is mainly aimed at being a heuristic and practical introduction
+for physics students, rather than an accurate description of the theory.
+
+Let us start with the simple question: what should the Fourier transform of the constant
+function equal to $1$ be? $1$ is neither decaying nor integrable, and the previous
+construction based on Schwartz functions does not apply. For the moment, let us assume
+that such an object exists and that we can define the Fourier transform $u=\hat{1}$.
+Intuitively, $u(\omega)$ is the component of frequency $\omega$ of $1$. The function $1$
+is a zero-frequency elementary wave, so we expect $u(\omega)=0$ for all $\omega\neq 0$ and
+$u(0)$ to have some non-zero value to be determined. We also would like the duality
+between the Fourier transform and its inverse $\mathcal{F}^{-1}=\mathcal{R}\mathcal{F}$ to
+be preserved, and a key component in establishing that was~\cref{thm:fourier-adj}.
+Assuming this formula, one would obtain
+\begin{equation}
+  \intr{\omega}u(\omega)\varphi(\omega)=\intr{x}\hat{\varphi}(x)=\varphi(0)\,,
+  \label{eq:one-ft}
+\end{equation}
+for any Schwartz function $\varphi$. Another way to try defining $u$ is to define $1$ as
+the limit of a sequence of Schwartz functions, for which the Fourier transform is
+well-defined. For example, defining
+\begin{equation}
+  f_{\sigma}(x)=e^{-2\pi^2\sigma^2 x}\,,
+\end{equation}
+clearly $f_\sigma\to 1$ for $\sigma\to 0$. Additionally, according to
+\cref{thm:gauss-uncertainty}, we know that the Fourier transform of $f_{\sigma}$ is just
+the Gaussian kernel of width $\sigma$:
+\begin{equation}
+  \hat{f}_{\sigma}(\omega)=\gauss_\sigma(\omega)=\frac{1}{\sigma\sqrt{2\pi}}\,
+  e^{-\frac{\omega^2}{2\sigma^2}}\,.
+\end{equation}
+We can try to define $u$ as the limit of $\hat{f}_{\sigma}$ for $\sigma\to 0$, which leads
+to
+\begin{equation}
+  u(\omega)=\lim_{\substack{\sigma\to 0\\\sigma>0}}\,\hat{f}_{\sigma}(\omega)=
+  \begin{cases}
+    +\infty&\text{if}~\omega=0\\
+    0&\text{else}
+  \end{cases}\,.
+\end{equation}
+Although the result above is quite singular, this is essentially what is expected: the
+function $1$ is composed only of a zero-frequency wave, by an infinite amount since we are
+considering an infinite range. Unfortunately, this is inconsistent with~\cref{eq:one-ft}.
+Indeed, $u$ as defined above is zero everywhere except at one point, which means that
+\begin{equation}
+  \intr{\omega}u(\omega)\varphi(\omega)=0\,,
+\end{equation}
+for any Schwartz function $\varphi$, which clearly contradicts~\cref{eq:one-ft}. However,
+there is no contradiction if we keep the $\sigma\to 0$ limit \emph{outside} the integral:
+\begin{equation}
+  \lim_{\sigma\to 0}\intr{\omega}\hat{f}_{\sigma}(\omega)\varphi(\omega)=\varphi(0)\,,
+\end{equation}
+which is~\cref{cor:gauss-sample}. In summary, we managed to form a consistent picture that
+$u$ should satisfy~\cref{eq:one-ft}, which can be built from a limit of Schwartz functions
+using Gaussian kernels. Nonetheless, we did not manage to properly define $u$ itself as a
+function. One can argue that this could be due to arbitrary choices made in the procedure
+above, however one can show that there exists no function that satisfies~\cref{eq:one-ft}:
+\begin{proposition}
+  \label{prop:delta-nogo}
+  There exists no function $f$ that satisfies the equation
+  \begin{equation}
+    \intr{x}f(x)\varphi(x)=\varphi(0)\,,
+  \end{equation}
+  for all Schwartz functions $\varphi$.
+\end{proposition}
+\begin{proof}
+  Let us assume that such a function $f$ exists. We first consider the \emph{bump
+  function}
+  \begin{equation}
+    \varphi_A(x)=
+    \begin{cases}
+      \exp(-\frac{A^2}{A^2-x^2})&\text{if}~-A<x<A\\
+      0&\text{else}
+    \end{cases}\,,
+  \end{equation}
+  where $A$ is a positive real number. One can show that $\varphi_A$ is a Schwartz
+  function, and it is smaller than $1$ in the $(-A,A)$ interval and zero everywhere else.
+  On the one hand
+  \begin{equation}
+    \intr{x}f(x)\varphi_A(x)=\varphi_A(0)=e^{-1}\neq 0\,,
+    \label{eq:int-dfn-bump}
+  \end{equation}
+  on the other hand,
+  \begin{equation}
+    \left|\intr{x}f(x)\varphi_A(x)\right|\leq\int_{-A}^A\diff x\,|f(x)|\,,
+  \end{equation}
+  which implies that
+  \begin{equation}
+    \lim_{A\to 0}\intr{x}f(x)\varphi_A(x)=0\,.
+  \end{equation}
+  This last equation contradicts~\cref{eq:int-dfn-bump}, which proves the proposition by
+  contradiction.
+\end{proof}
+The previous proposition naively suggests that there is no solution to the problem
+discussed. Another possible interpretation is that to define the Fourier transform of $1$,
+one needs to generalise the concept of function to objects that can satisfy, in a sense to
+be defined, the equation in \cref{prop:delta-nogo}.
+%-----------------------------------------------------------------------------------------
+\subsection{Definition of distributions}
+A key observation we made in the previous introduction of this section is that computing
+the Fourier transform of $1$ appears to lead to consistent results as long as expressions
+are integrated against a Schwartz function. This allows us to define a new class of
+mathematical objects, called \emph{distributions}\footnote{The specific distributions
+  discussed here are more precisely called \emph{tempered distributions}; the term
+\emph{generalised function} is also used in the literature.}:
+\begin{definition}
+  A \emph{distribution} $F$ on $\R$ is a linear operation that associates any to any
+  Schwartz function $\varphi$ a complex number $F(\varphi)$. Explicitly, for any pair of
+  Schwartz function $\varphi,\psi$ and any pair of complex numbers $a,b$,
+  \begin{equation}
+    F(a\varphi+b\psi)=aF(\varphi)+bF(\psi)\in\C\,.
+  \end{equation}
+  The value $F(\varphi)$ might be abusively written as an integral
+  \begin{equation}
+    F(\varphi)=\intr{x}F(x)\varphi(x)\,,
+  \end{equation}
+  and it is important to stress that on its own $F(x)$ is ill-defined, only its integral
+  against a Schwartz function is properly defined.
+\end{definition}
+Distributions generalise the concept of moderately growing function through the following
+definition and proposition.
+\begin{definition}
+  If $f$ is a moderately growing function on $\R$, then $f$ defines a distribution,
+  abusively also noted $f$, using the dot product
+  \begin{equation}
+    f(\varphi)=\braket{f,\varphi^*}=\intr{x}f(x)\varphi(x)\,,
+  \end{equation}
+  for all Schwartz functions $\varphi$. Two moderately growing functions $f$ and $g$ are
+  said to be equal \emph{in the sense of distributions} if $f(\varphi)=g(\varphi)$ for all
+  Schwartz functions.
+\end{definition}
+\begin{proposition}
+  If two Schwartz function are equal in the sense of distributions, they are also equal as
+  functions. Explicitly, if $f$ and $g$ are two Schwartz functions such that
+  \begin{equation}
+    \intr{x}f(x)\varphi(x)=\intr{x}g(x)\varphi(x)\,,
+  \end{equation}
+  for all Schwartz functions $\varphi$, then $f=g$.
+\end{proposition}
+\begin{proof}
+  This is a direct consequence of~\cref{thm:gaussian-unit}. For $y\in\R$, if one chooses
+  \begin{equation}
+    \varphi(x)=\gauss_{\sigma}(y-x)\,,
+  \end{equation}
+  then
+  \begin{equation}
+    0=\lim_{\sigma\to 0}\intr{x}[f(x)-g(x)]\gauss_{\sigma}(y-x)=
+    \lim_{\sigma\to 0}[(f-g)\ast\gauss_{\sigma}](y)=f(y)-g(y)\,,
+  \end{equation}
+  which implies that $f=g$.
+\end{proof}
+This can be extended further using~\cref{thm:gaussian-unit}, which we will not do
+precisely here. Essentially, if two functions are equal in the sense of distributions,
+they are equal where they are continuous. However, it is easy to see that equality in the
+sense of distributions is weaker than the usual equality, since changing the value of one
+point in a function does not modify an integral. Finally, we define the delta
+distribution, which address the issue raised by~\cref{prop:delta-nogo}.
+\begin{definition}
+  \label{def:delta}
+  The \emph{delta} distribution $\delta$, sometimes also called \emph{Dirac delta}, is
+  defined by
+  \begin{equation}
+    \delta(\varphi)=\intr{x}\delta(x)\varphi(x)=\varphi(0)\,,
+  \end{equation}
+  for all Schwartz functions $\varphi$.
+\end{definition}
+In the literature $\delta$ is often abusively referred to as the ``delta function'',
+however it is important to stress that it is in fact not a function, because
+of~\cref{prop:delta-nogo}. In summary, functions define distributions, but not all
+distributions are defined by a function. So distributions do constitute a more general
+class of objects than functions.
+
+We can now reformulate~\cref{cor:gauss-sample} as follows:
+\begin{proposition}
+  We have the following limit
+  \begin{equation}
+    \lim_{\sigma\to 0}\gauss_{\sigma}(x)=\delta(x)\,,
+  \end{equation}
+  in the sense of distributions.
+\end{proposition}
+The definitions above give an easier meaning to some limit issues discussed in the
+introduction of this section. For example, for a Schwartz function $\varphi$, we can now
+write
+\begin{equation}
+  \lim_{\sigma\to 0}\intr{x}\gauss_{\sigma}(x)\varphi(x)=\intr{x}\delta(x)\varphi(x)
+  =\varphi(0)\,.
+\end{equation}
+In other words, although the limit and integral above could not be exchanged in the
+traditional sense, they can be exchanged in the sense of distributions.
+%-----------------------------------------------------------------------------------------
+\subsection{Distributional derivatives}
+Many linear transformations on functions generalise well to distributions. One crucial and
+important operation is to generalise the derivative to distributions:
+\begin{definition}
+  Let $F$ be a distribution on $\R$, then the derivative $F'$ is the distribution defined
+  for all Schwartz functions $\varphi$ by
+  \begin{equation}
+    F'(\varphi)=-F(\varphi')\,,
+  \end{equation}
+  which can also be written
+  \begin{equation}
+    \intr{x}F'(x)\varphi(x)=-\intr{x}F(x)\varphi'(x)\,,
+  \end{equation}
+  which is simply a generalisation of integration by parts,
+  \cf\cref{prop:schwartz-partint}.
+\end{definition}
+An interesting consequence of the definition above is that distributions allow to define
+the derivative of discontinuous functions! One important case of such generalisation is
+the \emph{Heaviside function}:
+\begin{definition}
+  We call \emph{Heaviside function}, also sometimes called \emph{theta function}, the
+  function $\theta$ defined for all $x\in\R$ by
+  \begin{equation}
+    \theta(x)=
+    \begin{cases}
+      1&\text{if}~x\geq 0\\
+      0&\text{else}
+    \end{cases}\,.
+  \end{equation}
+\end{definition}
+We can show that the derivative of the Heaviside function is in fact the delta function.
+\begin{proposition}
+  In the sense of distributions,
+  \begin{equation}
+    \theta'(x)=\delta(x)\,.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Let $\varphi$ be a Schwartz function. Then:
+  \begin{equation}
+    \theta'(\varphi)=-\intr{x}\theta(x)\varphi'(x)=\int_0^{+\infty}\varphi'(x)
+    =\varphi(0)=\delta(\varphi)\,,
+  \end{equation}
+  which proves the proposition.
+\end{proof}
+This last result is quite intuitive: the Heaviside function is flat everywhere, and has an
+``infinite slope'' at zero because of the discontinuity, hence its derivative is the delta
+function. As a final example, we can also compute the derivative of the delta function
+\begin{equation}
+  \intr{x}\delta'(x)\varphi(x)=-\intr{x}\delta(x)\varphi'(x)=-\varphi'(0)\,,
+\end{equation}
+and in general,
+\begin{equation}
+  \intr{x}\delta^{(n)}(x)\varphi(x)=(-1)^n\varphi^{(n)}(0)\,.
+\end{equation}
+%-----------------------------------------------------------------------------------------
+\subsection{Transforming distributions}
+Linear transformations previously introduced on functions generalise identically to
+distributions, \ie conjugation, reflection, scaling, and translation. Changes of variable
+in distributional integral also work identically to standard functions. We will not give
+here the formal definitions. Instead, we will mainly discuss those transformations in the
+context of examples involving the delta function.
+
+Let $\varphi$ be a Schwartz function. Regarding translations, the statement above leads to
+the formula
+\begin{equation}
+  \intr{x}\delta(x-a)\varphi(x)=\varphi(a)\,,
+\end{equation}
+where $a\in\R$. The equality above comes from using the change of variable $y=x+a$ and the
+definition of the delta function. Another possible observation is that $\delta$ is even,
+indeed,
+\begin{equation}
+  \intr{x}\delta(-x)\varphi(x)=\intr{x}\delta(y)\varphi(-y)=\varphi(0)\,,
+\end{equation}
+with $y=-x$, so
+\begin{equation}
+  \delta(-x)=\delta(x)\,,
+\end{equation}
+in the sense of distributions. We can similarly look at scaling, \ie
+\begin{equation}
+  \intr{x}\delta(ax)\varphi(x)=\frac{1}{|a|}\intr{x}\delta(y)\varphi(a^{-1}y)
+  =\frac{\varphi(0)}{|a|}\,,
+\end{equation}
+with $y=ax$, and we assumed that $a\neq 0$. This leads to the distribution equality
+\begin{equation}
+  \delta(ax)=\frac{1}{|a|}\delta(x)\,.
+\end{equation}
+
+A more complicated question is whether we can combine $\delta$ with other functions. It
+can be show that if $f$ is a moderately growing function continuous in $a\in\R$, one has
+the following equality
+\begin{equation}
+  \delta(x-a)f(x)=\delta(x-a)f(a)\,,
+\end{equation}
+in the sense of distributions. Approximating $\delta$ by a Gaussian kernel, this last
+equation can be seen as a reformulation of \cref{cor:gauss-sample}. Defining the product
+above if $f$ is discontinuous, or generally a distribution, is a highly non-trivial
+problem. In general, it is well-defined to multiply distributions by smooth functions,
+however multiplying distributions with distributions is ill-defined. It is a relevant
+issue in some physical applications (\eg quantum field theory), but largely beyond the
+scope of this course. It is also possible to define the convolution product for some
+distributions. Some identities above, as well as~\cref{thm:gaussian-unit}, can be
+reformulated as
+\begin{equation}
+  (f\ast\delta)(x)=f(x)\,,
+\end{equation}
+which is well-defined if $f$ is at least continuous. This last identity is important, as
+it shows that the delta function is essentially a unit for the convolution product,
+and~\cref{prop:delta-nogo} implies that there exists no standard function that fit that
+requirement. Finally, we can look into composing a distribution with a function. This can
+be generally defined through the change of variable formula, although the exact definition
+can be quite technical. Let $u$ be a smooth and invertible function on $\R$ such that the
+derivative of $u$ never cancels on $\R$. Then there is a unique point $x_0\in\R$ such that
+$u(x_0)=0$, and we can write
+\begin{equation}
+  \intr{x}\delta[u(x)]\varphi(x)=\intr{y}\delta(y)|(u^{-1})'(y)|\varphi[u^{-1}(y)]
+\end{equation}
+where used the change of variables $y=u(x)$. Since $u^{-1}[u(x)]=x$, the derivative of the
+inverse $u^{-1}$ is given by
+\begin{equation}
+  (u^{-1})'(x)=\frac{1}{u'[u^{-1}(x)]}\,,
+\end{equation}
+and therefore
+\begin{equation}
+  \intr{x}\delta[u(x)]\varphi(x)=\frac{\varphi(x_0)}{|u'(x_0)|}\,.
+\end{equation}
+This result can be written as
+\begin{equation}
+  \delta[u(x)]=\frac{\delta(x-x_0)}{|u'(x_0)|}\,,
+\end{equation}
+in the sense of distributions. The formula above can be generalised to more general
+functions. For example, if $f$ is a smooth function that has zeros according to a sequence
+$x_n$, and additionally if the derivative $f'$ never cancels at $x_n$ for all $n$, then
+one can show that
+\begin{equation}
+  \delta[f(x)]=\sum_n\frac{\delta(x-x_n)}{|f'(x_n)|}\,,
+\end{equation}
+which we admit here. Composition can also be defined even if $f'$ cancels on the zeros of
+$f$, but the result generally depends on some arbitrary regularisation procedure. Let us
+discuss a couple of examples of the composition formula above.
+\begin{example}
+  If $a$ is a non-zero real number, then
+  \begin{equation}
+    \delta(x^2-a^2)=\frac{1}{2|a|}[\delta(x-a)+\delta(x+a)]\,.
+  \end{equation}
+\end{example}
+\begin{example}
+  If $\omega$ is a non-zero real number, then
+  \begin{equation}
+    \delta[\sin(\omega x)]=\sumz{n}\frac{\delta(x-n\pi)}{|\cos(n\pi)|}=\sumz{n}\delta(x-n\pi)\,.
+  \end{equation}
+\end{example}
+%-----------------------------------------------------------------------------------------
+\subsection{Distributional Fourier transform}
+As we have conjectured in the introduction of this section, the Fourier transform of a
+distribution can be defined by generalising \cref{thm:fourier-adj}:
+\begin{definition}
+  Let $F$ be a distribution on $\R$. The Fourier transform $\hat{F}=\mathcal{F}F$ of $F$
+  is the distribution defined for all Schwartz functions $\varphi$ by
+  \begin{align}
+    \hat{F}(\varphi)=F(\hat{\varphi})\,.
+  \end{align}
+  Additionally, we will abusively write
+  \begin{equation}
+    \hat{F}(\omega)=\intr{x}F(x)\,e^{-2\pi i \omega x}\,,
+  \end{equation}
+  which allows to rewrite the definition above as
+  \begin{align}
+    \intr{\omega}\hat{F}(\omega)\varphi(\omega)&=\intr{\omega}
+    \intr{x}F(x)\,e^{-2\pi i \omega x}\varphi(\omega)\notag\\
+    &=\intr{x}F(x)\hat{\varphi}(x)\,,
+    \label{eq:fourier-adj-dist}
+  \end{align}
+  where the integral signs can be freely exchanged.
+\end{definition}
+A first important result is that the Fourier transform of a complex wave is a delta
+function:
+\begin{proposition}
+  For all $\omega_0\in\R$, one has
+  \begin{equation}
+    \intr{x}e^{2\pi i (\omega_0-\omega)x}=\delta(\omega-\omega_0)
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Let $\varphi$ be a Schwartz function, then
+  \begin{equation}
+    \intr{\omega}\intr{x}e^{2\pi i (\omega_0-\omega)x}\varphi(\omega)=
+    \intr{x}e^{2\pi i\omega_0x}\hat{\varphi}(x)=\varphi(\omega_0)\,.
+  \end{equation}
+\end{proof}
+In particular, this last result justifies the expected formula
+\begin{equation}
+  \intr{x}\delta(x)=1\,.
+\end{equation}
+We now formulate the inversion theorem, which is a direct consequence of the Fourier
+inversion theorem for Schwartz functions.
+\begin{theorem}[Distributional Fourier inversion]
+  Let $F$ be a distribution on $\R$. Then
+  \begin{equation}
+    (\mathcal{F}^2F)(-x)=F(x)\,,
+  \end{equation}
+  which can be equivalently written
+  \begin{equation}
+    F(x)=\intr{\omega}\hat{F}(\omega)\,e^{2\pi i\omega x}\,.
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  Let $\varphi$ be a Schwartz function, then
+  \begin{align}
+    \intr{x}(\mathcal{F}^2F)(-x)\varphi(x)&=\intr{x}(\mathcal{F}^2F)(x)\varphi(-x)\notag\\
+    &=\intr{x}\mathcal{F}F(x)\mathcal{F}^{-1}\varphi(x)\notag\\
+    &=\intr{x}F(x)\varphi(x)\,,
+  \end{align}
+  where we used \cref{cor:ft-id}.
+\end{proof}
+If $f$ is a smooth moderately growing function on $\R$, the Fourier inversion can also
+simply be written as
+\begin{align}
+  \intr{\omega}\hat{f}(\omega)\,e^{2\pi i\omega x}&=
+  \intr{\omega}\intr{y}f(y)\,e^{2\pi i\omega (x-y)}\notag\\
+  &=\intr{y}f(y)\,\delta(x-y)=f(x)\,.
+\end{align}
+One can also show that the known transformation properties of the Fourier transform for
+Schwartz functions generalise identically to distributions.
+\begin{proposition}
+  The conjugation, reflection, translation, and scaling properties of~\cref{prop:ft-trans}
+  generalise identically to distributions.
+\end{proposition}
+\begin{proof}
+  Left as an exercise to the reader.
+\end{proof}
+Additionally, the crucial duality between derivatives and powers through the Fourier
+transform generalises to distributions.
+\begin{proposition}
+  Let $F$ be a distribution on $\R$. Then for all non-negative integers $\alpha$,
+  \begin{equation}
+    \hat{F}^{(\alpha)}(\omega)=(-2\pi i\omega)^\alpha\hat{F}(\omega)
+    \qquad\text{and}\qquad
+    \mathcal{F}(F^{(\alpha)})(\omega)=(2\pi i\omega)^{\alpha}\hat{F}(\omega)\,,
+  \end{equation}
+  in the sense of distributions.
+\end{proposition}
+\begin{proof}
+  Let $\varphi$ be a Schwartz function, then
+  \begin{align}
+    \intr{x}\hat{F}^{(\alpha)}(\omega)\,\varphi(\omega)
+    &=(-1)^{\alpha}\intr{\omega}\hat{F}(\omega)\,\varphi^{(\alpha)}(\omega)\notag\\
+    &=(-1)^{\alpha}\intr{x}F(x)\,\mathcal{F}[\varphi^{(\alpha)}](x)\notag\\
+    &=(-2\pi i\omega)^{\alpha}\intr{x}F(x)\,\hat{\varphi}(x)\notag\\
+    &=(-2\pi i\omega)^{\alpha}\intr{x}\hat{F}(x)\,\varphi(x)\,,
+  \end{align}
+  which proves the first identity. The second identity is obtained in the same way but
+  with another order of operations, and is left as an exercise to the reader.
+\end{proof}
+Generalising convolution products to the convolution of two distributions $F$ and $G$ is a
+non-trivial task which we will not formulate in details. However, the convolution theorem
+holds when this is possible, so in physics applications one generally considers that if
+$\hat{F}\hat{G}$ is well-defined, then its Fourier transform is the convolution product
+$F\ast G$.
+
+Finally, we state important characterisations of the Fourier transforms of some classes of
+standard functions, which we will admit here.
+\begin{theorem}
+  The following properties hold:
+  \begin{enumerate}
+    \item If $f$ is an integrable function (\ie $\intr{x}|f(x)|$ is finite), then
+      $\hat{f}$ if continuous and decays to zero at infinity.
+    \item If $f$ is a square-integrable function (\ie $\intr{x}|f(x)|^2$ is finite), then
+      $\hat{f}$ is also square-integrable and the Plancherel theorem holds, explicitly
+      \begin{equation}
+        \intr{x}|f(x)|^2=\intr{\omega}|\hat{f}(\omega)|^2\,.
+      \end{equation}
+  \end{enumerate}
+\end{theorem}
+We conclude these section with some important examples
+\begin{proposition}
+  Let $P$ be the degree $N$ polynomial defined by
+  \begin{equation}
+    P(x)=\sum_{n=0}^Na_nx^n\,,
+  \end{equation}
+  for all $x\in\R$. The Fourier transform of $P$ is given by
+  \begin{equation}
+    \hat{P}(\omega)=\sum_{n=0}^N\frac{a_n}{(-2\pi i)^n}\,\delta^{(n)}(\omega)\,,
+  \end{equation}
+  in the sense of distributions.
+\end{proposition}
+\begin{proof}
+  We have
+  \begin{equation}
+    \mathcal{F}^{-1}(\delta^{(n)})(x)=(-2\pi i x)^n\mathcal{F}^{-1}(\delta)=
+    (-2\pi i x)^n\,,
+  \end{equation}
+  which implies the proposition by linearity.
+\end{proof}
