@@ -1024,6 +1024,7 @@ A more complicated question is whether we can combine $\delta$ with other functi
 can be show that if $f$ is a moderately growing function continuous in $a\in\R$, one has
 the following equality
 \begin{equation}
+  \label{eq:delta-times-f}
   \delta(x-a)f(x)=\delta(x-a)f(a)\,,
 \end{equation}
 in the sense of distributions. Approximating $\delta$ by a Gaussian kernel, this last
@@ -1084,6 +1085,35 @@ discuss a couple of examples of the composition formula above.
     \delta[\sin(\omega x)]=\sumz{n}\frac{\delta(x-n\pi)}{|\cos(n\pi)|}=\sumz{n}\delta(x-n\pi)\,.
   \end{equation}
 \end{example}
+
+Finally, it is also useful to know how to multiply a smooth function $f$ by a derivative of
+the delta function. In general, if $F$ is a distribution, then one has
+the usual formula $(Ff)'=F'f+Ff'$. Indeed,
+\begin{align}
+  (Ff)'(\varphi)=\intr{x}[Ff]'(x)\varphi(x)&=-\intr{x}F(x)f(x)\varphi'(x)\notag\\
+  &=-\intr{x}F(x)[(f\varphi)'(x)-f'(x)\varphi(x)]\notag\\
+  &=\intr{x}[F'(x)f(x)+F(x)f'(x)]\varphi(x)\notag\\
+  &=(F'f)(\varphi)+(Ff')(\varphi)\,.
+\end{align}
+By differentiating in $x$ on both sides of~\cref{eq:delta-times-f}, we therefore obtain
+\begin{equation}
+  \delta'(x-a)f(x)+\delta(x-a)f'(x)=\delta'(x-a)f(a)\,,
+\end{equation}
+which can be simplified as
+\begin{equation}
+  \label{eq:delta1-times-f}
+  \delta'(x-a)f(x)=\delta'(x-a)f(a)-\delta(x-a)f'(a)\,.
+\end{equation}
+In general, using recursively the steps above, one obtains
+\begin{equation}
+  \label{eq:deltan-times-f}
+  \delta^{(\alpha)}(x-a)f(x)
+  =\sum_{j=0}^{\alpha}(-1)^j\binom{\alpha}{j}f^{(j)}(a)\delta^{(\alpha-j)}(x-a)\,,
+\end{equation}
+where $\binom{\alpha}{j}$ is the binomial coefficient
+\begin{equation}
+  \binom{\alpha}{j}=\frac{\alpha!}{j!(\alpha-j)!}\,.
+\end{equation}
 %-----------------------------------------------------------------------------------------
 \subsection{Distributional Fourier transform}
 As we have conjectured in the introduction of this section, the Fourier transform of a
@@ -1166,25 +1196,27 @@ Schwartz functions generalise identically to distributions.
 Additionally, the crucial duality between derivatives and powers through the Fourier
 transform generalises to distributions.
 \begin{proposition}
+  \label{prop:ft-der-distrib}
   Let $F$ be a distribution on $\R$. Then for all non-negative integers $\alpha$,
   \begin{equation}
-    \hat{F}^{(\alpha)}(\omega)=(-2\pi i\omega)^\alpha\hat{F}(\omega)
-    \qquad\text{and}\qquad
     \mathcal{F}(F^{(\alpha)})(\omega)=(2\pi i\omega)^{\alpha}\hat{F}(\omega)\,,
   \end{equation}
   in the sense of distributions.
 \end{proposition}
 \begin{proof}
   Let $\varphi$ be a Schwartz function, then
-  \begin{align}
-    \intr{x}\hat{F}^{(\alpha)}(\omega)\,\varphi(\omega)
-    &=(-1)^{\alpha}\intr{\omega}\hat{F}(\omega)\,\varphi^{(\alpha)}(\omega)\notag\\
-    &=(-1)^{\alpha}\intr{x}F(x)\,\mathcal{F}[\varphi^{(\alpha)}](x)\notag\\
-    &=(-2\pi i\omega)^{\alpha}\intr{x}F(x)\,\hat{\varphi}(x)\notag\\
-    &=(-2\pi i\omega)^{\alpha}\intr{x}\hat{F}(x)\,\varphi(x)\,,
-  \end{align}
-  which proves the first identity. The second identity is obtained in the same way but
-  with another order of operations, and is left as an exercise to the reader.
+  \begin{equation}
+    \intr{\omega}\mathcal{F}(F^{(\alpha)})(\omega)\,\varphi(\omega)
+    =(-1)^{\alpha}\intr{x}F(x)\hat{\varphi}^{(\alpha)}(x)\,.
+  \end{equation}
+  We know that $\hat{\varphi}^{(\alpha)}$ is the Fourier transform
+  of the function defined
+  by $(-2\pi i\omega)^\alpha\varphi(\omega)$ (\cf\cref{prop:ft-trans}), therefore
+  \begin{equation}
+    \intr{\omega}\mathcal{F}(F^{(\alpha)})(\omega)\,\varphi(\omega)=
+    \intr{\omega}(2\pi i\omega)^\alpha\hat{F}(\omega)\varphi(\omega)\,,
+  \end{equation}
+  which proves the proposition.
 \end{proof}
 Generalising convolution products to the convolution of two distributions $F$ and $G$ is a
 non-trivial task which we will not formulate in details. However, the convolution theorem
@@ -1226,3 +1258,43 @@ We conclude these section with some important examples
   \end{equation}
   which implies the proposition by linearity.
 \end{proof}
+%-----------------------------------------------------------------------------------------
+\subsection{Summary for the pragmatic physicist}
+Distributions are rather abstract objects, which can obfuscate the elegance of the
+formalism they provide. Their introduction was strongly motivated by physics problems
+which appeared to be solvable through Fourier analysis despite clear convergence issues
+with the Fourier transform integral form. In summary:
+\begin{itemize}
+  \item The derivative of any function is defined in the sense of distributions. This
+    conveniently includes discontinuous functions. Derivatives at discontinuity points
+    generally generate purely distributional contributions (\eg delta functions) that
+    would be undefined with standard functions.
+  \item Distributional derivatives obey standard differentiation formulae.
+  \item The Fourier transform of any function is defined in the sense of distributions,
+    even if the standard definition as an integral is manifestly divergent.
+  \item The Fourier transform of a distribution has the same transformation properties as
+    standard functions (\ie the properties in \cref{prop:ft-trans}).
+  \item Inversion and convolution theorems also hold for distributions.
+  \item The delta function $\delta(\omega-a)$ is the Fourier transform of the elementary
+    wave $e^{2\pi i xa}$, which provides useful identities in wave physics that would be
+    otherwise undefined with standard functions.
+\end{itemize}
+In short, manipulating expressions in the sense of distributions requires considerably
+less care than with standard functions, and most well-known properties hold. In physics,
+functional manipulations are generally implicitly assumed to be in the sense of
+distributions, particularly in field theory or when solving partial differential
+equations. Distributions are abstract objects that can generally not represent a measurable
+quantity; however, they are convenient and flexible for intermediate steps in a physical
+theory.
+
+The most important caveat with distributions is that one has to be very careful when
+multiplying distributions. Multiplying a distribution by a smooth function is always
+well-defined, but multiplying distributions that have non-smooth behaviour at identical
+points almost always requires an arbitrary regularisation to be defined. For example, the
+square of the delta function is not a well-defined distribution on its own.
+
+Another limitation of Fourier analysis is that it can only describe functions that have
+moderate growth. Functions with rapid growth (\eg exponential growth) can be relevant in
+physics, and will not have a well-defined Fourier transform, even in the sense of
+distributions. As we will see in the next chapter, they can nevertheless be described
+indirectly through analytical continuation.
