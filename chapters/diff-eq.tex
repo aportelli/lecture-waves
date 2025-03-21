@@ -1,12 +1,12 @@
 % !TEX root = ../waves.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-A key property of the Fourier transform is that it transforms derivatives in powers, as
+A key property of the Fourier transform is that it transforms derivatives into powers, as
 stated in~\cref{prop:ft-trans,prop:ft-der-distrib}:
 \begin{equation}
   \mathcal{F}(F^{(\alpha)})(\omega)=(2\pi i\omega)^{\alpha}\hat{F}(\omega)\,,
 \end{equation}
-where $F$ is a distribution and $\alpha$ is a non-negative integer. We also saw previously
-a similar property for Fourier series, \cf\cref{prop:fourier-coef-trans}. We used this
+where $F$ is a distribution and $\alpha$ is a non-negative integer. We also previously saw
+a similar property for Fourier series, \cf\cref{prop:fourier-coef-trans}. We have used this
 property several times already to discuss the decay rate of the Fourier coefficients, or
 Fourier transform, of a function. Another key application is differential equations, which
 in some cases can be considerably simplified by using the formula above.
@@ -14,19 +14,19 @@ in some cases can be considerably simplified by using the formula above.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Linear ordinary differential equations}
 %-----------------------------------------------------------------------------------------
-We start by ordinary differential equations, \ie differential equations for which the
-unknown function has one real variable.
+We start with ordinary differential equations, \ie differential equations for which the
+unknown function is in one real variable.
 \subsection{Homogeneous equations}
 We first discuss how to systematically solve any linear homogeneous equation with constant
 coefficients. \emph{Homogeneous equations} are differential equations with a zero
 right-hand side. The method presented here is called the \emph{characteristic equation
 method}. Although it is not necessary, this method can be entirely justified using Fourier
 analysis, as we do below. Some properties used are non-trivial, and therefore we use a
-mainly heuristic presentation, starting by the well-known cases of the first and
+mainly heuristic presentation, starting with the well-known cases of the first and
 second-order equations.
 %.........................................................................................
 \subsubsection{Introduction: first-order equation}
-Let us start by a simple, well understood case: the first-order linear equation
+Let us start with a simple, well-understood case: the first-order linear equation
 \begin{equation}
   y'+ay=0\,,\label{eq:ode1}
 \end{equation}
@@ -37,18 +37,18 @@ where $a\in\R$. It is well-known that the solutions of this equation are given b
 \end{equation}
 where $C\in\R$ is a constant that is generally determined using a given initial condition.
 Let us see how this result can be re-derived using Fourier analysis. Computing the Fourier
-transform on both side of \cref{eq:ode1}, one obtains
+transform on both sides of \cref{eq:ode1}, one obtains
 \begin{equation}
   (2\pi i\omega+a)\,\hat{y}(\omega)=0\,.
   \label{eq:ode1-ft}
 \end{equation}
-Since $a$ is real, $2\pi i\omega+a\neq 0$ and therefore $\hat{y}(\omega)=0$ for all
+Since $a$ is real, $2\pi i\omega+a\neq 0$, and therefore $\hat{y}(\omega)=0$ for all
 $\omega$. This naively seems inconsistent with \cref{eq:ode1-sol}. One limitation of the
 Fourier transform is that it can only describe functions with moderate growth, and
 \cref{eq:ode1-sol} has exponential growth. What we found is the only solution with
-moderate growth, which is correctly \cref{eq:ode1-sol} with $C=0$. It is somehow
-disappointing that Fourier analysis seems to fail solving the simplest differential
-equation. However, as we will see the solution \cref{eq:ode1-sol} can be obtained, just
+moderate growth, which is correctly \cref{eq:ode1-sol} with $C=0$. It is somewhat
+disappointing that Fourier analysis seems to fail in solving the simplest differential
+equation. However, as we will see, the solution \cref{eq:ode1-sol} can be obtained, just
 not directly.
 
 Let us assume more generally that $a$ is a complex number. If $a$ is purely imaginary, \ie
@@ -58,7 +58,7 @@ $\omega\neq\omega_0$, \cref{eq:ode1-ft} implies $\hat{y}(\omega)=0$. If we assum
 $\hat{y}$ is a standard function, the previous statement once more implies that $y=0$,
 since the value of $\hat{y}$ at a single point is irrelevant when taking the inverse
 Fourier transform. However, this is not the only possibility if $\hat{y}$ is a
-distribution. Indeed, if for example
+distribution. Indeed, if, for example,
 \begin{equation}
   \hat{y}(\omega)=C\,\delta(\omega-\omega_0)\,,
   \label{eq:ode1-delta}
@@ -70,7 +70,7 @@ inverse Fourier transform, we obtain
 \end{equation}
 which is the desired solution. There is still one important limitation: the procedure
 above only works for $a$ purely imaginary. However, once the solution above has been
-obtained, we can notice it is in fact valid for any complex number $a$, which include real
+obtained, we can notice it is in fact valid for any complex number $a$, which includes real
 values. This extension at the final step is generally referred to as \emph{analytical
 continuation}.
 
@@ -81,20 +81,20 @@ steps that naively look arbitrary:
   \item Using a delta function in \cref{eq:ode1-delta} solves \cref{eq:ode1-ft}, but is
     this choice unique?
   \item The method was initially limited to $a$ purely imaginary, yet it generated a more
-    general solution, is that generally expected?
+    general solution. Is that generally expected?
 \end{enumerate}
 Regarding point 1, there is indeed a non-trivial characterisation of distributions that
 vanish everywhere except at one point, which implies that the delta function was a unique
-solution, we will discuss that explicitly in the next part of this section. For point 2,
+solution. We will discuss that explicitly in the next part of this section. For point 2,
 it is generally expected that such continuation is possible if the Fourier transform of
 $y$ vanishes everywhere except at a finite number of points. This is a non-trivial result,
 which relates the Fourier transform to a similar operation called the \emph{Laplace
-transform}. We will admit that such continuation is expected, in practice one can always
+transform}. We will admit that such continuation is expected. In practice, one can always
 attempt such extension, and check using the differential equation that new solutions are
-obtained. Let us now discuss in details point 1.
+obtained. Let us now discuss point 1 in detail.
 %.........................................................................................
 \subsubsection{Structure theorem}
-We start by stating the following \emph{structure theorem}, this is a highly non-trivial
+We start by stating the following \emph{structure theorem}. This is a highly non-trivial
 result that will be admitted here.
 \begin{theorem}
   \label{thm:structure}
@@ -111,20 +111,20 @@ result that will be admitted here.
 \end{theorem}
 So if a distribution is zero everywhere except at one point, then it must be a linear
 combination of the delta function and its derivatives at this point. If a function cancels
-at a finite number of points, then each zero can contribution delta functions (and
+at a finite number of points, then each zero can contribute delta functions (and
 derivatives) to $F$. In the previous case of \cref{eq:ode1-ft}, we did not consider
 derivatives as possible solutions, which we will now justify. The theorem above can be
 specialised for polynomials, where the highest possible derivative of the delta function
-contributing to $F$ is associated to the multiplicity of the associated root:
+contributing to $F$ is associated with the multiplicity of the associated root:
 \begin{theorem}
   \label{thm:structure-poly}
-  Let $P(x)$ be a polynomial which admits a real root of multiplicity $d$ at $x=x_0$. Let
+  Let $P(x)$ be a polynomial that admits a real root of multiplicity $d$ at $x=x_0$. Let
   $F$ be a distribution on $\R$ such that
   \begin{equation}
     F(x)P(x)=0\,,
     \label{eq:prodzero-poly}
   \end{equation}
-  in the sense of distributions. Then there exists $d$ complex numbers $c_n$ such that
+  in the sense of distributions. Then there exist $d$ complex numbers $c_n$ such that
   \begin{equation}
     F(x)=\sum_{n=0}^{d-1}c_n\,\delta^{(n)}(x-x_0)\,.
   \end{equation}
@@ -152,7 +152,7 @@ contributing to $F$ is associated to the multiplicity of the associated root:
   Using~\cref{eq:deltan-times-f}, $\delta^{(n)}(x-x_0)P(x)$ will always contain a non-zero
   term if $n\geq 1$ (\ie the term with $j=1$ in \cref{eq:deltan-times-f}). So in order to
   satisfy~\cref{eq:prodzero-poly}, we must have $N=0$, \ie $F$ can only be proportional to
-  the delta function. The case of arbitrary multiplicity is similar, one can show that
+  the delta function. The case of arbitrary multiplicity is similar. One can show that
   there exists a polynomial $R(x)$ such that
   \begin{equation}
     P^{(d)}(x)=d!Q(x)+(x-x_0)R(x)\,,
@@ -161,7 +161,7 @@ contributing to $F$ is associated to the multiplicity of the associated root:
   $P^{(d)}(x_0)\neq 0$, and $\delta^{(n)}(x-x_0)P(x)\neq 0$ if $n\geq d$. So necessarily
   $N<d$ and the theorem is proven.
 \end{proof}
-Coming back to~\cref{eq:ode1-ft}, the polynomial $2\pi i\omega +a$ has degree $1$, and for
+Returning to~\cref{eq:ode1-ft}, the polynomial $2\pi i\omega +a$ has degree $1$, and for
 $a=i\alpha$ it has one real root of multiplicity $1$, so $\hat{y}$ must be proportional to
 the delta function. Let us now apply these results to the case of the second-order
 equation.
@@ -180,9 +180,9 @@ $P(\omega)$ is a degree 2 polynomial with the following root structure:
   \item If $a>0$, $P(\omega)$ has two real single roots
     $\omega_{\pm}=\pm\frac{\sqrt{a}}{2\pi}$;
   \item If $a=0$, $P(\omega)$ has a real double root at $\omega=0$;
-  \item If $a<0$, $P(\omega)$ has the two complex roots $i\omega_{\pm}$.
+  \item If $a<0$, $P(\omega)$ has two complex roots $\omega_{\pm}$.
 \end{itemize}
-Using \cref{thm:structure-poly}, if $a>0$, there exists two constants $A$ and $B$ such
+Using \cref{thm:structure-poly}, if $a>0$, there exist two constants $A$ and $B$ such
 that
 \begin{equation}
   \hat{y}(\omega)=A\,\delta(\omega-\omega_-)+B\,\delta(\omega-\omega_+)\,,
@@ -199,8 +199,8 @@ which can be written in the more usual form
 with $\alpha=A+B$ and $\beta=i(A-B)$. In this case, the solution is periodic and could
 have been obtained with a Fourier series expansion, \cf\cref{fourierode2}.
 
-Now, if $a=0$, $y''=0$ and clearly $y$ is linear. But let us use \cref{thm:structure-poly}
-regardless: since $\omega=0$ is a double root of $P(\omega)$, there exists two constants
+Now, if $a=0$, $y''=0$, and clearly $y$ is linear. But let us use \cref{thm:structure-poly}
+regardless: since $\omega=0$ is a double root of $P(\omega)$, there exist two constants
 $A$ and $B$ such that
 \begin{equation}
   \hat{y}(\omega)=A\,\delta(\omega)+B\,\delta'(\omega)\,,
@@ -214,20 +214,19 @@ which is the expected linear result.
 Finally, if $a<0$, $P(\omega)$ has no real roots and, strictly speaking, the only solution
 coming from the Fourier transform is zero. However, as we did in the first-order case, we
 can analytically continue the result obtained in~\cref{eq:ode2-periodic} to the two
-complex roots $\omega=i\omega_{\pm}$ of $P(\omega)$, which leads to the potential solution
+complex roots of $P(\omega)$, which leads to the potential solution
 \begin{equation}
-  y(t)=A\,e^{-2\pi\omega_+t}+B\,e^{-2\pi\omega_-t}=
-  A\,e^{-\sqrt{a}t}+B\,e^{\sqrt{a}t}\,.
+  y(t)=A\,e^{-\sqrt{a}t}+B\,e^{\sqrt{a}t}\,.
   \label{eq:ode2-exp}
 \end{equation}
 One can easily check that the continuation above is indeed a solution. Once again, this
 solution cannot be found directly using a Fourier transform since it contains
 exponentially growing terms. As we can see, the method described in this section
-reconstructs easily the well-know three classes of solutions for this equation, without
+reconstructs easily the well-known three classes of solutions for this equation, without
 prior knowledge. Let us now look at the case of the damped oscillator.
 %.........................................................................................
 \subsubsection{Damped second-order equation}
-Then damped harmonic oscillator equation is given by:
+The damped harmonic oscillator equation is given by:
 \begin{equation}
   y''+2aby'+a^2y=0\,,
 \end{equation}
@@ -235,37 +234,37 @@ where $a$ and $b$ are positive real numbers. This equation has the Fourier form
 \begin{equation}
   \label{eq:ode2-damped-ft}
   P(2\pi i\omega)\hat{y}(\omega)=0,\qquad\text{with}\qquad
-  P(s)=s^2+2sab\omega+a^2\,.
+  P(s)=s^2+2sab+a^2\,.
 \end{equation}
 As we saw in the previous cases, specifically in~\cref{eq:ode2-periodic,eq:ode2-exp}, the
 roots of the polynomial appearing in the Fourier-transformed equation always end up being
 multiplied by $2\pi i$ in the solution. Therefore, it is generally simpler to arbitrarily
 consider a polynomial in the variable $s=2\pi i\omega$. The variable $s$ is sometimes
-called \emph{in the Laplace domain}, it is an imaginary frequency in contrast with
-$\omega$ which is said to be \emph{in the Fourier domain}. The polynomial $P(s)$ can be
+called \emph{in the Laplace domain}; it is an imaginary frequency in contrast with
+$\omega$, which is said to be \emph{in the Fourier domain}. The polynomial $P(s)$ can be
 factorised as follows
 \begin{equation}
   P(s)=(s+ab)^2+a^2(1-b^2)\,,
 \end{equation}
 which leads to the three cases:
 \begin{itemize}
-  \item If $b<1$, $P(s)$ has the two single complex roots
+  \item If $b<1$, $P(s)$ has two single complex roots
     \begin{equation}
       s_{\pm}=-ab\pm ia\sqrt{1-b^2}\,.
     \end{equation}
-  \item If $b>1$, $P(s)$ has the two single real roots
+  \item If $b>1$, $P(s)$ has two single real roots
     \begin{equation}
       \bar{s}_{\pm}=-ab\pm a\sqrt{b^2-1}\,.
     \end{equation}
   \item If $b=1$, $P(s)$ has one double real root at $s_0=-a$.
 \end{itemize}
-In all cases, all roots in the Fourier domain are purely complex and therefore the
+In all cases, all roots in the Fourier domain are purely complex, and therefore the
 equation \cref{eq:ode2-damped-ft} systematically leads to the trivial solution $y=0$.
 However, clearly all roots above could be made real if one would consider complex values
 for $a$ and $b$, and one can try to use analytical continuation. So, treating roots as if
 they were real, we obtain
 \begin{enumerate}
-  \item If $b<1$, there exists two constants $A$ and $B$ such that
+  \item If $b<1$, there exist two constants $A$ and $B$ such that
     \begin{equation}
       \hat{y}(\omega)=A\,\delta(\omega-\omega_+)+B\,\delta(\omega-\omega_-)\,,
     \end{equation}
@@ -280,7 +279,7 @@ they were real, we obtain
     \end{align}
     with $\alpha=A+B$ and $\beta=i(A-B)$. This is the \emph{underdamped regime}, with
     oscillations decaying exponentially fast.
-  \item If $b>1$, there exists two constants $A$ and $B$ such that
+  \item If $b>1$, there exist two constants $A$ and $B$ such that
     \begin{equation}
       \hat{y}(\omega)=A\,\delta(\omega-\bar{\omega}_+)+B\,\delta(\omega-\bar{\omega}_-)\,,
     \end{equation}
@@ -293,7 +292,7 @@ they were real, we obtain
     \end{align}
     Clearly $ab\pm a\sqrt{b^2-1}>0$, and this solution is decaying exponentially fast for
     $t\to+\infty$. This case is called the \emph{overdamped regime}.
-  \item Finally, if $b=1$, there exists two constants $A$ and $B$ such that
+  \item Finally, if $b=1$, there exist two constants $A$ and $B$ such that
     \begin{equation}
       \hat{y}(\omega)=A\,\delta(\omega-\omega_0)+B\,\delta'(\omega-\omega_0)\,,
     \end{equation}
@@ -318,7 +317,7 @@ below.
 \begin{enumerate}
   \item The polynomial
     \begin{equation}
-      P(s)=\sum_{j=0}^{n} s^na_n\,,
+      P(s)=\sum_{j=0}^{n} s^ja_j\,,
     \end{equation}
     is called the \emph{characteristic polynomial} of \cref{eq:oden}. It is defined such
     that
@@ -327,7 +326,7 @@ below.
     \end{equation}
     for all frequencies $\omega\in\R$. The first step is to determine the roots of $P(s)$.
     Since $P(s)$ is of degree $n$, it has $n$ complex roots, with potential degeneracies.
-    We note $s_j$, with $1\leq j\leq r$ the \emph{distinct} roots of $P(s)$. Naturally
+    We note $s_j$, with $1\leq j\leq r$, the \emph{distinct} roots of $P(s)$. Naturally,
     $r\leq n$, and we note $m_j$ the multiplicity of root $s_j$.
   \item Each root contributes
     \begin{equation}
@@ -339,7 +338,7 @@ below.
     \begin{equation}
       y(t)=\sum_{j=1}^{r}y_j(t)\,,
     \end{equation}
-    and is parameterised by a total of $n$ integration constants. For each $j$, the real
+    and is parametrised by a total of $n$ integration constants. For each $j$, the real
     part of $s_j$ contributes an exponentially varying term, and the imaginary part an
     oscillatory term.
 \end{enumerate}
@@ -353,8 +352,8 @@ non-homogeneous equations.
 %-----------------------------------------------------------------------------------------
 \subsection{Non-homogeneous equations}
 In the non-homogeneous case, equations can have an arbitrary function on their right-hand
-side. Physically, the right-hand side often represent an external interaction term with
-the system, \eg a driving force in the case of oscillators. Fourier analysis gives a
+side. Physically, the right-hand side often represents an external interaction term with
+the system, \eg a driving force in the case of oscillators. Fourier analysis provides a
 systematic way of solving this case using Green's function, which is a crucial method in
 numerous physical applications. Let us first describe the general method.
 %.........................................................................................
@@ -377,11 +376,11 @@ a particular solution of \cref{eq:oden-nonh} is given by
   y_P(t)=\intr{\omega}\frac{\hat{f}(\omega)}{P(2\pi i\omega)}\,e^{2\pi i \omega t}\,.
   \label{eq:oden-part}
 \end{equation}
-The inverse Fourier transform above is in the sense of distribution, and special care
+The inverse Fourier transform above is in the sense of distributions, and special care
 might be needed if $P(2\pi i\omega)$ has real roots in $\omega$, which generates
 singularities in the integrand above.
 
-There is a standard way un physics to express the solution above. First, one define the
+There is a standard way in physics to express the solution above. First, one defines the
 \emph{Green's function} $G$, sometimes also called \emph{fundamental solution}, as the
 solution of~\cref{eq:oden-nonh} for $f(t)=\delta(t)$. Since the Fourier transform of the
 delta function is $1$, clearly
@@ -430,8 +429,8 @@ dimensionless number. We already solved the homogeneous equation in the previous
 \cf \cref{eq:ode2-damped-under,eq:ode2-damped-over,eq:ode2-damped-crit}, with $a=\omega_0$
 and $b=\zeta$.
 
-We now want to find particular solutions of the non-homogenous equations. This can be done
-by finding the Green's function $G$ of~\cref{eq:ode2-driven}. Following
+We now want to find particular solutions of the non-homogeneous equations. This can be
+done by finding the Green's function $G$ of~\cref{eq:ode2-driven}. Following
 \cref{eq:green-ft},
 \begin{equation}
   G(t)=\intr{\omega}\frac{e^{2\pi i\omega t}}{P(2\pi i\omega)}\,,
@@ -459,12 +458,12 @@ form
   \intr{\omega}\frac{e^{2\pi i\omega t}}{2\pi i \omega-z}\,,
 \end{equation}
 where $z$ is a complex number such that $\Re(z)<0$. A useful and simple identity,
-sometimes referred to as the \emph{Schwinger parameterisation}, is as follows
+sometimes referred to as the \emph{Schwinger parameterisation}, is as follows:
 \begin{equation}
   \frac{1}{A}=\int_0^{+\infty}\diff\lambda\,e^{-\lambda A}
   =\intr{\lambda}\theta(\lambda)e^{-\lambda A}\,,
 \end{equation}
-where $A$ is a complex number such that $\Re(A)>0$. Since $\Re(z)<0$, then $\Re(2\pi i
+where $A$ is a complex number such that $\Re(A)>0$. Since $\Re(z)<0$, $\Re(2\pi i
 \omega-z)>0$, and therefore using the Schwinger parameterisation
 \begin{align}
   \intr{\omega}\frac{e^{2\pi i\omega t}}{2\pi i \omega-z}&=
