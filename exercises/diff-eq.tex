@@ -1,0 +1,59 @@
+% !TEX root = ../waves.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises}
+\begin{ExerciseList}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=ode-hom]
+  Solve the homogeneous differential equations below.
+  \Question $y''+2y'+2=0$
+  \Question $y^{(3)}-3y''+7y'-5=0$
+  \Question $y^{(3)}-6y''+12y'-8=0$
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=ode-rev]
+  For all cases below, find a differential equation for which $y$ is a solution.
+  \Question $y(t)=\cos(3t)$
+  \Question $y(t)=\cos(2t)-\sin(t)$
+  \Question $y(t)=(1+2t+3t^2)e^{-t}+\cos(2t)$
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=ode4]
+  We consider the following homogeneous order $4$ ordinary differential equation:
+  \begin{equation}
+    y^{(4)}+2y^{(2)}+(1-a^2)y=0\,,
+    \label{eq:ode4}
+  \end{equation}
+  where $a$ is a positive real number.
+  \Question Solve~\cref{eq:ode4} in the following cases:
+  \subQuestion $a<1$, show that $y$ is an oscillating solution according to two frequencies.
+  \subQuestion $a>1$, show that $y$ is oscillating with one frequency, and exponentially varying.
+  \subQuestion $a=1$.
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=airy]
+  We consider the Airy differential equation
+  \begin{equation}
+    y''(x)-xy(x)=0
+  \end{equation}
+  \Question Show that the Fourier transform $\hat{y}$ satisfies the differential equation
+  \begin{equation}
+    \hat{y}'(\omega)=i8\pi^3\omega\,\hat{y}(\omega)\,.
+  \end{equation}
+  \Question Show that there exists a constant $C$ such that $\hat{y}(\omega)=C\,e^{i8\pi^3\frac{\omega^3}{3}}$.
+  \Question Show that $y$ is given by $y(x)=C\,\mathrm{Ai}(x)$
+  where $\mathrm{Ai}$ is the \emph{Airy function} given by
+  \begin{equation}
+    \mathrm{Ai}(x)=\frac{1}{\pi}\int_{0}^{+\infty}\diff t\,\cos\left(\frac{t^3}{3}+xt\right)\,.
+  \end{equation}
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=green] We consider once more the driven harmonic oscillator equation
+  (\cf\cref{eq:ode2-driven})
+  \begin{equation}
+    x''+2\zeta\omega_0x'+\omega_0^2x=\frac{F}{m}\,.
+  \end{equation}
+  \Question Check explicitly that~\cref{eq:green-underdamped} is a Green's function of the
+  equation above, \ie show that
+  \begin{equation}
+    G''(t)+2\zeta\omega_0G'(t)+\omega_0^2G(t)=\delta(t)\,,
+  \end{equation}
+  in the sense of distributions.
+  \Question Compute the green function in the overdamped ($\zeta=1$) and critical
+  ($\zeta=1$) regimes.
+\end{ExerciseList}

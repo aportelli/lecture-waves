@@ -67,5 +67,23 @@
   with the initial condition $\hat{\gauss}_{\sigma}(0)=1$.
   \Question By solving the equation above, prove~\cref{thm:gauss-uncertainty}.
   %---------------------------------------------------------------------------------------
+  \Exercise[label=exp-decay]
+  We consider the function $f$ defined by
+  \begin{equation}
+    f(t)=\frac{e^{-m|t|}}{2m}\,,
+  \end{equation}
+  for $t\in\R$ and where $m$ is a positive real number. This function is common in physics
+  when discussing damped oscillations. Its Fourier transform is given by
+  \begin{equation}
+    \hat{f}(\omega)=\frac{1}{4\pi^2\omega^2+m^2}\,.
+    \label{eq:expdecay-ft}
+  \end{equation}
+  In this exercise we derive the formula above in two different ways.
+  \Question Compute directly \cref{eq:expdecay-ft} using the Fourier transform.
+  \Question Show that, in the sense of distributions,
+  \begin{equation}
+    -f''(t)+m^2f(t)=\delta(t)\,,
+  \end{equation}
+  and deduce \cref{eq:expdecay-ft} from this equation.
   \InputIfFileExists{solutions/transform}{}{}
 \end{ExerciseList}
