@@ -335,9 +335,10 @@ properties are preserved by the Fourier transform:
   \cref{prop:ft-trans}, for all $\omega\in\R$,
   \begin{equation}
     \omega^\beta\hat{f}^{(\alpha)}(\omega)
-    =\frac{1}{(2\pi i)^{\beta}}\mathcal{F}(f^{(\alpha+\beta)})(\omega)\,.
+    =\frac{1}{(2\pi i)^{\beta}}\mathcal{F}(g^{(\beta)})(\omega)\,,
   \end{equation}
-  Since $f^{(\alpha+\beta)}$ is a Schwartz function (\cref{prop:schwartz-comb}), then as
+  where $g$ is the function defined on $\R$ by $g(x)=(-2\pi ix)^{\alpha}f(x)$.
+  Since $g^{(\beta)}$ is a Schwartz function, then as
   discussed above its Fourier transform goes to zero at infinity, and therefore
   \begin{equation}
     \lim_{|\omega|\to+\infty}\omega^\beta\hat{f}^{(\alpha)}(\omega)=0\,,
@@ -542,14 +543,14 @@ We conclude this section by an explicit example of Gaussian convolution.
   \begin{equation}
     [\chi(a,b)\ast\gauss_\sigma](x)=\frac{1}{\sqrt{\pi}}
     \int_{\frac{x-b}{\sigma\sqrt{2}}}^{\frac{x-a}{\sigma\sqrt{2}}}\diff z\,e^{-z^2}
-    =\frac{1}{2}\left[\erf\left(\frac{x-b}{\sigma\sqrt{2}}\right)
-    -\erf\left(\frac{x-a}{\sigma\sqrt{2}}\right)\right]\,.
+    =\frac{1}{2}\left[\erf\left(\frac{x-a}{\sigma\sqrt{2}}\right)
+    -\erf\left(\frac{x-b}{\sigma\sqrt{2}}\right)\right]\,.
   \end{equation}
   Using this expression with~\cref{eq:sq-chi-series}, we obtain
   \begin{equation}
     f_\sigma=\frac{1}{2}\sumz{n}(-1)^{n}
-    \left[\erf\bigg(\frac{x-\frac{n+1}{2}}{\sigma\sqrt{2}}\bigg)
-    -\erf\bigg(\frac{x-\frac{n}{2}}{\sigma\sqrt{2}}\bigg)\right]\,.
+    \left[\erf\bigg(\frac{x-\frac{n}{2}}{\sigma\sqrt{2}}\bigg)
+    -\erf\bigg(\frac{x-\frac{n+1}{2}}{\sigma\sqrt{2}}\bigg)\right]\,.
     \label{eq:sq-gauss-exp}
   \end{equation}
   The result above is represented in~\cref{fig:sq-gauss}.
@@ -592,7 +593,7 @@ the main result of this chapter.
 \begin{proof}
   Let $\sigma$ be a positive real number. We define the function $G$ on $\R$ with
   \begin{equation}
-    G(\omega)=e^{-4\pi^2\sigma^2\omega^2}
+    G(\omega)=e^{-2\pi^2\sigma^2\omega^2}
     =\frac{1}{\sigma\sqrt{2\pi}}\gauss_{\frac{1}{2\pi\sigma}}(x)\,.
   \end{equation}
   $g$ is clearly a Schwartz function, and according to~\cref{thm:gauss-uncertainty}, its
