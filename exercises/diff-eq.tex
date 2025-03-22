@@ -5,9 +5,9 @@
   %---------------------------------------------------------------------------------------
   \Exercise[label=ode-hom]
   Solve the homogeneous differential equations below.
-  \Question $y''+2y'+2=0$
-  \Question $y^{(3)}-3y''+7y'-5=0$
-  \Question $y^{(3)}-6y''+12y'-8=0$
+  \Question $y''+2y'+2y=0$
+  \Question $y^{(3)}-3y''+7y'-5y=0$
+  \Question $y^{(3)}-6y''+12y'-8y=0$
   %---------------------------------------------------------------------------------------
   \Exercise[label=ode-rev]
   For all cases below, find a differential equation for which $y$ is a solution.
@@ -23,8 +23,10 @@
   \end{equation}
   where $a$ is a positive real number.
   \Question Solve~\cref{eq:ode4} in the following cases:
-  \subQuestion $a<1$, show that $y$ is an oscillating solution according to two frequencies.
-  \subQuestion $a>1$, show that $y$ is oscillating with one frequency, and exponentially varying.
+  \subQuestion $a<1$, show that $y$ is an oscillating solution according
+  to two frequencies.
+  \subQuestion $a>1$, show that $y$ is oscillating with one frequency,
+  and exponentially varying.
   \subQuestion $a=1$.
   %---------------------------------------------------------------------------------------
   \Exercise[label=airy]
@@ -36,7 +38,8 @@
   \begin{equation}
     \hat{y}'(\omega)=i8\pi^3\omega\,\hat{y}(\omega)\,.
   \end{equation}
-  \Question Show that there exists a constant $C$ such that $\hat{y}(\omega)=C\,e^{i8\pi^3\frac{\omega^3}{3}}$.
+  \Question Show that there exists a constant $C$ such that
+  $\hat{y}(\omega)=C\,e^{i8\pi^3\frac{\omega^3}{3}}$.
   \Question Show that $y$ is given by $y(x)=C\,\mathrm{Ai}(x)$
   where $\mathrm{Ai}$ is the \emph{Airy function} given by
   \begin{equation}
@@ -54,6 +57,8 @@
     G''(t)+2\zeta\omega_0G'(t)+\omega_0^2G(t)=\delta(t)\,,
   \end{equation}
   in the sense of distributions.
-  \Question Compute the green function in the overdamped ($\zeta=1$) and critical
+  \Question Compute the Green's function in the overdamped ($\zeta>1$) and critical
   ($\zeta=1$) regimes.
+  \pagebreak
+  \InputIfFileExists{solutions/diff-eq}{}{}
 \end{ExerciseList}
