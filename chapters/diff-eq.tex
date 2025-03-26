@@ -352,7 +352,7 @@ non-homogeneous equations.
 %-----------------------------------------------------------------------------------------
 \subsection{Non-homogeneous equations}
 In the non-homogeneous case, equations can have an arbitrary function on their right-hand
-side. Physically, the right-hand side often represents an external interaction term with
+side. Physically, the right-hand side often represents an external interaction term on
 the system, \eg a driving force in the case of oscillators. Fourier analysis provides a
 systematic way of solving this case using Green's function, which is a crucial method in
 numerous physical applications. Let us first describe the general method.
@@ -377,7 +377,7 @@ a particular solution of \cref{eq:oden-nonh} is given by
   \label{eq:oden-part}
 \end{equation}
 The inverse Fourier transform above is in the sense of distributions, and special care
-might be needed if $P(2\pi i\omega)$ has real roots in $\omega$, which generates
+might be needed if $P(2\pi i\omega)$ has real roots in $\omega$, which generate
 singularities in the integrand above.
 
 There is a standard way in physics to express the solution above. First, one defines the
@@ -405,8 +405,8 @@ using initial conditions.
 %.........................................................................................
 \subsubsection{Driven harmonic oscillator}
 We consider a mass $m$ attached to a spring fixed at one end along the horizontal axis, at
-position $x=0$. We note $x(t)$ the position of the mass on the horizontal axis as a
-function of the time $t$. Furthermore, we assume the mass is driven by an external force
+position $x=0$. We denote by $x(t)$ the position of the mass on the horizontal axis as a
+function of time $t$. Furthermore, we assume the mass is driven by an external force
 $F(t)$ varying with time, and that it is insensitive to gravity (\eg it is mounted on a
 horizontal rail). In total, three forces are applied to the mass:
 \begin{itemize}
@@ -427,10 +427,10 @@ which is commonly put in the form
 where $\omega_0=\smash{\frac{1}{2\pi}\sqrt{\frac{k}{m}}}$ is the \emph{undamped frequency}
 in $\hertz$, and $\zeta=\smash{\frac{c}{2\sqrt{mk}}}$ is the \emph{damping ratio}, which
 is a dimensionless number. We already solved the homogeneous equation in the previous
-section, \cf \cref{eq:ode2-damped-under,eq:ode2-damped-over,eq:ode2-damped-crit}, with
+section, \cf\cref{eq:ode2-damped-under,eq:ode2-damped-over,eq:ode2-damped-crit}, with
 $a=2\pi\omega_0$ and $b=\zeta$.
 
-We now want to find particular solutions of the non-homogeneous equations. This can be
+We now want to find particular solutions of the non-homogeneous equation. This can be
 done by finding the Green's function $G$ of~\cref{eq:ode2-driven}. Following
 \cref{eq:green-ft},
 \begin{equation}
@@ -490,7 +490,7 @@ where $\bar{\omega}_1=\omega_0\sqrt{\zeta^2-1}$. In the critical $\zeta=1$ regim
   G(t)=\theta(t)te^{-2\pi\omega_0 t}\,.
   \label{eq:green-critical}
 \end{equation}
-The derivation of these extras cases is left to the reader as an exercise
+The derivation of these extra cases is left to the reader as an exercise
 (\cf\cref{green}). The Green's function $G$ in the three regimes above is represented in
 \cref{fig:ho-green}. We now discuss the physical interpretation of these objects.
 \begin{figure}[t]
@@ -512,22 +512,22 @@ physical dimensions: $G$ is the solution of
 Firstly, the delta function has the inverse dimension of its argument. This can be seen,
 for example, using the approximation of $\delta$ by a Gaussian kernel. So $\delta(t)$ is
 an inverse time. Since $\omega_0$ is also an inverse time, the equation above implies that
-$G(t)$ has the dimension of a time. This is dimensionally consistent with
+$G(t)$ has the dimension of time. This is dimensionally consistent with
 \cref{eq:green-underdamped}. Considering an arbitrary momentum $p$ (in
 $\newton\usk\second$), then $\frac{p}{m}G(t)$ is the solution of \cref{eq:ode2-driven}
 with the external force $F(t)=p\delta(t)$. So the Green's function is the response of the
-oscillator when a momentum $p$ is instantly injected at $t=0$. This why Green's functions
+oscillator when a momentum $p$ is instantly injected at $t=0$. This is why Green's functions
 are also often called \emph{impulse response}, particularly in a signal theory or applied
 physics context. With this interpretation in mind, the presence of the Heaviside function
 $\theta(t)$ in~\cref{eq:green-underdamped} is not surprising: injecting momentum at $t=0$
-only has an effect on the future, \ie for $t>0$. Such Green's function is called
+only has an effect on the future, \ie for $t>0$. Such a Green's function is called
 \emph{retarded} or \emph{causal}. One can observe through the derivation of $G(t)$ that
-the $\theta(t)$ factor emerged from the $\Re(s_{\pm})<0$ condition, which in turn comes
+the $\theta(t)$ factor emerged from the condition $\Re(s_{\pm})<0$, which in turn comes
 from $\zeta>0$. In the absence of damping (\ie for $\zeta=0$), one can show that the
 definition of $G(t)$ becomes ambiguous, and can influence both future and past, which can
 be counter-intuitive. The physical interpretation is that in the presence of damping, the
-system loses energy, and a clear direction of time is imposed. In the absence of damping,
-reversing time becomes a symmetry of the system, and the Green's function can be
+system loses energy and a clear direction of time is imposed. In the absence of damping,
+time reversal becomes a symmetry of the system, and the Green's function can be
 interpreted as the future response to an impulse, or the annihilation of a past movement.
 
 Let us now discuss the interpretation of the frequency space Green's function, \ie
@@ -536,11 +536,11 @@ Let us now discuss the interpretation of the frequency space Green's function, \
   \frac{1}{-\omega^2+2i\zeta\omega_0\omega+\omega_0^2}\,.
   \label{eq:ho-green-ft}
 \end{equation}
-In this form, the Green's function describe the response of the oscillator when driven at
+In this form, the Green's function describes the response of the oscillator when driven at
 a fixed frequency $\omega$. Indeed, for a force $A>0$ in Newtons, we can consider
 \cref{eq:ode2-driven} where the external force is an elementary wave with amplitude $A$
 and frequency $\omega$, \ie $F(t)=A\cos(2\pi\omega t)$. Then we know that a particular
-solution of the equation is given by convoluting $F$ by the Green's function, leading to
+solution of the equation is given by convoluting $F$ with the Green's function, leading to
 \begin{equation}
   y_P(t)=\frac{1}{m}(F\ast G)(t)=\frac{A}{m}\intr{u}G(u)\cos[2\pi\omega(t-u)]\,.
 \end{equation}
@@ -582,12 +582,12 @@ therefore $\phi(\omega)$ is such that
   =\frac{2\zeta\xi}{1-\xi^2}\,,
   \label{eq:ho-phase}
 \end{equation}
-with $\xi=\frac{\omega}{\omega_0}$.
+where $\xi=\frac{\omega}{\omega_0}$.
 \begin{figure}[p]
   \centering
   \includegraphics{gp_resonance.pdf}
   \caption{Frequency response (upper pane) and phase shift (lower pane) of the driven
-    harmonic oscillator in function of the frequency ratio $\xi=\frac{\omega}{\omega_0}$,
+    harmonic oscillator as a function of the frequency ratio $\xi=\frac{\omega}{\omega_0}$,
     where $\omega_0$ is the undamped oscillator frequency. Both functions are defined
     in~\cref{eq:ho-response,eq:ho-phase}, and the phase shift was defined in the
   interval~$[0,\pi)$.}
@@ -597,13 +597,13 @@ with $\xi=\frac{\omega}{\omega_0}$.
 The frequency response and phase shift are represented in~\cref{fig:resonance} for various
 values of the damping ratio $\zeta$. In the underdamped $\zeta<1$ regime, we clearly
 observe that for frequencies around the undamped frequency $\omega_0$, the amplitude of
-oscillations are amplified. This is the well-known \emph{resonance} phenomenon which is a
+oscillations is amplified. This is the well-known \emph{resonance} phenomenon which is a
 characteristic feature of the driven harmonic oscillator. Regarding the phase shift in the
-resonant regime, at frequencies much lower that $\omega_0$, $\phi(\omega)$ is close to
+resonant regime, at frequencies much lower than $\omega_0$, $\phi(\omega)$ is close to
 $0$, and at frequencies much higher than $\omega_0$, $\phi(\omega)$ is close to $\pi$.
 This can be physically interpreted in the following way: $\omega_0$ is a characteristic
 frequency of the oscillator, as it is determined by its mass and spring constant. If the
 driver oscillates much slower than this frequency, then the oscillator is able to follow
-this movement with a negligible reaction time, and is in phase with the driver. However,
+this movement with a negligible reaction time and is in phase with the driver. However,
 if the driver oscillates much faster than $\omega_0$, the reaction time of the oscillator
-is too slow to be synchronised, and it is completely out-of-phase with the driver.
+is too slow to be synchronised, and it is completely out of phase with the driver.
