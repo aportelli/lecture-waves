@@ -473,6 +473,7 @@ where $A$ is a complex number such that $\Re(A)>0$. Since $\Re(z)<0$, $\Re(2\pi 
   e^{2\pi i\omega(t-\lambda)}e^{\lambda z}\notag\\
   &=\intr{\lambda}\theta(\lambda)\delta(t-\lambda)e^{\lambda z}\notag\\
   &=\theta(t)e^{zt}\,.
+  \label{eq:thetaexp}
 \end{align}
 Applying this result to \cref{eq:p-part-frac}, we finally obtain
 \begin{equation}
@@ -509,7 +510,7 @@ The derivation of these extra cases is left to the reader as an exercise
 Let us discuss the physical interpretation of the Green's function. First we consider its
 physical dimensions: $G$ is the solution of
 \begin{equation}
-  G''(t)+2\zeta\omega_0 G'(t)+\omega_0^2G(t)=\delta(t)\,.
+  G''(t)+4\pi\zeta\omega_0 G'(t)+4\pi^2\omega_0^2G(t)=\delta(t)\,.
 \end{equation}
 Firstly, the delta function has the inverse dimension of its argument. This can be seen,
 for example, using the approximation of $\delta$ by a Gaussian kernel. So $\delta(t)$ is

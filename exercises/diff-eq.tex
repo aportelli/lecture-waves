@@ -54,11 +54,16 @@
   \Question Check explicitly that~\cref{eq:green-underdamped} is a Green's function of the
   equation above, \ie show that
   \begin{equation}
-    G''(t)+2\zeta\omega_0G'(t)+\omega_0^2G(t)=\delta(t)\,,
+    G''(t)+4\pi\zeta\omega_0G'(t)+4\pi^2\omega_0^2G(t)=\delta(t)\,,
   \end{equation}
   in the sense of distributions.
-  \Question Compute the Green's function in the overdamped ($\zeta>1$) and critical
-  ($\zeta=1$) regimes.
+  \Question Compute the Green's function in the overdamped ($\zeta>1$) regime \cref{eq:green-overdamped}.
+  \Question Compute the Green's function in the critical ($\zeta=1$) regime \cref{eq:green-critical}.\\
+  \emph{Hint: use the identity}
+  \begin{equation}
+    \frac{1}{(2\pi i\omega+2\pi\omega_0)^2}=-\frac{1}{2\pi i}
+    \frac{\diff}{\diff\omega}\left(\frac{1}{2\pi i\omega+2\pi\omega_0}\right)\,.
+  \end{equation}
   \pagebreak
   \InputIfFileExists{solutions/diff-eq}{}{}
 \end{ExerciseList}
