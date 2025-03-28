@@ -631,18 +631,18 @@ for all $t\in\R$. For all $x\in[0,L]$, we can consider the Fourier transform in 
 \begin{equation}
   \hat{u}(\omega,x)=\intr{t}u(t,x)\,e^{-2\pi i\omega t}\,.
 \end{equation}
-The wave equation for $\hat{u}$ then become
+The wave equation for $\hat{u}$ then becomes
 \begin{equation}
   c^2\pdn{\hat{u}}{x}{2}(\omega,x)+4\pi^2\omega^2\hat{u}(\omega,x)=0\,.
 \end{equation}
 We recognise the undamped harmonic oscillator equation studied in the previous section.
 More specifically, we have such an equation in the independent variable $x$ for each value
-of $\omega$. Therefore, there exists two constants $A(\omega)$ and $B(\omega)$ such that
+of $\omega$. Therefore, there exist two constants $A(\omega)$ and $B(\omega)$ such that
 \begin{equation}
   \hat{u}(\omega,x)=A(\omega)\cos\left(2\pi\frac{\omega}{c}x\right)+
   B(\omega)\sin\left(2\pi\frac{\omega}{c}x\right)\,.
 \end{equation}
-Let us now apply boundary conditions \cref{eq:string-bc-2}, clearly
+Let us now apply the boundary conditions \cref{eq:string-bc-2}; clearly,
 $\hat{u}(\omega,0)=\hat{u}(\omega,L)=0$ for all $\omega\in\R$. The condition
 $\hat{u}(\omega,0)=0$ directly implies that $A(\omega)=0$ for all $\omega\in\R$. Then, the
 second condition $\hat{u}(\omega,L)=0$ implies that
@@ -650,10 +650,10 @@ second condition $\hat{u}(\omega,L)=0$ implies that
   B(\omega)\sin\left(2\pi\frac{\omega}{c}L\right)=0\,.
 \end{equation}
 This equation can be solved in the sense of distributions using~\cref{thm:structure}. The
-sine function above cancels if and only if  $\omega=\frac{cn}{2L}$ for $n\in\Z$, so we
+sine function above vanishes if and only if $\omega=\frac{cn}{2L}$ for $n\in\Z$, so we
 expect $B(\omega)$ to be a linear combination of the delta function and its derivatives at
 each of these points. It is not difficult to see that only the delta function can be
-present, indeed, for $n\in\Z$,
+present; indeed, for $n\in\Z$,
 \begin{align}
   \delta'\left(\omega-\frac{cn}{2L}\right)\sin\left(2\pi\frac{\omega}{c}L\right)&=
   -2\pi\frac{L}{c}\cos\left(2\pi\frac{\omega}{c}L\right)
@@ -668,8 +668,7 @@ that
 \end{equation}
 and therefore,
 \begin{equation}
-  \hat{u}(\omega,x)=\frac12\sumz{n}C_n\,\delta\left(\omega-\frac{cn}{2L}\right)
-  \sin\left(\frac{\pi }{L}nx\right)\,.
+  \hat{u}(\omega,x)=\frac12\sumz{n}C_n\,\delta\left(\omega-\frac{cn}{2L}\right)\sin\left(\frac{\pi }{L}nx\right)\,.
 \end{equation}
 Taking the inverse Fourier transform in $\omega$, we get
 \begin{equation}
@@ -682,9 +681,9 @@ Since $u(t,x)$ is real, the series above can be written
   A_n\cos\left(\frac{\pi}{L}nct\right)+B_n\sin\left(\frac{\pi}{L}nct\right)\right]\,,
 \end{equation}
 and $C_n$ must be such that the two sequences $A_n=C_n+C_{-n}$ and $B_n=i(C_{n}-C_{-n})$
-are real. The series above is well-defined in the sense of distributions, however since
+are real. The series above is well-defined in the sense of distributions; however, since
 this is a physically observable quantity, it needs to be convergent as a standard function
-to makes physical sense. Using an initial condition $u(0,x)=u_0(x)$, we obtain
+to make physical sense. Using an initial condition $u(0,x)=u_0(x)$, we obtain
 \begin{equation}
   u_0(x)=\sumnp{n}A_n\sin\left(\frac{\pi }{L}nx\right)\,.
   \label{eq:u0-fourier}
@@ -699,7 +698,7 @@ $[-L,L]$ by
   \end{cases}
   \,.
 \end{equation}
-Since $u_0$ represent the initial string position, we can safely assume it is a smooth
+Since $u_0$ represents the initial string position, we can safely assume it is a smooth
 function, and therefore we know that \cref{eq:u0-fourier} converges uniformly, and that
 \begin{equation}
   A_n=\frac{1}{L}\int_{-L}^L\diff x\,\bar{u}_0(x)\sin\left(\frac{\pi }{L}nx\right)
@@ -741,16 +740,15 @@ that essentially all properties studied in \cref{chap:transform} carry over to
 multidimensional Fourier transforms. In particular, the inhomogeneous wave equation above
 becomes
 \begin{equation}
-  4\pi^2(c^2\omega_x^2-\omega_t^2)\hat{u}(\omega_t,\omega_x)=
-  \frac{1}{\mu}\hat{F}(\omega_t,\omega_x)\,.
+  4\pi^2(c^2\omega_x^2-\omega_t^2)\hat{u}(\omega_t,\omega_x)=\frac{1}{\mu}\hat{F}(\omega_t,\omega_x)\,.
 \end{equation}
-So, at least formally, we found the particular solution
+So, at least formally, we have found the particular solution
 \begin{equation}
   u_P(t,x)=\frac{1}{4\pi^2\mu}\intr{\omega_t}\intr{\omega_x}
   \frac{\hat{F}(\omega_t,\omega_x)}{c^2\omega_x^2-\omega_t^2}
   \,e^{2\pi i (\omega_tt+\omega_xx)}\,.\label{eq:wave-eq-up}
 \end{equation}
-There is a clear issue in the integral above, as the integrand is singular on the
+There is a clear issue in the integral above, as the integrand is singular along the
 $c\omega_x=\pm\omega_t$ lines. Let us ignore that briefly. One can then show that through
 a multidimensional generalisation of the convolution theorem, this solution can be written
 as
@@ -759,7 +757,7 @@ as
 \end{equation}
 where $G$ is a \emph{Green's function} defined by
 \begin{equation}
-  \hat{G}(\omega_t,\omega_x)=\frac{1}{4\pi^2}\frac{1}{c^2\omega_x^2-\omega_t^2}\,.
+  \hat{G}(\omega_t,\omega_x)=\frac{1}{4\pi^2}\frac{1}{c^2\omega_x^2-\omega_t^2}\,,
 \end{equation}
 which is a solution of the equation
 \begin{equation}
@@ -778,7 +776,7 @@ function~\cref{eq:ho-green-ft} has the same singular structure, explicitly
 This issue was in practice regulated by the damping ratio $\zeta$. The physical
 interpretation of this singularity is that in the absence of damping, the resonance at
 $\omega=\omega_0$ has an infinite amplitude. This singular behaviour can be regulated, for
-example by adding a small damping term, however there is no unique way to do that. The
+example, by adding a small damping term; however, there is no unique way to do so. The
 resulting set of Green's functions can have contributions corresponding to responses in
 the future or the past, and the choice of a particular prescription will depend on a
 specific physics problem.
