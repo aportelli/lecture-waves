@@ -348,25 +348,26 @@ When coefficients are not constant, solving systematically a linear differential
 even in the homogeneous case, is non-trivial. However, the Fourier transform of an
 equation can in some cases lead to an easier equation to solve. We refer the reader to
 \cref{airy} for an explicit example with the Airy equation. We now discuss the case of
-non-homogeneous equations.
+inhomogeneous equations.
 %-----------------------------------------------------------------------------------------
-\subsection{Non-homogeneous equations}
-In the non-homogeneous case, equations can have an arbitrary function on their right-hand
+\subsection{Inhomogeneous equations}
+\label{sec:ih-ode}
+In the inhomogeneous case, equations can have an arbitrary function on their right-hand
 side. Physically, the right-hand side often represents an external interaction term on
 the system, \eg a driving force in the case of oscillators. Fourier analysis provides a
 systematic way of solving this case using Green's function, which is a crucial method in
 numerous physical applications. Let us first describe the general method.
 %.........................................................................................
 \subsubsection{General case -- Green's function}
-We consider the non-homogeneous equation
+We consider the inhomogeneous equation
 \begin{equation}
   a_ny^{(n)}(t)+\cdots+a_1y'(t)+a_0y(t)=f(t)\,,\label{eq:oden-nonh}
 \end{equation}
 where $f$ is an arbitrary moderately growing function. Firstly, one can observe that if
 $y$ is a particular solution of the equation above, and if $y_0$ is a solution of the
 associated homogeneous equation \cref{eq:oden}, then clearly $y+y_0$ is also a solution of
-the non-homogeneous equation. In fact, one can prove that this procedure spans the entire
-set of solutions for the non-homogeneous equation. The Fourier domain equation is given by
+the inhomogeneous equation. In fact, one can prove that this procedure spans the entire
+set of solutions for the inhomogeneous equation. The Fourier domain equation is given by
 \begin{equation}
   P(2\pi i\omega)\hat{y}(\omega)=\hat{f}(\omega)\,,
 \end{equation}
@@ -430,7 +431,7 @@ is a dimensionless number. We already solved the homogeneous equation in the pre
 section, \cf\cref{eq:ode2-damped-under,eq:ode2-damped-over,eq:ode2-damped-crit}, with
 $a=2\pi\omega_0$ and $b=\zeta$.
 
-We now want to find particular solutions of the non-homogeneous equation. This can be
+We now want to find particular solutions of the inhomogeneous equation. This can be
 done by finding the Green's function $G$ of~\cref{eq:ode2-driven}. Following
 \cref{eq:green-ft},
 \begin{equation}
@@ -475,19 +476,20 @@ where $A$ is a complex number such that $\Re(A)>0$. Since $\Re(z)<0$, $\Re(2\pi 
 \end{align}
 Applying this result to \cref{eq:p-part-frac}, we finally obtain
 \begin{equation}
-  G(t)=\frac{\theta(t)(e^{s_+t}-e^{s_-t})}{4\pi i\omega_1}
-  =\theta(t)e^{-2\pi\omega_0\zeta t}\,\frac{\sin(2\pi\omega_1t)}{2\pi\omega_1}\,.
+  \boxed{G(t)
+  =\theta(t)e^{-2\pi\omega_0\zeta t}\,\frac{\sin(2\pi\omega_1t)}{2\pi\omega_1}}\,.
   \label{eq:green-underdamped}
 \end{equation}
 Following similar steps, one obtains in the $\zeta>1$ overdamped regime
 \begin{equation}
-  G(t)=\theta(t)e^{-2\pi\omega_0\zeta t}\,
-  \frac{\sinh(2\pi\bar{\omega}_1t)}{2\pi\bar{\omega}_1}\,,
+  \boxed{
+    G(t)=\theta(t)e^{-2\pi\omega_0\zeta t}\,
+  \frac{\sinh(2\pi\bar{\omega}_1t)}{2\pi\bar{\omega}_1}}\,,
   \label{eq:green-overdamped}
 \end{equation}
 where $\bar{\omega}_1=\omega_0\sqrt{\zeta^2-1}$. In the critical $\zeta=1$ regime, one has
 \begin{equation}
-  G(t)=\theta(t)te^{-2\pi\omega_0 t}\,.
+  \boxed{G(t)=\theta(t)te^{-2\pi\omega_0 t}}\,.
   \label{eq:green-critical}
 \end{equation}
 The derivation of these extra cases is left to the reader as an exercise
@@ -532,8 +534,9 @@ interpreted as the future response to an impulse, or the annihilation of a past 
 
 Let us now discuss the interpretation of the frequency space Green's function, \ie
 \begin{equation}
-  \hat{G}(\omega)=\frac{1}{P(2\pi i\omega)}=\frac{1}{4\pi^2}
-  \frac{1}{-\omega^2+2i\zeta\omega_0\omega+\omega_0^2}\,.
+  \boxed{
+    \hat{G}(\omega)=\frac{1}{P(2\pi i\omega)}=\frac{1}{4\pi^2}
+  \frac{1}{-\omega^2+2i\zeta\omega_0\omega+\omega_0^2}}\,.
   \label{eq:ho-green-ft}
 \end{equation}
 In this form, the Green's function describes the response of the oscillator when driven at
@@ -569,7 +572,8 @@ the frequency response
 \end{equation}
 where $\bar{R}$ is the dimensionless function given by
 \begin{equation}
-  \bar{R}(\xi)=\frac{1}{\sqrt{(1-\xi^2)^2+4\zeta^2\xi^2}}\,.
+  \boxed{
+  \bar{R}(\xi)=\frac{1}{\sqrt{(1-\xi^2)^2+4\zeta^2\xi^2}}\,.}
   \label{eq:ho-response}
 \end{equation}
 For the phase shift, we first write
@@ -578,8 +582,9 @@ For the phase shift, we first write
 \end{equation}
 therefore $\phi(\omega)$ is such that
 \begin{equation}
-  \tan[\phi(\omega)]=\frac{2\zeta\omega_0\omega}{\omega_0^2-\omega^2}
-  =\frac{2\zeta\xi}{1-\xi^2}\,,
+  \boxed{
+    \tan[\phi(\omega)]=\frac{2\zeta\omega_0\omega}{\omega_0^2-\omega^2}
+  =\frac{2\zeta\xi}{1-\xi^2}\,,}
   \label{eq:ho-phase}
 \end{equation}
 where $\xi=\frac{\omega}{\omega_0}$.
@@ -607,3 +612,173 @@ driver oscillates much slower than this frequency, then the oscillator is able t
 this movement with a negligible reaction time and is in phase with the driver. However,
 if the driver oscillates much faster than $\omega_0$, the reaction time of the oscillator
 is too slow to be synchronised, and it is completely out of phase with the driver.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Partial differential equations}
+%-----------------------------------------------------------------------------------------
+\subsection{Wave equation}
+%.........................................................................................
+\subsubsection{Homogeneous equation}
+The homogeneous wave equation is given by~\cref{eq:wave-eq}:
+\begin{equation}
+  \pdn{u}{t}{2}-c^2\,\pdn{u}{x}{2}=0\,.
+\end{equation}
+For the mechanical string, $x\in[0,L]$ and we have the boundary conditions
+\begin{equation}
+  u(t,0)=u(t,L)=0\,,
+  \label{eq:string-bc-2}
+\end{equation}
+for all $t\in\R$. For all $x\in[0,L]$, we can consider the Fourier transform in $t$:
+\begin{equation}
+  \hat{u}(\omega,x)=\intr{t}u(t,x)\,e^{-2\pi i\omega t}\,.
+\end{equation}
+The wave equation for $\hat{u}$ then become
+\begin{equation}
+  c^2\pdn{\hat{u}}{x}{2}(\omega,x)+4\pi^2\omega^2\hat{u}(\omega,x)=0\,.
+\end{equation}
+We recognise the undamped harmonic oscillator equation studied in the previous section.
+More specifically, we have such an equation in the independent variable $x$ for each value
+of $\omega$. Therefore, there exists two constants $A(\omega)$ and $B(\omega)$ such that
+\begin{equation}
+  \hat{u}(\omega,x)=A(\omega)\cos\left(2\pi\frac{\omega}{c}x\right)+
+  B(\omega)\sin\left(2\pi\frac{\omega}{c}x\right)\,.
+\end{equation}
+Let us now apply boundary conditions \cref{eq:string-bc-2}, clearly
+$\hat{u}(\omega,0)=\hat{u}(\omega,L)=0$ for all $\omega\in\R$. The condition
+$\hat{u}(\omega,0)=0$ directly implies that $A(\omega)=0$ for all $\omega\in\R$. Then, the
+second condition $\hat{u}(\omega,L)=0$ implies that
+\begin{equation}
+  B(\omega)\sin\left(2\pi\frac{\omega}{c}L\right)=0\,.
+\end{equation}
+This equation can be solved in the sense of distributions using~\cref{thm:structure}. The
+sine function above cancels if and only if  $\omega=\frac{cn}{2L}$ for $n\in\Z$, so we
+expect $B(\omega)$ to be a linear combination of the delta function and its derivatives at
+each of these points. It is not difficult to see that only the delta function can be
+present, indeed, for $n\in\Z$,
+\begin{align}
+  \delta'\left(\omega-\frac{cn}{2L}\right)\sin\left(2\pi\frac{\omega}{c}L\right)&=
+  -2\pi\frac{L}{c}\cos\left(2\pi\frac{\omega}{c}L\right)
+  \delta\left(\omega-\frac{cn}{2L}\right)\\
+  &=2\pi (-1)^{n+1}\frac{L}{c}\delta\left(\omega-\frac{cn}{2L}\right)\neq 0\,,
+\end{align}
+and this non-zero contribution will be present when multiplying the sine by any higher
+derivative of the delta function. So there exists a sequence of complex numbers $C_n$ such
+that
+\begin{equation}
+  B(\omega)=\sumz{n}C_n\,\delta\left(\omega-\frac{cn}{2L}\right)\,,
+\end{equation}
+and therefore,
+\begin{equation}
+  \hat{u}(\omega,x)=\frac12\sumz{n}C_n\,\delta\left(\omega-\frac{cn}{2L}\right)
+  \sin\left(\frac{\pi }{L}nx\right)\,.
+\end{equation}
+Taking the inverse Fourier transform in $\omega$, we get
+\begin{equation}
+  u(t,x)=\frac12\sumz{n}C_n\sin\left(\frac{\pi }{L}nx\right)\,e^{i\frac{\pi}{L}nct}=
+  \sumnp{n}A_n\sin\left(\frac{\pi }{L}nx\right)\cos\left(\frac{\pi}{L}nct\right)\,.
+\end{equation}
+Since $u(t,x)$ is real, the series above can be written
+\begin{equation}
+  u(t,x)=\sumnp{n}\sin\left(\frac{\pi }{L}nx\right)\left[
+  A_n\cos\left(\frac{\pi}{L}nct\right)+B_n\sin\left(\frac{\pi}{L}nct\right)\right]\,,
+\end{equation}
+and $C_n$ must be such that the two sequences $A_n=C_n+C_{-n}$ and $B_n=i(C_{n}-C_{-n})$
+are real. The series above is well-defined in the sense of distributions, however since
+this is a physically observable quantity, it needs to be convergent as a standard function
+to makes physical sense. Using an initial condition $u(0,x)=u_0(x)$, we obtain
+\begin{equation}
+  u_0(x)=\sumnp{n}A_n\sin\left(\frac{\pi }{L}nx\right)\,.
+  \label{eq:u0-fourier}
+\end{equation}
+This is the Fourier series of the odd $2L$-periodic function $\bar{u}_0(x)$ defined on
+$[-L,L]$ by
+\begin{equation}
+  \bar{u}_0(x)=
+  \begin{cases}
+    u_0(x)&\text{if}~x\in[0,L]\\
+    -u_0(x)&\text{if}~x\in[-L,0)
+  \end{cases}
+  \,.
+\end{equation}
+Since $u_0$ represent the initial string position, we can safely assume it is a smooth
+function, and therefore we know that \cref{eq:u0-fourier} converges uniformly, and that
+\begin{equation}
+  A_n=\frac{1}{L}\int_{-L}^L\diff x\,\bar{u}_0(x)\sin\left(\frac{\pi }{L}nx\right)
+  =\frac{2}{L}\int_{0}^L\diff x\,u_0(x)\sin\left(\frac{\pi }{L}nx\right)\,.
+\end{equation}
+The sequence $B_n$ can be entirely determined by imposing an initial condition on the time
+derivative of $u$. For example, if we impose $\pd{u}{t}(0,x)=0$ then
+\begin{equation}
+  \sumnp{n}\frac{\pi}{L}ncB_n\sin\left(\frac{\pi }{L}nx\right)=0\,,
+\end{equation}
+which, interpreted as a Fourier series, implies that $B_n=0$ for all $n$. Finally, we have
+the solution
+\begin{equation}
+  u(t,x)=\sumnp{n}A_n\sin\left(\frac{\pi }{L}nx\right)\cos\left(\frac{\pi}{L}nct\right)
+\end{equation}
+We recognise the standing wave solution that was derived heuristically
+in~\cref{sec:toward-fourier}, however now every step in the procedure above is justified
+by the Fourier analysis results developed during this course.
+%.........................................................................................
+\subsubsection{Inhomogeneous equation}
+We now consider that the string is driven by an external force density $F(t,x)$ at time
+$t$ and position $x$ (in $\newton\per\metre$). The wave equation then becomes
+\begin{equation}
+  \pdn{u}{t}{2}-c^2\,\pdn{u}{x}{2}=\frac{F}{\mu}\,.
+\end{equation}
+For the sake of simplicity, we will assume the string to have an infinite length.
+Similarly to ordinary differential equations, if one knows a particular solution $u_P$ to
+the equation above, then all solutions have the form $u=u_P+u_H$, where $u_H$ is a
+solution of the homogeneous equation discussed in the previous section. To find a
+particular solution, we can then consider the two-dimensional Fourier transform in space
+and time:
+\begin{equation}
+  \hat{u}(\omega_t,\omega_x)=\intr{t}\intr{x}
+  u(t,x)\,e^{-2\pi i (\omega_tt+\omega_xx)}\,.
+\end{equation}
+We note that this function is different from the $\hat{u}$ function defined in the
+previous section, where only the Fourier transform in time was considered. One can show
+that essentially all properties studied in \cref{chap:transform} carry over to
+multidimensional Fourier transforms. In particular, the inhomogeneous wave equation above
+becomes
+\begin{equation}
+  4\pi^2(c^2\omega_x^2-\omega_t^2)\hat{u}(\omega_t,\omega_x)=
+  \frac{1}{\mu}\hat{F}(\omega_t,\omega_x)\,.
+\end{equation}
+So, at least formally, we found the particular solution
+\begin{equation}
+  u_P(t,x)=\frac{1}{4\pi^2\mu}\intr{\omega_t}\intr{\omega_x}
+  \frac{\hat{F}(\omega_t,\omega_x)}{c^2\omega_x^2-\omega_t^2}
+  \,e^{2\pi i (\omega_tt+\omega_xx)}\,.\label{eq:wave-eq-up}
+\end{equation}
+There is a clear issue in the integral above, as the integrand is singular on the
+$c\omega_x=\pm\omega_t$ lines. Let us ignore that briefly. One can then show that through
+a multidimensional generalisation of the convolution theorem, this solution can be written
+as
+\begin{equation}
+  u_P=\frac{1}{\mu}(F\ast G)\,,
+\end{equation}
+where $G$ is a \emph{Green's function} defined by
+\begin{equation}
+  \hat{G}(\omega_t,\omega_x)=\frac{1}{4\pi^2}\frac{1}{c^2\omega_x^2-\omega_t^2}\,.
+\end{equation}
+which is a solution of the equation
+\begin{equation}
+  \pdn{G}{t}{2}-c^2\,\pdn{G}{x}{2}=\delta(t)\delta(x)\,.
+\end{equation}
+As in the case of the harmonic oscillator, the Green's function represents the response of
+the string to an instant impulse at $t=0$ localised at the point $x=0$.
+
+Let us discuss further the singularity issue in~\cref{eq:wave-eq-up}. This issue was, in
+fact, already present for the driven harmonic oscillator case studied
+in~\cref{sec:ih-ode}. Indeed, the undamped (\ie $\zeta=0$) Green's
+function~\cref{eq:ho-green-ft} has the same singular structure, explicitly
+\begin{equation}
+  \hat{G}(\omega)=\frac{1}{4\pi^2}\frac{1}{\omega_0^2-\omega^2}\,.
+\end{equation}
+This issue was in practice regulated by the damping ratio $\zeta$. The physical
+interpretation of this singularity is that in the absence of damping, the resonance at
+$\omega=\omega_0$ has an infinite amplitude. This singular behaviour can be regulated, for
+example by adding a small damping term, however there is no unique way to do that. The
+resulting set of Green's functions can have contributions corresponding to responses in
+the future or the past, and the choice of a particular prescription will depend on a
+specific physics problem.
