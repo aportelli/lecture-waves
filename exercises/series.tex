@@ -4,7 +4,8 @@
 \begin{ExerciseList}
   %---------------------------------------------------------------------------------------
   \Exercise[label=seriesex]~
-  \Question Compute the Fourier coefficients of the functions below. All functions are assumed periodic, and the given interval represents one period.
+  \Question Compute the Fourier coefficients of the functions below. All functions are
+  assumed periodic, and the given interval represents one period.
   \subQuestion $f(t)=t^2$, on $[-\pi,\pi]$.
   \subQuestion $f(t)=t^2$, on $[0,2\pi]$.
   \subQuestion $f(t)=\cos(\alpha t)$, where $\alpha\in\R$ is not an integer, on $[-\pi,\pi]$.
@@ -18,8 +19,8 @@
     \pi^2=\frac{256}{45}+\frac{4608}{5}\sumnp{n}\frac{1}{(4n^2-1)^2(4n^2-9)^2}\,.\label{eq:hard-pi2}
   \end{equation}
   %---------------------------------------------------------------------------------------
-  \Exercise[label=fourierode2] Let $f$ be a real twice and continuously differentiable function on $\R$ which is
-  a solution of the ordinary differential equation
+  \Exercise[label=fourierode2] Let $f$ be a real twice and continuously differentiable
+  function on $\R$ which is a solution of the ordinary differential equation
   \begin{equation}
     f''(t) + A f(t) = 0\,,\label{eq:fourierode2}
   \end{equation}
@@ -34,19 +35,19 @@
   \Exercise[label=seriesdecay]~
   Let $f$ be the periodic function defined by $f(t)=|\sin(t)|^3$. What is the expected
   decay rate for the Fourier coefficients of $f$? Compare this expectation with the
-answer of question 1.d) in~\cref{seriesex}.
-%---------------------------------------------------------------------------------------
-\Exercise[label=seriessmooth]~
-Let $f$ be the $2\pi$-periodic function defined by
-\begin{equation}
-  f(t)=\frac{1-p\cos(t)}{1+p^2-2p\cos(t)}\,,
-\end{equation}
-with $p\in(-1,1)$.
-\Question Show that
-\begin{equation}
-  f(t)=\Re\left[\frac{1}{1-pe^{-it}}\right]\,.
-\end{equation}
-\Question Deduce the Fourier series of $f$ from the answer to the previous question.
-\pagebreak
-\InputIfFileExists{solutions/series}{}{}
+  answer of question 1.d) in~\cref{seriesex}.
+  %---------------------------------------------------------------------------------------
+  \Exercise[label=seriessmooth]~
+  Let $f$ be the $2\pi$-periodic function defined by
+  \begin{equation}
+    f(t)=\frac{1-p\cos(t)}{1+p^2-2p\cos(t)}\,,
+  \end{equation}
+  with $p\in(-1,1)$.
+  \Question Show that
+  \begin{equation}
+    f(t)=\Re\left[\frac{1}{1-pe^{-it}}\right]\,.
+  \end{equation}
+  \Question Deduce the Fourier series of $f$ from the answer to the previous question.
+  \pagebreak
+  \InputIfFileExists{solutions/series}{}{}
 \end{ExerciseList}

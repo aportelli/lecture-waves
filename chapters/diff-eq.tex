@@ -17,13 +17,13 @@ in some cases can be considerably simplified by using the formula above.
 We start with ordinary differential equations, \ie differential equations for which the
 unknown function is in one real variable.
 \subsection{Homogeneous equations}
-We first discuss how to systematically solve any linear homogeneous equation with constant
-coefficients. \emph{Homogeneous equations} are differential equations with a zero
-right-hand side. The method presented here is called the \emph{characteristic equation
-method}. Although it is not necessary, this method can be entirely justified using Fourier
-analysis, as we do below. Some properties used are non-trivial, and therefore we use a
-mainly heuristic presentation, starting with the well-known cases of the first and
-second-order equations.
+We first discuss how to systematically solve any linear homogeneous equation with
+constant coefficients. \emph{Homogeneous equations} are differential equations with a
+zero right-hand side. The method presented here is called the \emph{characteristic
+  equation method}. Although it is not necessary, this method can be entirely justified
+using Fourier analysis, as we do below. Some properties used are non-trivial, and
+therefore we use a mainly heuristic presentation, starting with the well-known cases of
+the first and second-order equations.
 %.........................................................................................
 \subsubsection{Introduction: first-order equation}
 Let us start with a simple, well-understood case: the first-order linear equation
@@ -51,9 +51,9 @@ disappointing that Fourier analysis seems to fail in solving the simplest differ
 equation. However, as we will see, the solution \cref{eq:ode1-sol} can be obtained, just
 not directly.
 
-Let us assume more generally that $a$ is a complex number. If $a$ is purely imaginary, \ie
-there exists a real number $\alpha$ such that $a=i\alpha$, then $2\pi i\omega+a=0$ for
-$\omega=\omega_0$ with $\omega_0=-\frac{\alpha}{2\pi}$. Still, for all
+Let us assume more generally that $a$ is a complex number. If $a$ is purely imaginary,
+\ie there exists a real number $\alpha$ such that $a=i\alpha$, then $2\pi i\omega+a=0$
+for $\omega=\omega_0$ with $\omega_0=-\frac{\alpha}{2\pi}$. Still, for all
 $\omega\neq\omega_0$, \cref{eq:ode1-ft} implies $\hat{y}(\omega)=0$. If we assume
 $\hat{y}$ is a standard function, the previous statement once more implies that $y=0$,
 since the value of $\hat{y}$ at a single point is irrelevant when taking the inverse
@@ -72,16 +72,16 @@ which is the desired solution. There is still one important limitation: the proc
 above only works for $a$ purely imaginary. However, once the solution above has been
 obtained, we can notice it is in fact valid for any complex number $a$, which includes real
 values. This extension at the final step is generally referred to as \emph{analytical
-continuation}.
+  continuation}.
 
 The procedure above might look quite convoluted to obtain a solution that can be derived
 in much simpler ways (\eg separation of variables). It additionally contains a number of
 steps that naively look arbitrary:
 \begin{enumerate}
-  \item Using a delta function in \cref{eq:ode1-delta} solves \cref{eq:ode1-ft}, but is
-    this choice unique?
-  \item The method was initially limited to $a$ purely imaginary, yet it generated a more
-    general solution. Is that generally expected?
+  \item Using a delta function in \cref{eq:ode1-delta} solves \cref{eq:ode1-ft}, but is this
+        choice unique?
+  \item The method was initially limited to $a$ purely imaginary, yet it generated a more general
+        solution. Is that generally expected?
 \end{enumerate}
 Regarding point 1, there is indeed a non-trivial characterisation of distributions that
 vanish everywhere except at one point, which implies that the delta function was a unique
@@ -89,7 +89,7 @@ solution. We will discuss that explicitly in the next part of this section. For 
 it is generally expected that such continuation is possible if the Fourier transform of
 $y$ vanishes everywhere except at a finite number of points. This is a non-trivial result,
 which relates the Fourier transform to a similar operation called the \emph{Laplace
-transform}. We will admit that such continuation is expected. In practice, one can always
+  transform}. We will admit that such continuation is expected. In practice, one can always
 attempt such extension, and check using the differential equation that new solutions are
 obtained. Let us now discuss point 1 in detail.
 %.........................................................................................
@@ -177,8 +177,7 @@ where $a\in\R$. The Fourier transform of this equation gives
 \end{equation}
 $P(\omega)$ is a degree 2 polynomial with the following root structure:
 \begin{itemize}
-  \item If $a>0$, $P(\omega)$ has two real single roots
-    $\omega_{\pm}=\pm\frac{\sqrt{a}}{2\pi}$;
+  \item If $a>0$, $P(\omega)$ has two real single roots $\omega_{\pm}=\pm\frac{\sqrt{a}}{2\pi}$;
   \item If $a=0$, $P(\omega)$ has a real double root at $\omega=0$;
   \item If $a<0$, $P(\omega)$ has two complex roots $\omega_{\pm}$.
 \end{itemize}
@@ -199,9 +198,9 @@ which can be written in the more usual form
 with $\alpha=A+B$ and $\beta=i(A-B)$. In this case, the solution is periodic and could
 have been obtained with a Fourier series expansion, \cf\cref{fourierode2}.
 
-Now, if $a=0$, $y''=0$, and clearly $y$ is linear. But let us use \cref{thm:structure-poly}
-regardless: since $\omega=0$ is a double root of $P(\omega)$, there exist two constants
-$A$ and $B$ such that
+Now, if $a=0$, $y''=0$, and clearly $y$ is linear. But let us use
+\cref{thm:structure-poly} regardless: since $\omega=0$ is a double root of $P(\omega)$,
+there exist two constants $A$ and $B$ such that
 \begin{equation}
   \hat{y}(\omega)=A\,\delta(\omega)+B\,\delta'(\omega)\,,
 \end{equation}
@@ -211,10 +210,10 @@ which has the inverse Fourier transform
 \end{equation}
 which is the expected linear result.
 
-Finally, if $a<0$, $P(\omega)$ has no real roots and, strictly speaking, the only solution
-coming from the Fourier transform is zero. However, as we did in the first-order case, we
-can analytically continue the result obtained in~\cref{eq:ode2-periodic} to the two
-complex roots of $P(\omega)$, which leads to the potential solution
+Finally, if $a<0$, $P(\omega)$ has no real roots and, strictly speaking, the only
+solution coming from the Fourier transform is zero. However, as we did in the first-order
+case, we can analytically continue the result obtained in~\cref{eq:ode2-periodic} to the
+two complex roots of $P(\omega)$, which leads to the potential solution
 \begin{equation}
   y(t)=A\,e^{-\sqrt{a}t}+B\,e^{\sqrt{a}t}\,.
   \label{eq:ode2-exp}
@@ -249,13 +248,13 @@ factorised as follows
 which leads to the three cases:
 \begin{itemize}
   \item If $b<1$, $P(s)$ has two single complex roots
-    \begin{equation}
-      s_{\pm}=-ab\pm ia\sqrt{1-b^2}\,.
-    \end{equation}
+        \begin{equation}
+          s_{\pm}=-ab\pm ia\sqrt{1-b^2}\,.
+        \end{equation}
   \item If $b>1$, $P(s)$ has two single real roots
-    \begin{equation}
-      \bar{s}_{\pm}=-ab\pm a\sqrt{b^2-1}\,.
-    \end{equation}
+        \begin{equation}
+          \bar{s}_{\pm}=-ab\pm a\sqrt{b^2-1}\,.
+        \end{equation}
   \item If $b=1$, $P(s)$ has one double real root at $s_0=-a$.
 \end{itemize}
 In all cases, all roots in the Fourier domain are purely complex, and therefore the
@@ -265,44 +264,44 @@ for $a$ and $b$, and one can try to use analytical continuation. So, treating ro
 they were real, we obtain
 \begin{enumerate}
   \item If $b<1$, there exist two constants $A$ and $B$ such that
-    \begin{equation}
-      \hat{y}(\omega)=A\,\delta(\omega-\omega_+)+B\,\delta(\omega-\omega_-)\,,
-    \end{equation}
-    with $2\pi i\omega_{\pm}=s_\pm$, and therefore
-    \begin{align}
-      y(t)&=A\,e^{2\pi i\omega_+ t}+B\,e^{2\pi i\omega_- t}
-      =A\,e^{s_+ t}+B\,e^{s_- t}
-      \notag\\
-      &=A\,e^{-abt}e^{ia\sqrt{1-b^2}t}+B\,e^{-abt}e^{-ia\sqrt{1-b^2}t}\notag\\
-      &=e^{-abt}[\alpha\cos(a\sqrt{1-b^2}t)+\beta\sin(a\sqrt{1-b^2}t)]\,,
-      \label{eq:ode2-damped-under}
-    \end{align}
-    with $\alpha=A+B$ and $\beta=i(A-B)$. This is the \emph{underdamped regime}, with
-    oscillations decaying exponentially fast.
+        \begin{equation}
+          \hat{y}(\omega)=A\,\delta(\omega-\omega_+)+B\,\delta(\omega-\omega_-)\,,
+        \end{equation}
+        with $2\pi i\omega_{\pm}=s_\pm$, and therefore
+        \begin{align}
+          y(t) & =A\,e^{2\pi i\omega_+ t}+B\,e^{2\pi i\omega_- t}
+          =A\,e^{s_+ t}+B\,e^{s_- t}
+          \notag                                                                       \\
+               & =A\,e^{-abt}e^{ia\sqrt{1-b^2}t}+B\,e^{-abt}e^{-ia\sqrt{1-b^2}t}\notag \\
+               & =e^{-abt}[\alpha\cos(a\sqrt{1-b^2}t)+\beta\sin(a\sqrt{1-b^2}t)]\,,
+          \label{eq:ode2-damped-under}
+        \end{align}
+        with $\alpha=A+B$ and $\beta=i(A-B)$. This is the \emph{underdamped regime}, with
+        oscillations decaying exponentially fast.
   \item If $b>1$, there exist two constants $A$ and $B$ such that
-    \begin{equation}
-      \hat{y}(\omega)=A\,\delta(\omega-\bar{\omega}_+)+B\,\delta(\omega-\bar{\omega}_-)\,,
-    \end{equation}
-    with $2\pi i\bar{\omega}_{\pm}=\bar{s}_\pm$, and therefore
-    \begin{align}
-      y(t)&=A\,e^{2\pi i\bar{\omega}_+ t}+B\,e^{2\pi i\bar{\omega}_- t}
-      =A\,e^{\bar{s}_+ t}+B\,e^{\bar{s}_- t}\notag\\
-      &=A\,e^{-(ab+a\sqrt{b^2-1})t}+B\,e^{-(ab-a\sqrt{b^2-1})t}\,.
-      \label{eq:ode2-damped-over}
-    \end{align}
-    Clearly $ab\pm a\sqrt{b^2-1}>0$, and this solution is decaying exponentially fast for
-    $t\to+\infty$. This case is called the \emph{overdamped regime}.
+        \begin{equation}
+          \hat{y}(\omega)=A\,\delta(\omega-\bar{\omega}_+)+B\,\delta(\omega-\bar{\omega}_-)\,,
+        \end{equation}
+        with $2\pi i\bar{\omega}_{\pm}=\bar{s}_\pm$, and therefore
+        \begin{align}
+          y(t) & =A\,e^{2\pi i\bar{\omega}_+ t}+B\,e^{2\pi i\bar{\omega}_- t}
+          =A\,e^{\bar{s}_+ t}+B\,e^{\bar{s}_- t}\notag                        \\
+               & =A\,e^{-(ab+a\sqrt{b^2-1})t}+B\,e^{-(ab-a\sqrt{b^2-1})t}\,.
+          \label{eq:ode2-damped-over}
+        \end{align}
+        Clearly $ab\pm a\sqrt{b^2-1}>0$, and this solution is decaying exponentially fast for
+        $t\to+\infty$. This case is called the \emph{overdamped regime}.
   \item Finally, if $b=1$, there exist two constants $A$ and $B$ such that
-    \begin{equation}
-      \hat{y}(\omega)=A\,\delta(\omega-\omega_0)+B\,\delta'(\omega-\omega_0)\,,
-    \end{equation}
-    with $2\pi i\omega_{0}=s_0$, and therefore
-    \begin{equation}
-      y(t)=(A-2\pi i Bt)\,e^{s_0 t}
-      =(A-2\pi i Bt)\,e^{-at}\,.
-      \label{eq:ode2-damped-crit}
-    \end{equation}
-    This is the \emph{critically damped regime}.
+        \begin{equation}
+          \hat{y}(\omega)=A\,\delta(\omega-\omega_0)+B\,\delta'(\omega-\omega_0)\,,
+        \end{equation}
+        with $2\pi i\omega_{0}=s_0$, and therefore
+        \begin{equation}
+          y(t)=(A-2\pi i Bt)\,e^{s_0 t}
+          =(A-2\pi i Bt)\,e^{-at}\,.
+          \label{eq:ode2-damped-crit}
+        \end{equation}
+        This is the \emph{critically damped regime}.
 \end{enumerate}
 We can now formulate the general case for an arbitrary order $n$ equation.
 %.........................................................................................
@@ -316,37 +315,37 @@ Generalising previous examples, this equation can be solved using the two steps 
 below.
 \begin{enumerate}
   \item The polynomial
-    \begin{equation}
-      P(s)=\sum_{j=0}^{n} s^ja_j\,,
-    \end{equation}
-    is called the \emph{characteristic polynomial} of \cref{eq:oden}. It is defined such
-    that
-    \begin{equation}
-      P(2\pi i\omega)\hat{y}(\omega)=0\,,
-    \end{equation}
-    for all frequencies $\omega\in\R$. The first step is to determine the roots of $P(s)$.
-    Since $P(s)$ is of degree $n$, it has $n$ complex roots, with potential degeneracies.
-    We note $s_j$, with $1\leq j\leq r$, the \emph{distinct} roots of $P(s)$. Naturally,
-    $r\leq n$, and we note $m_j$ the multiplicity of root $s_j$.
+        \begin{equation}
+          P(s)=\sum_{j=0}^{n} s^ja_j\,,
+        \end{equation}
+        is called the \emph{characteristic polynomial} of \cref{eq:oden}. It is defined such
+        that
+        \begin{equation}
+          P(2\pi i\omega)\hat{y}(\omega)=0\,,
+        \end{equation}
+        for all frequencies $\omega\in\R$. The first step is to determine the roots of $P(s)$.
+        Since $P(s)$ is of degree $n$, it has $n$ complex roots, with potential degeneracies.
+        We note $s_j$, with $1\leq j\leq r$, the \emph{distinct} roots of $P(s)$. Naturally,
+        $r\leq n$, and we note $m_j$ the multiplicity of root $s_j$.
   \item Each root contributes
-    \begin{equation}
-      y_j(t)=(C_{j,1}+\cdots+C_{j,m_j}t^j)\,e^{s_jt}
-    \end{equation}
-    to the solution, where $C_{j,1},\dots,C_{j,m_j}$ are $m_j$ arbitrary integration
-    constants that need to be determined using initial conditions. The general solution of
-    \cref{eq:oden} is then given by
-    \begin{equation}
-      y(t)=\sum_{j=1}^{r}y_j(t)\,,
-    \end{equation}
-    and is parametrised by a total of $n$ integration constants. For each $j$, the real
-    part of $s_j$ contributes an exponentially varying term, and the imaginary part an
-    oscillatory term.
+        \begin{equation}
+          y_j(t)=(C_{j,1}+\cdots+C_{j,m_j}t^j)\,e^{s_jt}
+        \end{equation}
+        to the solution, where $C_{j,1},\dots,C_{j,m_j}$ are $m_j$ arbitrary integration
+        constants that need to be determined using initial conditions. The general solution of
+        \cref{eq:oden} is then given by
+        \begin{equation}
+          y(t)=\sum_{j=1}^{r}y_j(t)\,,
+        \end{equation}
+        and is parametrised by a total of $n$ integration constants. For each $j$, the real
+        part of $s_j$ contributes an exponentially varying term, and the imaginary part an
+        oscillatory term.
 \end{enumerate}
 %.........................................................................................
 \subsubsection{Non-constant coefficients}
-When coefficients are not constant, solving systematically a linear differential equation,
-even in the homogeneous case, is non-trivial. However, the Fourier transform of an
-equation can in some cases lead to an easier equation to solve. We refer the reader to
+When coefficients are not constant, solving systematically a linear differential
+equation, even in the homogeneous case, is non-trivial. However, the Fourier transform of
+an equation can in some cases lead to an easier equation to solve. We refer the reader to
 \cref{airy} for an explicit example with the Airy equation. We now discuss the case of
 inhomogeneous equations.
 %-----------------------------------------------------------------------------------------
@@ -405,9 +404,9 @@ where $y_0$ is a solution of the homogeneous equation~\cref{eq:oden} that should
 using initial conditions.
 %.........................................................................................
 \subsubsection{Driven harmonic oscillator}
-We consider a mass $m$ attached to a spring fixed at one end along the horizontal axis, at
-position $x=0$. We denote by $x(t)$ the position of the mass on the horizontal axis as a
-function of time $t$. Furthermore, we assume the mass is driven by an external force
+We consider a mass $m$ attached to a spring fixed at one end along the horizontal axis,
+at position $x=0$. We denote by $x(t)$ the position of the mass on the horizontal axis as
+a function of time $t$. Furthermore, we assume the mass is driven by an external force
 $F(t)$ varying with time, and that it is insensitive to gravity (\eg it is mounted on a
 horizontal rail). In total, three forces are applied to the mass:
 \begin{itemize}
@@ -431,8 +430,8 @@ is a dimensionless number. We already solved the homogeneous equation in the pre
 section, \cf\cref{eq:ode2-damped-under,eq:ode2-damped-over,eq:ode2-damped-crit}, with
 $a=2\pi\omega_0$ and $b=\zeta$.
 
-We now want to find particular solutions of the inhomogeneous equation. This can be
-done by finding the Green's function $G$ of~\cref{eq:ode2-driven}. Following
+We now want to find particular solutions of the inhomogeneous equation. This can be done
+by finding the Green's function $G$ of~\cref{eq:ode2-driven}. Following
 \cref{eq:green-ft},
 \begin{equation}
   G(t)=\intr{\omega}\frac{e^{2\pi i\omega t}}{P(2\pi i\omega)}\,,
@@ -466,26 +465,27 @@ sometimes referred to as the \emph{Schwinger parameterisation}, is as follows:
   =\intr{\lambda}\theta(\lambda)e^{-\lambda A}\,,
 \end{equation}
 where $A$ is a complex number such that $\Re(A)>0$. Since $\Re(z)<0$, $\Re(2\pi i
-\omega-z)>0$, and therefore using the Schwinger parameterisation
+  \omega-z)>0$, and therefore using the Schwinger parameterisation
 \begin{align}
-  \intr{\omega}\frac{e^{2\pi i\omega t}}{2\pi i \omega-z}&=
+  \intr{\omega}\frac{e^{2\pi i\omega t}}{2\pi i \omega-z}
+   & =
   \intr{\omega}\intr{\lambda}\theta(\lambda)
-  e^{2\pi i\omega(t-\lambda)}e^{\lambda z}\notag\\
-  &=\intr{\lambda}\theta(\lambda)\delta(t-\lambda)e^{\lambda z}\notag\\
-  &=\theta(t)e^{zt}\,.
+  e^{2\pi i\omega(t-\lambda)}e^{\lambda z}\notag                        \\
+   & =\intr{\lambda}\theta(\lambda)\delta(t-\lambda)e^{\lambda z}\notag \\
+   & =\theta(t)e^{zt}\,.
   \label{eq:thetaexp}
 \end{align}
 Applying this result to \cref{eq:p-part-frac}, we finally obtain
 \begin{equation}
   \boxed{G(t)
-  =\theta(t)e^{-2\pi\omega_0\zeta t}\,\frac{\sin(2\pi\omega_1t)}{2\pi\omega_1}}\,.
+    =\theta(t)e^{-2\pi\omega_0\zeta t}\,\frac{\sin(2\pi\omega_1t)}{2\pi\omega_1}}\,.
   \label{eq:green-underdamped}
 \end{equation}
 Following similar steps, one obtains in the $\zeta>1$ overdamped regime
 \begin{equation}
   \boxed{
     G(t)=\theta(t)e^{-2\pi\omega_0\zeta t}\,
-  \frac{\sinh(2\pi\bar{\omega}_1t)}{2\pi\bar{\omega}_1}}\,,
+    \frac{\sinh(2\pi\bar{\omega}_1t)}{2\pi\bar{\omega}_1}}\,,
   \label{eq:green-overdamped}
 \end{equation}
 where $\bar{\omega}_1=\omega_0\sqrt{\zeta^2-1}$. In the critical $\zeta=1$ regime, one has
@@ -502,7 +502,7 @@ The derivation of these extra cases is left to the reader as an exercise
   \caption{Green's function of the damped harmonic oscillator in the underdamped,
     overdamped, and critical regimes for an undamped frequency $\omega_0=\unit{1}{\hertz}$.
     The explicit form of $G(t)$ is given in
-  \cref{eq:green-underdamped,eq:green-overdamped,eq:green-critical}.}
+    \cref{eq:green-underdamped,eq:green-overdamped,eq:green-critical}.}
   \label{fig:ho-green}
 \end{figure}
 %.........................................................................................
@@ -537,7 +537,7 @@ Let us now discuss the interpretation of the frequency space Green's function, \
 \begin{equation}
   \boxed{
     \hat{G}(\omega)=\frac{1}{P(2\pi i\omega)}=\frac{1}{4\pi^2}
-  \frac{1}{-\omega^2+2i\zeta\omega_0\omega+\omega_0^2}}\,.
+    \frac{1}{-\omega^2+2i\zeta\omega_0\omega+\omega_0^2}}\,.
   \label{eq:ho-green-ft}
 \end{equation}
 In this form, the Green's function describes the response of the oscillator when driven at
@@ -564,7 +564,7 @@ $\omega$, the solution above tells us that the oscillator will also oscillate wi
 frequency $\omega$, although delayed by a phase $\phi(\omega)$. Additionally, this
 oscillating movement has an amplitude proportional to $R(\omega)$. $R(\omega)$ is called
 the \emph{frequency response} of the oscillator, and $\phi(\omega)$ is the \emph{phase
-shift}. Let us compute explicitly these functions using~\cref{eq:ho-green-ft}. We start by
+  shift}. Let us compute explicitly these functions using~\cref{eq:ho-green-ft}. We start by
 the frequency response
 \begin{equation}
   R(\omega)=|\hat{G}(\omega)|=\frac{1}{4\pi^2}
@@ -574,7 +574,7 @@ the frequency response
 where $\bar{R}$ is the dimensionless function given by
 \begin{equation}
   \boxed{
-  \bar{R}(\xi)=\frac{1}{\sqrt{(1-\xi^2)^2+4\zeta^2\xi^2}}\,.}
+    \bar{R}(\xi)=\frac{1}{\sqrt{(1-\xi^2)^2+4\zeta^2\xi^2}}\,.}
   \label{eq:ho-response}
 \end{equation}
 For the phase shift, we first write
@@ -585,7 +585,7 @@ therefore $\phi(\omega)$ is such that
 \begin{equation}
   \boxed{
     \tan[\phi(\omega)]=\frac{2\zeta\omega_0\omega}{\omega_0^2-\omega^2}
-  =\frac{2\zeta\xi}{1-\xi^2}\,,}
+    =\frac{2\zeta\xi}{1-\xi^2}\,,}
   \label{eq:ho-phase}
 \end{equation}
 where $\xi=\frac{\omega}{\omega_0}$.
@@ -593,26 +593,27 @@ where $\xi=\frac{\omega}{\omega_0}$.
   \centering
   \includegraphics{gp_resonance.pdf}
   \caption{Frequency response (upper pane) and phase shift (lower pane) of the driven
-    harmonic oscillator as a function of the frequency ratio $\xi=\frac{\omega}{\omega_0}$,
-    where $\omega_0$ is the undamped oscillator frequency. Both functions are defined
-    in~\cref{eq:ho-response,eq:ho-phase}, and the phase shift was defined in the
+  harmonic oscillator as a function of the frequency ratio $\xi=\frac{\omega}{\omega_0}$,
+  where $\omega_0$ is the undamped oscillator frequency. Both functions are defined
+  in~\cref{eq:ho-response,eq:ho-phase}, and the phase shift was defined in the
   interval~$[0,\pi)$.}
   \label{fig:resonance}
 \end{figure}
 
-The frequency response and phase shift are represented in~\cref{fig:resonance} for various
-values of the damping ratio $\zeta$. In the underdamped $\zeta<1$ regime, we clearly
-observe that for frequencies around the undamped frequency $\omega_0$, the amplitude of
-oscillations is amplified. This is the well-known \emph{resonance} phenomenon which is a
-characteristic feature of the driven harmonic oscillator. Regarding the phase shift in the
-resonant regime, at frequencies much lower than $\omega_0$, $\phi(\omega)$ is close to
-$0$, and at frequencies much higher than $\omega_0$, $\phi(\omega)$ is close to $\pi$.
-This can be physically interpreted in the following way: $\omega_0$ is a characteristic
-frequency of the oscillator, as it is determined by its mass and spring constant. If the
-driver oscillates much slower than this frequency, then the oscillator is able to follow
-this movement with a negligible reaction time and is in phase with the driver. However,
-if the driver oscillates much faster than $\omega_0$, the reaction time of the oscillator
-is too slow to be synchronised, and it is completely out of phase with the driver.
+The frequency response and phase shift are represented in~\cref{fig:resonance} for
+various values of the damping ratio $\zeta$. In the underdamped $\zeta<1$ regime, we
+clearly observe that for frequencies around the undamped frequency $\omega_0$, the
+amplitude of oscillations is amplified. This is the well-known \emph{resonance}
+phenomenon which is a characteristic feature of the driven harmonic oscillator. Regarding
+the phase shift in the resonant regime, at frequencies much lower than $\omega_0$,
+$\phi(\omega)$ is close to $0$, and at frequencies much higher than $\omega_0$,
+$\phi(\omega)$ is close to $\pi$. This can be physically interpreted in the following
+way: $\omega_0$ is a characteristic frequency of the oscillator, as it is determined by
+its mass and spring constant. If the driver oscillates much slower than this frequency,
+then the oscillator is able to follow this movement with a negligible reaction time and
+is in phase with the driver. However, if the driver oscillates much faster than
+$\omega_0$, the reaction time of the oscillator is too slow to be synchronised, and it is
+completely out of phase with the driver.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Partial differential equations}
 %-----------------------------------------------------------------------------------------
@@ -656,10 +657,10 @@ expect $B(\omega)$ to be a linear combination of the delta function and its deri
 each of these points. It is not difficult to see that only the delta function can be
 present; indeed, for $n\in\Z$,
 \begin{align}
-  \delta'\left(\omega-\frac{cn}{2L}\right)\sin\left(2\pi\frac{\omega}{c}L\right)&=
-  -2\pi\frac{L}{c}\cos\left(2\pi\frac{\omega}{c}L\right)
-  \delta\left(\omega-\frac{cn}{2L}\right)\\
-  &=2\pi (-1)^{n+1}\frac{L}{c}\delta\left(\omega-\frac{cn}{2L}\right)\neq 0\,,
+  \delta'\left(\omega-\frac{cn}{2L}\right)\sin\left(2\pi\frac{\omega}{c}L\right)
+   & =-2\pi\frac{L}{c}\cos\left(2\pi\frac{\omega}{c}L\right)
+  \delta\left(\omega-\frac{cn}{2L}\right)                                        \\
+   & =2\pi (-1)^{n+1}\frac{L}{c}\delta\left(\omega-\frac{cn}{2L}\right)\neq 0\,,
 \end{align}
 and this non-zero contribution will be present when multiplying the sine by any higher
 derivative of the delta function. So there exists a sequence of complex numbers $C_n$ such
@@ -680,7 +681,7 @@ Taking the inverse Fourier transform in $\omega$, we get
 Since $u(t,x)$ is real, the series above can be written
 \begin{equation}
   u(t,x)=\sumnp{n}\sin\left(\frac{\pi}{L}nx\right)\left[
-  A_n\cos\left(\frac{\pi}{L}nct\right)+B_n\sin\left(\frac{\pi}{L}nct\right)\right]\,,
+    A_n\cos\left(\frac{\pi}{L}nct\right)+B_n\sin\left(\frac{\pi}{L}nct\right)\right]\,,
 \end{equation}
 and $C_n$ must be such that the two sequences $A_n=C_n+C_{-n}$ and $B_n=i(C_{n}-C_{-n})$
 are real. The series above is well-defined in the sense of distributions; however, since
@@ -695,8 +696,8 @@ $[-L,L]$ by
 \begin{equation}
   \bar{u}_0(x)=
   \begin{cases}
-    u_0(x)&\text{if}~x\in[0,L]\\
-    -u_0(x)&\text{if}~x\in[-L,0)
+    u_0(x)  & \text{if}~x\in[0,L]  \\
+    -u_0(x) & \text{if}~x\in[-L,0)
   \end{cases}
   \,.
 \end{equation}
