@@ -493,7 +493,8 @@ We now formulate the main theorem on the integral representation of partial Four
   \end{equation}
   Since the sum above is finite, we can exchange the sum and the integral to obtain
   \begin{equation}
-    s_N(f)(t)=\frac{1}{\tau}\int_0^\tau\diff u\,f(u)\sum_{n=-N}^{N}e^{2\pi i n\omega (t-u)}\,.
+    s_N(f)(t)=\frac{1}{\tau}\int_0^\tau\diff u\,f(u)\sum_{n=-N}^{N}e^{2\pi i
+    n\omega (t-u)}\,.
   \end{equation}
   Finally, using the definition of the Dirichlet kernel~\cref{eq:dk-def} proves the
   theorem.
@@ -631,7 +632,7 @@ a finite number of points of jump discontinuity.
     \sumz{n}c_n(\sq)\,e^{2\pi i \omega nt}=
     \begin{cases}
       1&\text{if}~0<t<\frac{1}{2}\\
-      -1&\text{if}~\frac{1}{2}<t<-1\\
+      -1&\text{if}~\frac{1}{2}<t<1\\
       \frac{1}{2}&\text{if}~t=0,\frac{1}{2},1
     \end{cases}\,,
   \end{equation}
@@ -767,7 +768,8 @@ the definition below.
   A sequence of function $f_n$ is said to \emph{converge uniformly} to $f$ on a domain $D$
   if for all $\epsilon>0$, there exists $N\in\N$ such that
   \begin{equation}
-    \forall n\geq N,\quad\forall x\in D,\quad|f_n(x)-f(x)|<\epsilon\,,\label{eq:uniconv-eps}
+    \forall n\geq N,\quad\forall x\in
+    D,\quad|f_n(x)-f(x)|<\epsilon\,,\label{eq:uniconv-eps}
   \end{equation}
   which can equivalently be defined as the limit
   \begin{equation}
@@ -826,7 +828,8 @@ continuity
   $f_n$ is continuous on $D$ for all integers $n$, then $f$ is continuous on $D$. In other
   words, the following exchange of limits holds
   \begin{equation}
-    \lim_{x\to x_0}\lim_{n\to+\infty}f_n(x)=\lim_{n\to+\infty}\lim_{x\to x_0}f_n(x)=f(x_0)\,,
+    \lim_{x\to x_0}\lim_{n\to+\infty}f_n(x)=\lim_{n\to+\infty}\lim_{x\to
+    x_0}f_n(x)=f(x_0)\,,
   \end{equation}
   for all $x_0\in D$.
 \end{theorem}
@@ -1240,7 +1243,8 @@ regularly inserting zeros in the sequence of the Fourier coefficients:
   By assumption, $\mathcal{T}_{\tau_0}f=f$, therefore using \cref{eq:cn-timetrans} we
   obtain
   \begin{equation}
-    c_n^\tau(f)=e^{-2\pi i n\omega \tau_0}c_n^\tau(f)=e^{-2\pi i \frac{n}{r}}c_n^\tau(f)\,.
+    c_n^\tau(f)=e^{-2\pi i n\omega \tau_0}c_n^\tau(f)=e^{-2\pi i
+    \frac{n}{r}}c_n^\tau(f)\,.
   \end{equation}
   If $c_n^\tau(f)\neq 0$, then the equation above implies that $e^{-2\pi i
   \frac{n}{r}}=1$, which in turn implies that $\frac{n}{r}$ is an integer, \ie $n$ is a
@@ -1320,7 +1324,8 @@ by defining the Fourier coefficients of functions on $\R^d$:
   \begin{align}
     c_{\vec{n}}(f)&=\frac{1}{V(\vec{\tau})}\braket{f,\ew(\vec{\omega}\odot\vec{n})}\notag\\
     &=\frac{1}{V(\vec{\tau})}
-    \int_{P(\vec{\tau})}\diff^d\vec{x}\,e^{-2\pi i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,,
+    \int_{P(\vec{\tau})}\diff^d\vec{x}\,e^{-2\pi
+    i(x_1n_1\omega_1+\cdots+x_dn_d\omega_d)}\,,
   \end{align}
   for all $n\in\Z^d$, where $V(\vec{\tau})=\tau_1\cdots\tau_d$ is the volume of one
   period, $P(\vec{\tau})$ is the Cartesian product of intervals
