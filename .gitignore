@@ -24,5 +24,8 @@
 # macOS temporaries
 .DS_Store
 
+# do not track PDF versions
+/versions
+
 # no solution
 /solutions
