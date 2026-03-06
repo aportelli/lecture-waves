@@ -117,7 +117,7 @@ limit. One starts by writing the Taylor expansion
 \end{equation}
 which implies that
 \begin{equation}
-	\lim_{\epsilon\to 0}=\frac{1}{\epsilon^2}
+	\lim_{\epsilon\to 0}\frac{1}{\epsilon^2}
 	[u(t,x+\epsilon)-2u(t,x)+u(t,x-\epsilon)]=\pdn{u}{x}{2}(t,x)\,.
 \end{equation}
 Using this last step with~\cref{eq:wave-eq-discrete} leads us to the main result of this
@@ -238,9 +238,9 @@ solutions~\cref{eq:wave-eq-sol}, one obtains for all $x\in[0,L]$
 The second equation above implies that there exists a constant $K$ such that for all
 $x\in[0,L]$,
 \begin{equation}
-	f(x)=g(x)+\frac{K}{2}\,,\label{eq:wave-eq-fmg}
+	f(x)=g(x)+2K\,,\label{eq:wave-eq-fmg}
 \end{equation}
-where the arbitrary factor $\frac12$ is introduced for later convenience.
+where the arbitrary factor $2$ is introduced for later convenience.
 Solving~\cref{eq:wave-eq-fpg,eq:wave-eq-fmg} as a linear system, one obtains, for all
 $x\in[0,L]$,
 \begin{align}
