@@ -458,7 +458,7 @@ discussed in the result below.
 	which has the real part
 	\begin{equation}
 		\Re(z)=\frac12\frac{\Im[e^{i(N+\frac12)x}]-\Im(e^{-i\frac{x}{2}})}{\sin(\frac{x}{2})}
-		=\frac12\frac{\sin[(N+\frac{1}{2})x]}{\sin(\frac{x}{2})}+1\,.
+		=\frac12\frac{\sin[(N+\frac{1}{2})x]}{\sin(\frac{x}{2})}+\frac 12\,.
 	\end{equation}
 	Substituting the last equation into~\cref{eq:dk-z} proves the proposition.
 \end{proof}
@@ -632,14 +632,14 @@ at a finite number of points of jump discontinuity.
 	\begin{equation}
 		\sumz{n}c_n(\sq)\,e^{2\pi i \omega nt}=
 		\begin{cases}
-			1           & \text{if}~0<t<\frac{1}{2}   \\
-			-1          & \text{if}~\frac{1}{2}<t<1   \\
-			\frac{1}{2} & \text{if}~t=0,\frac{1}{2},1
+			1  & \text{if}~0<t<\frac{1}{2}   \\
+			-1 & \text{if}~\frac{1}{2}<t<1   \\
+			0  & \text{if}~t=0,\frac{1}{2},1
 		\end{cases}\,,
 	\end{equation}
 	where it is understood that these values are repeated on every period. This limit is
 	identical to the square wave except at the points of discontinuity where it takes the
-	value $\frac{1}{2}$.
+	value $0$.
 \end{example}
 %-----------------------------------------------------------------------------------------
 \subsection{Convergence in mean square and Parseval's theorem}
@@ -918,10 +918,10 @@ of a piecewise smooth function, given in the result below.
 	Using integration by parts for piecewise smooth functions
 	(\cref{thm:pw-smooth-intpart}), one obtains
 	\begin{align}
-		c_n(f') & =\frac{1}{\tau}\int_0^\tau\diff t\,f'(t)\,e^{-2\pi i n\omega t} \\
+		c_n(f') & =\frac{1}{\tau}\int_0^\tau\diff t\,f'(t)\,e^{-2\pi i n\omega t}   \notag \\
 		        & =\frac{1}{\tau}\left[f(t)e^{-2\pi i n\omega t}\right]_0^\tau
 		-\frac{1}{\tau}\sum_{m=1}^{N-1}h_m\,e^{-2\pi im\omega t_m}
-		+2\pi i n\int_0^\tau\diff t\,f(t)\,e^{-2\pi i n\omega t}                  \\
+		+\frac{2\pi i n\omega}{\tau}\int_0^\tau\diff t\,f(t)\,e^{-2\pi i n\omega t} \notag \\
 		        & =\frac{1}{\tau}[f(\tau^-)-f(0^+)]
 		-\frac{1}{\tau}\sum_{m=1}^{N-1}h_m\,e^{-2\pi im\omega t_m}
 		+2\pi i n\omega\,c_n(f)\,,
