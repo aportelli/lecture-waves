@@ -173,20 +173,20 @@ We start by considering the second-order equation for the undamped harmonic osci
 \end{equation}
 where $a\in\R$. The Fourier transform of this equation gives
 \begin{equation}
-  P(\omega)\hat{y}(\omega)=0,\qquad\text{with}\qquad P(\omega)=-4\pi^2\omega^2+a\,.
+  P(2\pi i\omega)\hat{y}(\omega)=0,\qquad\text{with}\qquad P(\omega)=s^2+a\,.
 \end{equation}
-$P(\omega)$ is a degree 2 polynomial with the following root structure:
+$P(s)$ is a degree 2 polynomial with the following root structure:
 \begin{itemize}
-  \item If $a>0$, $P(\omega)$ has two real single roots $\omega_{\pm}=\pm\frac{\sqrt{a}}{2\pi}$;
-  \item If $a=0$, $P(\omega)$ has a real double root at $\omega=0$;
-  \item If $a<0$, $P(\omega)$ has two complex roots $\omega_{\pm}$.
+  \item If $a>0$, $P(s)$ has two complex roots $s_{\pm}=\pm i\sqrt{|a|}$;
+  \item If $a=0$, $P(s)$ has a real double root at $s_0=0$;
+  \item If $a<0$, $P(s)$ has two real roots $\bar{s}_{\pm}=\pm\sqrt{|a|}$.
 \end{itemize}
 Using \cref{thm:structure-poly}, if $a>0$, there exist two constants $A$ and $B$ such
 that
 \begin{equation}
   \hat{y}(\omega)=A\,\delta(\omega-\omega_-)+B\,\delta(\omega-\omega_+)\,,
 \end{equation}
-and therefore
+where $2\pi i\omega_{\pm}=s_\pm$, and therefore
 \begin{equation}
   y(t)=A\,e^{2\pi i\omega_+t}+B\,e^{2\pi i\omega_-t}=A\,e^{i\sqrt{a}t}+B\,e^{-i\sqrt{a}t}\,,
   \label{eq:ode2-periodic}
@@ -199,8 +199,8 @@ with $\alpha=A+B$ and $\beta=i(A-B)$. In this case, the solution is periodic and
 have been obtained with a Fourier series expansion, \cf\cref{fourierode2}.
 
 Now, if $a=0$, $y''=0$, and clearly $y$ is linear. But let us use
-\cref{thm:structure-poly} regardless: since $\omega=0$ is a double root of $P(\omega)$,
-there exist two constants $A$ and $B$ such that
+\cref{thm:structure-poly} regardless: since $\omega=0$ is a double root of $P(2\pi
+  i\omega)$, there exist two constants $A$ and $B$ such that
 \begin{equation}
   \hat{y}(\omega)=A\,\delta(\omega)+B\,\delta'(\omega)\,,
 \end{equation}
@@ -210,10 +210,10 @@ which has the inverse Fourier transform
 \end{equation}
 which is the expected linear result.
 
-Finally, if $a<0$, $P(\omega)$ has no real roots and, strictly speaking, the only
+Finally, if $a<0$, $P(2\pi i\omega)$ has no real roots and, strictly speaking, the only
 solution coming from the Fourier transform is zero. However, as we did in the first-order
 case, we can analytically continue the result obtained in~\cref{eq:ode2-periodic} to the
-two complex roots of $P(\omega)$, which leads to the potential solution
+two complex roots of $P(2\pi i\omega)$, which leads to the potential solution
 \begin{equation}
   y(t)=A\,e^{-\sqrt{a}t}+B\,e^{\sqrt{a}t}\,.
   \label{eq:ode2-exp}
@@ -329,7 +329,7 @@ below.
         $r\leq n$, and we note $m_j$ the multiplicity of root $s_j$.
   \item Each root contributes
         \begin{equation}
-          y_j(t)=(C_{j,1}+\cdots+C_{j,m_j}t^j)\,e^{s_jt}
+          y_j(t)=(C_{j,1}+\cdots+C_{j,m_j}t^{m_j})\,e^{s_jt}
         \end{equation}
         to the solution, where $C_{j,1},\dots,C_{j,m_j}$ are $m_j$ arbitrary integration
         constants that need to be determined using initial conditions. The general solution of
@@ -446,7 +446,7 @@ Let us assume we are in the underdamped regime, \ie $\zeta<1$. Then we know that
   P(s)=(s-s_+)(s-s_-)\qquad\text{with}\qquad
   s_\pm=-2\pi\omega_0\zeta\pm 2\pi i\omega_1\,,
 \end{equation}
-where $\omega_1=\omega_0\sqrt{1-\zeta^2}$ is the \emph{damped frequency} of the
+where $\omega_1=\omega_0\sqrt{|1-\zeta^2|}$ is the \emph{damped frequency} of the
 oscillator. We then write
 \begin{equation}
   \frac{1}{P(2\pi i\omega)}=\frac{1}{4\pi i\omega_1}\left(\frac{1}{2\pi i\omega-s_+}
@@ -485,10 +485,10 @@ Following similar steps, one obtains in the $\zeta>1$ overdamped regime
 \begin{equation}
   \boxed{
     G(t)=\theta(t)e^{-2\pi\omega_0\zeta t}\,
-    \frac{\sinh(2\pi\bar{\omega}_1t)}{2\pi\bar{\omega}_1}}\,,
+    \frac{\sinh(2\pi\omega_1t)}{2\pi\omega_1}}\,,
   \label{eq:green-overdamped}
 \end{equation}
-where $\bar{\omega}_1=\omega_0\sqrt{\zeta^2-1}$. In the critical $\zeta=1$ regime, one has
+Finally, in the critical $\zeta=1$ regime, one has
 \begin{equation}
   \boxed{G(t)=\theta(t)te^{-2\pi\omega_0 t}}\,.
   \label{eq:green-critical}

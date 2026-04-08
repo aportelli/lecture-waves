@@ -321,7 +321,7 @@ properties are preserved by the Fourier transform:
 	zero at infinity, which is a variant of the Riemann-Lebesgue lemma for Schwartz
 	functions. Using \cref{prop:ft-trans}, we know that for $\omega\neq 0$,
 	\begin{equation}
-		\hat{f}(\omega)=\frac{1}{2\pi i\omega}\mathcal{F}(f')\,.\label{eq:ft-ip}
+		\hat{f}(\omega)=\frac{1}{2\pi i\omega}\mathcal{F}(f')(\omega)\,.\label{eq:ft-ip}
 	\end{equation}
 	Since $f'$ is a Schwartz function, its Fourier transform is bounded by
 	\begin{equation}
@@ -335,7 +335,7 @@ properties are preserved by the Fourier transform:
 	Now, let $\alpha$ and $\beta$ be two non-negative integers. Then, using
 	\cref{prop:ft-trans}, for all $\omega\in\R$,
 	\begin{equation}
-		\omega^\beta\hat{f}^{(\alpha)}(\omega)
+		\omega^\beta\hat{f}^{(\alpha)}(\omega)=\omega^\beta\hat{g}(\omega)
 		=\frac{1}{(2\pi i)^{\beta}}\mathcal{F}(g^{(\beta)})(\omega)\,,
 	\end{equation}
 	where $g$ is the function defined on $\R$ by $g(x)=(-2\pi ix)^{\alpha}f(x)$.
@@ -766,7 +766,7 @@ for any Schwartz function $\varphi$. Another way to try defining $u$ is to defin
 the limit of a sequence of Schwartz functions, for which the Fourier transform is
 well-defined. For example, defining
 \begin{equation}
-	f_{\sigma}(x)=e^{-2\pi^2\sigma^2 x}\,,
+	f_{\sigma}(x)=e^{-2\pi^2\sigma^2 x^2}\,,
 \end{equation}
 clearly $f_\sigma\to 1$ for $\sigma\to 0$. Additionally, according to
 \cref{thm:gauss-uncertainty}, we know that the Fourier transform of $f_{\sigma}$ is just
